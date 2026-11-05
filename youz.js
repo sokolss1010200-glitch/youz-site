@@ -417,7 +417,7 @@ setInterval(tick,1000);
 let cart=[]; const badge=document.getElementById('badge'), toast=document.getElementById('toast'), toastT=document.getElementById('toastT'); let tt;
 function showToast(s,go){toastT.textContent=s;document.getElementById('toastGo').hidden=!go;toast.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('on'),3200)}
 function updBadge(){badge.textContent=cart.length;badge.classList.toggle('on',cart.length>0)}
-function addCart(it){cart.push(it);updBadge();badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');showToast(it.n+' в корзине',true)}
+function addCart(it){cart.push(it);yzGoal('cart_add',{item:it.n});updBadge();badge.classList.remove('pop');void badge.offsetWidth;badge.classList.add('pop');showToast(it.n+' в корзине',true)}
 document.getElementById('toastGo').onclick=()=>{toast.classList.remove('on');openCart()};
 document.getElementById('cartBtn').onclick=()=>cart.length?openCart():showToast('Корзина пока пуста. Нажмите «+» на карточке товара.');
 function openCart(){openLead({eyebrow:'Корзина',title:'Оформить заказ',cart:true,btn:'Оформить заказ',source:'Корзина'})}
@@ -447,6 +447,14 @@ document.getElementById('calc').addEventListener('submit',e=>{e.preventDefault()
   const c=document.querySelector('#cond [aria-pressed="true"]').textContent, sm=document.querySelector('#sim [aria-pressed="true"]');
   openLead({eyebrow:'Trade-in',title:'Зафиксировать оценку',lines:[['Сдаёте',old.selectedOptions[0].text+', '+oldMem.selectedOptions[0].text+(sm?', '+sm.textContent:'')+', '+c.toLowerCase()],['Берёте',neu.selectedOptions[0].text],['Оценка до',out.d.textContent],['Доплата',out.p.textContent+' ('+months+' мес: '+out.m.textContent+')']],source:'Trade-in'})});
 }
+/* ================= ЦЕЛИ ЯНДЕКС МЕТРИКИ =================
+   Счётчик 110574921 подключён в настройках сайта в Тильде. Цели (тип «JavaScript-событие» в Метрике):
+   lead — заявка отправлена; lead_open — открыто окно заявки; call — нажали телефон; telegram — нажали Telegram;
+   cart_add — добавили в корзину; promo_popup — показан баннер «скидка на первую покупку». */
+const YM_ID=110574921;
+function yzGoal(name,params){try{if(typeof window.ym==='function')window.ym(YM_ID,'reachGoal',name,params||{})}catch(e){}}
+document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;const h=a.getAttribute('href')||'';
+  if(h.startsWith('tel:'))yzGoal('call');else if(/t\.me\//.test(h))yzGoal('telegram');else if(/vk\.com\//.test(h))yzGoal('vk');else if(/max\.ru\//.test(h))yzGoal('max')},true);
 /* ================= ЗАЯВКИ =================
    Заявки уходят через обычную форму Тильды на этой же странице (её получатели: Telegram, MAX, почта).
    Поля формы Тильды: name, phone, comment (переменные полей). */
@@ -461,7 +469,7 @@ function drawSum(){const L=sumLines();let html=L.map(l=>`<div><span>${htm(l[0])}
   if(leadCtx.cart){const t=cart.reduce((a,b)=>a+b.price,0);html+=`<div style="background:var(--ink);color:#fff"><span>Итого</span><b>${rub(t)}</b></div>`}
   document.getElementById('leadSum').innerHTML=html}
 document.getElementById('leadSum').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;cart.splice(+b.dataset.rm,1);updBadge();if(!cart.length){closeLead();return}drawSum()});
-function openLead(ctx){leadCtx=ctx;lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
+function openLead(ctx){leadCtx=ctx;yzGoal('lead_open',{source:ctx.source||''});lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
   document.getElementById('leadBtn').textContent=ctx.btn||'Отправить заявку';document.getElementById('leadErr').hidden=true;
   drawSum();leadForm.hidden=false;leadOk.hidden=true;lead.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('leadName').focus(),50)}
 function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');lead.hidden=true;document.body.style.overflow=''}
@@ -508,6 +516,7 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=docum
   if(r==='err'){err.hidden=false;err.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';btn.textContent='Отправить ещё раз';return}
   if(leadCtx.cart){cart=[];updBadge()}
   document.getElementById('leadOkT').textContent=r==='demo'?'Это тестовый режим: форма Тильды на странице не найдена, заявка никуда не ушла.':'Менеджер перезвонит вам в течение 15 минут в рабочее время.';
+  yzGoal('lead',{source:leadCtx.source||'Сайт'});
   try{const P=JSON.parse(localStorage.getItem('yz-promo-pop')||'{}');P.done=1;localStorage.setItem('yz-promo-pop',JSON.stringify(P))}catch(e){}
   leadForm.hidden=true;leadOk.hidden=false});
 /* Всплывающее предложение «скидка на первую покупку»: через 40 секунд на сайте, не чаще раза в 3 дня,
@@ -515,11 +524,11 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=docum
 (function(){const K='yz-promo-pop';let st={};try{st=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
   if(st.done||(st.t&&Date.now()-st.t<3*864e5))return;
   setTimeout(function show(){if(document.visibilityState!=='visible'||!lead.hidden){setTimeout(show,10000);return}
-    try{localStorage.setItem(K,JSON.stringify({t:Date.now()}))}catch(e){}
+    try{localStorage.setItem(K,JSON.stringify({t:Date.now()}))}catch(e){}yzGoal('promo_popup');
     openLead({eyebrow:'Подарок',title:'Получите скидку на первую покупку',lines:[['Оставьте имя и телефон — менеджер перезвонит и назовёт вашу скидку','']],btn:'Получить скидку',source:'Баннер: скидка на первую покупку'})},40000)})();
 const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',async e=>{e.preventDefault();const v=document.getElementById('cbPhone').value.trim();const m=document.getElementById('cbMsg');m.hidden=false;
   if(v.replace(/\D/g,'').length<10){m.textContent='Введите номер полностью, например +7 900 123-45-67.';return}
-  m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});
+  m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});if(r!=='err')yzGoal('lead',{source:'Обратный звонок'});
   m.textContent=r==='err'?'Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.':r==='demo'?'Тестовый режим: форма Тильды не найдена.':'Спасибо! Перезвоним в течение 15 минут.'});
 
 function applySettings(){(DATA.settings||[]).forEach(r=>{const k=low(r['Параметр']),v=num(r['Значение']);if(k.startsWith('trade-in')&&v>=-20&&v<=30)TI_UP=1+v/100;if(k.startsWith('рассрочка')&&v>=3&&v<=60){MONTHS_DEF=v;if(window.yzSetTerm)window.yzSetTerm(v)}})}

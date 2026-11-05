@@ -833,9 +833,14 @@ header.top .row2 .wrap{flex-direction:column;align-items:stretch;padding-block:1
 
 /* Шапка прижата к самому верху экрана: отступ под вырез/строку iPhone внутри шапки (раньше в зазор просвечивала страница) */
 header.top{top:0!important;padding-top:env(safe-area-inset-top,0px)}
-/* Пока открыто меню каталога или окно заявки — прячем нижнюю панель, чтобы она не закрывала пункты */
-body:has(.mega:not([hidden])) .dock,body:has(.lm:not([hidden])) .dock{display:none}
-.mega-panel .wrap{padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+/* Нижняя панель на телефоне: компактная и видна всегда; меню каталога прокручивается над ней */
+@media (max-width:860px){
+.dock{gap:6px;padding:6px max(10px, env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(10px, env(safe-area-inset-left,0px))}
+.dock a{min-height:40px;border-radius:12px;font-size:13px}
+.mega-panel .wrap{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+.toast{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+}
 /* Trade-in: «−99 000 ₽» всегда в одну строку */
 .ti-copy .big{white-space:nowrap;font-size:clamp(40px,5.2vw,84px)}
 /* Отзывы: Яндекс + 2ГИС и живые отзывы с Яндекса */
@@ -867,3 +872,17 @@ body:has(.mega:not([hidden])) .dock,body:has(.lm:not([hidden])) .dock{display:no
 /* Каталог: на компьютере все разделы видны (перенос строк), на телефоне — прокрутка с затуханием справа, чтобы было понятно, что есть ещё */
 @media (min-width:861px){.ctabs{flex-wrap:wrap;overflow:visible}}
 @media (max-width:860px){.ctabs{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:40px}}
+/* Лучшие отзывы */
+.rates-row{grid-template-columns:1fr 1fr;margin-bottom:16px}
+.rq-grid{columns:3 300px;column-gap:16px}
+.rq{break-inside:avoid;margin:0 0 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:grid;gap:14px}
+.rq-tag{justify-self:start;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--lime);border-radius:999px;padding:5px 10px}
+.rq blockquote{margin:0;font-size:16px;line-height:1.55}
+.rq figcaption{display:flex;align-items:center;gap:10px}
+.rq .av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--paper);border:1px solid var(--line)}
+.rq figcaption>span:nth-child(2){flex:1;min-width:0}
+.rq figcaption b{display:block;font-size:15px}
+.rq figcaption small{color:var(--muted);font-size:13px}
+.rq figcaption a{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;text-decoration:none;background:var(--ink);color:#fff}
+.rq-more{display:flex;justify-content:center;margin-top:8px}
+@media (max-width:560px){.rates-row{grid-template-columns:1fr}.rq-grid{columns:1}}
