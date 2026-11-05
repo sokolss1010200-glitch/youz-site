@@ -252,7 +252,14 @@ const SHEETS = {
   tradein:  "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=Trade-in",
   settings: "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8"
 };
-const TI_MAX = 60000;      // максимальная скидка trade-in, ₽
+/* TRADE-IN: максимальная оценка (состояние «как новый», SIM + eSIM) по модели и памяти, ₽.
+   Сверено с damprodam.ru/tradein 6 ноября 2026. Коэффициенты: TI_COND — состояние, TI_ESIM — «только eSIM».
+   TI_UP — общая надбавка к их ценам (1 = как у них, 1.05 = +5%). */
+const TI_PRICES=[["iPhone 17 Pro Max",[[256,75000],[512,85000],[1000,92000],[2000,98000]]],["iPhone 17 Pro",[[256,72000],[512,80000],[1000,85000]]],["iPhone Air",[[256,50000],[512,54000],[1000,59000]]],["iPhone 17",[[256,47000],[512,50000]]],["iPhone 16 Pro Max",[[256,55000],[512,57000],[1000,65000]]],["iPhone 16 Pro",[[128,48000],[256,51000],[512,56000],[1000,60000]]],["iPhone 16 Plus",[[128,38000],[256,41000],[512,42000]]],["iPhone 16",[[128,36000],[256,38000],[512,40000]]],["iPhone 16e",[[128,24000],[256,27000],[512,31000]]],["iPhone 15 Pro Max",[[256,43000],[512,47000],[1000,51000]]],["iPhone 15 Pro",[[128,35000],[256,38000],[512,41000],[1000,44000]]],["iPhone 15 Plus",[[128,27000],[256,29000],[512,32000]]],["iPhone 15",[[128,25000],[256,26000],[512,27000]]],["iPhone 14 Pro Max",[[128,30000],[256,31000],[512,32000],[1000,33000]]],["iPhone 14 Pro",[[128,27000],[256,28000],[512,29000],[1000,30000]]],["iPhone 14 Plus",[[128,20000],[256,21000],[512,22000]]],["iPhone 14",[[128,18000],[256,20000],[512,22000]]],["iPhone 13 Pro Max",[[128,24000],[256,25000],[512,26000],[1000,27000]]],["iPhone 13 Pro",[[128,20000],[256,21000],[512,22000],[1000,23000]]],["iPhone 13 mini",[[128,16000],[256,17000],[512,18000]]],["iPhone 13",[[128,15000],[256,16000],[512,18000]]],["iPhone SE (2022)",[[64,7000],[128,8000],[256,9000]]],["iPhone 12 Pro Max",[[128,15000],[256,16000],[512,17000]]],["iPhone 12 Pro",[[128,12000],[256,13000],[512,14000]]],["iPhone 12 mini",[[64,7000],[128,8000],[256,9000]]],["iPhone 12",[[64,10000],[128,11000],[256,12000]]],["iPhone 11 Pro Max",[[64,10000],[256,11000],[512,12000]]],["iPhone 11 Pro",[[64,9000],[256,10000],[512,11000]]],["iPhone 11",[[64,5000],[128,6000],[256,7000]]]];
+const TI_COND={best:1,well:.94,normal:.86};
+const TI_ESIM=m=>/^iPhone (17|Air)/.test(m)?.9:.78;
+let TI_UP=1;
+const TI_MAX=Math.max(...TI_PRICES.flatMap(r=>r[1].map(x=>x[1])));
 let MONTHS_DEF = 36;       // срок рассрочки для «от … ₽/мес»; можно поменять в таблице: лист «Настройки», строка «Рассрочка, мес»
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;t=t.replace(/^﻿/,'');
@@ -416,26 +423,29 @@ document.getElementById('cartBtn').onclick=()=>cart.length?openCart():showToast(
 function openCart(){openLead({eyebrow:'Корзина',title:'Оформить заказ',cart:true,btn:'Оформить заказ',source:'Корзина'})}
 
 if(document.getElementById('old')){
-/* trade-in calc */
-const old=document.getElementById('old'), neu=document.getElementById('neu');
-let k=1, months=MONTHS_DEF;
-function fillTradein(){const prevO=old.value,prevN=neu.value;
-  old.innerHTML=DATA.tradein.filter(r=>r['Модель']).map(r=>`<option value="${num(r['Оценка до'])}">${htm(r['Модель'])}</option>`).join('');
+/* trade-in calc: модель → память → SIM → состояние */
+const old=document.getElementById('old'), oldMem=document.getElementById('oldMem'), neu=document.getElementById('neu');
+let cond='best', sim='both', months=MONTHS_DEF;
+const memName=v=>v>=1000?(v/1000)+' ТБ':v+' ГБ';
+function fillMem(){const r=TI_PRICES[+old.value]||TI_PRICES[0];const prev=oldMem.value;oldMem.innerHTML=r[1].map(x=>`<option value="${x[1]}">${memName(x[0])}</option>`).join('');if([...oldMem.options].some(o=>o.value===prev))oldMem.value=prev}
+function fillTradein(){const prevN=neu.value;
+  if(!old.options.length){old.innerHTML=TI_PRICES.map((r,i)=>`<option value="${i}">${htm(r[0])}</option>`).join('');old.selectedIndex=Math.min(4,TI_PRICES.length-1);fillMem()}
   neu.innerHTML=P.filter(p=>p.f==='iphone').map(p=>{const mem=p.mem[0];const v=Math.min(...p.cols.map(c=>variant(p,mem,p.opt[0]||'',c.name).price).filter(Boolean));return `<option value="${v}">${htm(p.n)}, ${htm(mem)}</option>`}).join('');
-  if([...old.options].some(o=>o.value===prevO))old.value=prevO;else if(old.options[3])old.selectedIndex=3;
   if([...neu.options].some(o=>o.value===prevN))neu.value=prevN;else if(neu.options[1])neu.selectedIndex=1;
   calc()}
-function seg(id,attr,cb){const g=document.getElementById(id);g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));cb(b.dataset[attr]);calc()})}
-seg('cond','k',v=>k=+v); seg('term','m',v=>months=+v);
+function seg(id,attr,cb){const g=document.getElementById(id);if(!g)return;g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));cb(b.dataset[attr]);calc()})}
+seg('cond','c',v=>cond=v); seg('sim','s',v=>sim=v); seg('term','m',v=>months=+v);
 window.yzSetTerm=v=>{months=v;document.querySelectorAll('#term button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.m===v));};
 const out={d:document.getElementById('rDisc'),p:document.getElementById('rPay'),m:document.getElementById('rMon')}; const cur={d:0,p:0,m:0};
 function tween(key,to){const from=cur[key];cur[key]=to;if(reduce){out[key].textContent=rub(to);return}const t0=performance.now();(function f(t){const x=Math.min(1,(t-t0)/600),e=1-Math.pow(1-x,3);out[key].textContent=rub(from+(to-from)*e);if(x<1)requestAnimationFrame(f)})(t0)}
-function calc(){const d=Math.min(TI_MAX,Math.round(+old.value*k/500)*500);const p=Math.max(0,+neu.value-d);tween('d',d);tween('p',p);tween('m',p/months)}
-old.onchange=calc; neu.onchange=calc;
+const msg=document.getElementById('calcMsg'), msgDef=msg?msg.textContent:'';
+function estimate(){if(cond==='bad')return 0;const name=(TI_PRICES[+old.value]||[''])[0];let v=+oldMem.value*TI_UP*(TI_COND[cond]||1);if(sim==='esim')v*=TI_ESIM(name);return Math.round(v/500)*500}
+function calc(){const d=estimate();const p=Math.max(0,+neu.value-d);tween('d',d);tween('p',p);tween('m',p/months);
+  if(msg)msg.textContent=cond==='bad'?'Битые и неисправные телефоны тоже принимаем — сумму назовём после осмотра в магазине.':msgDef}
+old.onchange=()=>{fillMem();calc()}; oldMem.onchange=calc; neu.onchange=calc;
 document.getElementById('calc').addEventListener('submit',e=>{e.preventDefault();
-  const cond=document.querySelector('#cond [aria-pressed="true"]').textContent;
-  openLead({eyebrow:'Trade-in',title:'Зафиксировать оценку',lines:[['Сдаёте',old.selectedOptions[0].text+', '+cond.toLowerCase()],['Берёте',neu.selectedOptions[0].text],['Скидка до',out.d.textContent],['Доплата',out.p.textContent+' ('+months+' мес: '+out.m.textContent+')']],source:'Trade-in'})});
-
+  const c=document.querySelector('#cond [aria-pressed="true"]').textContent, sm=document.querySelector('#sim [aria-pressed="true"]');
+  openLead({eyebrow:'Trade-in',title:'Зафиксировать оценку',lines:[['Сдаёте',old.selectedOptions[0].text+', '+oldMem.selectedOptions[0].text+(sm?', '+sm.textContent:'')+', '+c.toLowerCase()],['Берёте',neu.selectedOptions[0].text],['Оценка до',out.d.textContent],['Доплата',out.p.textContent+' ('+months+' мес: '+out.m.textContent+')']],source:'Trade-in'})});
 }
 /* ================= ЗАЯВКИ =================
    Заявки уходят через обычную форму Тильды на этой же странице (её получатели: Telegram, MAX, почта).
@@ -507,7 +517,7 @@ const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',asy
   m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});
   m.textContent=r==='err'?'Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.':r==='demo'?'Тестовый режим: форма Тильды не найдена.':'Спасибо! Перезвоним в течение 15 минут.'});
 
-function applySettings(){(DATA.settings||[]).forEach(r=>{const k=low(r['Параметр']),v=num(r['Значение']);if(k.startsWith('рассрочка')&&v>=3&&v<=60){MONTHS_DEF=v;if(window.yzSetTerm)window.yzSetTerm(v)}})}
+function applySettings(){(DATA.settings||[]).forEach(r=>{const k=low(r['Параметр']),v=num(r['Значение']);if(k.startsWith('trade-in')&&v>=-20&&v<=30)TI_UP=1+v/100;if(k.startsWith('рассрочка')&&v>=3&&v<=60){MONTHS_DEF=v;if(window.yzSetTerm)window.yzSetTerm(v)}})}
 /* ================= МЕНЮ «КАТАЛОГ» (по кнопке, на всех страницах) ================= */
 const CAT_SLUG={'iPhone':'iphone','Mac':'mac','iPad':'ipad','Apple Watch':'watch','AirPods':'airpods','Samsung':'samsung','Android':'android','Dyson':'dyson','Аудио':'audio','Умные часы':'smartwatch','Умные очки':'glasses','Фото и видео':'camera','Консоли':'games','Аксессуары':'accessories','LEGO':'lego'};
 const CAT_ICON={'iPhone':'<rect x="7" y="2" width="10" height="20" rx="3"/>','Mac':'<rect x="3" y="5" width="18" height="11" rx="1.5"/><path d="M1 19h22"/>','iPad':'<rect x="4" y="2" width="16" height="20" rx="2.5"/>','Apple Watch':'<rect x="6" y="6" width="12" height="12" rx="3.5"/><path d="M9 6l1-4h4l1 4M9 18l1 4h4l1-4"/>','AirPods':'<path d="M6 15v-4a6 6 0 0 1 12 0v4"/><rect x="4" y="14" width="4" height="7" rx="1.5"/><rect x="16" y="14" width="4" height="7" rx="1.5"/>','Samsung':'<rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="6" r="1"/>','Android':'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 19h4"/>','Dyson':'<path d="M10 3h4v8l3 2v8H7v-8l3-2z"/>','Аудио':'<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/>','Умные часы':'<circle cx="12" cy="12" r="6"/><path d="M9 6l1-4h4l1 4M9 18l1 4h4l1-4"/>','Умные очки':'<circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M11 13h2M3 13 2 8M21 13l1-5"/>','Фото и видео':'<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 7l2-3h4l2 3"/>','Консоли':'<path d="M6 9h12a4 4 0 0 1 4 4v1a3 3 0 0 1-5 2l-2-2H9l-2 2a3 3 0 0 1-5-2v-1a4 4 0 0 1 4-4z"/>','Аксессуары':'<path d="M9 2v6M15 2v6M7 8h10v4a5 5 0 0 1-10 0zM12 17v5"/>','LEGO':'<rect x="3" y="9" width="18" height="11" rx="1.5"/><rect x="6" y="5" width="4" height="4" rx="1"/><rect x="14" y="5" width="4" height="4" rx="1"/>'};
@@ -655,7 +665,7 @@ if(YM){
    <div class="md-price">${d?`<span class="oldp">${rub(v.old)}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}<small>при оплате наличными</small>
     <p>По карте, в рассрочку, по счёту: <b>${rub(card)}</b> · рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
-   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до −60 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
+   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до 98 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
  </div>
 </div></section>
@@ -664,7 +674,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details open><summary>Это оригинальный ${htm(name)}?<i></i></summary><p>Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас.</p></details>
  ${p.cat==='iPhone'?`<details><summary>Чем отличается eSIM и SIM + eSIM?<i></i></summary><p>Версия eSIM работает только с электронными SIM-картами. SIM + eSIM — с обычной nano-SIM и eSIM. Российские операторы поддерживают eSIM, но если вам нужна физическая SIM-карта, выбирайте SIM + eSIM.</p></details>`:''}
  <details><summary>Можно купить в рассрочку?<i></i></summary><p>Да, до ${MONTHS_DEF} месяцев по цене «по карте», без первого взноса. Нужен только паспорт.</p></details>
- <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 60 000 ₽ в стоимость ${htm(name)}.</p></details>
+ <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 98 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
 <section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)} при оплате наличными. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;

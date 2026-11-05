@@ -825,3 +825,8 @@ header.top .row2 .wrap{flex-direction:column;align-items:stretch;padding-block:1
 .blog-img{display:grid;place-items:center;aspect-ratio:4/3;margin:-28px -28px 8px;background:radial-gradient(circle at 50% 40%,#fff,#E9EBE2);border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden}
 .blog-img img{max-width:70%;max-height:86%;object-fit:contain;transition:transform .4s}
 .blog-card:hover .blog-img img{transform:scale(1.05)}
+/* trade-in: модель + память в одну строку, SIM 2 кнопки, состояние 4 кнопки */
+.field-row{display:grid;grid-template-columns:1.6fr 1fr;gap:10px}
+#sim.seg{grid-template-columns:repeat(2,1fr)}
+.seg4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:420px){.seg4{grid-template-columns:repeat(2,1fr)}.seg4 button{min-height:38px;font-size:13px}}
