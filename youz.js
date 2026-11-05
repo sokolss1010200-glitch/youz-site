@@ -259,7 +259,7 @@ const TI_PRICES=[["iPhone 17 Pro Max",[[256,75000],[512,85000],[1000,92000],[200
 const TI_COND={best:1,well:.94,normal:.86};
 const TI_ESIM=m=>/^iPhone (17|Air)/.test(m)?.9:.78;
 let TI_UP=1.05;  // +5% к ценам damprodam (можно поменять в таблице: «Настройки» → «Trade-in, %»)
-const TI_MAX=()=>Math.round(Math.max(...TI_PRICES.flatMap(r=>r[1].map(x=>x[1])))*TI_UP/1000)*1000;
+const TI_CAP=99000;  // потолок оценки (на сайте «до −99 000 ₽»)
 let MONTHS_DEF = 36;       // срок рассрочки для «от … ₽/мес»; можно поменять в таблице: лист «Настройки», строка «Рассрочка, мес»
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;t=t.replace(/^﻿/,'');
@@ -439,7 +439,7 @@ window.yzSetTerm=v=>{months=v;document.querySelectorAll('#term button').forEach(
 const out={d:document.getElementById('rDisc'),p:document.getElementById('rPay'),m:document.getElementById('rMon')}; const cur={d:0,p:0,m:0};
 function tween(key,to){const from=cur[key];cur[key]=to;if(reduce){out[key].textContent=rub(to);return}const t0=performance.now();(function f(t){const x=Math.min(1,(t-t0)/600),e=1-Math.pow(1-x,3);out[key].textContent=rub(from+(to-from)*e);if(x<1)requestAnimationFrame(f)})(t0)}
 const msg=document.getElementById('calcMsg'), msgDef=msg?msg.textContent:'';
-function estimate(){if(cond==='bad')return 0;const name=(TI_PRICES[+old.value]||[''])[0];let v=+oldMem.value*TI_UP*(TI_COND[cond]||1);if(sim==='esim')v*=TI_ESIM(name);return Math.round(v/500)*500}
+function estimate(){if(cond==='bad')return 0;const name=(TI_PRICES[+old.value]||[''])[0];let v=+oldMem.value*TI_UP*(TI_COND[cond]||1);if(sim==='esim')v*=TI_ESIM(name);return Math.min(TI_CAP,Math.round(v/500)*500)}
 function calc(){const d=estimate();const p=Math.max(0,+neu.value-d);tween('d',d);tween('p',p);tween('m',p/months);
   if(msg)msg.textContent=cond==='bad'?'Битые и неисправные телефоны тоже принимаем — сумму назовём после осмотра в магазине.':msgDef}
 old.onchange=()=>{fillMem();calc()}; oldMem.onchange=calc; neu.onchange=calc;
@@ -476,12 +476,17 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-lead]');if
   else if(k==='promo')openLead({eyebrow:'Акция',title:t.dataset.promo||'Акция',lines:[['Акция',t.dataset.promo||'']],source:'Акция: '+(t.dataset.promo||'')})
   else if(k==='call'){const D=t.dataset;openLead({eyebrow:D.eyebrow||'Заявка',title:D.title||'Оставьте заявку',lines:D.line?[D.line.split(': ')]:[],source:D.source||D.title||'Сайт'})}});
 
+/* Суммы и числа не переносим: «5 000 ₽», «+5 000», «−99 000» — неразрывные пробелы во всём тексте страницы (и в текстах из таблицы) */
+(function(){const R=document.getElementById('yz-root')||document.body;
+  const fix=t=>t.replace(/(\d)[ \u202F](?=\d{3}(?!\d))/g,'$1\u00A0').replace(/(\d) (₽|ГБ|ТБ|мес|%)/g,'$1\u00A0$2').replace(/(^|[\s(])([+−–-]) (?=\d)/g,'$1$2\u00A0').replace(/ (₽)/g,'\u00A0$1');
+  const run=root=>{const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/\d/.test(n.nodeValue)&&!n.parentNode.closest('script,style,textarea,input,select')?1:3});let n;while(n=w.nextNode()){const v=fix(n.nodeValue);if(v!==n.nodeValue)n.nodeValue=v}};
+  run(R);let q=0;new MutationObserver(()=>{if(q)return;q=requestAnimationFrame(()=>{q=0;run(R)})}).observe(R,{childList:true,subtree:true})})();
 /* ИНФОСТРАНИЦЫ: калькулятор рассрочки и ссылки на отзывы */
 /* Ссылки на карточки магазина. Когда появятся — вставить: REVIEWS.yandex = 'https://yandex.ru/maps/org/.../1234567890/', REVIEWS.gis = 'https://2gis.ru/khanty_mansiysk/firm/...' */
-const REVIEWS={yandex:'',gis:''};
+const REVIEWS={yandex:'https://yandex.ru/maps/org/yuz/103143665209/reviews/',gis:'https://2gis.ru/kh_mansiysk/firm/70000001042751106/tab/reviews'};
 (function(){const ys=REVIEWS.yandex||'https://yandex.ru/maps/?text='+encodeURIComponent('ЮZ Store Ханты-Мансийск Комсомольская 49'),gs=REVIEWS.gis||'https://2gis.ru/khanty_mansiysk/search/'+encodeURIComponent('ЮZ Комсомольская 49');
   document.querySelectorAll('[data-rev-y]').forEach(a=>{a.href=ys;a.target='_blank';a.rel='noopener'});document.querySelectorAll('[data-rev-g]').forEach(a=>{a.href=gs;a.target='_blank';a.rel='noopener'});
-  const id=(REVIEWS.yandex.match(/\/(\d{6,})\/?/)||[])[1],yb=document.querySelector('[data-rev="yandex"] .rev-body');
+  const id=(REVIEWS.yandex.match(/\/(\d{6,})\//)||[])[1],yb=document.querySelector('[data-rev="yandex"] .rev-body');
   if(id&&yb)yb.innerHTML='<iframe src="https://yandex.ru/maps-reviews-widget/'+id+'?comments" title="Отзывы на Яндекс Картах" loading="lazy"></iframe>'})();
 document.querySelectorAll('[data-inst]').forEach(w=>{const r=w.querySelector('[data-inst-range]'),sum=w.querySelector('[data-inst-sum]'),pay=w.querySelector('[data-inst-pay]'),btn=w.querySelector('[data-inst-btn]');let m=36;
   const upd=()=>{const v=+r.value;sum.textContent=rub(v);pay.textContent=rub(Math.ceil(v/m));r.style.setProperty('--v',((v-r.min)/(r.max-r.min)*100).toFixed(1)+'%');btn.dataset.line='Рассрочка '+m+' мес: '+rub(v)+', '+rub(Math.ceil(v/m))+'/мес'};
@@ -665,7 +670,7 @@ if(YM){
    <div class="md-price">${d?`<span class="oldp">${rub(v.old)}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}<small>при оплате наличными</small>
     <p>По карте, в рассрочку, по счёту: <b>${rub(card)}</b> · рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
-   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до 103 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
+   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до −99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
  </div>
 </div></section>
@@ -674,7 +679,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details open><summary>Это оригинальный ${htm(name)}?<i></i></summary><p>Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас.</p></details>
  ${p.cat==='iPhone'?`<details><summary>Чем отличается eSIM и SIM + eSIM?<i></i></summary><p>Версия eSIM работает только с электронными SIM-картами. SIM + eSIM — с обычной nano-SIM и eSIM. Российские операторы поддерживают eSIM, но если вам нужна физическая SIM-карта, выбирайте SIM + eSIM.</p></details>`:''}
  <details><summary>Можно купить в рассрочку?<i></i></summary><p>Да, до ${MONTHS_DEF} месяцев по цене «по карте», без первого взноса. Нужен только паспорт.</p></details>
- <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 103 000 ₽ в стоимость ${htm(name)}.</p></details>
+ <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 99 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
 <section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)} при оплате наличными. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;

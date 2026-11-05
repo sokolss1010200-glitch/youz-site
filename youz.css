@@ -830,3 +830,40 @@ header.top .row2 .wrap{flex-direction:column;align-items:stretch;padding-block:1
 #sim.seg{grid-template-columns:repeat(2,1fr)}
 .seg4{grid-template-columns:repeat(4,1fr)}
 @media (max-width:420px){.seg4{grid-template-columns:repeat(2,1fr)}.seg4 button{min-height:38px;font-size:13px}}
+
+/* Шапка прижата к самому верху экрана: отступ под вырез/строку iPhone внутри шапки (раньше в зазор просвечивала страница) */
+header.top{top:0!important;padding-top:env(safe-area-inset-top,0px)}
+/* Пока открыто меню каталога или окно заявки — прячем нижнюю панель, чтобы она не закрывала пункты */
+body:has(.mega:not([hidden])) .dock,body:has(.lm:not([hidden])) .dock{display:none}
+.mega-panel .wrap{padding-bottom:calc(30px + env(safe-area-inset-bottom,0px))}
+/* Trade-in: «−99 000 ₽» всегда в одну строку */
+.ti-copy .big{white-space:nowrap;font-size:clamp(40px,5.2vw,84px)}
+/* Отзывы: Яндекс + 2ГИС и живые отзывы с Яндекса */
+.trust2{display:grid;grid-template-columns:1fr 1.5fr;gap:16px;align-items:stretch}
+.rates{display:grid;gap:16px}
+.rate{display:grid;gap:10px;align-content:space-between;border-radius:var(--r-lg);padding:28px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s}
+.rate:hover{transform:translateY(-3px);box-shadow:0 24px 50px -28px rgba(15,16,13,.45)}
+.rate-y{background:var(--lime)}
+.rate-g{background:var(--card);border:1px solid var(--line)}
+.rate .eyebrow{color:var(--ink)}
+.rate-n{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.rate-n b{font-family:var(--f-display);font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:.9}
+.rate-n .stars{color:var(--ink)}
+.rate-g .rate-n .stars{color:#F5B800}
+.rate p{font-size:15px}
+.rate-go{font-weight:700;font-size:14px}
+.rev-frame{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-rows:1fr auto;min-height:520px}
+.rev-frame iframe{width:100%;height:100%;min-height:470px;border:0;display:block}
+.rev-more{padding:14px 20px;font-weight:700;text-decoration:none;border-top:1px solid var(--line)}
+@media (max-width:860px){.trust2{grid-template-columns:1fr}.rates{grid-template-columns:1fr 1fr}.rate{padding:20px}.rate-n b{font-size:44px}.rev-frame{min-height:480px}}
+@media (max-width:480px){.rates{grid-template-columns:1fr}}
+/* Окно заявки: длинные строки сводки переносятся, ничего не вылезает за край */
+.lead-card form,.lead-card .lead-sum,.lead-card .field{min-width:0}
+.lead-card #leadForm{display:grid;gap:14px}
+.lead-sum div{align-items:flex-start}
+.lead-sum div span{flex:none;color:var(--muted)}
+.lead-sum div b{white-space:normal!important;text-align:right;overflow-wrap:anywhere;min-width:0}
+.lead-card input{width:100%;max-width:100%;box-sizing:border-box}
+/* Каталог: на компьютере все разделы видны (перенос строк), на телефоне — прокрутка с затуханием справа, чтобы было понятно, что есть ещё */
+@media (min-width:861px){.ctabs{flex-wrap:wrap;overflow:visible}}
+@media (max-width:860px){.ctabs{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);mask-image:linear-gradient(90deg,#000 82%,transparent);padding-right:40px}}
