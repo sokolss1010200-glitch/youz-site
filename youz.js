@@ -493,7 +493,15 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=docum
   if(r==='err'){err.hidden=false;err.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';btn.textContent='Отправить ещё раз';return}
   if(leadCtx.cart){cart=[];updBadge()}
   document.getElementById('leadOkT').textContent=r==='demo'?'Это тестовый режим: форма Тильды на странице не найдена, заявка никуда не ушла.':'Менеджер перезвонит вам в течение 15 минут в рабочее время.';
+  try{const P=JSON.parse(localStorage.getItem('yz-promo-pop')||'{}');P.done=1;localStorage.setItem('yz-promo-pop',JSON.stringify(P))}catch(e){}
   leadForm.hidden=true;leadOk.hidden=false});
+/* Всплывающее предложение «скидка на первую покупку»: через 40 секунд на сайте, не чаще раза в 3 дня,
+   и больше не показываем тем, кто уже оставил заявку */
+(function(){const K='yz-promo-pop';let st={};try{st=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
+  if(st.done||(st.t&&Date.now()-st.t<3*864e5))return;
+  setTimeout(function show(){if(document.visibilityState!=='visible'||!lead.hidden){setTimeout(show,10000);return}
+    try{localStorage.setItem(K,JSON.stringify({t:Date.now()}))}catch(e){}
+    openLead({eyebrow:'Подарок',title:'Получите скидку на первую покупку',lines:[['Оставьте имя и телефон — менеджер перезвонит и назовёт вашу скидку','']],btn:'Получить скидку',source:'Баннер: скидка на первую покупку'})},40000)})();
 const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',async e=>{e.preventDefault();const v=document.getElementById('cbPhone').value.trim();const m=document.getElementById('cbMsg');m.hidden=false;
   if(v.replace(/\D/g,'').length<10){m.textContent='Введите номер полностью, например +7 900 123-45-67.';return}
   m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});
