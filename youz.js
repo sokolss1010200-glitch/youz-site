@@ -340,7 +340,7 @@ function cardHTML(p){const opts=p.opt.filter(Boolean);
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
    <div class="pic">${art(p,p.cols[0])}<button type="button" class="vbtn" hidden aria-label="Смотреть видео">▶ Видео</button></div>
    ${p.cols.length>1||p.cols[0].name?`<div class="dots" role="group" aria-label="Цвет">${p.cols.map((c,i)=>`<button type="button" style="--c:${htm(c.hex)}" data-i="${i}" aria-label="${htm(c.name)}" title="${htm(c.name)}" aria-pressed="${i===0}"></button>`).join('')}<span class="cname">${htm(p.cols[0].name)}</span></div>`:''}
-   <h3>${typeof modelUrl==='function'&&modelUrl(p.n)?`<a href="${modelUrl(p.n)}">${htm(p.n)}</a>`:htm(p.n)}</h3>
+   <h3>${`<a href="${typeof modelUrl==='function'&&modelUrl(p.n)||'/model#'+p.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')}">${htm(p.n)}</a>`}</h3>
    ${p.mem.filter(Boolean).length?`<div class="mem" role="group" aria-label="Память">${p.mem.map((m,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(m)}</button>`).join('')}</div>`:''}
    ${opts.length>1?`<div class="mem opt" role="group" aria-label="Вариант">${p.opt.map((o,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(o||'Стандарт')}</button>`).join('')}</div>`:opts.length?`<div class="opt1">${htm(opts[0])}</div>`:''}
    <div class="foot"><div class="price"></div>
@@ -607,9 +607,11 @@ const MODEL_BY_SLUG={};Object.entries(MODELS).forEach(([n,m])=>MODEL_BY_SLUG[m.s
 const modelUrl=n=>MODELS[n]?'/'+MODELS[n].slug:'';
 const YM=document.getElementById('yzModel');
 if(YM){
-  const name=MODEL_BY_SLUG[YM.dataset.slug||(window.YZ_MODEL||'')]||window.YZ_MODEL||'';const M=MODELS[name]||{};
-  let st={ci:0,mi:0,oi:0};
-  function draw(){const p=P.find(x=>x.n===name);
+  const slugNow=()=>(window.YZ_MODEL||location.hash.slice(1)||new URLSearchParams(location.search).get('m')||'').toLowerCase();
+  let name='',M={},st={ci:0,mi:0,oi:0};
+  function pick(){const sl=slugNow();name=MODEL_BY_SLUG[sl]||(P.find(x=>x.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')===sl)||{}).n||'';M=MODELS[name]||{};st={ci:0,mi:0,oi:0}}
+  addEventListener('hashchange',()=>{pick();draw();scrollTo(0,0)});
+  function draw(){if(!name)pick();const p=P.find(x=>x.n===name);
     if(!p){YM.innerHTML=`<section class="cat-top"><div class="wrap"><h1>${htm(name||'Модель')}</h1><p class="lead">Сейчас этой модели нет в прайсе. Позвоните: привезём под заказ.</p></div></section>`;return}
     const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);const ph=photoOf(c);
     const d=v.old>v.price?v.old-v.price:0;const card=cardOf(v);
@@ -655,7 +657,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
     if(e.target.closest('#mdCart')){addCart({n:name,mem:[mem,opt].filter(Boolean).join(', '),col:c.name,price:v.price,stock:'да'});return}
     if(e.target.closest('#mdOne')){openLead({eyebrow:'Покупка в 1 клик',title:name,lines:[[name+', '+[mem,opt,c.name].filter(Boolean).join(', '),rub(v.price)+' наличными']],source:'1 клик: '+name})}
   });
-  window.renderModel=draw;
+  window.renderModel=()=>{pick();draw()};
 }
 
 function applyData(){applySettings();buildProducts();render();heroPrice();renderPromos();if(typeof fillTradein==='function')fillTradein();renderMega();if(window.renderCatalog)renderCatalog();if(window.renderModel)renderModel()}
