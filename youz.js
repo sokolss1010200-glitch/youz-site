@@ -618,7 +618,6 @@ if(YM){
     if(!p){YM.innerHTML=`<section class="cat-top"><div class="wrap"><h1>${htm(name||'Модель')}</h1><p class="lead">Сейчас этой модели нет в прайсе. Позвоните: привезём под заказ.</p></div></section>`;return}
     const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);const ph=photoOf(c);
     const d=v.old>v.price?v.old-v.price:0;const card=cardOf(v);
-    const rows=Object.entries(p.v).map(([k,x])=>{const [m,o,cl]=k.split('|');return {m,o,cl,x}}).sort((a,b)=>memVal(a.m)-memVal(b.m)||a.o.localeCompare(b.o)||a.x.price-b.x.price);
     YM.innerHTML=`
 <section class="md-hero"><div class="wrap">
  <nav class="crumbs"><a href="/">Главная</a><span>/</span><a href="/catalog#${CAT_SLUG[p.cat]||''}">${htm(p.cat)}</a><span>/</span><span>${htm(name)}</span></nav>
@@ -639,9 +638,6 @@ if(YM){
  </div>
 </div></section>
 ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характеристики ${htm(name)}</h2><div class="md-specs">${M.specs.map(s=>`<div><span>${htm(s[0])}</span><b>${htm(s[1])}</b></div>`).join('')}</div>${(M.about||[]).map(t=>`<p class="md-p">${htm(t)}</p>`).join('')}</div></section>`:''}
-<section class="md-sec"><div class="wrap"><h2>Все варианты и цены</h2><div class="md-tbl-w"><table class="md-tbl"><thead><tr><th>Память</th>${p.opt.filter(Boolean).length?'<th>Вариант</th>':''}<th>Цвет</th><th>Наличными</th><th>По карте</th><th></th></tr></thead><tbody>
- ${rows.map(r=>`<tr><td>${htm(r.m)}</td>${p.opt.filter(Boolean).length?`<td>${htm(r.o)}</td>`:''}<td><i class="sw-dot" style="--c:${htm((p.cols.find(x=>x.name===r.cl)||{}).hex||'#ccc')}"></i>${htm(r.cl)}</td><td><b>${rub(r.x.price)}</b></td><td>${rub(cardOf(r.x))}</td><td><button type="button" class="md-pick" data-k="${htm(r.m+'|'+r.o+'|'+r.cl)}">Выбрать</button></td></tr>`).join('')}
- </tbody></table></div></div></section>
 <section class="md-sec"><div class="wrap md-faq"><h2>Вопросы о ${htm(name)}</h2><div class="qa">
  <details open><summary>Это оригинальный ${htm(name)}?<i></i></summary><p>Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас.</p></details>
  ${p.cat==='iPhone'?`<details><summary>Чем отличается eSIM и SIM + eSIM?<i></i></summary><p>Версия eSIM работает только с электронными SIM-картами. SIM + eSIM — с обычной nano-SIM и eSIM. Российские операторы поддерживают eSIM, но если вам нужна физическая SIM-карта, выбирайте SIM + eSIM.</p></details>`:''}
@@ -654,7 +650,6 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
   }
   YM.addEventListener('click',e=>{const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
     if(b){if(b.dataset.ci)st.ci=+b.dataset.ci;if(b.dataset.mi)st.mi=+b.dataset.mi;if(b.dataset.oi)st.oi=+b.dataset.oi;draw();return}
-    const pk=e.target.closest('.md-pick');if(pk){const p=P.find(x=>x.n===name);const [m,o,cl]=pk.dataset.k.split('|');st={ci:Math.max(0,p.cols.findIndex(x=>x.name===cl)),mi:Math.max(0,p.mem.indexOf(m)),oi:Math.max(0,p.opt.indexOf(o))};draw();scrollTo({top:0,behavior:reduce?'auto':'smooth'});return}
     const p=P.find(x=>x.n===name);if(!p)return;const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);
     if(e.target.closest('#mdVid')){openVideo(c.video,name+', '+c.name);return}
     if(e.target.closest('#mdCart')){addCart({n:name,mem:[mem,opt].filter(Boolean).join(', '),col:c.name,price:v.price,stock:'да'});return}
