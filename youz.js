@@ -258,8 +258,8 @@ const SHEETS = {
 const TI_PRICES=[["iPhone 17 Pro Max",[[256,75000],[512,85000],[1000,92000],[2000,98000]]],["iPhone 17 Pro",[[256,72000],[512,80000],[1000,85000]]],["iPhone Air",[[256,50000],[512,54000],[1000,59000]]],["iPhone 17",[[256,47000],[512,50000]]],["iPhone 16 Pro Max",[[256,55000],[512,57000],[1000,65000]]],["iPhone 16 Pro",[[128,48000],[256,51000],[512,56000],[1000,60000]]],["iPhone 16 Plus",[[128,38000],[256,41000],[512,42000]]],["iPhone 16",[[128,36000],[256,38000],[512,40000]]],["iPhone 16e",[[128,24000],[256,27000],[512,31000]]],["iPhone 15 Pro Max",[[256,43000],[512,47000],[1000,51000]]],["iPhone 15 Pro",[[128,35000],[256,38000],[512,41000],[1000,44000]]],["iPhone 15 Plus",[[128,27000],[256,29000],[512,32000]]],["iPhone 15",[[128,25000],[256,26000],[512,27000]]],["iPhone 14 Pro Max",[[128,30000],[256,31000],[512,32000],[1000,33000]]],["iPhone 14 Pro",[[128,27000],[256,28000],[512,29000],[1000,30000]]],["iPhone 14 Plus",[[128,20000],[256,21000],[512,22000]]],["iPhone 14",[[128,18000],[256,20000],[512,22000]]],["iPhone 13 Pro Max",[[128,24000],[256,25000],[512,26000],[1000,27000]]],["iPhone 13 Pro",[[128,20000],[256,21000],[512,22000],[1000,23000]]],["iPhone 13 mini",[[128,16000],[256,17000],[512,18000]]],["iPhone 13",[[128,15000],[256,16000],[512,18000]]],["iPhone SE (2022)",[[64,7000],[128,8000],[256,9000]]],["iPhone 12 Pro Max",[[128,15000],[256,16000],[512,17000]]],["iPhone 12 Pro",[[128,12000],[256,13000],[512,14000]]],["iPhone 12 mini",[[64,7000],[128,8000],[256,9000]]],["iPhone 12",[[64,10000],[128,11000],[256,12000]]],["iPhone 11 Pro Max",[[64,10000],[256,11000],[512,12000]]],["iPhone 11 Pro",[[64,9000],[256,10000],[512,11000]]],["iPhone 11",[[64,5000],[128,6000],[256,7000]]]];
 const TI_COND={best:1,well:.94,normal:.86};
 const TI_ESIM=m=>/^iPhone (17|Air)/.test(m)?.9:.78;
-let TI_UP=1;
-const TI_MAX=Math.max(...TI_PRICES.flatMap(r=>r[1].map(x=>x[1])));
+let TI_UP=1.05;  // +5% к ценам damprodam (можно поменять в таблице: «Настройки» → «Trade-in, %»)
+const TI_MAX=()=>Math.round(Math.max(...TI_PRICES.flatMap(r=>r[1].map(x=>x[1])))*TI_UP/1000)*1000;
 let MONTHS_DEF = 36;       // срок рассрочки для «от … ₽/мес»; можно поменять в таблице: лист «Настройки», строка «Рассрочка, мес»
 
 function parseCSV(t){const rows=[];let r=[],f='',q=false;t=t.replace(/^﻿/,'');
@@ -665,7 +665,7 @@ if(YM){
    <div class="md-price">${d?`<span class="oldp">${rub(v.old)}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}<small>при оплате наличными</small>
     <p>По карте, в рассрочку, по счёту: <b>${rub(card)}</b> · рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
-   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до 98 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
+   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до 103 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
  </div>
 </div></section>
@@ -674,7 +674,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details open><summary>Это оригинальный ${htm(name)}?<i></i></summary><p>Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас.</p></details>
  ${p.cat==='iPhone'?`<details><summary>Чем отличается eSIM и SIM + eSIM?<i></i></summary><p>Версия eSIM работает только с электронными SIM-картами. SIM + eSIM — с обычной nano-SIM и eSIM. Российские операторы поддерживают eSIM, но если вам нужна физическая SIM-карта, выбирайте SIM + eSIM.</p></details>`:''}
  <details><summary>Можно купить в рассрочку?<i></i></summary><p>Да, до ${MONTHS_DEF} месяцев по цене «по карте», без первого взноса. Нужен только паспорт.</p></details>
- <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 98 000 ₽ в стоимость ${htm(name)}.</p></details>
+ <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 103 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
 <section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)} при оплате наличными. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
