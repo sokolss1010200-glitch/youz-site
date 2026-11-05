@@ -794,3 +794,5 @@ header.top .row2 .wrap{flex-direction:column;align-items:stretch;padding-block:1
 .pg-side{padding:4px 20px}
 .art-body{font-size:17px}
 }
+.pg-hero-copy,.art-in{min-width:0}
+.pg-hero h1,.art h1,.pg-h2,.cta-band h2{overflow-wrap:break-word;hyphens:auto}
