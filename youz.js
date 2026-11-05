@@ -461,7 +461,19 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-lead]');if
   if(k==='hero')openLead(heroCtx());
   else if(k==='duo'){const n=(document.querySelector('.duo-sw [aria-pressed="true"]')||{}).dataset;openLead({eyebrow:'Очередь',title:'Записаться на iPhone Duo',lines:[['iPhone Duo, '+(n?n.n:''),'сообщим о поступлении']],source:'Очередь iPhone Duo'})}
   else if(k==='repair')openLead({eyebrow:'Сервис',title:'Записаться на ремонт',lines:[['Диагностика','бесплатно']],source:'Ремонт'})
-  else if(k==='promo')openLead({eyebrow:'Акция',title:t.dataset.promo||'Акция',lines:[['Акция',t.dataset.promo||'']],source:'Акция: '+(t.dataset.promo||'')})});
+  else if(k==='promo')openLead({eyebrow:'Акция',title:t.dataset.promo||'Акция',lines:[['Акция',t.dataset.promo||'']],source:'Акция: '+(t.dataset.promo||'')})
+  else if(k==='call'){const D=t.dataset;openLead({eyebrow:D.eyebrow||'Заявка',title:D.title||'Оставьте заявку',lines:D.line?[D.line.split(': ')]:[],source:D.source||D.title||'Сайт'})}});
+
+/* ИНФОСТРАНИЦЫ: калькулятор рассрочки и ссылки на отзывы */
+/* Ссылки на карточки магазина. Когда появятся — вставить: REVIEWS.yandex = 'https://yandex.ru/maps/org/.../1234567890/', REVIEWS.gis = 'https://2gis.ru/khanty_mansiysk/firm/...' */
+const REVIEWS={yandex:'',gis:''};
+(function(){const ys=REVIEWS.yandex||'https://yandex.ru/maps/?text='+encodeURIComponent('ЮZ Store Ханты-Мансийск Комсомольская 49'),gs=REVIEWS.gis||'https://2gis.ru/khanty_mansiysk/search/'+encodeURIComponent('ЮZ Комсомольская 49');
+  document.querySelectorAll('[data-rev-y]').forEach(a=>{a.href=ys;a.target='_blank';a.rel='noopener'});document.querySelectorAll('[data-rev-g]').forEach(a=>{a.href=gs;a.target='_blank';a.rel='noopener'});
+  const id=(REVIEWS.yandex.match(/\/(\d{6,})\/?/)||[])[1],yb=document.querySelector('[data-rev="yandex"] .rev-body');
+  if(id&&yb)yb.innerHTML='<iframe src="https://yandex.ru/maps-reviews-widget/'+id+'?comments" title="Отзывы на Яндекс Картах" loading="lazy"></iframe>'})();
+document.querySelectorAll('[data-inst]').forEach(w=>{const r=w.querySelector('[data-inst-range]'),sum=w.querySelector('[data-inst-sum]'),pay=w.querySelector('[data-inst-pay]'),btn=w.querySelector('[data-inst-btn]');let m=36;
+  const upd=()=>{const v=+r.value;sum.textContent=rub(v);pay.textContent=rub(Math.ceil(v/m));r.style.setProperty('--v',((v-r.min)/(r.max-r.min)*100).toFixed(1)+'%');btn.dataset.line='Рассрочка '+m+' мес: '+rub(v)+', '+rub(Math.ceil(v/m))+'/мес'};
+  r.addEventListener('input',upd);w.querySelectorAll('[data-m]').forEach(b=>b.addEventListener('click',()=>{m=+b.dataset.m;w.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x===b));upd()}));upd()});
 function composeComment(){const L=sumLines().map(l=>l[0]+(l[1]?': '+l[1]:''));if(leadCtx.cart)L.push('Итого: '+rub(cart.reduce((a,b)=>a+b.price,0)));return '['+(leadCtx.source||'Сайт')+'] '+L.join('; ')}
 function setVal(f,re,val){const el=[...f.querySelectorAll('input,textarea')].find(i=>re.test(i.name||''));if(!el)return false;el.value=val;el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));return true}
 function sendLead(d){return new Promise(res=>{const f=tildaForm();
