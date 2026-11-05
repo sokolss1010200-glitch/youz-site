@@ -1,3 +1,4 @@
+(function(){var v=Math.floor(Date.now()/600000),u='https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/youz.css?v='+v;[].slice.call(document.querySelectorAll('link[href*="youz-site@main/youz.css"]')).forEach(function(l){if(l.href.indexOf('?v=')<0)l.href=u});if(!document.querySelector('link[href*="youz.css?v="]')){var l=document.createElement('link');l.rel='stylesheet';l.href=u;document.head.appendChild(l)}})();
 
 (function(){
 /* ================= ФОТО =================
