@@ -614,6 +614,22 @@ header.top .cat-btn.on i b{background:var(--lime)}
 .md-opt .mem button{font-weight:600;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer}
 .md-opt .mem button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
 .md-price .oldp{font-size:15px;color:var(--muted);text-decoration:line-through}
+a,button,.chip,.tab,input[type=range]{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.btn:active,.add:active,.cart-btn:active,.cat-btn:active,.icon-btn:active,.tab:active,.chip:active,.mem button:active,.dots button:active,.md-pick:active,.sw:active,.fold-modes button:active,.seg button:active,.cs-chips button:active{transform:scale(.96)!important;transition:transform 80ms ease-out!important}
+.js .rv-in{transform:translateY(18px)!important;transition-duration:.55s!important}
+.js .rv-in.shown{transform:none!important}
+@media (hover:none){.prod:hover,.cat:hover,.gift:hover,.promo:hover,.btn:hover,.cm-group:hover{transform:none!important}}
+.mega.closing{animation:fadeOut .2s ease forwards}
+.mega.closing .mega-panel{animation:megaOut .2s ease forwards}
+@keyframes megaOut{to{transform:translateY(-14px);opacity:0}}
+@keyframes fadeOut{to{opacity:0}}
+.lm.closing{animation:fadeOut .2s ease forwards}
+.lm.closing .lead-card{animation:leadOut .2s ease forwards}
+@keyframes leadOut{to{transform:translateY(24px);opacity:0}}
+.mega-panel{transform-origin:top center}
+@media (prefers-reduced-transparency:reduce){header.top,.mega,.lm,.yzvid,.dock{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}header.top,.dock{background:var(--card)!important}}
+@media (prefers-contrast:more){.prod,.cm-group,.cs-chips button,.mem button{border-color:var(--ink)!important}}
+@media (prefers-reduced-motion:reduce){.mega,.mega-panel,.lm,.lead-card,.mega.closing,.lm.closing{animation:none!important}}
 
 
 header.top .wrap{display:flex}

@@ -446,10 +446,10 @@ function drawSum(){const L=sumLines();let html=L.map(l=>`<div><span>${htm(l[0])}
   if(leadCtx.cart){const t=cart.reduce((a,b)=>a+b.price,0);html+=`<div style="background:var(--ink);color:#fff"><span>Итого</span><b>${rub(t)}</b></div>`}
   document.getElementById('leadSum').innerHTML=html}
 document.getElementById('leadSum').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;cart.splice(+b.dataset.rm,1);updBadge();if(!cart.length){closeLead();return}drawSum()});
-function openLead(ctx){leadCtx=ctx;document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
+function openLead(ctx){leadCtx=ctx;lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
   document.getElementById('leadBtn').textContent=ctx.btn||'Отправить заявку';document.getElementById('leadErr').hidden=true;
   drawSum();leadForm.hidden=false;leadOk.hidden=true;lead.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('leadName').focus(),50)}
-function closeLead(){lead.hidden=true;document.body.style.overflow=''}
+function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');lead.hidden=true;document.body.style.overflow=''}
 document.getElementById('leadX').onclick=closeLead;document.getElementById('leadDone').onclick=closeLead;
 lead.addEventListener('click',e=>{if(e.target===lead)closeLead()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!lead.hidden)closeLead()});
@@ -495,9 +495,9 @@ function renderMega(){if(!cmap)return;
     return `<div class="cm-group${['iPhone','Samsung','Android'].includes(c)?' wide':''}"><button type="button" class="cm-head" data-cat="${htm(c)}">${ico(c)}<b>${htm(c)}</b><small>${ps.length}</small><span class="cm-arr">→</span></button>
     ${lim?`<div class="cm-chips">${ps.slice(0,lim).map(p=>`<button type="button" class="chip" data-model="${htm(p.n)}">${p.disc?'<i class="dot"></i>':''}${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}<small>от ${rub(p.min).replace(' ₽','')}</small></button>`).join('')}${ps.length>lim?`<button type="button" class="chip more" data-cat="${htm(c)}">ещё ${ps.length-lim} →</button>`:''}</div>`:''}
     ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')}
-function openMega(){if(!mega)return;mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
-function closeMega(){if(!mega)return;mega.hidden=true;document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
-function goCatalog(u){closeMega();if(window.catGo){window.catGo(u);return}
+function openMega(){if(!mega)return;mega.classList.remove('closing');mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
+function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.classList.contains('closing'))return;mega.classList.add('closing');setTimeout(()=>{if(mega.classList.contains('closing')){mega.classList.remove('closing');closeMega(true)}},190);return}mega.classList.remove('closing');mega.hidden=true;document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
+function goCatalog(u){closeMega(true);if(window.catGo){window.catGo(u);return}
   try{sessionStorage.setItem('yz_go',JSON.stringify(u))}catch(e){}
   const slug=CAT_SLUG[u.cat||''];location.href='/catalog'+(slug?'#'+slug:'')}
 document.querySelectorAll('.cat-btn, [data-mega]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();mega&&!mega.hidden?closeMega():openMega()}));
