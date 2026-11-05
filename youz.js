@@ -647,7 +647,7 @@ if(YM){
    <div class="md-price">${d?`<span class="oldp">${rub(v.old)}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}<small>при оплате наличными</small>
     <p>По карте, в рассрочку, по счёту: <b>${rub(card)}</b> · рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
-   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/#tradein">Trade-in до −60 000 ₽</a></div>
+   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до −60 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
  </div>
 </div></section>
