@@ -663,23 +663,37 @@ applyData();hideTildaForm();addEventListener('load',hideTildaForm);
 loadSheets();
 
 if(document.getElementById('duoScroll')){
-/* DUO: раскрытие как на apple.com — ползунок + прокрутка */
+/* DUO: прозрачные кадры; стартует полураскрытым, раскрытие только ползунком и кнопками */
 const ds=document.getElementById('duoScroll'), duo=document.getElementById('duoEl'), dsec=document.getElementById('duo'), dRange=document.getElementById('duoRange');
 const cv2=document.getElementById('duoCv'),cx=cv2.getContext('2d'),FW=720,FH=478,COLS=8,PER=48,NF=91,sheets=[];let loaded=0,lastF=-1;
-if(!IMG['yz-duo-seq-1']||!IMG['yz-duo-seq-2']){const fb=new Image();fb.onload=()=>{document.getElementById('duoLoad').hidden=true;const r=Math.min(FW/fb.width,FH/fb.height)*.9;cx.fillStyle='#fff';cx.fillRect(0,0,FW,FH);cx.drawImage(fb,(FW-fb.width*r)/2,(FH-fb.height*r)/2,fb.width*r,fb.height*r)};fb.src=IMG['iphone-duo-star-white-open']||'';document.querySelector('.fold-ctl').hidden=true}
-else ['yz-duo-seq-1','yz-duo-seq-2'].forEach((k,i)=>{const im=new Image();im.decoding='async';im.onload=()=>{loaded++;if(loaded===2){document.getElementById('duoLoad').hidden=true;lastF=-1;draw(dP)}};im.src=IMG[k]||'';sheets[i]=im});
-function draw(p){if(loaded<2)return;const f=Math.min(NF-1,Math.round(p*(NF-1)));if(f===lastF)return;lastF=f;const sh=sheets[f<PER?0:1],k=f%PER;cx.drawImage(sh,(k%COLS)*FW,Math.floor(k/COLS)*FH,FW,FH,0,0,FW,FH)}
-let dP=0,manual=false,anim=0;
+if(!IMG['yz-duo-seq-1']||!IMG['yz-duo-seq-2']){const fb=new Image();fb.onload=()=>{document.getElementById('duoLoad').hidden=true;const r=Math.min(FW/fb.width,FH/fb.height)*.9;cx.clearRect(0,0,FW,FH);cx.drawImage(fb,(FW-fb.width*r)/2,(FH-fb.height*r)/2,fb.width*r,fb.height*r)};fb.src=IMG['iphone-duo-star-white-open']||'';document.querySelector('.fold-ctl').hidden=true}
+else ['yz-duo-seq-1','yz-duo-seq-2'].forEach((k,i)=>{const im=new Image();im.crossOrigin='anonymous';im.decoding='async';im.onload=()=>{loaded++;if(loaded===2){document.getElementById('duoLoad').hidden=true;lastF=-1;draw(dP);warm()}};im.src=IMG[k]||'';sheets[i]=im});
+function draw(p){if(loaded<2)return;const f=Math.min(NF-1,Math.round(p*(NF-1)));if(f===lastF)return;lastF=f;const sh=sheets[f<PER?0:1],k=f%PER;cx.clearRect(0,0,FW,FH);const c=cutF(f,sh,k);if(c)cx.drawImage(c,0,0);else cx.drawImage(sh,(k%COLS)*FW,Math.floor(k/COLS)*FH,FW,FH,0,0,FW,FH)}
+/* Кадры в JPG на белом: убираем белый фон, связанный с краем кадра (руки и телефон остаются), края смягчаем. Последние 24 кадра держим в памяти; соседние кадры готовим заранее, пока браузер свободен */
+const CUT=new Map();let cutOff=false;
+function warm(){const c=Math.round(dP*(NF-1)),todo=[];for(let s=1;s<=11;s++){if(c+s<NF)todo.push(c+s);if(c-s>=0)todo.push(c-s)}
+  const idle=window.requestIdleCallback||(fn=>setTimeout(fn,60));(function step(){const f=todo.shift();if(f==null||cutOff)return;if(!CUT.has(f))cutF(f,sheets[f<PER?0:1],f%PER);idle(step)})()}
+function cutF(f,sh,k){if(cutOff)return null;if(CUT.has(f)){const c=CUT.get(f);CUT.delete(f);CUT.set(f,c);return c}
+  try{const c=document.createElement('canvas');c.width=FW;c.height=FH;const g=c.getContext('2d',{willReadFrequently:true});
+  g.drawImage(sh,(k%COLS)*FW,Math.floor(k/COLS)*FH,FW,FH,0,0,FW,FH);const id=g.getImageData(0,0,FW,FH),d=id.data,N=FW*FH;
+  const mn=new Uint8Array(N),dist=new Uint8Array(N).fill(255),q=new Int32Array(N);let h=0,t=0;
+  for(let i=0;i<N;i++){const j=i*4;mn[i]=Math.min(d[j],d[j+1],d[j+2])}
+  const seed=i=>{if(dist[i]&&mn[i]>236){dist[i]=0;q[t++]=i}};
+  for(let x=0;x<FW;x++){seed(x);seed(N-FW+x)}for(let y=0;y<FH;y++){seed(y*FW);seed(y*FW+FW-1)}
+  const go=(n,dd)=>{if(dist[n]<=dd+1)return;if(dd===0&&mn[n]>236){dist[n]=0;q[t++]=n}else if(dd<3){dist[n]=dd+1;q[t++]=n}};
+  while(h<t){const i=q[h++],x=i%FW,dd=dist[i];if(x>0)go(i-1,dd);if(x<FW-1)go(i+1,dd);if(i>=FW)go(i-FW,dd);if(i<N-FW)go(i+FW,dd)}
+  for(let i=0;i<N;i++){let a=1;if(i<FW*3)a=0;else if(dist[i]<=3)a=Math.max(0,Math.min(1,(252-mn[i])/52));if(a<1){const j=i*4;
+    if(a<=.01){d[j+3]=0;continue}for(let z=0;z<3;z++)d[j+z]=Math.max(0,Math.min(255,(d[j+z]-(1-a)*255)/a));d[j+3]=a*255}}
+  g.putImageData(id,0,0);CUT.set(f,c);if(CUT.size>24)CUT.delete(CUT.keys().next().value);return c}catch(e){cutOff=true;return null}}
+let dP=0,anim=0;
 function setP(p){dP=Math.max(0,Math.min(1,p));draw(dP);duo.style.setProperty('--p',dP.toFixed(4));dsec.style.setProperty('--p',dP.toFixed(4));dRange.value=Math.round(dP*1000);
   dRange.style.setProperty('--v',(dP*100).toFixed(1)+'%');
   document.querySelectorAll('.fold-modes button').forEach(b=>b.setAttribute('aria-pressed',Math.abs(+b.dataset.p-dP)<.08))}
 function tweenP(to,ms){cancelAnimationFrame(anim);if(reduce){setP(to);return}const from=dP,t0=performance.now();
   (function f(t){const x=Math.min(1,(t-t0)/(ms||900)),e=x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;setP(from+(to-from)*e);if(x<1)anim=requestAnimationFrame(f)})(t0)}
-dRange.addEventListener('input',()=>{manual=true;cancelAnimationFrame(anim);setP(dRange.value/1000)});
-document.querySelectorAll('.fold-modes button').forEach(b=>b.addEventListener('click',()=>{manual=true;tweenP(+b.dataset.p)}));
-function onScroll(){if(manual)return;const r=ds.getBoundingClientRect();const span=r.height-innerHeight;let p=span>0?(-r.top)/span:0;setP((p-.05)/.55)}
-if(reduce)setP(1);else{addEventListener('scroll',onScroll,{passive:true});onScroll()}
-new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)manual=false}),{threshold:0}).observe(dsec);
+dRange.addEventListener('input',()=>{cancelAnimationFrame(anim);setP(dRange.value/1000)});
+document.querySelectorAll('.fold-modes button').forEach(b=>b.addEventListener('click',()=>{tweenP(+b.dataset.p)}));
+setP(.66);
 }
 /* reveal (only below the first screen) */
 const els=[...document.querySelectorAll('.rv-in')];

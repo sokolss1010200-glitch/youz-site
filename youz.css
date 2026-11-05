@@ -696,3 +696,9 @@ header.top .row2 .wrap{flex-direction:column;align-items:stretch;padding-block:1
 .r2-phone{font-family:var(--f-display);font-size:22px;width:100%}
 .r2-right .link-u{display:inline}
 }
+
+/* DUO: без белой подложки и без прокрутки-анимации — блок обычной высоты, телефон на прозрачном фоне */
+.duo-scroll{height:auto}
+.duo-sticky{position:relative;height:auto;min-height:0;padding-block:clamp(48px,8vw,104px)}
+.fold{background:none;box-shadow:none;border-radius:0;overflow:visible;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
+.fold-load{background:none}
