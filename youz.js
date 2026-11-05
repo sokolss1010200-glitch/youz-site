@@ -442,8 +442,10 @@ document.getElementById('calc').addEventListener('submit',e=>{e.preventDefault()
    Поля формы Тильды: name, phone, comment (переменные полей). */
 const lead=document.getElementById('lead'), leadForm=document.getElementById('leadForm'), leadOk=document.getElementById('leadOk');
 let leadCtx={};
-function tildaForm(){return [...document.querySelectorAll('form.t-form, form.js-form-proccess')].find(f=>!f.closest('#lead'))}
-function hideTildaForm(){const f=tildaForm();if(!f)return;const rec=f.closest('.t-rec,.r')||f;rec.classList.add('yz-hidden-form')}
+/* Форм Тильды на странице может быть несколько (например, подписка на главной и форма заявок из подвала сайта) — берём ту, где есть поле телефона */
+function tFormsAll(){return [...document.querySelectorAll('form.t-form, form.js-form-proccess')].filter(f=>!f.closest('#lead'))}
+function tildaForm(){const L=tFormsAll();return L.find(f=>[...f.querySelectorAll('input')].some(i=>/phone|телефон/i.test(i.name||'')))||L[0]}
+function hideTildaForm(){tFormsAll().forEach(f=>{const rec=f.closest('.t-rec,.r')||f;rec.classList.add('yz-hidden-form')})}
 function sumLines(){if(leadCtx.cart)return cart.map((it,i)=>[it.n+', '+it.mem+', '+it.col+(it.stock&&it.stock!=='да'?' ('+it.stock+')':''),rub(it.price),i]);return leadCtx.lines||[]}
 function drawSum(){const L=sumLines();let html=L.map(l=>`<div><span>${htm(l[0])}</span><b>${htm(l[1])}${leadCtx.cart?`<button type="button" data-rm="${l[2]}" aria-label="Убрать">×</button>`:''}</b></div>`).join('');
   if(leadCtx.cart){const t=cart.reduce((a,b)=>a+b.price,0);html+=`<div style="background:var(--ink);color:#fff"><span>Итого</span><b>${rub(t)}</b></div>`}
