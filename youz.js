@@ -455,6 +455,48 @@ const YM_ID=110574921;
 function yzGoal(name,params){try{if(typeof window.ym==='function')window.ym(YM_ID,'reachGoal',name,params||{})}catch(e){}}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;const h=a.getAttribute('href')||'';
   if(h.startsWith('tel:'))yzGoal('call');else if(/t\.me\//.test(h))yzGoal('telegram');else if(/vk\.com\//.test(h))yzGoal('vk');else if(/max\.ru\//.test(h))yzGoal('max')},true);
+/* АНАЛИТИКА: все шаги клиента → цели Метрики (110574921). Каждое событие — не чаще раза за просмотр страницы.
+   Список целей и что они значат — в ПРОЕКТ-ЮZ-СОСТОЯНИЕ.md, раздел «Аналитика». */
+const yzSeen={};function yzOnce(n,p){if(yzSeen[n])return;yzSeen[n]=1;yzGoal(n,Object.assign({page:location.pathname},p||{}))}
+(function(){const path=location.pathname.replace(/\/+$/,'')||'/',R=document.getElementById('yz-root')||document,blog=/^\/blog-/.test(path);
+  /* дошёл до блока: блок виден на 30% или занимает 40% экрана */
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
+      if(e.intersectionRatio<.3&&e.intersectionRect.height<innerHeight*.4)return;io.unobserve(e.target);const g=e.target.dataset.yzGoal;yzOnce(g);if(g==='reach_bottom'&&blog)yzOnce('article_read')}),{threshold:[0,.1,.2,.3,.5]});
+    if(path==='/')['promos','catalog','duo','hits','tradein','gifts','repair','reviews','faq','contacts'].forEach(id=>{const el=R.querySelector('section#'+id);if(el){el.dataset.yzGoal='reach_'+id;io.observe(el)}});
+    const ft=R.querySelector('footer')||document.querySelector('footer');if(ft){ft.dataset.yzGoal='reach_bottom';io.observe(ft)}}
+  /* активное время на странице (вкладка открыта и человек скроллит/трогает экран) */
+  let act=Date.now(),sec=0;['scroll','click','keydown','touchstart','mousemove'].forEach(t=>addEventListener(t,()=>act=Date.now(),{passive:true,capture:true}));
+  setInterval(()=>{if(document.visibilityState!=='visible'||Date.now()-act>30000)return;sec+=5;if(sec===30)yzOnce('time_30');if(sec===120)yzOnce('time_120')},5000);
+  if(document.getElementById('yzModel'))yzOnce('model_view',{model:window.YZ_MODEL||path});
+  if(blog)yzOnce('article_open');
+  /* клики */
+  document.addEventListener('click',e=>{const c=s=>e.target.closest(s);let a;
+    if(c('.cat-btn,[data-mega]'))yzOnce('menu_catalog');
+    if(c('#burger'))yzOnce('menu_open');
+    if(c('#searchBtn'))yzOnce('search_open');
+    if(c('#yzCat [data-tab],#yzCat #cside [data-f],.tab[data-f],.cat[data-f]'))yzOnce('catalog_filter');
+    if(c('#cmore'))yzOnce('catalog_more');
+    if(c('#yzModel [data-ci],#yzModel [data-mi],#yzModel [data-oi],.card .sw,.card [data-i]'))yzOnce('model_option');
+    if(c('#mdVid'))yzOnce('model_video');
+    if(c('#cond button,#sim button,#term button'))yzOnce('tradein_calc');
+    if(c('[data-inst] [data-m]'))yzOnce('inst_calc');
+    if(c('.fold-modes button'))yzOnce('duo_play');
+    if(c('#cartBtn,.cart-btn,[data-cart]'))yzOnce('cart_open');
+    if(a=c('details>summary'))yzOnce('faq_open',{q:a.textContent.trim().slice(0,80)});
+    if(a=c('a[href]')){const h=a.getAttribute('href')||'';
+      if(/yandex\.ru\/maps\/org|2gis\.ru\/.*firm|data-rev/.test(h)||a.matches('[data-rev-y],[data-rev-g]'))yzOnce('reviews_click',{site:/2gis/.test(a.href)?'2gis':'yandex'});
+      else if(/yandex\.ru\/maps|2gis\.ru/.test(h)||a.matches('.route'))yzOnce('route');
+      else if(/^\/blog-/.test(h))yzOnce('article_click');}
+  },true);
+  /* поля: калькуляторы, поиск, телефон в заявке */
+  document.addEventListener('input',e=>{const t=e.target;
+    if(t.matches('#old,#oldMem,#neu'))yzOnce('tradein_calc');
+    else if(t.matches('[data-inst-range]'))yzOnce('inst_calc');
+    else if(t.matches('#duoRange'))yzOnce('duo_play');
+    else if(t.matches('#q,#yzCat input[type=search]')&&t.value.trim().length>2)yzOnce('search_use');
+    else if(t.id==='leadPhone'&&leadCtx&&!leadCtx._ph){leadCtx._ph=1;yzGoal('lead_phone',{source:leadCtx.source||''})}},true);
+  document.addEventListener('change',e=>{if(e.target.matches('#old,#oldMem,#neu'))yzOnce('tradein_calc')},true);
+})();
 /* ================= ЗАЯВКИ =================
    Заявки уходят через обычную форму Тильды на этой же странице (её получатели: Telegram, MAX, почта).
    Поля формы Тильды: name, phone, comment (переменные полей). */
@@ -472,7 +514,7 @@ document.getElementById('leadSum').addEventListener('click',e=>{const b=e.target
 function openLead(ctx){leadCtx=ctx;yzGoal('lead_open',{source:ctx.source||''});lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
   document.getElementById('leadBtn').textContent=ctx.btn||'Отправить заявку';document.getElementById('leadErr').hidden=true;
   drawSum();leadForm.hidden=false;leadOk.hidden=true;lead.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('leadName').focus(),50)}
-function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');lead.hidden=true;document.body.style.overflow=''}
+function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');if(leadOk.hidden)yzGoal('lead_close',{source:leadCtx.source||'',phone:leadCtx._ph?'да':'нет'});lead.hidden=true;document.body.style.overflow=''}
 document.getElementById('leadX').onclick=closeLead;document.getElementById('leadDone').onclick=closeLead;
 lead.addEventListener('click',e=>{if(e.target===lead)closeLead()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!lead.hidden)closeLead()});
@@ -510,10 +552,10 @@ function sendLead(d){return new Promise(res=>{const f=tildaForm();
   let n=0;const iv=setInterval(()=>{n++;const okV=ok&&getComputedStyle(ok).display!=='none';const erV=er&&getComputedStyle(er).display!=='none'&&er.textContent.trim();
     if(okV){clearInterval(iv);res('ok')}else if(erV||n>40){clearInterval(iv);res(okV?'ok':(n>40?'ok?':'err'))}},200)})}
 leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=document.getElementById('leadName').value.trim();const phone=document.getElementById('leadPhone').value.trim();const err=document.getElementById('leadErr');
-  if(phone.replace(/\D/g,'').length<10){err.hidden=false;err.textContent='Введите телефон полностью, например +7 900 123-45-67.';return}
+  if(phone.replace(/\D/g,'').length<10){err.hidden=false;yzGoal('lead_error',{why:'телефон',source:leadCtx.source||''});err.textContent='Введите телефон полностью, например +7 900 123-45-67.';return}
   err.hidden=true;const btn=document.getElementById('leadBtn');btn.disabled=true;btn.textContent='Отправляем…';
   const r=await sendLead({name,phone,comment:composeComment()});btn.disabled=false;
-  if(r==='err'){err.hidden=false;err.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';btn.textContent='Отправить ещё раз';return}
+  if(r==='err'){err.hidden=false;yzGoal('lead_error',{why:'отправка',source:leadCtx.source||''});err.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';btn.textContent='Отправить ещё раз';return}
   if(leadCtx.cart){cart=[];updBadge()}
   document.getElementById('leadOkT').textContent=r==='demo'?'Это тестовый режим: форма Тильды на странице не найдена, заявка никуда не ушла.':'Менеджер перезвонит вам в течение 15 минут в рабочее время.';
   yzGoal('lead',{source:leadCtx.source||'Сайт'});
