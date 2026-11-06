@@ -1,9 +1,9 @@
-<!-- ЮZ: страница «blog-trade-in-ili-avito» с готовым текстом для поисковиков (снимок коммита 1b76364). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<!-- ЮZ: страница «blog-trade-in-ili-avito» с готовым текстом для поисковиков (снимок коммита 9fd3fbb). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
-<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@1b76364427682adf16d305431e4cc0f0bd3b5146/youz.css?v=1b76364">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@9fd3fbb26b06d33befd9f48314dd6449f1c9cf45/youz.css?v=9fd3fbb">
 <div id="yz-root">
 <div id="hdrSpace" aria-hidden="true"></div>
 <header class="top" id="hdr">
@@ -73,7 +73,7 @@
 <div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
 </div>
 <script>
-(function(){var R='sokolss1010200-glitch/youz-site',P='pages/blog-trade-in-ili-avito.html',K='yz-ref',S='1b76364427682adf16d305431e4cc0f0bd3b5146',H=2681393156;
+(function(){var R='sokolss1010200-glitch/youz-site',P='pages/blog-trade-in-ili-avito.html',K='yz-ref',S='9fd3fbb26b06d33befd9f48314dd6449f1c9cf45',H=2681393156;
 function hs(t){var h=0;for(var i=0;i<t.length;i++)h=(Math.imul(h,31)+t.charCodeAt(i))>>>0;return h}
 function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
 function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
