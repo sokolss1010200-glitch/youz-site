@@ -277,10 +277,15 @@ const htm=v=>String(v||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 function cacheGet(k){try{return JSON.parse(localStorage.getItem('yz_'+k)||'null')}catch(e){return null}}
 function cacheSet(k,v){try{localStorage.setItem('yz_'+k,JSON.stringify(v))}catch(e){}}
 const DATA={products:cacheGet('products')||DEF.products,promos:cacheGet('promos')||DEF.promos,tradein:cacheGet('tradein')||DEF.tradein};
+/* Цены и товары берём из снимка data/products.csv в репозитории: GitHub Actions обновляет его раз в день в 13:00 МСК
+   (.github/workflows/prajs.yml), чтобы утренние правки прайса не убирали товары с сайта. Нет снимка — читаем таблицу напрямую. */
+const SNAP={products:YZB+'data/products.csv'};
+async function getCSV(u,live){const r=await fetch(u+(live?(u.includes('?')?'&':'?')+'_='+Math.floor(Date.now()/120000):''),{cache:live?'no-store':'default'});if(!r.ok)throw r.status;const rows=parseCSV(await r.text());if(!rows.length)throw 0;return rows}
 async function loadSheets(){
   await Promise.all(Object.keys(SHEETS).map(async k=>{const u=SHEETS[k];if(!u)return;
-    try{const r=await fetch(u+(u.includes('?')?'&':'?')+'_='+Math.floor(Date.now()/120000),{cache:'no-store'});if(!r.ok)return;
-      const rows=parseCSV(await r.text());if(rows.length){DATA[k]=rows;cacheSet(k,rows)}}catch(e){}}));
+    let rows=null;if(SNAP[k]){try{rows=await getCSV(SNAP[k],false)}catch(e){}}
+    if(!rows){try{rows=await getCSV(u,true)}catch(e){}}
+    if(rows){DATA[k]=rows;cacheSet(k,rows)}}));
   applyData();
 }
 
