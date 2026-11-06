@@ -1,0 +1,23 @@
+# Товарный фид для Яндекса: собирается сразу после снимка прайса (13:00 МСК) из data/products.csv.
+# Адрес фида: https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/feed.yml
+name: Фид для Яндекса
+on:
+  workflow_run:
+    workflows: ["Прайс для сайта (13:00 МСК)"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - run: python3 fid.py
+      - run: |
+          git config user.name "prajs-bot"
+          git config user.email "prajs-bot@users.noreply.github.com"
+          git add data/feed.yml
+          git diff --cached --quiet && echo "Фид не изменился" || git commit -m "Фид для Яндекса $(TZ=Europe/Moscow date '+%d.%m.%Y %H:%M') МСК" && git push
