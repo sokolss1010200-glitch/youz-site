@@ -1,0 +1,102 @@
+<!-- ЮZ: страница «otzyvy» с готовым текстом для поисковиков (снимок коммита c6c3b17). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@c6c3b172f908a718218eab3fd57bfa487f41ef7b/youz.css?v=c6c3b17">
+<div id="yz-root">
+<div id="hdrSpace" aria-hidden="true"></div>
+<header class="top" id="hdr">
+  <div class="pbar" id="pbar" hidden></div>
+  <div class="row1"><div class="wrap">
+    <a class="logo" href="/" aria-label="ЮZ, на главную"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><clipPath id="lc"><circle cx="20" cy="20" r="19"/></clipPath></defs><g clip-path="url(#lc)"><rect width="40" height="40" fill="#1EA7F0"/><polygon points="0,0 22,0 14,16 0,12" fill="#E8174B"/><polygon points="22,0 40,0 40,14 26,18 14,16" fill="#FFB400"/><polygon points="14,16 26,18 24,30 8,26" fill="#3A2C9A"/><polygon points="0,12 14,16 8,26 0,30" fill="#C8EA1A"/><polygon points="26,18 40,14 40,40 30,40 24,30" fill="#1EA7F0"/><polygon points="8,26 24,30 30,40 0,40 0,30" fill="#E8174B"/><polygon points="24,30 40,26 40,40 30,40" fill="#3A2C9A"/></g></svg><span class="lw"><span>ЮZ</span><small>Магазин Apple в Ханты-Мансийске</small></span></a>
+    <a class="cat-btn" href="/catalog" aria-haspopup="dialog"><i><b></b><b></b><b></b></i><span class="lbl-c">Каталог</span></a>
+    <nav class="sell-nav" aria-label="Популярные категории"><a href="/catalog#iphone" data-cat="iPhone">iPhone</a><a href="/catalog#samsung" data-cat="Samsung">Samsung</a><a href="/catalog#mac" data-cat="Mac">Mac</a><a href="/catalog#watch" data-cat="Apple Watch">Watch</a><a href="/catalog#airpods" data-cat="AirPods">AirPods</a><a href="/catalog#dyson" data-cat="Dyson">Dyson</a></nav>
+    <div class="addr"><b>Комсомольская, 49</b><small><i class="dot"></i>Открыто до 20:00</small></div>
+    <button class="icon-btn plain" type="button" id="searchBtn" aria-label="Поиск" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <a class="icon-btn only-m" href="tel:+73467362404" aria-label="Позвонить +7 (3467) 36-24-04"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+    <button class="cart-btn" type="button" id="cartBtn" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="cl">Корзина</span><span class="badge" id="badge">0</span></button>
+    <button class="icon-btn burger only-m" type="button" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div></div>
+  <div class="row2"><div class="wrap">
+    <nav class="info-nav" aria-label="О магазине"><a href="/o-magazine">О магазине</a><a href="/garantiya">Гарантия</a><a href="/rassrochka">Рассрочка</a><a href="/trade-in">Trade-in</a><a href="/remont">Ремонт</a><a href="/dostavka">Доставка</a><a href="/otzyvy">Отзывы</a><a href="/blog">Блог</a><a href="/kontakty">Контакты</a></nav>
+    <div class="r2-right"><a class="r2-phone" href="tel:+73467362404">+7 (3467) 36-24-04</a><a class="link-u" href="/kontakty" data-lead="call" data-eyebrow="Обратный звонок" data-title="Перезвоним за 15 минут" data-source="Обратный звонок">Обратный звонок</a><span class="soc"><a href="https://t.me/uzstorehm" target="_blank" rel="noopener" aria-label="Telegram" class="tg"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 4 3 11l5 2 2 6 3-4 5 4z"/></svg></a><a href="https://vk.com/youz.ru_hm" target="_blank" rel="noopener" aria-label="ВКонтакте" class="vk">VK</a></span></div>
+  </div></div>
+  <div class="sbar" id="sbar" hidden><div class="wrap"><label class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="iPhone 18 Pro, AirPods, Dyson…" aria-label="Поиск по товарам"></label></div></div>
+</header>
+<div class="mega" id="mega" hidden><div class="mega-panel" role="dialog" aria-modal="true" aria-label="Каталог"><div class="wrap">
+  <div class="mega-top"><b class="mega-t">Каталог</b><div class="benefits"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span><span class="on">Подарки к iPhone</span><span>Рассрочка 0% до 36 мес</span></div><a class="btn btn-ink mega-all" href="/catalog">Все товары →</a><button class="lead-x mega-x" type="button" id="megaX" aria-label="Закрыть каталог">×</button></div>
+  <div class="cmap" id="cmap"></div>
+</div></div></div>
+
+<main id="top" class="pg"><section class="pg-hero"><div class="wrap pg-hero-in">
+  <div class="pg-hero-copy">
+    <div class="crumbs"><a href="/">Главная</a><span>/</span>Отзывы</div>
+    <span class="eyebrow">Отзывы</span>
+    <h1>Что говорят наши покупатели</h1>
+    <p class="pg-lead">Рейтинг 5,0 на Яндекс Картах и в 2ГИС — больше 300 настоящих отзывов. Мы не пишем их сами и не удаляем. Почитайте, а после покупки оставьте свой.</p>
+    <div class="cta-row"><a class="btn btn-lime" href="#" data-rev-y>Отзывы на Яндекс Картах <span class="arr">→</span></a><a class="btn btn-ghost" href="#" data-rev-g>Отзывы в 2ГИС</a></div>
+  </div>
+</div></section><section class="pg-sec "><div class="wrap"><h2 class="pg-h2">Лучшие отзывы</h2><div class="rq-grid"><figure class="rq rv-in"><span class="rq-tag">Покупка iPhone</span><blockquote>«Спасибо за лучший опыт покупки техники! Приобрела новый iPhone 17 Pro. Мне не просто продали телефон, а действительно помогли с выбором, подробно ответив на все вопросы. После покупки его полностью настроили и установили все банковские приложения. Приятным бонусом стал подарок — защитное стекло.»</blockquote><figcaption><span class="av">Н</span><span><b>Наталья В.</b><small>Яндекс Карты · февраль 2026</small></span><a href="https://yandex.ru/maps/org/yuz/103143665209/reviews/" target="_blank" rel="noopener" aria-label="Отзыв на Яндекс Карты">Я</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Trade-in</span><blockquote>«Приобретал 17 Pro в цвете Silver, всё отлично, сервис на 5. Отдельное спасибо менеджеру Андрею: помог перенести все данные со старого айфона, а сам старый айфон приняли по trade-in. Рекомендую 👍»</blockquote><figcaption><span class="av">А</span><span><b>Артур Ляшев</b><small>Яндекс Карты · май 2026</small></span><a href="https://yandex.ru/maps/org/yuz/103143665209/reviews/" target="_blank" rel="noopener" aria-label="Отзыв на Яндекс Карты">Я</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Оригинал и цена</span><blockquote>«Покупала здесь новый айфон и осталась очень довольна! Телефон оригинальный, по очень приятной цене. Сразу на месте наклеили защитное стекло и установили нужные удалённые приложения. Всё быстро, спокойно и без лишних заморочек.»</blockquote><figcaption><span class="av">И</span><span><b>Ирина Останина</b><small>2ГИС · август 2026</small></span><a href="https://2gis.ru/kh_mansiysk/firm/70000001042751106/tab/reviews" target="_blank" rel="noopener" aria-label="Отзыв на 2ГИС">2Г</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Доставка</span><blockquote>«Приобрела AirPods, которые ещё и доставили бесплатно домой. Красота 😻 В пакете подарочки 🫶 Шикарный сервис, что для нашего города редкость 🙌»</blockquote><figcaption><span class="av">Ю</span><span><b>Юлия Воскресенская</b><small>2ГИС · август 2026</small></span><a href="https://2gis.ru/kh_mansiysk/firm/70000001042751106/tab/reviews" target="_blank" rel="noopener" aria-label="Отзыв на 2ГИС">2Г</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Лучшая цена</span><blockquote>«Купил AirPods Pro — самая низкая цена в городе, ещё и со скидкой. Отличное обслуживание, в подарок почистили мой айфон — динамик и микрофон.»</blockquote><figcaption><span class="av">Р</span><span><b>Руслан Милевский</b><small>Яндекс Карты · сентябрь 2025</small></span><a href="https://yandex.ru/maps/org/yuz/103143665209/reviews/" target="_blank" rel="noopener" aria-label="Отзыв на Яндекс Карты">Я</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Постоянные клиенты</span><blockquote>«Спасибо, что вы есть. Любой вопрос с техникой — всегда к вам. Несколько айфонов уже купил, очень доволен. Сервис и гарантия 🤝»</blockquote><figcaption><span class="av">А</span><span><b>Алексей Сельков</b><small>2ГИС · август 2025</small></span><a href="https://2gis.ru/kh_mansiysk/firm/70000001042751106/tab/reviews" target="_blank" rel="noopener" aria-label="Отзыв на 2ГИС">2Г</a></figcaption></figure><figure class="rq rv-in"><span class="rq-tag">Ремонт</span><blockquote>«Зашли отремонтировать наш айфон. Сделали всё очень быстро, телефончик работает как новенький. А ещё большой выбор товара, что очень привлекло: телефоны и аксессуары — всё в наличии.»</blockquote><figcaption><span class="av">Л</span><span><b>Лилия Корепанова</b><small>2ГИС · октябрь 2026</small></span><a href="https://2gis.ru/kh_mansiysk/firm/70000001042751106/tab/reviews" target="_blank" rel="noopener" aria-label="Отзыв на 2ГИС">2Г</a></figcaption></figure></div></div></section><section class="pg-sec"><div class="wrap"><div class="rev-w">
+  <div class="rev-box" data-rev="yandex"><div class="rev-h"><b>Яндекс Карты</b><a href="#" data-rev-y>Оставить отзыв</a></div><div class="rev-body"><p class="pg-sub">Рейтинг 5,0 · 149 отзывов · 220 оценок</p></div></div>
+  <div class="rev-box" data-rev="2gis"><div class="rev-h"><b>2ГИС</b><a href="#" data-rev-g>Оставить отзыв</a></div><div class="rev-body"><div class="rate rate-g" style="border:0;padding:0"><div class="rate-n"><b>5,0</b><span class="stars" style="color:#F5B800">★★★★★</span></div><p><b>155 отзывов</b> · 168 оценок</p><a class="btn btn-ink" href="#" data-rev-g>Читать отзывы в 2ГИС →</a></div></div></div>
+</div></div></section><section class="pg-sec"><div class="wrap"><div class="why">
+      <div class="rv-in"><b>Оригинал</b><span>Проверяем серийный номер при вас</span></div>
+      <div class="rv-in" style="--d:.05s"><b>15 минут</b><span>на оценку trade-in</span></div>
+      <div class="rv-in" style="--d:.1s"><b>0 ₽</b><span>переплаты по «Халве» и ОТП</span></div>
+      <div class="rv-in" style="--d:.15s"><b>12 мес</b><span>гарантии магазина</span></div>
+    </div></section><section class="pg-sec"><div class="wrap"><div class="cta-band">
+  <div><h2>Убедитесь сами</h2><p>Приходите в магазин на Комсомольской, 49 или оставьте заявку — поможем выбрать и отложим технику для вас.</p></div>
+  <div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Обратный звонок" data-title="Перезвоним за 15 минут" data-source="Отзывы: заявка">Перезвоните мне <span class="arr">→</span></a><a class="btn btn-ghost" href="https://t.me/uzstorehm" target="_blank" rel="noopener">Написать в Telegram</a></div>
+</div></div></section></main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand" style="display:grid;gap:14px;align-content:start">
+      <a class="logo" href="/"><svg viewBox="0 0 40 40" aria-hidden="true"><g clip-path="url(#lc)"><rect width="40" height="40" fill="#1EA7F0"/><polygon points="0,0 22,0 14,16 0,12" fill="#E8174B"/><polygon points="22,0 40,0 40,14 26,18 14,16" fill="#FFB400"/><polygon points="14,16 26,18 24,30 8,26" fill="#3A2C9A"/><polygon points="0,12 14,16 8,26 0,30" fill="#C8EA1A"/><polygon points="8,26 24,30 30,40 0,40 0,30" fill="#E8174B"/><polygon points="24,30 40,26 40,40 30,40" fill="#3A2C9A"/></g></svg><span>ЮZ</span></a>
+      <p style="color:var(--muted);max-width:26em">Магазин техники Apple и других брендов в Ханты-Мансийске. Продажа, trade-in, рассрочка и ремонт.</p>
+    </div>
+    <div><h4>Каталог</h4><ul><li><a href="/#hits">iPhone</a></li><li><a href="/#duo">iPhone Duo</a></li><li><a href="/#hits">AirPods</a></li><li><a href="/#hits">Apple Watch</a></li><li><a href="/#hits">MacBook и iMac</a></li><li><a href="/#hits">Аксессуары</a></li></ul></div>
+    <div><h4>Покупателям</h4><ul><li><a href="/o-magazine">О магазине</a></li><li><a href="/trade-in">Trade-in</a></li><li><a href="/rassrochka">Рассрочка</a></li><li><a href="/garantiya">Гарантия</a></li><li><a href="/dostavka">Доставка</a></li><li><a href="/remont">Ремонт</a></li><li><a href="/otzyvy">Отзывы</a></li><li><a href="/blog">Блог</a></li><li><a href="/kontakty">Контакты</a></li></ul></div>
+    <div><h4>Бренды</h4><ul><li>Apple</li><li>Samsung</li><li>Dyson</li><li>DJI</li><li>Sony</li></ul></div>
+    <div><h4>Связаться</h4><ul><li><a href="tel:+73467362404">+7 (3467) 36-24-04</a></li><li><a href="https://t.me/uzstorehm" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://vk.com/youz.ru_hm" target="_blank" rel="noopener">ВКонтакте</a></li><li>Комсомольская, 49</li></ul></div>
+  </div>
+  <div class="fbottom"><span>© 2026 ЮZ Store, Ханты-Мансийск</span><span><a href="/politika">Политика конфиденциальности</a> · <a href="/soglasie">Согласие на обработку данных</a></span></div>
+</div></footer>
+
+<nav class="dock" aria-label="Быстрые действия"><a href="tel:+73467362404">Позвонить</a><a href="https://t.me/uzstorehm" target="_blank" rel="noopener">Telegram</a><a class="main" href="/catalog" data-mega>Каталог</a></nav>
+<div class="lm" id="lead" hidden role="dialog" aria-modal="true" aria-labelledby="leadT">
+  <div class="lead-card">
+    <button class="lead-x" type="button" id="leadX" aria-label="Закрыть">×</button>
+    <form id="leadForm" novalidate>
+      <span class="eyebrow" id="leadE">Заявка</span>
+      <h3 id="leadT">Оставьте заявку</h3>
+      <div class="lead-sum" id="leadSum"></div>
+      <div class="field"><label for="leadName">Имя</label><input id="leadName" autocomplete="name" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="leadPhone">Телефон</label><input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></div>
+      <p class="lead-err" id="leadErr" hidden></p>
+      <button class="btn btn-lime" type="submit" id="leadBtn">Отправить заявку</button>
+      <p class="fine">Перезвоним в рабочее время в течение 15 минут. Нажимая кнопку, вы соглашаетесь на <a href="/soglasie" target="_blank">обработку персональных данных</a>.</p>
+    </form>
+    <div class="lead-ok" id="leadOk" hidden><i>✓</i><h3>Заявка отправлена</h3><p id="leadOkT">Менеджер скоро свяжется с вами.</p><button class="btn btn-ink" type="button" id="leadDone">Хорошо</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
+</div>
+<script>
+(function(){var R='sokolss1010200-glitch/youz-site',P='pages/otzyvy.html',K='yz-ref',S='c6c3b172f908a718218eab3fd57bfa487f41ef7b';
+function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
+function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
+if(ref===S)return js(B,q);
+var css=new Promise(function(ok){var l=document.createElement('link');l.rel='stylesheet';l.href=B+'youz.css'+q;l.onload=l.onerror=ok;document.head.appendChild(l)});
+Promise.all([fetch(B+P+q).then(function(r){if(!r.ok)throw r.status;return r.text()}),css]).then(function(a){
+document.getElementById('yz-root').innerHTML=a[0];var o=document.getElementById('yz-css0');if(o)o.remove();js(B,q)})
+.catch(function(){go(S)})}
+var c;try{c=JSON.parse(sessionStorage.getItem(K))}catch(e){}
+if(c&&c.r&&Date.now()-c.t<300000)return go(c.r);
+fetch('https://api.github.com/repos/'+R+'/commits/main',{headers:{Accept:'application/vnd.github.sha'}})
+.then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){t=t.trim();if(!/^[0-9a-f]{40}$/.test(t))throw 0;
+try{sessionStorage.setItem(K,JSON.stringify({r:t,t:Date.now()}))}catch(e){}go(t)})
+.catch(function(){go(S)});
+})();
+</script>

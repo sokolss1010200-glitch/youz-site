@@ -1,0 +1,103 @@
+<!-- ЮZ: страница «rassrochka» с готовым текстом для поисковиков (снимок коммита c6c3b17). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@c6c3b172f908a718218eab3fd57bfa487f41ef7b/youz.css?v=c6c3b17">
+<div id="yz-root">
+<div id="hdrSpace" aria-hidden="true"></div>
+<header class="top" id="hdr">
+  <div class="pbar" id="pbar" hidden></div>
+  <div class="row1"><div class="wrap">
+    <a class="logo" href="/" aria-label="ЮZ, на главную"><svg viewBox="0 0 40 40" aria-hidden="true"><defs><clipPath id="lc"><circle cx="20" cy="20" r="19"/></clipPath></defs><g clip-path="url(#lc)"><rect width="40" height="40" fill="#1EA7F0"/><polygon points="0,0 22,0 14,16 0,12" fill="#E8174B"/><polygon points="22,0 40,0 40,14 26,18 14,16" fill="#FFB400"/><polygon points="14,16 26,18 24,30 8,26" fill="#3A2C9A"/><polygon points="0,12 14,16 8,26 0,30" fill="#C8EA1A"/><polygon points="26,18 40,14 40,40 30,40 24,30" fill="#1EA7F0"/><polygon points="8,26 24,30 30,40 0,40 0,30" fill="#E8174B"/><polygon points="24,30 40,26 40,40 30,40" fill="#3A2C9A"/></g></svg><span class="lw"><span>ЮZ</span><small>Магазин Apple в Ханты-Мансийске</small></span></a>
+    <a class="cat-btn" href="/catalog" aria-haspopup="dialog"><i><b></b><b></b><b></b></i><span class="lbl-c">Каталог</span></a>
+    <nav class="sell-nav" aria-label="Популярные категории"><a href="/catalog#iphone" data-cat="iPhone">iPhone</a><a href="/catalog#samsung" data-cat="Samsung">Samsung</a><a href="/catalog#mac" data-cat="Mac">Mac</a><a href="/catalog#watch" data-cat="Apple Watch">Watch</a><a href="/catalog#airpods" data-cat="AirPods">AirPods</a><a href="/catalog#dyson" data-cat="Dyson">Dyson</a></nav>
+    <div class="addr"><b>Комсомольская, 49</b><small><i class="dot"></i>Открыто до 20:00</small></div>
+    <button class="icon-btn plain" type="button" id="searchBtn" aria-label="Поиск" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    <a class="icon-btn only-m" href="tel:+73467362404" aria-label="Позвонить +7 (3467) 36-24-04"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+    <button class="cart-btn" type="button" id="cartBtn" aria-label="Корзина"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="cl">Корзина</span><span class="badge" id="badge">0</span></button>
+    <button class="icon-btn burger only-m" type="button" id="burger" aria-label="Меню" aria-expanded="false"><i></i><i></i><i></i></button>
+  </div></div>
+  <div class="row2"><div class="wrap">
+    <nav class="info-nav" aria-label="О магазине"><a href="/o-magazine">О магазине</a><a href="/garantiya">Гарантия</a><a href="/rassrochka">Рассрочка</a><a href="/trade-in">Trade-in</a><a href="/remont">Ремонт</a><a href="/dostavka">Доставка</a><a href="/otzyvy">Отзывы</a><a href="/blog">Блог</a><a href="/kontakty">Контакты</a></nav>
+    <div class="r2-right"><a class="r2-phone" href="tel:+73467362404">+7 (3467) 36-24-04</a><a class="link-u" href="/kontakty" data-lead="call" data-eyebrow="Обратный звонок" data-title="Перезвоним за 15 минут" data-source="Обратный звонок">Обратный звонок</a><span class="soc"><a href="https://t.me/uzstorehm" target="_blank" rel="noopener" aria-label="Telegram" class="tg"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M21 4 3 11l5 2 2 6 3-4 5 4z"/></svg></a><a href="https://vk.com/youz.ru_hm" target="_blank" rel="noopener" aria-label="ВКонтакте" class="vk">VK</a></span></div>
+  </div></div>
+  <div class="sbar" id="sbar" hidden><div class="wrap"><label class="sbox"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="iPhone 18 Pro, AirPods, Dyson…" aria-label="Поиск по товарам"></label></div></div>
+</header>
+<div class="mega" id="mega" hidden><div class="mega-panel" role="dialog" aria-modal="true" aria-label="Каталог"><div class="wrap">
+  <div class="mega-top"><b class="mega-t">Каталог</b><div class="benefits"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span><span class="on">Подарки к iPhone</span><span>Рассрочка 0% до 36 мес</span></div><a class="btn btn-ink mega-all" href="/catalog">Все товары →</a><button class="lead-x mega-x" type="button" id="megaX" aria-label="Закрыть каталог">×</button></div>
+  <div class="cmap" id="cmap"></div>
+</div></div></div>
+
+<main id="top" class="pg"><section class="pg-hero"><div class="wrap pg-hero-in has-side">
+  <div class="pg-hero-copy">
+    <div class="crumbs"><a href="/">Главная</a><span>/</span>Рассрочка</div>
+    <span class="eyebrow">Рассрочка</span>
+    <h1>Рассрочка 0% до&nbsp;36&nbsp;месяцев</h1>
+    <p class="pg-lead">Новый iPhone сегодня — оплата частями. Рассрочка по «Халве» Совкомбанка и ОТП Банку без переплаты при выполнении условий банка, а ещё кредит в одном из 17+ банков. Условия подскажет менеджер.</p>
+    <div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Рассрочка" data-title="Заявка на рассрочку" data-source="Рассрочка">Узнать решение банка <span class="arr">→</span></a><a class="btn btn-ghost" href="#calc">Посчитать платёж</a></div>
+  </div><aside class="pg-side"><div><span>Рассрочка</span><b>«Халва» и ОТП Банк</b></div><div><span>Кредит</span><b>17+ банков</b></div><div><span>Срок</span><b>до 36 месяцев</b></div><div><span>Документы</span><b>паспорт</b></div></aside>
+</div></section><section class="pg-sec" id="calc"><div class="wrap"><div class="inst" data-inst>
+  <div class="inst-in">
+    <h2 class="pg-h2">Посчитайте платёж</h2>
+    <label class="inst-l">Стоимость покупки <b data-inst-sum>120 000 ₽</b></label>
+    <input type="range" min="10000" max="400000" step="1000" value="120000" data-inst-range aria-label="Стоимость покупки">
+    <div class="inst-m" role="group" aria-label="Срок"><button type="button" data-m="6">6 мес</button><button type="button" data-m="12">12 мес</button><button type="button" data-m="24">24 мес</button><button type="button" data-m="36" aria-pressed="true">36 мес</button></div>
+  </div>
+  <div class="inst-out"><span>Платёж в месяц</span><b data-inst-pay>3 334 ₽</b><small>без переплаты и первого взноса</small>
+    <a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Рассрочка" data-title="Заявка на рассрочку" data-source="Рассрочка: калькулятор" data-inst-btn>Оформить рассрочку <span class="arr">→</span></a></div>
+</div><p class="fine" style="margin-top:12px;color:var(--muted)">Расчёт предварительный. Точные условия зависят от банка и назовём их после решения.</p></div></section><section class="pg-sec "><div class="wrap"><h2 class="pg-h2">Как оформить</h2><ol class="pg-steps"><li><b>Оставьте заявку</b><span>На сайте или по телефону. Скажите, какую технику хотите, — посчитаем платёж.</span></li><li><b>Приходите с паспортом</b><span>Заполним анкету вместе за несколько минут.</span></li><li><b>Решение за 5–10 минут</b><span>Банк присылает решение, вы подписываете договор.</span></li><li><b>Уходите с покупкой</b><span>Настроим телефон, перенесём данные и наклеим стекло — это в подарок.</span></li></ol></div></section><section class="pg-sec "><div class="wrap"><h2 class="pg-h2">Банки и условия</h2><div class="pg-cards "><div class="pg-card"><b>«Халва» Совкомбанка</b><p>Рассрочка без переплаты при выполнении условий банка. Условия уточняйте у менеджера — подскажем, как сделать платёж минимальным.</p></div><div class="pg-card"><b>ОТП Банк</b><p>Рассрочка без переплаты при выполнении условий банка. Менеджер расскажет условия и поможет оформить прямо в магазине.</p></div><div class="pg-card"><b>Кредит в 17+ банках</b><p>Если рассрочка не подходит — подберём кредит в одном из более чем 17 банков-партнёров. Отправим заявку сразу в несколько банков.</p></div></div></div></section><section class="pg-sec"><div class="wrap faq"><div style="display:grid;gap:16px;align-content:start"><h2>Вопросы о рассрочке</h2><p style="color:var(--muted)">Не нашли ответ? Позвоните: <a href="tel:+73467362404">+7 (3467) 36-24-04</a></p></div><div class="qa"><details open><summary>Есть ли переплата?<i></i></summary><p>По рассрочке «Халва» и ОТП Банка переплаты нет при выполнении условий банка. Условия уточняйте у менеджера — можно написать нам в Telegram.</p></details><details><summary>Какие банки?<i></i></summary><p>Рассрочка — «Халва» Совкомбанка и ОТП Банк. Кредит — более 17 банков-партнёров.</p></details><details><summary>Какие нужны документы?<i></i></summary><p>Только паспорт. Решение банка приходит за 5–10 минут.</p></details><details><summary>Можно ли сдать старый телефон и взять остаток в рассрочку?<i></i></summary><p>Да. Оценку старого телефона в trade-in зачтём в покупку, а остаток можно оформить в рассрочку.</p></details><details><summary>Можно досрочно погасить?<i></i></summary><p>Обычно да, без штрафов. Точные условия зависят от банка — расскажем при оформлении.</p></details></div></div></section><section class="pg-sec"><div class="wrap"><div class="cta-band">
+  <div><h2>Узнайте платёж под вашу модель</h2><p>Оставьте номер — посчитаем рассрочку на нужный iPhone и подскажем, как уменьшить платёж через trade-in.</p></div>
+  <div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Обратный звонок" data-title="Перезвоним за 15 минут" data-source="Рассрочка: звонок">Перезвоните мне <span class="arr">→</span></a><a class="btn btn-ghost" href="https://t.me/uzstorehm" target="_blank" rel="noopener">Написать в Telegram</a></div>
+</div></div></section></main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand" style="display:grid;gap:14px;align-content:start">
+      <a class="logo" href="/"><svg viewBox="0 0 40 40" aria-hidden="true"><g clip-path="url(#lc)"><rect width="40" height="40" fill="#1EA7F0"/><polygon points="0,0 22,0 14,16 0,12" fill="#E8174B"/><polygon points="22,0 40,0 40,14 26,18 14,16" fill="#FFB400"/><polygon points="14,16 26,18 24,30 8,26" fill="#3A2C9A"/><polygon points="0,12 14,16 8,26 0,30" fill="#C8EA1A"/><polygon points="8,26 24,30 30,40 0,40 0,30" fill="#E8174B"/><polygon points="24,30 40,26 40,40 30,40" fill="#3A2C9A"/></g></svg><span>ЮZ</span></a>
+      <p style="color:var(--muted);max-width:26em">Магазин техники Apple и других брендов в Ханты-Мансийске. Продажа, trade-in, рассрочка и ремонт.</p>
+    </div>
+    <div><h4>Каталог</h4><ul><li><a href="/#hits">iPhone</a></li><li><a href="/#duo">iPhone Duo</a></li><li><a href="/#hits">AirPods</a></li><li><a href="/#hits">Apple Watch</a></li><li><a href="/#hits">MacBook и iMac</a></li><li><a href="/#hits">Аксессуары</a></li></ul></div>
+    <div><h4>Покупателям</h4><ul><li><a href="/o-magazine">О магазине</a></li><li><a href="/trade-in">Trade-in</a></li><li><a href="/rassrochka">Рассрочка</a></li><li><a href="/garantiya">Гарантия</a></li><li><a href="/dostavka">Доставка</a></li><li><a href="/remont">Ремонт</a></li><li><a href="/otzyvy">Отзывы</a></li><li><a href="/blog">Блог</a></li><li><a href="/kontakty">Контакты</a></li></ul></div>
+    <div><h4>Бренды</h4><ul><li>Apple</li><li>Samsung</li><li>Dyson</li><li>DJI</li><li>Sony</li></ul></div>
+    <div><h4>Связаться</h4><ul><li><a href="tel:+73467362404">+7 (3467) 36-24-04</a></li><li><a href="https://t.me/uzstorehm" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://vk.com/youz.ru_hm" target="_blank" rel="noopener">ВКонтакте</a></li><li>Комсомольская, 49</li></ul></div>
+  </div>
+  <div class="fbottom"><span>© 2026 ЮZ Store, Ханты-Мансийск</span><span><a href="/politika">Политика конфиденциальности</a> · <a href="/soglasie">Согласие на обработку данных</a></span></div>
+</div></footer>
+
+<nav class="dock" aria-label="Быстрые действия"><a href="tel:+73467362404">Позвонить</a><a href="https://t.me/uzstorehm" target="_blank" rel="noopener">Telegram</a><a class="main" href="/catalog" data-mega>Каталог</a></nav>
+<div class="lm" id="lead" hidden role="dialog" aria-modal="true" aria-labelledby="leadT">
+  <div class="lead-card">
+    <button class="lead-x" type="button" id="leadX" aria-label="Закрыть">×</button>
+    <form id="leadForm" novalidate>
+      <span class="eyebrow" id="leadE">Заявка</span>
+      <h3 id="leadT">Оставьте заявку</h3>
+      <div class="lead-sum" id="leadSum"></div>
+      <div class="field"><label for="leadName">Имя</label><input id="leadName" autocomplete="name" placeholder="Как к вам обращаться"></div>
+      <div class="field"><label for="leadPhone">Телефон</label><input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></div>
+      <p class="lead-err" id="leadErr" hidden></p>
+      <button class="btn btn-lime" type="submit" id="leadBtn">Отправить заявку</button>
+      <p class="fine">Перезвоним в рабочее время в течение 15 минут. Нажимая кнопку, вы соглашаетесь на <a href="/soglasie" target="_blank">обработку персональных данных</a>.</p>
+    </form>
+    <div class="lead-ok" id="leadOk" hidden><i>✓</i><h3>Заявка отправлена</h3><p id="leadOkT">Менеджер скоро свяжется с вами.</p><button class="btn btn-ink" type="button" id="leadDone">Хорошо</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
+</div>
+<script>
+(function(){var R='sokolss1010200-glitch/youz-site',P='pages/rassrochka.html',K='yz-ref',S='c6c3b172f908a718218eab3fd57bfa487f41ef7b';
+function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
+function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
+if(ref===S)return js(B,q);
+var css=new Promise(function(ok){var l=document.createElement('link');l.rel='stylesheet';l.href=B+'youz.css'+q;l.onload=l.onerror=ok;document.head.appendChild(l)});
+Promise.all([fetch(B+P+q).then(function(r){if(!r.ok)throw r.status;return r.text()}),css]).then(function(a){
+document.getElementById('yz-root').innerHTML=a[0];var o=document.getElementById('yz-css0');if(o)o.remove();js(B,q)})
+.catch(function(){go(S)})}
+var c;try{c=JSON.parse(sessionStorage.getItem(K))}catch(e){}
+if(c&&c.r&&Date.now()-c.t<300000)return go(c.r);
+fetch('https://api.github.com/repos/'+R+'/commits/main',{headers:{Accept:'application/vnd.github.sha'}})
+.then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){t=t.trim();if(!/^[0-9a-f]{40}$/.test(t))throw 0;
+try{sessionStorage.setItem(K,JSON.stringify({r:t,t:Date.now()}))}catch(e){}go(t)})
+.catch(function(){go(S)});
+})();
+</script>
