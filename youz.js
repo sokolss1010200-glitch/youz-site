@@ -452,7 +452,10 @@ document.getElementById('calc').addEventListener('submit',e=>{e.preventDefault()
    lead — заявка отправлена; lead_open — открыто окно заявки; call — нажали телефон; telegram — нажали Telegram;
    cart_add — добавили в корзину; promo_popup — показан баннер «скидка на первую покупку». */
 const YM_ID=110574921;
-function yzGoal(name,params){try{if(typeof window.ym==='function')window.ym(YM_ID,'reachGoal',name,params||{})}catch(e){}}
+/* Тильда подключает счётчик Метрики с задержкой (~2–3 с после загрузки) — до этого цели копим в очереди */
+const yzQ=[];let yzT=0;
+function yzFlush(){if(typeof window.ym!=='function'){if(yzT++<120)setTimeout(yzFlush,500);return}while(yzQ.length){const g=yzQ.shift();try{window.ym(YM_ID,'reachGoal',g[0],g[1])}catch(e){}}}
+function yzGoal(name,params){yzQ.push([name,params||{}]);if(yzQ.length===1)yzFlush()}
 document.addEventListener('click',e=>{const a=e.target.closest('a[href]');if(!a)return;const h=a.getAttribute('href')||'';
   if(h.startsWith('tel:'))yzGoal('call');else if(/t\.me\//.test(h))yzGoal('telegram');else if(/vk\.com\//.test(h))yzGoal('vk');else if(/max\.ru\//.test(h))yzGoal('max')},true);
 /* АНАЛИТИКА: все шаги клиента → цели Метрики (110574921). Каждое событие — не чаще раза за просмотр страницы.
