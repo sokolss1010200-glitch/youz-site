@@ -1,0 +1,37 @@
+# Снимок прайса для сайта: раз в день в 13:00 МСК (10:00 UTC) забирает лист «Товары» из Google-таблицы
+# и сохраняет в data/products.csv. Сайт показывает этот снимок, поэтому утренние правки прайса на сайт не попадают.
+# Защита: если строк стало меньше 60% от прошлого снимка (прайс не заполнен) — снимок не меняется.
+# Обновить вручную: вкладка Actions → «Прайс для сайта» → Run workflow.
+name: Прайс для сайта (13:00 МСК)
+on:
+  schedule:
+    - cron: '0 10 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Забрать лист «Товары»
+        run: |
+          python3 - <<'PY'
+          import csv, io, os, sys, urllib.request
+          U = 'https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D1%8B'
+          new = urllib.request.urlopen(U, timeout=60).read().decode('utf-8')
+          n = lambda t: max(0, len(list(csv.reader(io.StringIO(t)))) - 1)
+          p = 'data/products.csv'
+          old = open(p, encoding='utf-8').read() if os.path.exists(p) else ''
+          print('строк было:', n(old), 'стало:', n(new))
+          if n(new) < 20 or (old and n(new) < n(old) * 0.6):
+              print('::warning::Прайс похож на незаполненный — снимок не обновлён'); sys.exit(0)
+          os.makedirs('data', exist_ok=True)
+          open(p, 'w', encoding='utf-8').write(new)
+          PY
+      - name: Сохранить снимок
+        run: |
+          git config user.name "prajs-bot"
+          git config user.email "prajs-bot@users.noreply.github.com"
+          git add data/products.csv
+          git diff --cached --quiet && echo "Цены не изменились" || git commit -m "Прайс для сайта $(TZ=Europe/Moscow date '+%d.%m.%Y %H:%M') МСК" && git push
