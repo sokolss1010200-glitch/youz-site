@@ -371,7 +371,7 @@ function cardState(card){const p=P.find(x=>x.id==card.dataset.id);
 function refreshCard(card){const {p,c,mem,opt}=cardState(card);const v=variant(p,mem,opt,c.name);const st=stockTxt(v.stock,v.exact);
   card.querySelector('.price').innerHTML=priceHTML(v);
   const vb=card.querySelector('.vbtn');if(vb)vb.hidden=!c.video;
-  const d=v.old>v.price?v.old-v.price:0;const dEl=card.querySelector('.t.d');if(d){dEl.hidden=false;dEl.textContent='−'+rub(d)}else dEl.hidden=true;
+  const d=v.old>v.price?strikeOf(v)-v.price:0;const dEl=card.querySelector('.t.d');if(d){dEl.hidden=false;dEl.textContent='−'+rub(d)}else dEl.hidden=true;
   const cn=card.querySelector('.cname');if(cn)cn.textContent=c.name}
 function bindGrid(g){g.addEventListener('click',e=>{
   const card=e.target.closest('.prod');if(!card)return;
@@ -722,7 +722,7 @@ if(YM){
   function draw(){if(!name)pick();const p=P.find(x=>x.n===name);if(p)applyWant(p);
     if(!p){YM.innerHTML=`<section class="cat-top"><div class="wrap"><h1>${htm(name||'Модель')}</h1><p class="lead">Сейчас этой модели нет в прайсе. Позвоните: привезём под заказ.</p></div></section>`;return}
     const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);const ph=photoOf(c);
-    const d=v.old>v.price?v.old-v.price:0;const card=cardOf(v);
+    const d=v.old>v.price?strikeOf(v)-v.price:0;const card=cardOf(v);
     YM.innerHTML=`
 <section class="md-hero"><div class="wrap">
  <nav class="crumbs"><a href="/">Главная</a><span>/</span><a href="/catalog#${CAT_SLUG[p.cat]||''}">${htm(p.cat)}</a><span>/</span><span>${htm(name)}</span></nav>
