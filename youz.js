@@ -708,9 +708,14 @@ const YM=document.getElementById('yzModel');
 if(YM){
   const slugNow=()=>(window.YZ_MODEL||location.hash.slice(1)||new URLSearchParams(location.search).get('m')||'').toLowerCase();
   let name='',M={},st={ci:0,mi:0,oi:0};
-  function pick(){const sl=slugNow();name=MODEL_BY_SLUG[sl]||(P.find(x=>x.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')===sl)||{}).n||'';M=MODELS[name]||{};st={ci:0,mi:0,oi:0}}
+  function pick(){const sl=slugNow();name=MODEL_BY_SLUG[sl]||(P.find(x=>x.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')===sl)||{}).n||'';M=MODELS[name]||{};st={ci:0,mi:0,oi:0};
+    /* ссылки из товарного фида Яндекса: ?mem=…&opt=…&c=… — сразу выбрать эту память, опцию и цвет, чтобы цена совпала с фидом */
+    const q=new URLSearchParams(location.search);want=q.get('mem')||q.get('c')||q.get('opt')?{mem:q.get('mem'),opt:q.get('opt'),c:q.get('c')}:null}
+  let want=null;
+  function applyWant(p){if(!want)return;const i=(a,v)=>v==null?-1:a.findIndex(x=>String(x).toLowerCase()===String(v).toLowerCase());
+    const ci=i(p.cols.map(c=>c.name),want.c),mi=i(p.mem,want.mem),oi=i(p.opt,want.opt);if(ci>=0)st.ci=ci;if(mi>=0)st.mi=mi;if(oi>=0)st.oi=oi;want=null}
   addEventListener('hashchange',()=>{pick();draw();scrollTo(0,0)});
-  function draw(){if(!name)pick();const p=P.find(x=>x.n===name);
+  function draw(){if(!name)pick();const p=P.find(x=>x.n===name);if(p)applyWant(p);
     if(!p){YM.innerHTML=`<section class="cat-top"><div class="wrap"><h1>${htm(name||'Модель')}</h1><p class="lead">Сейчас этой модели нет в прайсе. Позвоните: привезём под заказ.</p></div></section>`;return}
     const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);const ph=photoOf(c);
     const d=v.old>v.price?v.old-v.price:0;const card=cardOf(v);
