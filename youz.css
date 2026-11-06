@@ -890,3 +890,7 @@ footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 /* SEO: H1 главной — плашка над названием модели */
 .hero h1.tag-new{font:inherit;font-size:13px;font-weight:500;letter-spacing:0;line-height:1.35;margin:0;width:auto;max-width:100%;text-transform:none}
 .hero .h1{font-family:var(--f-display);line-height:1.05;margin:0;text-wrap:balance}
+
+/* Платёж в рассрочку: сумма чуть крупнее и плотнее подписи, но тише основной цены */
+.prod .price .pm b{font-size:1.15em;font-weight:600;color:var(--ink)}
+.md-price p b{font-size:1.1em;font-weight:600}

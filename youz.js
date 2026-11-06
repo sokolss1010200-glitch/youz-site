@@ -353,7 +353,7 @@ const cardOf=v=>v.card||Math.ceil(v.price*(1+CARD_PCT/100)/100)*100-10;
    зачёркнуто — бо́льшая из «Старой цены» и «Цены по карте». Что это скидка за наличные — проговаривают менеджеры. */
 const strikeOf=v=>Math.max(v.old||0,cardOf(v));
 function priceHTML(v){const s=strikeOf(v),c=cardOf(v);
-  return `${s>v.price?`<span class="oldp">${rub(s)}</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от ${rub(c/MONTHS_DEF)}/мес</small>`}
+  return `${s>v.price?`<span class="oldp">${rub(s)}</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от <b>${rub(c/MONTHS_DEF)}/мес</b></small>`}
 function cardHTML(p){const opts=p.opt.filter(Boolean);
   return `<article class="prod" data-id="${p.id}">
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
