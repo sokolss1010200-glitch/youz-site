@@ -279,7 +279,8 @@ function cacheSet(k,v){try{localStorage.setItem('yz_'+k,JSON.stringify(v))}catch
 const DATA={products:cacheGet('products')||DEF.products,promos:cacheGet('promos')||DEF.promos,tradein:cacheGet('tradein')||DEF.tradein};
 /* Цены и товары берём из снимка data/products.csv в репозитории: GitHub Actions обновляет его раз в день в 13:00 МСК
    (.github/workflows/prajs.yml), чтобы утренние правки прайса не убирали товары с сайта. Нет снимка — читаем таблицу напрямую. */
-const SNAP={products:YZB+'data/products.csv'};
+/* постоянная ссылка на последний снимок (не привязана к версии кода, кеш GitHub ~5 мин) */
+const SNAP={products:'https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/products.csv?t='+Math.floor(Date.now()/600000)};
 async function getCSV(u,live){const r=await fetch(u+(live?(u.includes('?')?'&':'?')+'_='+Math.floor(Date.now()/120000):''),{cache:live?'no-store':'default'});if(!r.ok)throw r.status;const rows=parseCSV(await r.text());if(!rows.length)throw 0;return rows}
 async function loadSheets(){
   await Promise.all(Object.keys(SHEETS).map(async k=>{const u=SHEETS[k];if(!u)return;
