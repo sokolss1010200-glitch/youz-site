@@ -349,8 +349,11 @@ function art(p,c){
   return `<div class="ph-none" style="--c:${htm(c.hex)}"><i></i><b>${htm(shortName(p))}</b><small>${htm(p.grp||p.cat)}</small></div>`;
 }
 const cardOf=v=>v.card||Math.ceil(v.price*(1+CARD_PCT/100)/100)*100-10;
-function priceHTML(v){const d=v.old>v.price?v.old-v.price:0,c=cardOf(v);
-  return `${d?`<span class="oldp">${rub(v.old)}</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pcash">при оплате наличными</small><small class="pm">По карте, в рассрочку, по счёту: <b>${rub(c)}</b> · от ${rub(c/MONTHS_DEF)}/мес</small>`}
+/* Одна цена без пометок о способе оплаты (так требует закон): крупно — цена из столбца «Цена»,
+   зачёркнуто — бо́льшая из «Старой цены» и «Цены по карте». Что это скидка за наличные — проговаривают менеджеры. */
+const strikeOf=v=>Math.max(v.old||0,cardOf(v));
+function priceHTML(v){const s=strikeOf(v),c=cardOf(v);
+  return `${s>v.price?`<span class="oldp">${rub(s)}</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от ${rub(c/MONTHS_DEF)}/мес</small>`}
 function cardHTML(p){const opts=p.opt.filter(Boolean);
   return `<article class="prod" data-id="${p.id}">
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
@@ -732,8 +735,8 @@ if(YM){
    <div class="md-opt"><span>Цвет: <b>${htm(c.name)}</b></span><div class="dots">${p.cols.map((x,i)=>`<button type="button" data-ci="${i}" style="--c:${htm(x.hex)}" title="${htm(x.name)}" aria-pressed="${i===st.ci}"></button>`).join('')}</div></div>
    ${p.mem.filter(Boolean).length?`<div class="md-opt"><span>Память</span><div class="mem">${p.mem.map((x,i)=>`<button type="button" data-mi="${i}" aria-pressed="${i===st.mi}">${htm(x)}</button>`).join('')}</div></div>`:''}
    ${p.opt.filter(Boolean).length>1?`<div class="md-opt"><span>${p.cat==='iPhone'?'SIM':'Вариант'}</span><div class="mem opt">${p.opt.map((x,i)=>`<button type="button" data-oi="${i}" aria-pressed="${i===st.oi}">${htm(x||'Стандарт')}</button>`).join('')}</div></div>`:''}
-   <div class="md-price">${d?`<span class="oldp">${rub(v.old)}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}<small>при оплате наличными</small>
-    <p>По карте, в рассрочку, по счёту: <b>${rub(card)}</b> · рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
+   <div class="md-price">${strikeOf(v)>v.price?`<span class="oldp">${rub(strikeOf(v))}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}
+    <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
    <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до −99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
@@ -747,7 +750,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 99 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
-<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)} при оплате наличными. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
+<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)}. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
     document.title=`Купить ${name} в Ханты-Мансийске — цена от ${rub(p.min)} | ЮZ Store`;
   }
   YM.addEventListener('click',e=>{const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
@@ -755,7 +758,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
     const p=P.find(x=>x.n===name);if(!p)return;const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);
     if(e.target.closest('#mdVid')){openVideo(c.video,name+', '+c.name);return}
     if(e.target.closest('#mdCart')){addCart({n:name,mem:[mem,opt].filter(Boolean).join(', '),col:c.name,price:v.price,stock:'да'});return}
-    if(e.target.closest('#mdOne')){openLead({eyebrow:'Покупка в 1 клик',title:name,lines:[[name+', '+[mem,opt,c.name].filter(Boolean).join(', '),rub(v.price)+' наличными']],source:'1 клик: '+name})}
+    if(e.target.closest('#mdOne')){openLead({eyebrow:'Покупка в 1 клик',title:name,lines:[[name+', '+[mem,opt,c.name].filter(Boolean).join(', '),rub(v.price)]],source:'1 клик: '+name})}
   });
   window.renderModel=()=>{pick();draw()};
 }
