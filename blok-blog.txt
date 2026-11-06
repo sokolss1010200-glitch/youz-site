@@ -1,9 +1,9 @@
-<!-- ЮZ: страница «blog» с готовым текстом для поисковиков (снимок коммита c6c3b17). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<!-- ЮZ: страница «blog» с готовым текстом для поисковиков (снимок коммита 1b76364). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
-<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@c6c3b172f908a718218eab3fd57bfa487f41ef7b/youz.css?v=c6c3b17">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@1b76364427682adf16d305431e4cc0f0bd3b5146/youz.css?v=1b76364">
 <div id="yz-root">
 <div id="hdrSpace" aria-hidden="true"></div>
 <header class="top" id="hdr">
@@ -76,13 +76,14 @@
 <div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
 </div>
 <script>
-(function(){var R='sokolss1010200-glitch/youz-site',P='pages/blog.html',K='yz-ref',S='c6c3b172f908a718218eab3fd57bfa487f41ef7b';
+(function(){var R='sokolss1010200-glitch/youz-site',P='pages/blog.html',K='yz-ref',S='1b76364427682adf16d305431e4cc0f0bd3b5146',H=204282325;
+function hs(t){var h=0;for(var i=0;i<t.length;i++)h=(Math.imul(h,31)+t.charCodeAt(i))>>>0;return h}
 function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
 function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
 if(ref===S)return js(B,q);
 var css=new Promise(function(ok){var l=document.createElement('link');l.rel='stylesheet';l.href=B+'youz.css'+q;l.onload=l.onerror=ok;document.head.appendChild(l)});
 Promise.all([fetch(B+P+q).then(function(r){if(!r.ok)throw r.status;return r.text()}),css]).then(function(a){
-document.getElementById('yz-root').innerHTML=a[0];var o=document.getElementById('yz-css0');if(o)o.remove();js(B,q)})
+if(hs(a[0])!==H)document.getElementById('yz-root').innerHTML=a[0];var o=document.getElementById('yz-css0');if(o)o.remove();js(B,q)})
 .catch(function(){go(S)})}
 var c;try{c=JSON.parse(sessionStorage.getItem(K))}catch(e){}
 if(c&&c.r&&Date.now()-c.t<300000)return go(c.r);
