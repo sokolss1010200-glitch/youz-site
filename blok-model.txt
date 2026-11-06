@@ -1,9 +1,10 @@
-<!-- ЮZ: страница «model» с готовым текстом для поисковиков (снимок коммита 91db196). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<!-- ЮZ: страница «model» с готовым текстом для поисковиков (снимок коммита d265a3d). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
-<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@91db196b3e4b208e056482b8ada1774d62174e15/youz.css?v=91db196">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@d265a3d571c33b799fa752f50ddc777b38d6f3e8/youz.css?v=d265a3d">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ElectronicsStore", "@id": "https://youz.store/#store", "name": "ЮZ Store", "url": "https://youz.store", "telephone": "+7 (3467) 36-24-04", "image": "https://static.tildacdn.com/tila3739-3731-4033-a132-373738613036/iphone-18-pro-burgun.webp", "address": {"@type": "PostalAddress", "streetAddress": "ул. Комсомольская, 49", "addressLocality": "Ханты-Мансийск", "addressRegion": "Ханты-Мансийский автономный округ — Югра", "addressCountry": "RU"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "20:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "10:00", "closes": "18:00"}], "sameAs": ["https://yandex.ru/maps/org/yuz/103143665209/", "https://2gis.ru/kh_mansiysk/firm/70000001042751106", "https://vk.com/youz.ru_hm", "https://t.me/uzstorehm"]}</script>
 <div id="yz-root">
 <div id="hdrSpace" aria-hidden="true"></div>
 <header class="top" id="hdr">
@@ -65,7 +66,7 @@
 <div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
 </div>
 <script>
-(function(){var R='sokolss1010200-glitch/youz-site',P='model.html',K='yz-ref',S='91db196b3e4b208e056482b8ada1774d62174e15',H=3285743624;
+(function(){var R='sokolss1010200-glitch/youz-site',P='model.html',K='yz-ref',S='d265a3d571c33b799fa752f50ddc777b38d6f3e8',H=3285743624;
 function hs(t){var h=0;for(var i=0;i<t.length;i++)h=(Math.imul(h,31)+t.charCodeAt(i))>>>0;return h}
 function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
 function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
