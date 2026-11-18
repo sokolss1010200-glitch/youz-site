@@ -246,11 +246,14 @@ if(!reduce && matchMedia('(hover:hover)').matches){
 /* ================= ДАННЫЕ ИЗ GOOGLE ТАБЛИЦЫ =================
    Вставьте ссылки «Опубликовать в интернете → CSV» для каждого листа.
    Пока ссылки пустые, сайт показывает данные ниже (DEF). */
+/* Данные таблицы берём через веб-приложение Apps Script («Сайт.gs»): сама таблица закрыта,
+   наружу уходят только листы «Товары», «Акции», «Trade-in» и строки «Рассрочка»/«Trade-in» из «Настроек». */
+const WEBAPP = "https://script.google.com/macros/s/AKfycbwixokKVJTAXbBrUyAKSM4PXlGPJ7oj_ehd-aBUDloCnUZ5aDlMx4P5YFgNqH3rljSD/exec";
 const SHEETS = {
-  products: "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D1%8B",
-  promos:   "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%90%D0%BA%D1%86%D0%B8%D0%B8",
-  tradein:  "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=Trade-in",
-  settings: "https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8"
+  products: WEBAPP+"?s=products",
+  promos:   WEBAPP+"?s=promos",
+  tradein:  WEBAPP+"?s=tradein",
+  settings: WEBAPP+"?s=settings"
 };
 /* TRADE-IN: максимальная оценка (состояние «как новый», SIM + eSIM) по модели и памяти, ₽.
    Сверено с damprodam.ru/tradein 6 ноября 2026. Коэффициенты: TI_COND — состояние, TI_ESIM — «только eSIM».
