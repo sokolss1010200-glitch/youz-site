@@ -19,7 +19,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import csv, io, os, sys, urllib.request
-          U = 'https://docs.google.com/spreadsheets/d/16QeQbILkJoB1NeopD7ZByXGh5jY1rRlx66aHSyiyuA0/gviz/tq?tqx=out:csv&sheet=%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D1%8B'
+          U = 'https://script.google.com/macros/s/AKfycbwixokKVJTAXbBrUyAKSM4PXlGPJ7oj_ehd-aBUDloCnUZ5aDlMx4P5YFgNqH3rljSD/exec?s=products'
           new = urllib.request.urlopen(U, timeout=60).read().decode('utf-8')
           n = lambda t: max(0, len(list(csv.reader(io.StringIO(t)))) - 1)
           p = 'data/products.csv'
