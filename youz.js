@@ -158,8 +158,8 @@ const IMG = {
   "yz-a094": "https://static.tildacdn.com/tila3566-6636-4737-a137-646131616233/yz-a094.webp",
   "yz-a095": "https://static.tildacdn.com/tila3135-3334-4239-a262-633135363931/yz-a095.webp",
   "yz-a096": "https://static.tildacdn.com/tila3766-3337-4266-b433-386338396139/yz-a096.webp",
-  "yz-duo-seq-1": YZB+"img/yz-duo-seq-1.jpg",
-  "yz-duo-seq-2": YZB+"img/yz-duo-seq-2.jpg",
+  "yz-duo-seq-1": YZB+"img/yz-duo-seq-1.webp",
+  "yz-duo-seq-2": YZB+"img/yz-duo-seq-2.webp",
   "airpods-5": "https://static.tildacdn.com/tila6638-6534-4330-a531-623730366639/airpods-5.webp",
   "airpods-max-orange": "https://static.tildacdn.com/tila3661-6336-4432-a163-633462396238/airpods-max-orange.webp",
   "airpods-max-starlight": "https://static.tildacdn.com/tila3935-3330-4134-b162-393963396265/airpods-max-starligh.webp",
@@ -814,7 +814,9 @@ if(document.getElementById('duoScroll')){
 const ds=document.getElementById('duoScroll'), duo=document.getElementById('duoEl'), dsec=document.getElementById('duo'), dRange=document.getElementById('duoRange');
 const cv2=document.getElementById('duoCv'),cx=cv2.getContext('2d'),FW=720,FH=478,COLS=8,PER=48,NF=91,sheets=[];let loaded=0,lastF=-1;
 if(!IMG['yz-duo-seq-1']||!IMG['yz-duo-seq-2']){const fb=new Image();fb.onload=()=>{document.getElementById('duoLoad').hidden=true;const r=Math.min(FW/fb.width,FH/fb.height)*.9;cx.clearRect(0,0,FW,FH);cx.drawImage(fb,(FW-fb.width*r)/2,(FH-fb.height*r)/2,fb.width*r,fb.height*r)};fb.src=IMG['iphone-duo-star-white-open']||'';document.querySelector('.fold-ctl').hidden=true}
-else ['yz-duo-seq-1','yz-duo-seq-2'].forEach((k,i)=>{const im=new Image();im.crossOrigin='anonymous';im.decoding='async';im.onload=()=>{loaded++;if(loaded===2){document.getElementById('duoLoad').hidden=true;lastF=-1;draw(dP);warm()}};im.src=IMG[k]||'';sheets[i]=im});
+else{/* кадры раскрытия Duo (1,1 МБ) грузим, только когда блок близко к экрану — главная открывается быстрее */
+const loadSheets=()=>['yz-duo-seq-1','yz-duo-seq-2'].forEach((k,i)=>{const im=new Image();im.crossOrigin='anonymous';im.decoding='async';im.onload=()=>{loaded++;if(loaded===2){document.getElementById('duoLoad').hidden=true;lastF=-1;draw(dP);warm()}};im.src=IMG[k]||'';sheets[i]=im});
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();loadSheets()}},{rootMargin:'900px 0px'});io.observe(cv2)}else loadSheets()}
 function draw(p){if(loaded<2)return;const f=Math.min(NF-1,Math.round(p*(NF-1)));if(f===lastF)return;lastF=f;const sh=sheets[f<PER?0:1],k=f%PER;cx.clearRect(0,0,FW,FH);const c=cutF(f,sh,k);if(c)cx.drawImage(c,0,0);else cx.drawImage(sh,(k%COLS)*FW,Math.floor(k/COLS)*FH,FW,FH,0,0,FW,FH)}
 /* Кадры в JPG на белом: убираем белый фон, связанный с краем кадра (руки и телефон остаются), края смягчаем. Последние 24 кадра держим в памяти; соседние кадры готовим заранее, пока браузер свободен */
 const CUT=new Map();let cutOff=false;
