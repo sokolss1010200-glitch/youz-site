@@ -568,6 +568,7 @@ function sendLead(d){return new Promise(res=>{const f=tildaForm();
     if(okV){clearInterval(iv);res('ok')}else if(erV||n>40){clearInterval(iv);res(okV?'ok':(n>40?'ok?':'err'))}},200)})}
 leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=document.getElementById('leadName').value.trim();const phone=document.getElementById('leadPhone').value.trim();const err=document.getElementById('leadErr');
   if(phone.replace(/\D/g,'').length<10){err.hidden=false;yzGoal('lead_error',{why:'телефон',source:leadCtx.source||''});err.textContent='Введите телефон полностью, например +7 900 123-45-67.';return}
+  const ag=document.getElementById('leadAgree');if(ag&&!ag.checked){err.hidden=false;yzGoal('lead_error',{why:'согласие',source:leadCtx.source||''});err.textContent='Отметьте согласие на обработку персональных данных.';ag.focus();return}
   err.hidden=true;const btn=document.getElementById('leadBtn');btn.disabled=true;btn.textContent='Отправляем…';
   const r=await sendLead({name,phone,comment:composeComment()});btn.disabled=false;
   if(r==='err'){err.hidden=false;yzGoal('lead_error',{why:'отправка',source:leadCtx.source||''});err.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';btn.textContent='Отправить ещё раз';return}
@@ -585,6 +586,7 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=docum
     openLead({eyebrow:'Подарок',title:'Получите скидку на первую покупку',lines:[['Оставьте имя и телефон — менеджер перезвонит и назовёт вашу скидку','']],btn:'Получить скидку',source:'Баннер: скидка на первую покупку'})},40000)})();
 const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',async e=>{e.preventDefault();const v=document.getElementById('cbPhone').value.trim();const m=document.getElementById('cbMsg');m.hidden=false;
   if(v.replace(/\D/g,'').length<10){m.textContent='Введите номер полностью, например +7 900 123-45-67.';return}
+  const ca=document.getElementById('cbAgree');if(ca&&!ca.checked){m.textContent='Отметьте согласие на обработку персональных данных.';ca.focus();return}
   m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});if(r!=='err')yzGoal('lead',{source:'Обратный звонок'});
   m.textContent=r==='err'?'Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.':r==='demo'?'Тестовый режим: форма Тильды не найдена.':'Спасибо! Перезвоним в течение 15 минут.'});
 

@@ -894,3 +894,9 @@ footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 /* Платёж в рассрочку: сумма чуть крупнее и плотнее подписи, но тише основной цены */
 .prod .price .pm b{font-size:1.15em;font-weight:600;color:var(--ink)}
 .md-price p b{font-size:1.1em;font-weight:600}
+
+/* согласие на обработку ПДн (152-ФЗ): отдельная галочка, по умолчанию снята */
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4;color:inherit;opacity:.85;margin:4px 0 12px;cursor:pointer;text-align:left}
+.agree input{flex:none;width:20px;height:20px;margin:0;accent-color:#C8EA1A;cursor:pointer}
+.agree a{text-decoration:underline;color:inherit}
+.agree-d{color:#C9CBC1;margin:10px 4px 0}
