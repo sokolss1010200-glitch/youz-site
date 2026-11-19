@@ -156,10 +156,9 @@
     </div>
     <form class="calc rv-in" id="calc" style="--d:.1s">
       <h3>Посчитайте доплату</h3>
-      <div class="field-row"><div class="field"><label for="old">Что сдаёте</label>
-        <select id="old"></select></div>
-        <div class="field"><label for="oldMem">Память</label>
-        <select id="oldMem"></select></div></div>
+      <div class="field"><span class="lbl" id="oldL">Что сдаёте</span>
+        <div class="pick" id="oldPick" role="group" aria-labelledby="oldL"></div>
+        <select id="old" hidden aria-hidden="true" tabindex="-1"></select><select id="oldMem" hidden aria-hidden="true" tabindex="-1"></select></div>
       <div class="field"><span class="lbl" id="simL">SIM-карта</span>
         <div class="seg" role="group" aria-labelledby="simL" id="sim">
           <button type="button" data-s="both" aria-pressed="true">SIM + eSIM</button><button type="button" data-s="esim" aria-pressed="false">Только eSIM</button>
@@ -168,8 +167,9 @@
         <div class="seg seg4" role="group" aria-labelledby="condL" id="cond">
           <button type="button" data-c="best" aria-pressed="true">Как новый</button><button type="button" data-c="well" aria-pressed="false">Хорошее</button><button type="button" data-c="normal" aria-pressed="false">Среднее</button><button type="button" data-c="bad" aria-pressed="false">Битый</button>
         </div></div>
-      <div class="field"><label for="neu">На что меняете</label>
-        <select id="neu"></select></div>
+      <div class="field"><span class="lbl" id="neuL">На что меняете</span>
+        <div class="pick" id="neuPick" role="group" aria-labelledby="neuL"></div>
+        <select id="neu" hidden aria-hidden="true" tabindex="-1"></select></div>
       <div class="field"><span class="lbl" id="termL">Рассрочка</span>
         <div class="seg" role="group" aria-labelledby="termL" id="term"><button type="button" data-m="12" aria-pressed="false">12 мес</button><button type="button" data-m="24" aria-pressed="false">24 мес</button><button type="button" data-m="36" aria-pressed="true">36 мес</button></div></div>
       <div class="result" aria-live="polite">

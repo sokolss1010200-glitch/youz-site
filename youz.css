@@ -908,3 +908,27 @@ footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 .oldp+.promo-l{margin:3px 0 2px}
 .md-price p.promo-n{font-size:13px}
 .md-price p.promo-n a{color:inherit;text-decoration:underline}
+
+/* вся карточка товара кликабельна (ведёт на страницу модели), кнопки внутри работают отдельно */
+.prod{cursor:pointer}
+.prod h3 a{color:inherit;text-decoration:none}
+.prod:hover h3 a{text-decoration:underline;text-underline-offset:3px}
+
+/* trade-in: выбор плашками (серия → модель → цвет → память → SIM) */
+.pick{display:grid;gap:8px}
+.pk-row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pk-row button{min-height:38px;padding:0 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);font-family:var(--f-body);font-weight:600;font-size:13px;line-height:1;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.pk-row button:hover{border-color:color-mix(in srgb,var(--ink) 40%,var(--line))}
+.pk-row button[aria-pressed="true"]{border-color:var(--ink);background:var(--card)}
+.pk-row[data-k="os"] button[aria-pressed="true"],.pk-row[data-k="ns"] button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pk-row button:active{transform:scale(.96)}
+.pk-dots{gap:8px}
+.pk-dots button{width:28px;height:28px;min-height:28px;padding:0;border-radius:50%;border:0;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.pk-dots button[aria-pressed="true"]{background:var(--c);box-shadow:0 0 0 2px var(--card),0 0 0 3.5px var(--ink)}
+.pk-dots span{font-size:13px;color:var(--muted);margin-left:4px}
+.pk-sum{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:10px 14px 10px 10px;border-radius:var(--r-sm);background:var(--paper);border:1.5px solid var(--line);margin-top:2px}
+.pk-sum img,.pk-sum i{width:52px;height:52px;object-fit:contain;mix-blend-mode:multiply;display:block}
+.pk-sum b{font-size:14px;font-weight:700}
+.pk-sum small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.pk-sum .pk-price{font-family:var(--f-display);font-size:16px;letter-spacing:-.02em;white-space:nowrap}
+@media (max-width:560px){.pk-row button{min-height:36px;padding:0 10px;font-size:12.5px}.pk-sum{grid-template-columns:auto 1fr}.pk-sum .pk-price{grid-column:2}}

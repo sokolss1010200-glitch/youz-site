@@ -181,6 +181,14 @@ const IMG = {
   "iphone-duo-star-white-open": "https://static.tildacdn.com/tila6138-3833-4264-a663-643864366263/iphone-duo-star-whit.webp",
   "watch-s12": "https://static.tildacdn.com/tila3033-6430-4933-b661-353062613138/watch-s12.webp",
 };
+/* Фото Apple в высоком разрешении (оригиналы с сервера Apple, до 1100 px, img/yz-hNNN.webp).
+   Заменяют уменьшенные копии yz-aNNN с Тильды (270–800 px), которые на больших карточках выглядели мыльно. */
+const HI=n=>YZB+'img/yz-h'+n+'.webp';
+for(let i=1;i<=96;i++){const n=String(i).padStart(3,'0');IMG['yz-a'+n]=HI(n)}
+Object.assign(IMG,{"iphone-18-pro-black":HI('063'),"iphone-18-pro-burgundy":HI('064'),"iphone-18-pro-glacier":HI('065'),"iphone-18-pro-silver":HI('066'),
+  "iphone-18-pro-max-black":HI('067'),"iphone-18-pro-max-burgundy":HI('068'),"iphone-18-pro-max-glacier":HI('069'),"iphone-18-pro-max-silver":HI('070'),
+  "iphone-17-pro-cosmicorange":HI('054'),"iphone-17-pro-deepblue":HI('055'),"iphone-17-pro-silver":HI('056'),
+  "iphone-17-black":HI('049'),"iphone-17-lavender":HI('050'),"iphone-17-sage":HI('052')});
 const PHOTOS = {
   hero: { "Burgundy":IMG["iphone-18-pro-burgundy"], "Glacier":IMG["iphone-18-pro-glacier"], "Silver":IMG["iphone-18-pro-silver"], "Black":IMG["iphone-18-pro-black"] },
   duo:  { "Star White":IMG["iphone-duo-star-white-open"], "Night Sky":IMG["iphone-duo-night-sky-open"] },
@@ -296,7 +304,7 @@ async function loadSheets(){
 /* фото с GitHub: замена старых и фото для моделей без фото в таблице */
 const PHOTO_FIX={"yz-a026": YZB+"img/yz-b001.webp", "yz-a027": YZB+"img/yz-b002.webp", "yz-a028": YZB+"img/yz-b003.webp", "yz-a029": YZB+"img/yz-b004.webp", "yz-a030": YZB+"img/yz-b005.webp", "yz-a031": YZB+"img/yz-b006.webp", "yz-a032": YZB+"img/yz-b007.webp", "yz-a033": YZB+"img/yz-b008.webp", "yz-a034": YZB+"img/yz-b009.webp", "yz-a035": YZB+"img/yz-b010.webp", "yz-a036": YZB+"img/yz-b011.webp", "yz-a037": YZB+"img/yz-b012.webp", "yz-a040": YZB+"img/yz-b013.webp", "yz-a041": YZB+"img/yz-b014.webp", "yz-a042": YZB+"img/yz-b015.webp", "yz-a043": YZB+"img/yz-b016.webp", "yz-a044": YZB+"img/yz-b017.webp", "yz-a045": YZB+"img/yz-b018.webp", "yz-a054": YZB+"img/yz-b019.webp", "yz-a055": YZB+"img/yz-b020.webp", "yz-a056": YZB+"img/yz-b021.webp", "yz-a057": YZB+"img/yz-b022.webp", "yz-a058": YZB+"img/yz-b023.webp", "yz-a059": YZB+"img/yz-b024.webp", "yz-a087": YZB+"img/yz-b025.webp", "yz-a088": YZB+"img/yz-b026.webp", "yz-a090": YZB+"img/yz-b027.webp", "yz-a091": YZB+"img/yz-b028.webp", "yz-a092": YZB+"img/yz-b029.webp", "yz-a093": YZB+"img/yz-b030.webp", "yz-a094": YZB+"img/yz-b031.webp", "yz-a095": YZB+"img/yz-b032.webp", "yz-a096": YZB+"img/yz-b033.webp"};
 const PHOTO_EXTRA={"Samsung Galaxy S26|": YZB+"img/yz-c001.webp", "Samsung Galaxy S26 FE|": YZB+"img/yz-c001.webp", "Samsung Galaxy S26 Ultra|": YZB+"img/yz-c002.webp", "Samsung Galaxy S26+|": YZB+"img/yz-c001.webp", "Samsung Galaxy S25|": YZB+"img/yz-c003.webp", "Samsung Galaxy S25 FE|": YZB+"img/yz-c003.webp", "Samsung Galaxy S25 Ultra|": YZB+"img/yz-c004.webp", "Samsung Galaxy Z Flip 8|": YZB+"img/yz-c005.webp", "Samsung Galaxy Z Fold 8|": YZB+"img/yz-c006.webp", "Samsung Galaxy Z Fold 8 Ultra|": YZB+"img/yz-c006.webp", "Samsung Galaxy Z Flip 7 FE|": YZB+"img/yz-c005.webp", "Samsung Galaxy Z Fold 7|": YZB+"img/yz-c006.webp", "Google Pixel 11 Pro|": YZB+"img/yz-c007.webp", "Google Pixel 11 Pro Fold|": YZB+"img/yz-c008.webp", "Google Pixel 11 Pro XL|": YZB+"img/yz-c007.webp", "Google Pixel 10 Pro|": YZB+"img/yz-c007.webp", "Honor 600|": YZB+"img/yz-c009.webp", "Honor 600 Lite|": YZB+"img/yz-c009.webp", "Honor 600 Pro|": YZB+"img/yz-c009.webp", "Honor 400|": YZB+"img/yz-c010.webp", "Honor X9d|": YZB+"img/yz-c011.webp", "Honor X9e Pro|": YZB+"img/yz-c011.webp", "Honor Magic 8 Pro|": YZB+"img/yz-c012.webp", "Honor X8d|": YZB+"img/yz-c013.webp", "Honor X7e|": YZB+"img/yz-c013.webp", "Honor X6e|": YZB+"img/yz-c013.webp", "Honor Turbo|": YZB+"img/yz-c013.webp", "Huawei Pura 90S Pro|": YZB+"img/yz-c014.webp", "Huawei Pura 90S Pro Max|": YZB+"img/yz-c014.webp", "Huawei Mate 80 Pro|": YZB+"img/yz-c015.webp", "Huawei Pura 80|": YZB+"img/yz-c014.webp", "Huawei Pura 80 Ultra|": YZB+"img/yz-c014.webp", "Huawei Nova 16s|": YZB+"img/yz-c016.webp", "Huawei Nova 16s Pro|": YZB+"img/yz-c016.webp", "Huawei Nova 16z|": YZB+"img/yz-c016.webp", "Huawei Nova 15|": YZB+"img/yz-c016.webp", "Huawei Nova 15 Max|": YZB+"img/yz-c016.webp", "Huawei Nova 15 Pro|": YZB+"img/yz-c016.webp", "Huawei Nova 14i|": YZB+"img/yz-c016.webp", "Redmi 17|": YZB+"img/yz-c017.webp", "Redmi Note 17|": YZB+"img/yz-c018.webp", "Redmi Note 17 Pro|": YZB+"img/yz-c018.webp", "Redmi Note 17 Pro Max|": YZB+"img/yz-c018.webp", "Xiaomi 17|": YZB+"img/yz-c019.webp", "Xiaomi 17 Ultra|": YZB+"img/yz-c019.webp", "Xiaomi 17T|": YZB+"img/yz-c019.webp", "Xiaomi 17T Pro|": YZB+"img/yz-c019.webp", "Redmi Note 15|": YZB+"img/yz-c018.webp", "Redmi Note 15 Pro|": YZB+"img/yz-c018.webp", "Redmi Note 15 Pro+|": YZB+"img/yz-c018.webp", "Xiaomi 15T Pro|": YZB+"img/yz-c019.webp", "POCO F9 Pro|": YZB+"img/yz-c020.webp", "POCO F9 Ultra|": YZB+"img/yz-c020.webp", "POCO F8 Pro|": YZB+"img/yz-c020.webp", "POCO F8 Ultra|": YZB+"img/yz-c020.webp", "POCO X8|": YZB+"img/yz-c020.webp", "POCO X8 Pro|": YZB+"img/yz-c020.webp", "POCO X8 Pro Max|": YZB+"img/yz-c020.webp", "POCO X8s|": YZB+"img/yz-c020.webp", "POCO F7 Pro|": YZB+"img/yz-c020.webp", "POCO X7|": YZB+"img/yz-c020.webp", "Redmi A7 Pro|": YZB+"img/yz-c017.webp", "POCO X6|": YZB+"img/yz-c020.webp", "Xiaomi MIX Flip|": YZB+"img/yz-c021.webp", "Marshall Major V Black|": YZB+"img/yz-c022.webp", "Marshall Major V Blue|": YZB+"img/yz-c022.webp", "Marshall Major V Brown|": YZB+"img/yz-c022.webp", "Marshall Major V Cream|": YZB+"img/yz-c022.webp", "Coros Pace 4 Black Silicone|": YZB+"img/yz-c023.webp", "Coros Pace 4 White Silicone|": YZB+"img/yz-c023.webp", "Ray-Ban Meta Blayzer Optics Gen 2|": YZB+"img/yz-c024.webp", "Ray-Ban Meta Headliner Gen 2|": YZB+"img/yz-c024.webp", "Ray-Ban Meta Scriber Optics Gen 2|": YZB+"img/yz-c024.webp", "Ray-Ban Meta Skyler Gen 2|": YZB+"img/yz-c024.webp", "Ray-Ban Meta Wayfarer Gen 2|": YZB+"img/yz-c024.webp", "DJI Osmo Mobile 8|": YZB+"img/yz-c025.webp", "DJI Osmo Mobile 8 Tracker|": YZB+"img/yz-c025.webp", "DJI Osmo Mobile 8P|": YZB+"img/yz-c025.webp", "DJI Osmo Mobile 8P Advanced Tracking|": YZB+"img/yz-c025.webp", "DJI Osmo Mobile 8P Creator|": YZB+"img/yz-c025.webp", "DJI Osmo Mobile 7P|": YZB+"img/yz-c025.webp", "DJI Osmo Action 6 Adventure|": YZB+"img/yz-c026.webp", "DJI Osmo Action 6 Standard|": YZB+"img/yz-c026.webp", "DJI Osmo Mobile 6|": YZB+"img/yz-c027.webp", "DJI Osmo Action 5 Pro Adventure|": YZB+"img/yz-c028.webp", "DJI Osmo Action 5 Pro Standard|": YZB+"img/yz-c028.webp", "DJI Osmo Action 4 Adventure|": YZB+"img/yz-c029.webp", "DJI Osmo Action 4 Pro Adventure|": YZB+"img/yz-c029.webp", "DJI Osmo Pocket 4|": YZB+"img/yz-c030.webp", "DJI Osmo Pocket 4 Creator|": YZB+"img/yz-c030.webp", "DJI Osmo Pocket 4P Standard|": YZB+"img/yz-c030.webp", "DJI Osmo Pocket 4P Vlog|": YZB+"img/yz-c030.webp", "DJI RS 4 Pro|": YZB+"img/yz-c031.webp", "DJI Osmo Pocket 3 Creator|": YZB+"img/yz-c032.webp", "DJI Osmo Pocket 3 Standard|": YZB+"img/yz-c032.webp", "GoPro Mission 1|": YZB+"img/yz-c033.webp", "GoPro Mission 1 Pro Grip Edition|": YZB+"img/yz-c033.webp", "GoPro Mission Pro 1|": YZB+"img/yz-c033.webp", "Nintendo Switch OLED 64GB Neon Red/Blue|": YZB+"img/yz-c034.webp", "Nintendo Switch OLED 64GB White|": YZB+"img/yz-c034.webp", "Nintendo Switch 2|": YZB+"img/yz-c035.webp", "Nintendo Switch (Extended Battery Ver) Neon Blue/Red|": YZB+"img/yz-c036.webp", "Nintendo Switch Lite Coral|": YZB+"img/yz-c037.webp", "Nintendo Switch Lite Torquosie|": YZB+"img/yz-c037.webp", "PS5 Slim Disk 1TB GHOST of YOTEI Limited Edition|": YZB+"img/yz-c038.webp", "PS5 VR2|": YZB+"img/yz-c039.webp", "Steam Deck OLED 512GB|": YZB+"img/yz-c040.webp", "Xbox Series S 512GB (White)|": YZB+"img/yz-c041.webp", "Xbox Series S 1TB (White)|": YZB+"img/yz-c041.webp", "Xbox X 1TB Digital (White)|": YZB+"img/yz-c042.webp", "DualSense 30th Limited|": YZB+"img/yz-c043.webp", "DualSense God of War 20th Anniversary|": YZB+"img/yz-c043.webp", "DualSense James Bond 007|": YZB+"img/yz-c043.webp", "DualSense PS5 Black|": YZB+"img/yz-c043.webp", "DualSense PS5 Blue|": YZB+"img/yz-c043.webp", "DualSense PS5 Camouflage|": YZB+"img/yz-c043.webp", "DualSense PS5 Chroma Indigo|": YZB+"img/yz-c043.webp", "DualSense PS5 Chroma Pearl|": YZB+"img/yz-c043.webp", "DualSense PS5 Chroma Teal|": YZB+"img/yz-c043.webp", "DualSense PS5 Cobalt Blue|": YZB+"img/yz-c043.webp", "DualSense PS5 Pink|": YZB+"img/yz-c043.webp", "DualSense PS5 Purple|": YZB+"img/yz-c043.webp", "DualSense PS5 Red|": YZB+"img/yz-c043.webp", "DualSense PS5 Sterling Silver|": YZB+"img/yz-c043.webp", "DualSense PS5 Volcanic Red|": YZB+"img/yz-c043.webp", "DualSense PS5 White|": YZB+"img/yz-c043.webp", "DualSense Helldivers 2|": YZB+"img/yz-c043.webp", "DualSense Edge White|": YZB+"img/yz-c044.webp", "DualSense Fortnite|": YZB+"img/yz-c043.webp", "DualSense Genshin Impact|": YZB+"img/yz-c043.webp", "DualSense Ghost of Yotei Black|": YZB+"img/yz-c043.webp", "DualSense Icon Blue Edition|": YZB+"img/yz-c043.webp", "DualSense Last of Us Edition|": YZB+"img/yz-c043.webp", "DualSense Marathon|": YZB+"img/yz-c043.webp", "DualSense Monster Hunter Edition|": YZB+"img/yz-c043.webp", "DualSense Remix Green|": YZB+"img/yz-c043.webp", "DualSense Rhythm Blue|": YZB+"img/yz-c043.webp", "DualSense Techno Red|": YZB+"img/yz-c043.webp", "Apple USB-C 240W Charging Cable 2m|": YZB+"img/yz-c045.webp", "Apple USB-C 140W Power Adapter|": YZB+"img/yz-c046.webp", "Apple USB-C 96W Power Adapter|": YZB+"img/yz-c047.webp", "Apple USB-C 67W Power Adapter|": YZB+"img/yz-c048.webp", "Apple USB-C 61W Power Adapter|": YZB+"img/yz-c048.webp", "Apple USB-C 20W Power Adapter|": YZB+"img/yz-c049.webp", "AirTag 4Pack|": YZB+"img/yz-c050.webp", "AirTag 4Pack 2Gen|": YZB+"img/yz-c050.webp", "Magic Mouse 3 White|": YZB+"img/yz-c051.webp", "MagSafe Charger 2m|": YZB+"img/yz-c052.webp", "MagSafe Charger 1m|": YZB+"img/yz-c053.webp", "Apple Pencil Pro|": YZB+"img/yz-c054.webp", "Plaud NotePin (Gray)|": YZB+"img/yz-c055.webp"};
-function fixPhoto(u,model,col){const m=String(u||'').match(/(yz-a\d{3})/);if(m&&PHOTO_FIX[m[1]])return PHOTO_FIX[m[1]];return u||PHOTO_EXTRA[model+'|'+col]||PHOTO_EXTRA[model+'|']||''}
+function fixPhoto(u,model,col){const m=String(u||'').match(/yz-a(\d{3})/);if(m&&+m[1]>=1&&+m[1]<=96)return HI(m[1]);return u||PHOTO_EXTRA[model+'|'+col]||PHOTO_EXTRA[model+'|']||''}
 /* products (общий модуль: главная + каталог) */
 const CARD_PCT = 6;   // если в таблице нет «Цена по карте»: на сколько % дороже при оплате картой/в рассрочку/по счёту
 function videoEmbed(u){u=String(u||'').trim();let m;
@@ -375,7 +383,8 @@ function refreshCard(card){const {p,c,mem,opt}=cardState(card);const v=variant(p
   card.querySelector('.price').innerHTML=priceHTML(v);
   const vb=card.querySelector('.vbtn');if(vb)vb.hidden=!c.video;
   const d=v.old>v.price?strikeOf(v)-v.price:0;const dEl=card.querySelector('.t.d');if(d){dEl.hidden=false;dEl.textContent='−'+rub(d)}else dEl.hidden=true;
-  const cn=card.querySelector('.cname');if(cn)cn.textContent=c.name}
+  const cn=card.querySelector('.cname');if(cn)cn.textContent=c.name;
+  const a=card.querySelector('h3 a');if(a){if(!a.dataset.base)a.dataset.base=a.getAttribute('href');const [path,hash]=a.dataset.base.split('#');const q=new URLSearchParams();if(mem)q.set('mem',mem);if(opt)q.set('opt',opt);if(c&&c.name)q.set('c',c.name);a.href=path+(q.toString()?'?'+q:'')+(hash?'#'+hash:'')}}
 function bindGrid(g){g.addEventListener('click',e=>{
   const card=e.target.closest('.prod');if(!card)return;
   const dot=e.target.closest('.dots button');
@@ -385,6 +394,11 @@ function bindGrid(g){g.addEventListener('click',e=>{
   const vbt=e.target.closest('.vbtn');if(vbt){const {p,c}=cardState(card);openVideo(c.video,p.n+(c.name?', '+c.name:''));return}
   const a=e.target.closest('.add');
   if(a){const {p,c,mem,opt}=cardState(card);const v=variant(p,mem,opt,c.name);addCart({n:p.n,mem:[mem,opt].filter(Boolean).join(', '),col:c.name,price:v.price,stock:'да'});a.classList.add('done');a.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 12 5 5 9-10"/></svg>'}
+  if(e.target.closest('button,input,select,textarea,label,a'))return;
+  const link=card.querySelector('h3 a');if(!link)return;
+  if(e.metaKey||e.ctrlKey||e.shiftKey)window.open(link.href,'_blank');else location.href=link.href;
+});
+  g.addEventListener('auxclick',e=>{if(e.button!==1)return;const card=e.target.closest('.prod');if(!card||e.target.closest('button,input,select,textarea,label,a'))return;const link=card.querySelector('h3 a');if(link)window.open(link.href,'_blank')
 })}
 function fillGrid(g,items,emptyText){g.innerHTML=items.length?items.map(cardHTML).join(''):`<div class="empty">${emptyText||'Ничего не нашлось. Позвоните, привезём под заказ.'}</div>`;g.querySelectorAll('.prod').forEach(refreshCard)}
 
@@ -440,11 +454,51 @@ const old=document.getElementById('old'), oldMem=document.getElementById('oldMem
 let cond='best', sim='both', months=MONTHS_DEF;
 const memName=v=>v>=1000?(v/1000)+' ТБ':v+' ГБ';
 function fillMem(){const r=TI_PRICES[+old.value]||TI_PRICES[0];const prev=oldMem.value;oldMem.innerHTML=r[1].map(x=>`<option value="${x[1]}">${memName(x[0])}</option>`).join('');if([...oldMem.options].some(o=>o.value===prev))oldMem.value=prev}
-function fillTradein(){const prevN=neu.value;
-  if(!old.options.length){old.innerHTML=TI_PRICES.map((r,i)=>`<option value="${i}">${htm(r[0])}</option>`).join('');old.selectedIndex=Math.min(4,TI_PRICES.length-1);fillMem()}
-  neu.innerHTML=P.filter(p=>p.f==='iphone').map(p=>{const mem=p.mem[0];const v=Math.min(...p.cols.map(c=>variant(p,mem,p.opt[0]||'',c.name).price).filter(Boolean));return `<option value="${v}">${htm(p.n)}, ${htm(mem)}</option>`}).join('');
-  if([...neu.options].some(o=>o.value===prevN))neu.value=prevN;else if(neu.options[1])neu.selectedIndex=1;
-  calc()}
+/* Выбор телефона плашками вместо длинных списков: серия → модель → (цвет) → память → (SIM).
+   Скрытые <select id="old|oldMem|neu"> остаются хранилищем значений для расчёта и заявки. */
+const serOf=n=>{const m=String(n).match(/iPhone\s+(\d+|Air|Duo|SE)/i);return m?m[1]:'Другие'};
+const serRank=k=>({Duo:17.9,Air:16.9,SE:8}[k]??(+k||0));  /* 18, Duo, 17, Air, 16 … */
+const serLab=k=>/^\d+$/.test(k)?'iPhone '+k:'iPhone '+k;
+const shortN=n=>String(n).replace(/^iPhone\s+/,'')||n;
+const chipRow=(k,arr,cur,lab,aria)=>`<div class="pk-row" data-k="${k}" role="group" aria-label="${aria}">${arr.map((x,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===cur}">${htm(lab?lab(x):x)}</button>`).join('')}</div>`;
+function groupBy(list,nameOf){const g=[];list.forEach((x,i)=>{const k=serOf(nameOf(x));let s=g.find(y=>y.k===k);if(!s)g.push(s={k,items:[]});s.items.push(x)});return g.sort((a,b)=>serRank(b.k)-serRank(a.k))}
+const oldPick=document.getElementById('oldPick'), neuPick=document.getElementById('neuPick');
+let OSER=[], oSt={s:0,m:0}, NSER=[], nSt={s:0,m:'',c:'',mem:'',o:''};
+function renderOld(){if(!OSER.length)return;oSt.s=Math.min(oSt.s,OSER.length-1);const s=OSER[oSt.s];oSt.m=Math.min(oSt.m,s.items.length-1);
+  const idx=s.items[oSt.m];if(+old.value!==idx){old.value=idx;fillMem()}
+  oldPick.innerHTML=chipRow('os',OSER.map(x=>x.k),oSt.s,serLab,'Серия')+
+    (s.items.length>1?chipRow('om',s.items.map(i=>TI_PRICES[i][0]),oSt.m,shortN,'Модель'):'')+
+    chipRow('omem',[...oldMem.options].map(o=>o.text),oldMem.selectedIndex,null,'Память')}
+function renderNeu(){if(!NSER.length){neuPick.innerHTML='';return}
+  let si=NSER.findIndex(x=>x.k===nSt.s);if(si<0)si=0;const s=NSER[si];nSt.s=s.k;
+  const p=s.items.find(x=>x.n===nSt.m)||s.items[0];nSt.m=p.n;
+  const c=p.cols.find(x=>x.name===nSt.c)||p.cols[0];nSt.c=c.name;
+  const mems=p.mem.filter(Boolean),mem=mems.includes(nSt.mem)?nSt.mem:(mems[0]||'');nSt.mem=mem;
+  const opts=p.opt.filter(Boolean),opt=opts.includes(nSt.o)?nSt.o:(p.opt[0]||'');nSt.o=opt;
+  const v=variant(p,mem,opt,c.name),price=v.price||0,ph=photoOf(c);
+  neu.innerHTML=`<option value="${price}">${htm([p.n,mem,c.name,opt].filter(Boolean).join(', '))}</option>`;
+  neuPick.innerHTML=chipRow('ns',NSER.map(x=>x.k),si,serLab,'Серия')+
+    (s.items.length>1?chipRow('nm',s.items.map(x=>x.n),s.items.indexOf(p),shortN,'Модель'):'')+
+    (p.cols.length>1?`<div class="pk-row pk-dots" data-k="nc" role="group" aria-label="Цвет">${p.cols.map((x,i)=>`<button type="button" data-i="${i}" style="--c:${htm(x.hex)}" aria-pressed="${x===c}" aria-label="${htm(x.name)}" title="${htm(x.name)}"></button>`).join('')}<span>${htm(c.name)}</span></div>`:'')+
+    (mems.length>1?chipRow('nmem',p.mem,p.mem.indexOf(mem),null,'Память'):'')+
+    (opts.length>1?chipRow('no',p.opt,p.opt.indexOf(opt),x=>x||'Стандарт','SIM'):'')+
+    `<div class="pk-sum">${ph?`<img src="${htm(ph)}" alt="" loading="lazy">`:'<i></i>'}<div><b>${htm(p.n)}</b><small>${htm([mem,c.name,opt].filter(Boolean).join(' · '))}</small></div><b class="pk-price">${price?rub(price):'под заказ'}</b></div>`;
+  NSER._p=p}
+function fillTradein(){
+  if(!old.options.length){old.innerHTML=TI_PRICES.map((r,i)=>`<option value="${i}">${htm(r[0])}</option>`).join('');
+    OSER=groupBy(TI_PRICES.map((r,i)=>i),i=>TI_PRICES[i][0]);
+    const d=Math.min(4,TI_PRICES.length-1);oSt.s=OSER.findIndex(x=>x.items.includes(d));oSt.m=OSER[oSt.s].items.indexOf(d);old.value=d;fillMem()}
+  renderOld();
+  NSER=groupBy(P.filter(p=>p.f==='iphone'&&p.cols.length&&Object.values(p.v).some(x=>x.price)),p=>p.n);
+  if(!nSt.s&&NSER.length)nSt.s=NSER[0].k;
+  renderNeu();calc()}
+oldPick.addEventListener('click',e=>{const b=e.target.closest('.pk-row button');if(!b)return;const k=b.parentNode.dataset.k,i=+b.dataset.i;
+  if(k==='os'){oSt={s:i,m:0}}else if(k==='om'){oSt.m=i}else if(k==='omem'){oldMem.selectedIndex=i}
+  renderOld();calc()});
+neuPick.addEventListener('click',e=>{const b=e.target.closest('.pk-row button');if(!b)return;const k=b.parentNode.dataset.k,i=+b.dataset.i;
+  const s=NSER.find(x=>x.k===nSt.s)||NSER[0],p=NSER._p;
+  if(k==='ns'){nSt.s=NSER[i].k;nSt.m=''}else if(k==='nm'){nSt.m=s.items[i].n}else if(k==='nc'){nSt.c=p.cols[i].name}else if(k==='nmem'){nSt.mem=p.mem[i]}else if(k==='no'){nSt.o=p.opt[i]}
+  renderNeu();calc()});
 function seg(id,attr,cb){const g=document.getElementById(id);if(!g)return;g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));cb(b.dataset[attr]);calc()})}
 seg('cond','c',v=>cond=v); seg('sim','s',v=>sim=v); seg('term','m',v=>months=+v);
 window.yzSetTerm=v=>{months=v;document.querySelectorAll('#term button').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.m===v));};
