@@ -65,8 +65,9 @@
       <div class="field"><label for="leadName">Имя</label><input id="leadName" autocomplete="name" placeholder="Как к вам обращаться"></div>
       <div class="field"><label for="leadPhone">Телефон</label><input id="leadPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></div>
       <p class="lead-err" id="leadErr" hidden></p>
+      <label class="agree"><input type="checkbox" id="leadAgree"> <span>Даю <a href="/soglasie" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="/politika" target="_blank">политику конфиденциальности</a></span></label>
       <button class="btn btn-lime" type="submit" id="leadBtn">Отправить заявку</button>
-      <p class="fine">Перезвоним в рабочее время в течение 15 минут. Нажимая кнопку, вы соглашаетесь на <a href="/soglasie" target="_blank">обработку персональных данных</a>.</p>
+      <p class="fine">Перезвоним в рабочее время в течение 15 минут.</p>
     </form>
     <div class="lead-ok" id="leadOk" hidden><i>✓</i><h3>Заявка отправлена</h3><p id="leadOkT">Менеджер скоро свяжется с вами.</p><button class="btn btn-ink" type="button" id="leadDone">Хорошо</button></div>
   </div>
