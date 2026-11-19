@@ -719,6 +719,7 @@ if(CAT){
   let firstRender=true;
   window.renderCatalog=()=>{renderTabs();
     if(firstRender){firstRender=false;const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
+      /* страницы категорий (/iphone, /airpods …): раздел задан в data-cat */const dc=CAT.closest('#yzCat')?.dataset.cat||document.getElementById('yzCat')?.dataset.cat;if(!c&&dc)CS.cat=dc;
       try{const g=JSON.parse(sessionStorage.getItem('yz_go')||'null');sessionStorage.removeItem('yz_go');if(g){const m=g.model?P.find(p=>p.n===g.model):null;Object.assign(CS,{cat:g.cat||(m?m.cat:CS.cat),grp:g.grp||'',model:g.model||''})}}catch(e){}}
     renderSide();renderList()};
 }

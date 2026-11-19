@@ -934,3 +934,19 @@ footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 a.tg,a.vk{display:inline-grid;place-items:center}
 a.tg svg,a.vk svg{width:56%;height:56%}
 .socials a.tg{background:#26A5E4;color:#fff}.socials a.vk{background:#0077FF;color:#fff}
+
+/* SEO: «Популярные запросы», текст категорий и страниц моделей */
+.popq{padding:40px 0 8px}
+.popq h2{font-size:20px;margin-bottom:14px}
+.popq-l{display:flex;flex-wrap:wrap;gap:8px}
+.popq-l a{font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;transition:border-color .2s}
+.popq-l a:hover{border-color:var(--ink)}
+.cat-lead{max-width:70ch;color:var(--muted);margin:10px 0 14px;font-size:16px}
+.seo-cat{padding:48px 0 0}
+.seo-cat .wrap{max-width:880px}
+.seo-list{columns:2;column-gap:32px;padding-left:18px}
+.seo-list li{margin:4px 0;break-inside:avoid}
+.seo-tab{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:14px}
+.seo-tab th,.seo-tab td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
+.seo-pre img{max-width:320px;height:auto;display:block;margin:16px 0}
+@media (max-width:560px){.seo-list{columns:1}}
