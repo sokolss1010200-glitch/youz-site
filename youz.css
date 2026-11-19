@@ -900,3 +900,11 @@ footer{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
 .agree input{flex:none;width:20px;height:20px;margin:0;accent-color:#C8EA1A;cursor:pointer}
 .agree a{text-decoration:underline;color:inherit}
 .agree-d{color:#C9CBC1;margin:10px 4px 0}
+
+/* «Цена по акции»: подпись над зачёркнутой ценой; условия — у менеджера */
+.promo-l{display:inline-block;justify-self:start;align-self:start;font-family:var(--f-body);font-size:11px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;line-height:1;padding:4px 7px;border-radius:999px;background:#C8EA1A;color:#141414}
+.price-row .promo-l{flex-basis:100%;width:max-content;margin-bottom:2px}
+.md-price .promo-l{font-size:12px}
+.oldp+.promo-l{margin:3px 0 2px}
+.md-price p.promo-n{font-size:13px}
+.md-price p.promo-n a{color:inherit;text-decoration:underline}

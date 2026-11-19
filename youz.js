@@ -356,7 +356,7 @@ const cardOf=v=>v.card||Math.ceil(v.price*(1+CARD_PCT/100)/100)*100-10;
    зачёркнуто — бо́льшая из «Старой цены» и «Цены по карте». Что это скидка за наличные — проговаривают менеджеры. */
 const strikeOf=v=>Math.max(v.old||0,cardOf(v));
 function priceHTML(v){const s=strikeOf(v),c=cardOf(v);
-  return `${s>v.price?`<span class="oldp">${rub(s)}</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от <b>${rub(c/MONTHS_DEF)}/мес</b></small>`}
+  return `${s>v.price?`<span class="oldp">${rub(s)}</span><span class="promo-l">Цена по акции</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от <b>${rub(c/MONTHS_DEF)}/мес</b></small>`}
 function cardHTML(p){const opts=p.opt.filter(Boolean);
   return `<article class="prod" data-id="${p.id}">
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
@@ -740,8 +740,8 @@ if(YM){
    <div class="md-opt"><span>Цвет: <b>${htm(c.name)}</b></span><div class="dots">${p.cols.map((x,i)=>`<button type="button" data-ci="${i}" style="--c:${htm(x.hex)}" title="${htm(x.name)}" aria-pressed="${i===st.ci}"></button>`).join('')}</div></div>
    ${p.mem.filter(Boolean).length?`<div class="md-opt"><span>Память</span><div class="mem">${p.mem.map((x,i)=>`<button type="button" data-mi="${i}" aria-pressed="${i===st.mi}">${htm(x)}</button>`).join('')}</div></div>`:''}
    ${p.opt.filter(Boolean).length>1?`<div class="md-opt"><span>${p.cat==='iPhone'?'SIM':'Вариант'}</span><div class="mem opt">${p.opt.map((x,i)=>`<button type="button" data-oi="${i}" aria-pressed="${i===st.oi}">${htm(x||'Стандарт')}</button>`).join('')}</div></div>`:''}
-   <div class="md-price">${strikeOf(v)>v.price?`<span class="oldp">${rub(strikeOf(v))}</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}
-    <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p></div>
+   <div class="md-price">${strikeOf(v)>v.price?`<span class="oldp">${rub(strikeOf(v))}</span><span class="promo-l">Цена по акции</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}
+    <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p>${strikeOf(v)>v.price?'<p class="promo-n">Условия акции уточняйте у менеджера: <a href="tel:+73467362404">+7 (3467) 36-24-04</a></p>':''}</div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
    <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span>${p.cat==='iPhone'?'<span class="on">Чехол и стекло в подарок</span>':''}<a href="/trade-in">Trade-in до −99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
@@ -755,7 +755,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 99 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
-<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} — от ${rub(p.min)}. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
+<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} по акции — от ${rub(p.min)}, условия акции уточняйте у менеджера. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
     document.title=`Купить ${name} в Ханты-Мансийске — цена от ${rub(p.min)} | ЮZ Store`;
   }
   YM.addEventListener('click',e=>{const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
