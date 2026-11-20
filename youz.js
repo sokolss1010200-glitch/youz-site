@@ -372,13 +372,13 @@ function cardHTML(p){const opts=p.opt.filter(Boolean);
    ${p.mem.filter(Boolean).length?`<div class="mem" role="group" aria-label="Память">${p.mem.map((m,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(m)}</button>`).join('')}</div>`:''}
    ${opts.length>1?`<div class="mem opt" role="group" aria-label="Вариант">${p.opt.map((o,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(o||'Стандарт')}</button>`).join('')}</div>`:opts.length?`<div class="opt1">${htm(opts[0])}</div>`:''}
    <div class="foot"><div class="price"></div>
-   <button class="add add-t" type="button" aria-label="В корзину: ${htm(p.n)}">В корзину</button></div><div class="stk"></div>
+   <button class="add add-t" type="button" aria-label="В корзину: ${htm(p.n)}">В корзину</button></div>
  </article>`}
 function sel(card,cls,arr){const b=card.querySelector(cls+' [aria-pressed="true"]');return arr[b?+b.dataset.i:0]}
 function cardState(card){const p=P.find(x=>x.id==card.dataset.id);
   return {p,c:sel(card,'.dots',p.cols)||p.cols[0],mem:sel(card,'.mem:not(.opt)',p.mem)||'',opt:card.querySelector('.opt')?sel(card,'.opt',p.opt):p.opt[0]||''}}
 function refreshCard(card){const {p,c,mem,opt}=cardState(card);const v=variant(p,mem,opt,c.name);const st=stockTxt(v.stock,v.exact);
-  card.querySelector('.price').innerHTML=priceHTML(v);{const k=card.querySelector('.stk');if(k){k.className='stk '+st[0];k.textContent=st[1]}}
+  card.querySelector('.price').innerHTML=priceHTML(v);
   const vb=card.querySelector('.vbtn');if(vb)vb.hidden=!c.video;
   const d=v.old>v.price?strikeOf(v)-v.price:0;const dEl=card.querySelector('.t.d');if(d){dEl.hidden=false;dEl.textContent='−'+rub(d)}else dEl.hidden=true;
   const cn=card.querySelector('.cname');if(cn)cn.textContent=c.name;
@@ -785,6 +785,36 @@ const MODELS={
 };
 const MODEL_BY_SLUG={};Object.entries(MODELS).forEach(([n,m])=>MODEL_BY_SLUG[m.slug]=n);
 const modelUrl=n=>MODELS[n]?'/'+MODELS[n].slug:'';
+const DUO_FOLD=`<section class="duo-sec duo-md" id="duo" aria-label="Как складывается iPhone Duo">
+  <div class="duo-scroll" id="duoScroll">
+    <div class="duo-sticky">
+      <div class="wrap">
+        <div class="duo-copy">
+          <h2>Как складывается <em>iPhone Duo</em></h2>
+          <p class="lead">Сложен, как обычный iPhone, а раскрыт, как планшет. Внутренний экран 7,6″ на 50% больше, чем у iPhone 18 Pro Max.</p>
+          <div class="specs">
+            <div><b>5,4″ + 7,6″</b><span>два экрана ProMotion</span></div>
+            <div><b>A20 Pro</b><span>чип с испарительной камерой</span></div>
+            <div><b>Титан Grade 5</b><span>корпус и пластина под экраном</span></div>
+            <div><b>до 44 ч</b><span>видео на внешнем экране</span></div>
+          </div>
+          <div class="duo-colors"><span>Star White и Night Sky</span><span>256 ГБ – 2 ТБ</span></div>
+          <div class="bar" aria-hidden="true"><i></i></div>
+          <div class="cta-row ctas"><a class="btn btn-lime" href="#top">Выбрать цвет и память <span class="arr">↑</span></a><a class="btn btn-ghost" href="/trade-in">Обменять свой iPhone</a></div>
+        </div>
+        <div class="duo-stage">
+          <div class="duo-glow"></div>
+          <div class="fold" id="duoEl"><canvas id="duoCv" width="720" height="478" aria-label="iPhone Duo раскрывается в руках" role="img"></canvas><div class="fold-load" id="duoLoad">Загружаем…</div></div>
+          <div class="fold-ctl">
+            <p><b>Складной дизайн.</b> Потяните ползунок, чтобы раскрыть и сложить.</p>
+            <input type="range" id="duoRange" min="0" max="1000" value="660" aria-label="Раскрыть iPhone Duo">
+            <div class="fold-modes"><button type="button" data-p="0" aria-pressed="false">Сложен</button><button type="button" data-p=".66" aria-pressed="true">Полураскрыт</button><button type="button" data-p="1" aria-pressed="false">Раскрыт</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
 const YM=document.getElementById('yzModel');
 if(YM){
   const slugNow=()=>(window.YZ_MODEL||location.hash.slice(1)||new URLSearchParams(location.search).get('m')||'').toLowerCase();
@@ -796,7 +826,7 @@ if(YM){
   function applyWant(p){if(!want)return;const i=(a,v)=>v==null?-1:a.findIndex(x=>String(x).toLowerCase()===String(v).toLowerCase());
     const ci=i(p.cols.map(c=>c.name),want.c),mi=i(p.mem,want.mem),oi=i(p.opt,want.opt);if(ci>=0)st.ci=ci;if(mi>=0)st.mi=mi;if(oi>=0)st.oi=oi;want=null}
   addEventListener('hashchange',()=>{pick();draw();scrollTo(0,0)});
-  function draw(){if(!name)pick();const p=P.find(x=>x.n===name);if(p)applyWant(p);
+  function draw(){const keepDuo=document.getElementById('duo');if(!name)pick();const p=P.find(x=>x.n===name);if(p)applyWant(p);
     if(!p){YM.innerHTML=`<section class="cat-top"><div class="wrap"><h1>${htm(name||'Модель')}</h1><p class="lead">Сейчас этой модели нет в прайсе. Позвоните: привезём под заказ.</p></div></section>`;return}
     const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);const ph=photoOf(c);
     const d=v.old>v.price?strikeOf(v)-v.price:0;const card=cardOf(v);
@@ -829,6 +859,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
 </div></div></section>
 <section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} по акции — от ${rub(p.min)}, условия акции уточняйте у менеджера. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
     document.title=`Купить ${name} в Ханты-Мансийске — цена от ${rub(p.min)} | ЮZ Store`;
+    if(/^iphone duo$/i.test(name)){const hero=YM.querySelector('.md-hero');if(hero){if(keepDuo)hero.after(keepDuo);else{hero.insertAdjacentHTML('afterend',DUO_FOLD);initDuoFold()}}}
   }
   YM.addEventListener('click',e=>{const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
     if(b){if(b.dataset.ci)st.ci=+b.dataset.ci;if(b.dataset.mi)st.mi=+b.dataset.mi;if(b.dataset.oi)st.oi=+b.dataset.oi;draw();return}
@@ -840,11 +871,13 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
   window.renderModel=()=>{pick();draw()};
 }
 
+document.querySelectorAll('a[href="/#duo"],a[href="#duo"]').forEach(a=>{if(!document.getElementById('duo')||a.closest('footer'))a.href='/iphone-duo'});
+if(location.pathname==='/'&&location.hash==='#duo'&&!document.getElementById('duo'))location.replace('/iphone-duo');
 function applyData(){applySettings();buildProducts();render();heroPrice();homeExtras();renderPromos();if(typeof fillTradein==='function')fillTradein();renderMega();if(window.renderCatalog)renderCatalog();if(window.renderModel)renderModel()}
 applyData();hideTildaForm();addEventListener('load',hideTildaForm);
 loadSheets();
 
-if(document.getElementById('duoScroll')){
+function initDuoFold(){if(!document.getElementById('duoScroll')||window.yzDuoFold)return;window.yzDuoFold=1;
 /* DUO: прозрачные кадры; стартует полураскрытым, раскрытие только ползунком и кнопками */
 const ds=document.getElementById('duoScroll'), duo=document.getElementById('duoEl'), dsec=document.getElementById('duo'), dRange=document.getElementById('duoRange');
 const cv2=document.getElementById('duoCv'),cx=cv2.getContext('2d'),FW=720,FH=478,COLS=8,PER=48,NF=91,sheets=[];let loaded=0,lastF=-1;
@@ -879,6 +912,7 @@ dRange.addEventListener('input',()=>{cancelAnimationFrame(anim);setP(dRange.valu
 document.querySelectorAll('.fold-modes button').forEach(b=>b.addEventListener('click',()=>{tweenP(+b.dataset.p)}));
 setP(.66);
 }
+initDuoFold();
 /* reveal (only below the first screen) */
 const els=[...document.querySelectorAll('.rv-in')];
 if(!reduce && 'IntersectionObserver' in window){
