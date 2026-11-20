@@ -950,3 +950,14 @@ a.tg svg,a.vk svg{width:56%;height:56%}
 .seo-tab th,.seo-tab td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
 .seo-pre img{max-width:320px;height:auto;display:block;margin:16px 0}
 @media (max-width:560px){.seo-list{columns:1}}
+
+/* Телефон: цена и кнопка «Забронировать» должны помещаться на первом экране */
+@media (max-width:560px){
+  .hero .wrap{padding-block:12px 24px}
+  .hero .stage{height:210px}
+  .hero .copy{gap:14px}
+  .hero .lead{font-size:16px}
+  .hero .lead-more{display:none}
+  .hero .cta-row{flex-wrap:nowrap;gap:8px}
+  .hero .cta-row .btn{flex:1 1 0;min-width:0;padding-inline:12px;font-size:14px;justify-content:center;text-align:center;white-space:nowrap}
+}
