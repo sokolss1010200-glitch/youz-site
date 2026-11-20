@@ -961,3 +961,39 @@ a.tg svg,a.vk svg{width:56%;height:56%}
   .hero .cta-row{flex-wrap:nowrap;gap:8px}
   .hero .cta-row .btn{flex:1 1 0;min-width:0;padding-inline:12px;font-size:14px;justify-content:center;text-align:center;white-space:nowrap}
 }
+
+/* Спокойная типографика (20.11.2026): вместо широкого Unbounded — Onest, заголовки меньше.
+   Unbounded остаётся только в логотипе «ЮZ». */
+:root{--f-display:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif}
+.logo span{font-family:"Unbounded","Arial Black",system-ui,sans-serif}
+h1,h2,h3{letter-spacing:-.015em;line-height:1.15}
+.pg-hero .eyebrow,.art .eyebrow{display:none}
+.pg .pg-hero{padding-block:clamp(20px,3vw,40px) clamp(16px,2.4vw,28px)}
+.pg-hero h1,.art h1{font-size:clamp(28px,3vw,40px);font-weight:700;letter-spacing:-.015em}
+.pg-lead{font-size:17px;max-width:40em}
+.cat-top h1{font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:-.015em;margin:10px 0 12px;max-width:none}
+.cl-head h2{font-size:clamp(20px,1.8vw,24px)}
+.sec-head h2,.faq h2,.cinfo h2,.repair .card-d h2,.pg-h2,.cta-band h2{font-size:clamp(24px,2.4vw,32px);font-weight:700;letter-spacing:-.015em}
+.seo-text h2,.md-sec h2{font-size:clamp(20px,2vw,26px)}
+.art-body h2{font-size:clamp(20px,2vw,24px)}
+.duo-copy h2{font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.02em}
+.ti-copy h2{font-size:clamp(26px,2.8vw,36px);font-weight:700;letter-spacing:-.02em}
+.ti-copy .big{font-size:clamp(40px,4.6vw,60px);font-weight:700;letter-spacing:-.03em}
+.gift.main .sum{font-size:clamp(32px,3.4vw,44px);font-weight:700;letter-spacing:-.03em}
+.rating .num{font-size:72px;font-weight:700;letter-spacing:-.04em}
+.rate-n b{font-size:48px;font-weight:700;letter-spacing:-.03em}
+.inst-out b{font-size:clamp(30px,3.4vw,44px);font-weight:700;letter-spacing:-.03em}
+.why b{font-size:24px;letter-spacing:-.02em}
+.mega-t{font-size:24px;font-weight:700}
+.hero .h1{font-size:clamp(40px,5.4vw,76px);font-weight:700;letter-spacing:-.03em}
+.hero .h1 .ln:nth-child(2) span{color:var(--on-night-muted);-webkit-text-stroke:0}
+@media (max-width:560px){
+  .pg-hero h1,.art h1{font-size:clamp(26px,7vw,32px)}
+  .cat-top h1{font-size:24px}
+  .hero .h1{font-size:clamp(36px,10vw,46px)}
+}
+.md-info h1{font-size:clamp(26px,2.6vw,34px);font-weight:700;letter-spacing:-.015em}
+@media (max-width:560px){
+  .cat-top .benefits{display:none}
+  .cat-lead{font-size:15px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:6px}
+}
