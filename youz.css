@@ -1056,3 +1056,5 @@ h1,h2,h3{letter-spacing:-.015em;line-height:1.15}
  .hs-tabs{top:14px;bottom:auto}.hs-tabs button{flex:1;padding:9px 10px;font-size:13px}
 }
 @media (prefers-reduced-motion:reduce){.hslider>.hero{transition:none}}
+/* ремонт теперь идёт после тёмного блока Duo: нужен отступ сверху (в разметке стоит padding-top:0) */
+#repair{padding-top:clamp(36px,6vw,72px)!important}

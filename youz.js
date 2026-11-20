@@ -432,7 +432,7 @@ function homeExtras(){
   const d=P.find(x=>/^iphone duo$/i.test(x.n)),dp=document.getElementById('duoHeroP');
   if(d&&dp){const v=minPrice(d);if(isFinite(v)){dp.textContent='от '+rub(v);const cv=Math.min(...Object.values(d.v).filter(x=>x.price).map(x=>x.card||x.price));document.getElementById('duoHeroM').textContent='от '+rub(cv/MONTHS_DEF)+'/мес'}}
 }
-/* слайдер первого экрана: iPhone 18 Pro / iPhone Duo. Смена каждые 7 с; пауза при наведении, фокусе и 15 с после касания; свайп; без автосмены при «уменьшить движение» */
+/* слайдер первого экрана: iPhone 18 Pro / iPhone Duo. Смена каждые 7 с; наведение и прокрутка не мешают; пауза 15 с только после нажатия (вкладка, цвет, кнопка) или свайпа; без автосмены при «уменьшить движение» */
 (function(){const box=document.getElementById('hslider');if(!box)return;
   const S=[...box.querySelectorAll(':scope>.hero')],T=[...box.querySelectorAll('.hs-tabs button')],D=7000;if(S.length<2)return;
   let i=0,timer=0,hold=false,holdT=0;const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -443,10 +443,9 @@ function homeExtras(){
     if(user)yzGoal('hero_slide',{slide:T[i].textContent});restart()}
   function pause(ms){hold=true;restart();clearTimeout(holdT);if(ms)holdT=setTimeout(()=>{hold=false;restart()},ms)}
   T.forEach((t,k)=>t.addEventListener('click',()=>{go(k,true);pause(15000)}));
-  box.addEventListener('mouseenter',()=>pause());box.addEventListener('mouseleave',()=>{hold=false;restart()});
-  let x0=null;box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;pause(15000)},{passive:true});
+  let x0=null;box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
   box.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>50){go(i+(dx<0?1:-1),true);pause(15000)}},{passive:true});
-  box.addEventListener('focusin',()=>pause(15000));
+  box.addEventListener('click',e=>{if(e.target.closest('a,button'))pause(15000)});
   document.addEventListener('visibilitychange',restart);
   box.querySelectorAll('.dsw').forEach(b=>b.addEventListener('click',()=>{box.querySelectorAll('.dsw').forEach(x=>x.setAttribute('aria-pressed',x===b));
     box.querySelector('.duo-hero-img').src=b.dataset.img;box.querySelector('.dsw-name b').textContent=b.dataset.n}));
