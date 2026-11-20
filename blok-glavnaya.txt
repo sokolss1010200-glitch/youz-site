@@ -1,9 +1,9 @@
-<!-- ЮZ: страница «glavnaya» с готовым текстом для поисковиков (снимок коммита 4999644). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<!-- ЮZ: страница «glavnaya» с готовым текстом для поисковиков (снимок коммита a7b29b3). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
-<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@4999644efb24df019e87e9348ac5484048e2a268/youz.css?v=4999644">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@a7b29b32c2efce1e497524f7e2dc49f08fc488cc/youz.css?v=a7b29b3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ElectronicsStore", "@id": "https://youz.store/#store", "name": "ЮZ Store", "url": "https://youz.store", "telephone": "+7 (3467) 36-24-04", "image": "https://static.tildacdn.com/tila3739-3731-4033-a132-373738613036/iphone-18-pro-burgun.webp", "address": {"@type": "PostalAddress", "streetAddress": "ул. Комсомольская, 49", "addressLocality": "Ханты-Мансийск", "addressRegion": "Ханты-Мансийский автономный округ — Югра", "addressCountry": "RU"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "20:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "10:00", "closes": "18:00"}], "sameAs": ["https://yandex.ru/maps/org/yuz/103143665209/", "https://2gis.ru/kh_mansiysk/firm/70000001042751106", "https://vk.com/youz.ru_hm", "https://t.me/uzstorehm"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "iPhone 18 Pro и iPhone Duo есть в наличии?", "acceptedAnswer": {"@type": "Answer", "text": "Да, iPhone 18 Pro, 18 Pro Max и iPhone Duo уже в продаже. Если нужного цвета или объёма памяти нет на витрине, привезём под заказ."}}, {"@type": "Question", "name": "Техника оригинальная?", "acceptedAnswer": {"@type": "Answer", "text": "Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас."}}, {"@type": "Question", "name": "Какая гарантия?", "acceptedAnswer": {"@type": "Answer", "text": "12 месяцев гарантии магазина на всю технику. Если что-то случится, обращайтесь в магазин на Комсомольской, 49."}}, {"@type": "Question", "name": "Как оформить рассрочку?", "acceptedAnswer": {"@type": "Answer", "text": "Рассрочка по «Халве» Совкомбанка и ОТП Банку без переплаты при выполнении условий банка, до 36 месяцев. Ещё можно оформить кредит в одном из 17+ банков. Нужен паспорт, условия подскажет менеджер."}}, {"@type": "Question", "name": "Можно сдать в trade-in телефон с трещиной?", "acceptedAnswer": {"@type": "Answer", "text": "Да, принимаем и битые устройства. Сумма будет ниже, но её всё равно можно зачесть в покупку нового iPhone."}}, {"@type": "Question", "name": "Есть доставка?", "acceptedAnswer": {"@type": "Answer", "text": "По Ханты-Мансийску доставим в день заказа. В другие города отправим транспортной компанией."}}]}</script>
 <div id="yz-root">
@@ -80,7 +80,7 @@
       <div class="price-row"><span class="p" id="duoHeroP">от 203 990 ₽</span><span class="m">в рассрочку <b id="duoHeroM">от 6 250 ₽/мес</b></span></div>
       <div class="cta-row">
         <a class="btn btn-lime" href="#catalog" data-lead="hero">Забронировать <span class="arr">→</span></a>
-        <a class="btn btn-ghost" href="#duo">Как он складывается</a>
+        <a class="btn btn-ghost" href="/iphone-duo">Подробнее о Duo</a>
       </div>
       <div class="perks"><span>Подарок к каждой покупке</span><span>Перенос данных бесплатно</span><span>Гарантия 12 месяцев</span></div>
     </div>
@@ -143,7 +143,7 @@
 <!-- BUDGET -->
 <section id="budget" class="budget-sec">
   <div class="wrap">
-    <div class="sec-head"><h2>iPhone под ваш бюджет</h2><p>Покажем все модели в этих ценах, в наличии на Комсомольской, 49.</p></div>
+    <div class="sec-head"><h2>iPhone под ваш бюджет</h2><p>Все модели в этих ценах. Привезём нужный цвет и память под заказ.</p></div>
     <div class="budget">
       <a href="/iphone?band=1"><small>до</small><b>70 000 ₽</b><span data-band="1">iPhone 17e, 16, 15, 14</span></a>
       <a href="/iphone?band=2"><small>от 70 000 до</small><b>120 000 ₽</b><span data-band="2">iPhone 18 Pro, 17 Pro Max, 17 Pro, 17</span></a>
@@ -235,39 +235,6 @@
   </div>
 </section>
 
-<!-- DUO -->
-<section class="duo-sec" id="duo">
-  <div class="duo-scroll" id="duoScroll">
-    <div class="duo-sticky">
-      <div class="wrap">
-        <div class="duo-copy">
-          <span class="eyebrow" style="color:var(--lime)">Первый складной iPhone</span>
-          <h2>iPhone <em>Duo</em></h2>
-          <p class="lead">Сложен, как обычный iPhone, а раскрыт, как планшет. Внутренний экран 7,6″ на 50% больше, чем у iPhone 18 Pro Max.</p>
-          <div class="specs">
-            <div><b>5,4″ + 7,6″</b><span>два экрана ProMotion</span></div>
-            <div><b>A20 Pro</b><span>чип с испарительной камерой</span></div>
-            <div><b>Титан Grade 5</b><span>корпус и пластина под экраном</span></div>
-            <div><b>до 44 ч</b><span>видео на внешнем экране</span></div>
-          </div>
-          <div class="duo-colors"><span>Star White и Night Sky</span><span>256 ГБ – 2 ТБ</span></div>
-          <div class="bar" aria-hidden="true"><i></i></div>
-          <div class="cta-row ctas"><a class="btn btn-lime" href="/iphone-duo">Купить <span class="arr">→</span></a><a class="btn btn-ghost" href="#tradein">Обменять свой iPhone</a></div>
-        </div>
-        <div class="duo-stage">
-          <div class="duo-glow"></div>
-          <div class="fold" id="duoEl"><canvas id="duoCv" width="720" height="478" aria-label="iPhone Duo раскрывается в руках" role="img"></canvas><div class="fold-load" id="duoLoad">Загружаем…</div></div>
-          <div class="fold-ctl">
-            <p><b>Складной дизайн.</b> Потяните ползунок, чтобы раскрыть и сложить.</p>
-            <input type="range" id="duoRange" min="0" max="1000" value="660" aria-label="Раскрыть iPhone Duo">
-            <div class="fold-modes"><button type="button" data-p="0" aria-pressed="false">Сложен</button><button type="button" data-p=".66" aria-pressed="true">Полураскрыт</button><button type="button" data-p="1" aria-pressed="false">Раскрыт</button></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- REPAIR -->
 <section id="repair" style="padding-top:0">
   <div class="wrap repair">
@@ -334,7 +301,7 @@
       <a class="logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><g clip-path="url(#lc)"><rect width="40" height="40" fill="#1EA7F0"/><polygon points="0,0 22,0 14,16 0,12" fill="#E8174B"/><polygon points="22,0 40,0 40,14 26,18 14,16" fill="#FFB400"/><polygon points="14,16 26,18 24,30 8,26" fill="#3A2C9A"/><polygon points="0,12 14,16 8,26 0,30" fill="#C8EA1A"/><polygon points="8,26 24,30 30,40 0,40 0,30" fill="#E8174B"/><polygon points="24,30 40,26 40,40 30,40" fill="#3A2C9A"/></g></svg><span>ЮZ</span></a>
       <p style="color:var(--muted);max-width:26em">Магазин техники Apple и других брендов в Ханты-Мансийске. Продажа, trade-in, рассрочка и ремонт.</p>
     </div>
-    <div><h4>Каталог</h4><ul><li><a href="#hits">iPhone</a></li><li><a href="#duo">iPhone Duo</a></li><li><a href="#hits">AirPods</a></li><li><a href="#hits">Apple Watch</a></li><li><a href="#hits">MacBook и iMac</a></li><li><a href="#hits">Аксессуары</a></li></ul></div>
+    <div><h4>Каталог</h4><ul><li><a href="#hits">iPhone</a></li><li><a href="/iphone-duo">iPhone Duo</a></li><li><a href="#hits">AirPods</a></li><li><a href="#hits">Apple Watch</a></li><li><a href="#hits">MacBook и iMac</a></li><li><a href="#hits">Аксессуары</a></li></ul></div>
     <div><h4>Покупателям</h4><ul><li><a href="/o-magazine">О магазине</a></li><li><a href="/trade-in">Trade-in</a></li><li><a href="/rassrochka">Рассрочка</a></li><li><a href="/garantiya">Гарантия</a></li><li><a href="/dostavka">Доставка</a></li><li><a href="/remont">Ремонт</a></li><li><a href="/otzyvy">Отзывы</a></li><li><a href="/blog">Блог</a></li><li><a href="/kontakty">Контакты</a></li></ul></div>
     <div><h4>Бренды</h4><ul><li>Apple</li><li>Samsung</li><li>Dyson</li><li>DJI</li><li>Sony</li></ul></div>
     <div><h4>Связаться</h4><ul><li><a href="tel:+73467362404">+7 (3467) 36-24-04</a></li><li><a href="https://t.me/uzstorehm" target="_blank" rel="noopener">Telegram</a></li><li><a href="https://vk.com/youz.ru_hm" target="_blank" rel="noopener">ВКонтакте</a></li><li>Комсомольская, 49</li></ul></div>
@@ -363,7 +330,7 @@
 <div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
 </div>
 <script>
-(function(){var R='sokolss1010200-glitch/youz-site',P='main.html',K='yz-ref',S='4999644efb24df019e87e9348ac5484048e2a268',H=3639709968;
+(function(){var R='sokolss1010200-glitch/youz-site',P='main.html',K='yz-ref',S='a7b29b32c2efce1e497524f7e2dc49f08fc488cc',H=3667961316;
 function hs(t){var h=0;for(var i=0;i<t.length;i++)h=(Math.imul(h,31)+t.charCodeAt(i))>>>0;return h}
 function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
 function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
