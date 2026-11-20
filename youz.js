@@ -372,13 +372,13 @@ function cardHTML(p){const opts=p.opt.filter(Boolean);
    ${p.mem.filter(Boolean).length?`<div class="mem" role="group" aria-label="Память">${p.mem.map((m,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(m)}</button>`).join('')}</div>`:''}
    ${opts.length>1?`<div class="mem opt" role="group" aria-label="Вариант">${p.opt.map((o,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(o||'Стандарт')}</button>`).join('')}</div>`:opts.length?`<div class="opt1">${htm(opts[0])}</div>`:''}
    <div class="foot"><div class="price"></div>
-   <button class="add" type="button" aria-label="В корзину: ${htm(p.n)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg></button></div>
+   <button class="add add-t" type="button" aria-label="В корзину: ${htm(p.n)}">В корзину</button></div><div class="stk"></div>
  </article>`}
 function sel(card,cls,arr){const b=card.querySelector(cls+' [aria-pressed="true"]');return arr[b?+b.dataset.i:0]}
 function cardState(card){const p=P.find(x=>x.id==card.dataset.id);
   return {p,c:sel(card,'.dots',p.cols)||p.cols[0],mem:sel(card,'.mem:not(.opt)',p.mem)||'',opt:card.querySelector('.opt')?sel(card,'.opt',p.opt):p.opt[0]||''}}
 function refreshCard(card){const {p,c,mem,opt}=cardState(card);const v=variant(p,mem,opt,c.name);const st=stockTxt(v.stock,v.exact);
-  card.querySelector('.price').innerHTML=priceHTML(v);
+  card.querySelector('.price').innerHTML=priceHTML(v);{const k=card.querySelector('.stk');if(k){k.className='stk '+st[0];k.textContent=st[1]}}
   const vb=card.querySelector('.vbtn');if(vb)vb.hidden=!c.video;
   const d=v.old>v.price?strikeOf(v)-v.price:0;const dEl=card.querySelector('.t.d');if(d){dEl.hidden=false;dEl.textContent='−'+rub(d)}else dEl.hidden=true;
   const cn=card.querySelector('.cname');if(cn)cn.textContent=c.name;
@@ -419,6 +419,38 @@ q.addEventListener('keydown',e=>{if(e.key==='Enter'){const t=document.getElement
 /* hero price */
 function heroPrice(){if(!document.getElementById('heroP'))return;const p=P.find(x=>/^iphone 18 pro$/i.test(x.n));if(!p)return;const v=minPrice(p);if(!isFinite(v))return;
   document.getElementById('heroP').textContent='от '+rub(v);const cv=Math.min(...Object.values(p.v).filter(x=>x.price).map(x=>x.card||x.price));document.getElementById('heroM').textContent='от '+rub(cv/MONTHS_DEF)+'/мес'}
+
+/* главная: цены «от» в плитках каталога, модели в «iPhone под ваш бюджет», цена iPhone Duo во втором слайде */
+function homeExtras(){
+  const acc=/charg|station|stand|drive|dualsense|дисковод|геймпад|контроллер/i;
+  document.querySelectorAll('[data-from]').forEach(el=>{const c=el.dataset.from;
+    const ps=P.filter(p=>p.cat===c&&!(c==='Консоли'&&acc.test(p.n))).map(minPrice).filter(isFinite);
+    if(ps.length)el.textContent='от '+rub(Math.min(...ps))});
+  document.querySelectorAll('[data-band]').forEach(el=>{const b=PRICE_BANDS[+el.dataset.band];if(!b)return;
+    const ms=P.filter(p=>p.cat==='iPhone').map(p=>[p.n,minPrice(p)]).filter(([,v])=>isFinite(v)&&v>=b[1]&&v<b[2]).sort((a,c)=>c[1]-a[1]).slice(0,4).map(x=>x[0]);
+    if(ms.length)el.textContent=ms.map((n,i)=>i?n.replace(/^iPhone /,''):n).join(', ')});
+  const d=P.find(x=>/^iphone duo$/i.test(x.n)),dp=document.getElementById('duoHeroP');
+  if(d&&dp){const v=minPrice(d);if(isFinite(v)){dp.textContent='от '+rub(v);const cv=Math.min(...Object.values(d.v).filter(x=>x.price).map(x=>x.card||x.price));document.getElementById('duoHeroM').textContent='от '+rub(cv/MONTHS_DEF)+'/мес'}}
+}
+/* слайдер первого экрана: iPhone 18 Pro / iPhone Duo. Смена каждые 7 с; пауза при наведении, фокусе и 15 с после касания; свайп; без автосмены при «уменьшить движение» */
+(function(){const box=document.getElementById('hslider');if(!box)return;
+  const S=[...box.querySelectorAll(':scope>.hero')],T=[...box.querySelectorAll('.hs-tabs button')],D=7000;if(S.length<2)return;
+  let i=0,timer=0,hold=false,holdT=0;const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function restart(){clearTimeout(timer);T.forEach(t=>t.classList.remove('run'));if(hold||still||document.hidden)return;void T[i].offsetWidth;T[i].classList.add('run');timer=setTimeout(()=>go(i+1),D)}
+  function go(n,user){S[i].classList.remove('on');T[i].setAttribute('aria-selected','false');
+    i=(n+S.length)%S.length;S[i].classList.add('on');T[i].setAttribute('aria-selected','true');
+    S[i].querySelectorAll('.h1 .ln span').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});
+    if(user)yzGoal('hero_slide',{slide:T[i].textContent});restart()}
+  function pause(ms){hold=true;restart();clearTimeout(holdT);if(ms)holdT=setTimeout(()=>{hold=false;restart()},ms)}
+  T.forEach((t,k)=>t.addEventListener('click',()=>{go(k,true);pause(15000)}));
+  box.addEventListener('mouseenter',()=>pause());box.addEventListener('mouseleave',()=>{hold=false;restart()});
+  let x0=null;box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;pause(15000)},{passive:true});
+  box.addEventListener('touchend',e=>{if(x0==null)return;const dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>50){go(i+(dx<0?1:-1),true);pause(15000)}},{passive:true});
+  box.addEventListener('focusin',()=>pause(15000));
+  document.addEventListener('visibilitychange',restart);
+  box.querySelectorAll('.dsw').forEach(b=>b.addEventListener('click',()=>{box.querySelectorAll('.dsw').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    box.querySelector('.duo-hero-img').src=b.dataset.img;box.querySelector('.dsw-name b').textContent=b.dataset.n}));
+  restart()})();
 
 /* promos */
 const pbar=document.getElementById('pbar'), psec=document.getElementById('promos'), pgrid=document.getElementById('promosGrid');
@@ -515,7 +547,7 @@ const yzSeen={};function yzOnce(n,p){if(yzSeen[n])return;yzSeen[n]=1;yzGoal(n,Ob
   /* дошёл до блока: блок виден на 30% или занимает 40% экрана */
   if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;
       if(e.intersectionRatio<.3&&e.intersectionRect.height<innerHeight*.4)return;io.unobserve(e.target);const g=e.target.dataset.yzGoal;yzOnce(g);if(g==='reach_bottom'&&blog)yzOnce('article_read')}),{threshold:[0,.1,.2,.3,.5]});
-    if(path==='/')['promos','catalog','duo','hits','tradein','gifts','repair','reviews','faq','contacts'].forEach(id=>{const el=R.querySelector('section#'+id);if(el){el.dataset.yzGoal='reach_'+id;io.observe(el)}});
+    if(path==='/')['promos','catalog','duo','hits','budget','tradein','gifts','repair','reviews','faq','tg','contacts'].forEach(id=>{const el=R.querySelector('section#'+id);if(el){el.dataset.yzGoal='reach_'+id;io.observe(el)}});
     const ft=R.querySelector('footer')||document.querySelector('footer');if(ft){ft.dataset.yzGoal='reach_bottom';io.observe(ft)}}
   /* активное время на странице (вкладка открыта и человек скроллит/трогает экран) */
   let act=Date.now(),sec=0;['scroll','click','keydown','touchstart','mousemove'].forEach(t=>addEventListener(t,()=>act=Date.now(),{passive:true,capture:true}));
@@ -722,7 +754,7 @@ if(CAT){
   csort.addEventListener('change',()=>go({sort:csort.value}));
   let firstRender=true;
   window.renderCatalog=()=>{renderTabs();
-    if(firstRender){firstRender=false;const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
+    if(firstRender){firstRender=false;try{const bq=new URLSearchParams(location.search).get('band');if(bq!=null&&PRICE_BANDS[+bq])CS.band=+bq}catch(e){}const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
       /* страницы категорий (/iphone, /airpods …): раздел задан в data-cat */const dc=CAT.closest('#yzCat')?.dataset.cat||document.getElementById('yzCat')?.dataset.cat;if(!c&&dc)CS.cat=dc;
       try{const g=JSON.parse(sessionStorage.getItem('yz_go')||'null');sessionStorage.removeItem('yz_go');if(g){const m=g.model?P.find(p=>p.n===g.model):null;Object.assign(CS,{cat:g.cat||(m?m.cat:CS.cat),grp:g.grp||'',model:g.model||''})}}catch(e){}}
     renderSide();renderList()};
@@ -809,7 +841,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
   window.renderModel=()=>{pick();draw()};
 }
 
-function applyData(){applySettings();buildProducts();render();heroPrice();renderPromos();if(typeof fillTradein==='function')fillTradein();renderMega();if(window.renderCatalog)renderCatalog();if(window.renderModel)renderModel()}
+function applyData(){applySettings();buildProducts();render();heroPrice();homeExtras();renderPromos();if(typeof fillTradein==='function')fillTradein();renderMega();if(window.renderCatalog)renderCatalog();if(window.renderModel)renderModel()}
 applyData();hideTildaForm();addEventListener('load',hideTildaForm);
 loadSheets();
 
