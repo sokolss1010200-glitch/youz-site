@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-23T16:45:22+03:00">
+<yml_catalog date="2026-11-23T19:31:14+03:00">
 <shop>
 <name>ЮZ Store</name>
 <company>ЮZ Store</company>
@@ -4806,13 +4806,6 @@
 <store>true</store><pickup>true</pickup><delivery>true</delivery>
 <name>Выпрямитель Dyson Airstrait HT01 Jasper Plum</name><vendor>Выпрямитель</vendor>
 <description>Выпрямитель Dyson Airstrait HT01 Jasper Plum — новый, оригинал, гарантия 12 месяцев. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. Рассрочка, trade-in.</description>
-</offer>
-<offer id="2a3f53509dfa" available="true">
-<url>https://youz.store/model?m=%D1%81%D1%82%D0%B0%D0%B9%D0%BB%D0%B5%D1%80-dyson-airwrap-hs09&amp;opt=RU+%D0%B2%D0%B8%D0%BB%D0%BA%D0%B0&amp;c=Jasper+Plum</url><price>2990</price>
-<currencyId>RUR</currencyId><categoryId>8</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-d-hs09.webp</picture>
-<store>true</store><pickup>true</pickup><delivery>true</delivery>
-<name>Стайлер Dyson Airwrap HS09 RU вилка Jasper Plum</name><vendor>Стайлер</vendor>
-<description>Стайлер Dyson Airwrap HS09 RU вилка Jasper Plum — новый, оригинал, гарантия 12 месяцев. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. Рассрочка, trade-in.</description>
 </offer>
 <offer id="aeec3b03bad8" available="true">
 <url>https://youz.store/model?m=%D1%81%D1%82%D0%B0%D0%B9%D0%BB%D0%B5%D1%80-dyson-airwrap-hs09&amp;c=Apricot+Topaz</url><price>43990</price>
