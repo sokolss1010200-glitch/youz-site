@@ -27,6 +27,17 @@ jobs:
           print('строк было:', n(old), 'стало:', n(new))
           if n(new) < 20 or (old and n(new) < n(old) * 0.6):
               print('::warning::Прайс похож на незаполненный — снимок не обновлён'); sys.exit(0)
+          # Защита от опечаток поставщика: строка дешевле 40% медианы своей модели (при 3+ строках) не попадает на сайт
+          import statistics
+          rows = list(csv.reader(io.StringIO(new))); h = rows[0]; iM, iP = h.index('Модель'), h.index('Цена')
+          num = lambda x: int(x[iP]) if len(x) > iP and x[iP].isdigit() else None
+          by = {}
+          for x in rows[1:]:
+              if num(x): by.setdefault(x[iM], []).append(num(x))
+          bad = lambda x: num(x) and len(by[x[iM]]) >= 3 and num(x) < 0.4 * statistics.median(by[x[iM]])
+          for x in rows[1:]:
+              if bad(x): print('::warning::Подозрительная цена, строка скрыта:', ','.join(x[:9]))
+          buf = io.StringIO(); csv.writer(buf, lineterminator='\n').writerows([rows[0]] + [x for x in rows[1:] if not bad(x)]); new = buf.getvalue()
           os.makedirs('data', exist_ok=True)
           open(p, 'w', encoding='utf-8').write(new)
           PY
