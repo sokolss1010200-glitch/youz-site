@@ -350,7 +350,7 @@ const stockTxt=(s,ex)=>!ex?['wait','Под заказ 1–3 дня']:s==='да'?
 function shortName(p){return p.n.replace(/^(Samsung Galaxy|Google Pixel|Apple Watch|Стайлер Dyson|Фен Dyson|Выпрямитель Dyson|Ray-Ban Meta|LEGO)\s*/i,'')||p.n}
 function art(p,c){
   const ph=photoOf(c);
-  if(ph)return `<img class="pimg" src="${htm(ph)}" alt="${htm(p.n)}, ${htm(c.name)}" width="600" height="600" loading="lazy" decoding="async">`;
+  if(ph)return `<img class="pimg" src="${htm(ph)}" alt="${htm(p.n)}, ${htm(c.name)}" loading="lazy" decoding="async">`;
   if(p.art==='ip')return `<div class="iphone" style="--pc:${htm(c.hex)}"><div class="plateau"><i class="lens l1"></i><i class="lens l2"></i><i class="lens l3"></i><i class="flash"></i><i class="mic"></i></div></div>`;
   if(p.art==='duo'){const dark=/night|чёрн|черн/i.test(c.name);return `<div class="duo-mini" style="--c1:${dark?'#1C2233':'#EEECE6'};--c2:${dark?'#2C3550':'#D6D3CB'};--c3:${dark?'#11151F':'#BDB9AF'}"><i></i><i></i></div>`}
   if(p.art==='watch')return `<div class="watch" style="--band:${htm(c.hex)}"><i>9:41</i></div>`;
@@ -834,7 +834,7 @@ if(YM){
 <section class="md-hero"><div class="wrap">
  <nav class="crumbs"><a href="/">Главная</a><span>/</span><a href="${CAT_PAGE[p.cat]||'/catalog#'+(CAT_SLUG[p.cat]||'')}">${htm(p.cat)}</a><span>/</span><span>${htm(name)}</span></nav>
  <div class="md-grid">
-  <div class="md-pic">${ph?`<img src="${htm(ph)}" alt="${htm(name)}, ${htm(c.name)}" width="600" height="600" fetchpriority="high">`:art(p,c)}${c.video?`<button type="button" class="vbtn" id="mdVid">▶ Видео</button>`:''}</div>
+  <div class="md-pic">${ph?`<img src="${htm(ph)}" alt="${htm(name)}, ${htm(c.name)}" fetchpriority="high">`:art(p,c)}${c.video?`<button type="button" class="vbtn" id="mdVid">▶ Видео</button>`:''}</div>
   <div class="md-info">
    ${M.tag?`<span class="tag-new md-tag"><b>${htm(M.tag)}</b></span>`:''}
    <h1>Купить ${htm(name)} в Ханты-Мансийске</h1>
