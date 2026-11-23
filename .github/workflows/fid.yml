@@ -1,9 +1,9 @@
-# Товарный фид для Яндекса: собирается сразу после снимка прайса (13:00 МСК) из data/products.csv.
+# Товарный фид для Яндекса: собирается сразу после каждого снимка прайса (13:30 и 14:30 МСК) из data/products.csv.
 # Адрес фида: https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/feed.yml
 name: Фид для Яндекса
 on:
   workflow_run:
-    workflows: ["Прайс для сайта (13:00 МСК)"]
+    workflows: ["Прайс для сайта (13:30 и 14:30 МСК)"]
     types: [completed]
   workflow_dispatch:
 permissions:
