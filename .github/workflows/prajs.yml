@@ -21,6 +21,17 @@ jobs:
           import csv, io, os, sys, urllib.request
           U = 'https://script.google.com/macros/s/AKfycbwixokKVJTAXbBrUyAKSM4PXlGPJ7oj_ehd-aBUDloCnUZ5aDlMx4P5YFgNqH3rljSD/exec?s=products'
           new = urllib.request.urlopen(U, timeout=60).read().decode('utf-8')
+          # Надбавка +5000 ₽ к AirPods (кроме AirPods Max): цена, старая цена, цена по карте. Решение владельца 23.11.2026.
+          rows = list(csv.reader(io.StringIO(new)))
+          if rows:
+              ci = {k.strip(): i for i, k in enumerate(rows[0])}
+              for r in rows[1:]:
+                  m = r[ci['Модель']].strip().lower() if 'Модель' in ci and len(r) > ci['Модель'] else ''
+                  if m.startswith('airpods') and 'max' not in m:
+                      for k in ('Цена', 'Старая цена', 'Цена по карте'):
+                          if k in ci and len(r) > ci[k] and r[ci[k]].strip().isdigit() and int(r[ci[k]]) > 0:
+                              r[ci[k]] = str(int(r[ci[k]]) + 5000)
+              out = io.StringIO(); csv.writer(out, lineterminator='\n').writerows(rows); new = out.getvalue()
           n = lambda t: max(0, len(list(csv.reader(io.StringIO(t)))) - 1)
           p = 'data/products.csv'
           old = open(p, encoding='utf-8').read() if os.path.exists(p) else ''
