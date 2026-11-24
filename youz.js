@@ -849,7 +849,7 @@ if(YM){
    ${p.mem.filter(Boolean).length?`<div class="md-opt"><span>Память</span><div class="mem">${p.mem.map((x,i)=>`<button type="button" data-mi="${i}" aria-pressed="${i===st.mi}">${htm(x)}</button>`).join('')}</div></div>`:''}
    ${p.opt.filter(Boolean).length>1?`<div class="md-opt"><span>${p.cat==='iPhone'?'SIM':'Вариант'}</span><div class="mem opt">${p.opt.map((x,i)=>`<button type="button" data-oi="${i}" aria-pressed="${i===st.oi}">${htm(x||'Стандарт')}</button>`).join('')}</div></div>`:''}
    <div class="md-price">${strikeOf(v)>v.price?`<span class="oldp">${rub(strikeOf(v))}</span><span class="promo-l">Цена по акции</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}
-    <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p>${strikeOf(v)>v.price?'<p class="promo-n">Условия акции уточняйте у менеджера: <a href="tel:+73467362404">+7 (3467) 36-24-04</a></p>':''}</div>
+    <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p><p class="promo-n">${strikeOf(v)>v.price?'Условия акции и актуальную цену':'Актуальную цену и наличие'} уточняйте у менеджера: <a href="tel:+73467362404">+7 (3467) 36-24-04</a>. Цены зависят от курса валют и могут меняться ежедневно.</p></div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
    <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span><span class="on">Подарок к покупке</span><a href="/trade-in">Trade-in: скидка до 99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
@@ -863,7 +863,7 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
  <details><summary>Можно сдать старый телефон?<i></i></summary><p>Да, оценим в магазине за 15 минут и зачтём до 99 000 ₽ в стоимость ${htm(name)}.</p></details>
  <details><summary>Какая гарантия?<i></i></summary><p>12 месяцев гарантии магазина. Обращайтесь в магазин на Комсомольской, 49.</p></details>
 </div></div></section>
-<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} по акции — от ${rub(p.min)}, условия акции уточняйте у менеджера. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
+<section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} по акции — от ${rub(p.min)}, условия акции уточняйте у менеджера. Цены зависят от курса валют и поставок и могут меняться ежедневно, поэтому актуальную стоимость и наличие уточняйте у менеджера перед покупкой. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
     document.title=`Купить ${name} в Ханты-Мансийске — цена от ${rub(p.min)} | ЮZ Store`;
     if(/^iphone duo$/i.test(name)){const hero=YM.querySelector('.md-hero');if(hero){if(keepDuo)hero.after(keepDuo);else{hero.insertAdjacentHTML('afterend',DUO_FOLD);initDuoFold()}}}
   }
