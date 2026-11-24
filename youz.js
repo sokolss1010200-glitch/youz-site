@@ -234,6 +234,7 @@ document.querySelectorAll('.sw').forEach(b=>b.addEventListener('click',()=>{
   swName.textContent=b.dataset.n; heroPhoto(b.dataset.n);
   hero.style.background=`radial-gradient(1200px 600px at 75% 40%, ${b.dataset.g} 0%, transparent 60%), radial-gradient(900px 500px at 10% 110%, #1C2410 0%, transparent 60%), var(--night)`;
   swName.parentElement.lastChild.textContent=b.dataset.n==='Burgundy'?' · новый':'';
+  if(typeof heroPrice==='function')heroPrice();
 }));
 function heroPhoto(n){const u=PHOTOS.hero[n];const fl=tilt.querySelector('.float');let im=tilt.querySelector('.hero-img');
   if(u){fl.hidden=true;if(!im){im=document.createElement('img');im.className='hero-img';tilt.prepend(im)}im.src=u;im.alt='iPhone 18 Pro, '+n;im.hidden=false}
@@ -420,8 +421,11 @@ q.addEventListener('input',()=>{query=q.value.trim().toLowerCase();if(window.cat
 q.addEventListener('keydown',e=>{if(e.key==='Enter'){const t=document.getElementById('hits')||document.getElementById('catList');if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth'})}});
 
 /* hero price */
-function heroPrice(){if(!document.getElementById('heroP'))return;const p=P.find(x=>/^iphone 18 pro$/i.test(x.n));if(!p)return;const v=minPrice(p);if(!isFinite(v))return;
-  document.getElementById('heroP').textContent='от '+rub(v);const cv=Math.min(...Object.values(p.v).filter(x=>x.price).map(x=>x.card||x.price));document.getElementById('heroM').textContent='от '+rub(cv/MONTHS_DEF)+'/мес'}
+function heroPrice(){if(!document.getElementById('heroP')||typeof P==='undefined'||!P)return;const p=P.find(x=>/^iphone 18 pro$/i.test(x.n));if(!p)return;
+  const sw=document.querySelector('.sw[aria-pressed="true"]'),col=sw?sw.dataset.n:'';
+  let vs=Object.entries(p.v).filter(([k,x])=>x.price&&x.stock!=='нет'&&(!col||k.split('|')[2]===col)).map(e=>e[1]);
+  if(!vs.length)vs=Object.values(p.v).filter(x=>x.price&&x.stock!=='нет');if(!vs.length)return;
+  document.getElementById('heroP').textContent='от '+rub(Math.min(...vs.map(x=>x.price)));document.getElementById('heroM').textContent='от '+rub(Math.min(...vs.map(x=>x.card||x.price))/MONTHS_DEF)+'/мес'}
 
 /* главная: цены «от» в плитках каталога, модели в «iPhone под ваш бюджет», цена iPhone Duo во втором слайде */
 function homeExtras(){
