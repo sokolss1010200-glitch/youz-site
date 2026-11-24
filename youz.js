@@ -410,7 +410,7 @@ function render(){if(!grid)return;
   /* iPhone Duo уже в продаже — всегда в хитах, сразу после iPhone 18 Pro Max */
   const duo=P.find(p=>/^iPhone Duo$/i.test(p.n)&&Object.values(p.v).some(x=>x.price));if(duo&&!base.includes(duo)){const i=base.findIndex(p=>/18 Pro Max/.test(p.n));base=base.slice();base.splice(i>=0?i+1:0,0,duo)}
   const pool=query?P:base;
-  fillGrid(grid,pool.filter(p=>(filter==='all'||p.f===filter)&&(!query||p.n.toLowerCase().includes(query))).slice(0,query?24:12),query?`По запросу «${htm(query)}» ничего нет. Позвоните, привезём под заказ.`:'')}
+  fillGrid(grid,pool.filter(p=>(filter==='all'||p.f===filter)&&(!query||p.n.toLowerCase().includes(query))).slice(0,query?24:8),query?`По запросу «${htm(query)}» ничего нет. Позвоните, привезём под заказ.`:'')}
 if(grid)bindGrid(grid);
 function setFilter(f){filter=f;document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.f===f));render()}
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>setFilter(t.dataset.f)));
@@ -851,7 +851,7 @@ if(YM){
    <div class="md-price">${strikeOf(v)>v.price?`<span class="oldp">${rub(strikeOf(v))}</span><span class="promo-l">Цена по акции</span>`:''}<b>${rub(v.price)}</b>${d?`<span class="t d">−${rub(d)}</span>`:''}
     <p>Рассрочка от <b>${rub(card/MONTHS_DEF)}/мес</b> на ${MONTHS_DEF} мес</p>${strikeOf(v)>v.price?'<p class="promo-n">Условия акции уточняйте у менеджера: <a href="tel:+73467362404">+7 (3467) 36-24-04</a></p>':''}</div>
    <div class="cta-row"><button class="btn btn-lime" type="button" id="mdCart">В корзину <span class="arr">→</span></button><button class="btn btn-ink" type="button" id="mdOne">Купить в 1 клик</button></div>
-   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span><span class="on">Подарок к покупке</span><a href="/trade-in">Trade-in до −99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
+   <div class="benefits md-ben"><span class="on">Гарантия 12 месяцев</span><span>Оригинал</span><span class="on">Подарок к покупке</span><a href="/trade-in">Trade-in: скидка до 99 000 ₽</a><a href="/rassrochka">Рассрочка 0%</a><a href="/garantiya">Гарантия</a><a href="/dostavka">Доставка</a></div>
   </div>
  </div>
 </div></section>
@@ -939,5 +939,25 @@ function drawMap(){
   c.fillStyle='#8A8E80';c.font='600 11px Onest, sans-serif';c.fillText('ул. Комсомольская',W*.06,H*.6-10);c.fillText('ул. Мира',W*.64,H*.2);c.fillText('р. Иртыш',W*.7,H*.9);
 }
 try{drawMap();addEventListener('resize',()=>{clearTimeout(drawMap.t);drawMap.t=setTimeout(drawMap,150)})}catch(e){}
+/* ===== Аудит 24.11.2026: B3 и C8 ===== */
+(function(){
+  /* B3: вечные анимации (плавающее фото, кольца) на паузе, пока их блок не виден */
+  if('IntersectionObserver' in window){const secs=new Set();document.querySelectorAll('.hero-img,.float,.ring,.swap,.chip-float').forEach(e=>{const s=e.closest('section,.hero');if(s)secs.add(s)});
+    const io=new IntersectionObserver(es=>es.forEach(en=>en.target.classList.toggle('yz-off',!en.isIntersecting)),{rootMargin:'100px'});secs.forEach(s=>io.observe(s))}
+  if(!document.getElementById('hslider'))return;
+  /* C8: отзывы на главной — лента, которую листают вбок; на ПК стрелки */
+  const rq=document.querySelector('#reviews .rq-grid');
+  if(rq){rq.setAttribute('tabindex','0');rq.setAttribute('aria-label','Отзывы покупателей, листайте вбок');
+    const head=document.querySelector('#reviews .sec-head');
+    if(head){const nav=document.createElement('div');nav.className='rq-nav';
+      nav.innerHTML='<button type="button" aria-label="Предыдущие отзывы">←</button><button type="button" aria-label="Следующие отзывы">→</button>';
+      const [pv,nx]=nav.querySelectorAll('button');const step=()=>Math.max(260,rq.clientWidth*.8);
+      pv.onclick=()=>rq.scrollBy({left:-step(),behavior:reduce?'auto':'smooth'});nx.onclick=()=>rq.scrollBy({left:step(),behavior:reduce?'auto':'smooth'});
+      const upd=()=>{pv.disabled=rq.scrollLeft<4;nx.disabled=rq.scrollLeft+rq.clientWidth>=rq.scrollWidth-4};rq.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+      head.appendChild(nav)}}
+  /* C8: «Популярные запросы» на главной свёрнуты, ссылки остаются в разметке */
+  const pl=document.querySelector('.popq .popq-l');
+  if(pl&&pl.children.length>8){pl.classList.add('popq-cut');pl.id=pl.id||'popqList';const b=document.createElement('button');b.type='button';b.className='popq-more';b.setAttribute('aria-expanded','false');b.setAttribute('aria-controls',pl.id);b.textContent='Показать все запросы';
+    b.onclick=()=>{pl.classList.remove('popq-cut');b.remove()};pl.after(b)}
 })();
-
+})();

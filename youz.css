@@ -1081,3 +1081,71 @@ h1,h2,h3{letter-spacing:-.015em;line-height:1.15}
 .prod:hover,.pg-card:hover,.blog-card:hover,.rate:hover{box-shadow:none}
 .add:hover:not(:active){background:var(--lime)}
 }
+
+/* ===== Аудит 24.11.2026, раздел B ===== */
+/* B1: кружки цвета в карточках — невидимая зона касания крупнее самого кружка */
+.prod .dots button{position:relative}
+.prod .dots button::after{content:"";position:absolute;inset:-9px -3px}
+/* B2: вкладки анимируют только цвета */
+.tab{transition:background-color .2s,color .2s,border-color .2s}
+/* B3: вечные анимации на паузе, пока их блок вне экрана (класс ставит youz.js) */
+.yz-off .hero-img,.yz-off .float,.yz-off .ring,.yz-off .swap,.yz-off .chip-float{animation-play-state:paused!important}
+/* B4: заголовки карточек блога делятся на строки поровну */
+.blog-card b,.prod h3{text-wrap:balance}
+/* B5: сортировка в каталоге на одной линии с первым рядом вкладок */
+#csort{align-self:flex-start}
+/* B6: в карточке нет пустоты под коротким названием; цена и кнопка прижаты к низу */
+.prod h3{min-height:0}
+.prod .foot{margin-top:auto}
+/* B7: планшет — фото первого экрана не наезжает на вкладки слайдера */
+@media (min-width:561px) and (max-width:900px){.hslider>.hero .wrap{padding-top:96px}}
+/* B8: телефон — кнопки на инфостраницах одинаковой ширины */
+@media (max-width:480px){.pg .cta-row .btn{flex:1 1 100%;justify-content:center}}
+
+/* ===== Аудит 24.11.2026, раздел C (согласовано владельцем) ===== */
+/* C1: в шапке телефона лаймом выделена только корзина */
+header.top .burger{background:var(--paper)!important;border:1px solid var(--line)!important}
+header.top .burger i{background:var(--ink)}
+/* C2: меньше лайма — «Каталог» чёрный, плашки преимуществ не залиты */
+header.top .cat-btn{background:var(--ink);color:#fff}
+header.top .cat-btn i b{background:var(--lime)}
+.dock a.main{background:var(--ink);border-color:var(--ink);color:#fff}
+.benefits .on{background:var(--card);border-color:var(--line)}
+/* C3: преимущества — одна строка текста через точку вместо ряда «таблеток» */
+.benefits{display:block;color:var(--muted);font-size:15px;line-height:1.6}
+.benefits span,.benefits a{display:inline;min-height:0;padding:0;border:0;border-radius:0;background:none!important;font-weight:400;font-size:inherit;white-space:nowrap;color:inherit}
+.benefits a{text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
+.benefits a:hover{color:var(--ink);text-decoration-color:currentColor}
+.benefits>*:not(:last-child)::after{content:"\00a0·";margin-right:.45em;color:var(--muted);display:inline-block;text-decoration:none}
+.mega-top .benefits span{min-height:0;font-size:13px}
+/* C4: без серой подложки и рамки под фото товаров */
+.prod .pic,.blog-img{background:none!important}
+.md-pic{background:none!important;border-color:transparent!important;box-shadow:none!important}
+/* C5: при наведении фото только чуть увеличивается, без поворота */
+.prod:hover .pimg,.prod:hover .duo-mini,.prod:hover .pic .iphone{transform:scale(1.03)}
+/* C6: без заглавных букв и разрядки */
+.eyebrow,.tag-new b,.cat .new,.rv .ex,.fgrid h4,.timer small,.ph-none small,.cs-sec h4,.md-specs span,.ct-list span,.rq-tag,.promo-l{text-transform:none;letter-spacing:0}
+
+/* ===== C8: главная короче ===== */
+/* подарки — короткий список рядом с акциями вместо отдельного блока */
+.gifts-line{padding-block:8px 56px}
+.gifts-line h2{font-size:clamp(20px,2.2vw,26px);margin:0 0 14px}
+.gifts-line ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.gifts-line li{padding:12px 0;border-top:1px solid var(--line);color:var(--muted);font-size:15px;line-height:1.45}
+.gifts-line li b{color:var(--ink);font-weight:600}
+.gifts-line a{color:inherit;text-decoration:none}
+.gifts-line a:hover b{text-decoration:underline}
+@media (max-width:860px){.gifts-line ul{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.gifts-line ul{grid-template-columns:1fr}.gifts-line li{padding:10px 0}}
+/* отзывы на главной — лента, которую листают вбок */
+#reviews .rq-grid{columns:auto;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:2px 2px 10px;scrollbar-width:thin;outline-offset:4px}
+#reviews .rq{flex:0 0 min(86%,380px);margin:0;scroll-snap-align:start}
+#reviews .sec-head{position:relative}
+.rq-nav{display:none;gap:8px}
+@media (hover:hover) and (pointer:fine){.rq-nav{display:flex}}
+.rq-nav button{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);font-size:18px;cursor:pointer;transition:border-color .2s,opacity .2s}
+.rq-nav button:hover:not(:disabled){border-color:var(--ink)}
+.rq-nav button:disabled{opacity:.35;cursor:default}
+/* «Популярные запросы» на главной свёрнуты до кнопки */
+.popq-cut{max-height:84px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.popq-more{margin-top:10px;border:0;background:none;padding:6px 0;font:inherit;font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
