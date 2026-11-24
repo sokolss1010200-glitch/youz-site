@@ -326,12 +326,15 @@ function memVal(m){m=String(m||'');const parts=m.match(/\d+(?:[.,]\d+)?\s*(?:Т�
   const toG=x=>{const n=parseFloat(x.replace(',','.'))||0;return /ТБ|TB/i.test(x)?n*1024:n};
   if(/\//.test(m)){const [a,b]=m.split('/');return toG(b+(/ТБ|TB/i.test(b)?'':' ГБ'))*1000+toG(a)}
   return parts.length?toG(parts[0]):0}
+/* цвет кружка по названию, когда в таблице нет «Код цвета» (аксессуары) */
+const NAME_HEX=[[/прозрачн|transparent|clear/,'#E9EEF2'],[/холодн.*мят|mint/,'#B8E0D2'],[/темно-син|navy|midnight|миднайт/,'#1F2A44'],[/голуб|sky|light blue/,'#8FB8DE'],[/space blue/,'#2E3F5C'],[/син|blue/,'#2F5DA8'],[/светло-сер/,'#C9CBCF'],[/space black|stellar black|fog black|черн|black/,'#1D1D1F'],[/space gr|графит|graphite/,'#5E5E62'],[/сер[еыи]бр|silver/,'#D9DADC'],[/сер[ыо]|gray|grey/,'#8E8E93'],[/титан|titan/,'#A8A39A'],[/бел|white/,'#F5F5F2'],[/айвори|ivory/,'#F1EBDD'],[/латте|патте|latte|беж|beige/,'#C8A97E'],[/оранж|orange/,'#F07A2B'],[/желт|yellow/,'#F2CF4A'],[/pine green|china green|зел|green/,'#3E6B4F'],[/фиол|purple|violet|лаванд/,'#8D74C4'],[/роз|pink/,'#F2B8C6'],[/красн|red/,'#C8102E']];
+function nameHex(n){n=(n||'').toLowerCase();if(!n)return'';const f=NAME_HEX.find(([re])=>re.test(n));return f?f[1]:''}
 function buildProducts(){
   const m=new Map();
   DATA.products.concat(DATA.acc||[]).forEach(r=>{const model=(r['Модель']||'').trim();if(!model)return;
     if(!m.has(model))m.set(model,{id:m.size+1,n:model,cat:(r['Категория']||'Другое').trim(),grp:(r['Группа']||r['Категория']||'').trim(),badge:'',feat:false,cols:[],mem:[],opt:[],fits:[],v:{}});
     const p=m.get(model),col=(r['Цвет']||'').trim(),mem=(r['Память']||'').trim(),opt=(r['Опция']||r['SIM']||'').trim();
-    let c=p.cols.find(x=>x.name===col);if(!c){c={name:col,hex:r['Код цвета']||'#C9CBC3',photo:r['Фото']||'',video:r['Видео']||''};p.cols.push(c)}else{if(!c.photo&&r['Фото'])c.photo=r['Фото'];if(!c.video&&r['Видео'])c.video=r['Видео']}
+    let c=p.cols.find(x=>x.name===col);if(!c){c={name:col,hex:r['Код цвета']||nameHex(col)||'#C9CBC3',photo:r['Фото']||'',video:r['Видео']||''};p.cols.push(c)}else{if(!c.photo&&r['Фото'])c.photo=r['Фото'];if(!c.video&&r['Видео'])c.video=r['Видео']}
     if(!p.mem.includes(mem))p.mem.push(mem);if(!p.opt.includes(opt))p.opt.push(opt);
     const k=mem+'|'+opt+'|'+col,v={price:num(r['Цена']),old:num(r['Старая цена']),card:num(r['Цена по карте']),stock:low(r['Наличие'])||'да'};
     if(v.price&&(!p.v[k]||p.v[k].price>v.price))p.v[k]=v;
