@@ -1149,3 +1149,16 @@ header.top .cat-btn i b{background:var(--lime)}
 /* «Популярные запросы» на главной свёрнуты до кнопки */
 .popq-cut{max-height:84px;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
 .popq-more{margin-top:10px;border:0;background:none;padding:6px 0;font:inherit;font-size:14px;font-weight:600;color:var(--ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* ===== Аксессуары: подборка в карточке модели и раздел ===== */
+.md-acc .acc-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;margin-bottom:14px}
+.md-acc .acc-head h2{margin:0}
+.acc-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 0 16px;padding-bottom:2px}
+.acc-tabs::-webkit-scrollbar{display:none}
+.acc-tabs button{flex:none;min-height:36px;padding:0 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-weight:600;font-size:14px;line-height:1;cursor:pointer}
+.acc-tabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.acc-grid{grid-auto-flow:column;grid-template-columns:none!important;grid-auto-columns:calc((100% - 48px)/4);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding-bottom:8px}
+.acc-grid>.prod{scroll-snap-align:start}
+.prod .fits{margin:-2px 0 4px;line-height:1.35}
+@media (max-width:1080px){.acc-grid{grid-auto-columns:calc((100% - 32px)/3)}}
+@media (max-width:860px){.acc-grid{grid-auto-columns:44%;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}}

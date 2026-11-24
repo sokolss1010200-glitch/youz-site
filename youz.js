@@ -284,10 +284,11 @@ const low=v=>String(v||'').trim().toLowerCase();
 const htm=v=>String(v||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function cacheGet(k){try{return JSON.parse(localStorage.getItem('yz_'+k)||'null')}catch(e){return null}}
 function cacheSet(k,v){try{localStorage.setItem('yz_'+k,JSON.stringify(v))}catch(e){}}
-const DATA={products:cacheGet('products')||DEF.products,promos:cacheGet('promos')||DEF.promos,tradein:cacheGet('tradein')||DEF.tradein};
+const DATA={acc:cacheGet('acc')||[],products:cacheGet('products')||DEF.products,promos:cacheGet('promos')||DEF.promos,tradein:cacheGet('tradein')||DEF.tradein};
 /* Цены и товары берём из снимка data/products.csv в репозитории: GitHub Actions обновляет его раз в день в 13:00 МСК
    (.github/workflows/prajs.yml), чтобы утренние правки прайса не убирали товары с сайта. Нет снимка — читаем таблицу напрямую. */
 /* постоянная ссылка на последний снимок (не привязана к версии кода, кеш GitHub ~5 мин) */
+const SNAP_ACC='https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/accessories.csv?t='+Math.floor(Date.now()/600000);
 const SNAP={products:'https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/products.csv?t='+Math.floor(Date.now()/600000)};
 async function getCSV(u,live){const r=await fetch(u+(live?(u.includes('?')?'&':'?')+'_='+Math.floor(Date.now()/120000):''),{cache:live?'no-store':'default'});if(!r.ok)throw r.status;const rows=parseCSV(await r.text());if(!rows.length)throw 0;return rows}
 async function loadSheets(){
@@ -295,6 +296,8 @@ async function loadSheets(){
     let rows=null;if(SNAP[k]){try{rows=await getCSV(SNAP[k],false)}catch(e){}}
     if(!rows){try{rows=await getCSV(u,true)}catch(e){}}
     if(rows){DATA[k]=rows;cacheSet(k,rows)}}));
+  /* аксессуары: data/accessories.csv собирается из выгрузки склада (скрипт aksessuary-2026-11/acc_csv.py); фото — img/ в репозитории */
+  try{const a=await getCSV(SNAP_ACC,false);a.forEach(r=>{if(r['Фото']&&!/^https?:/.test(r['Фото']))r['Фото']=YZB+r['Фото']});DATA.acc=a;cacheSet('acc',a)}catch(e){}
   applyData();
 }
 
@@ -325,20 +328,38 @@ function memVal(m){m=String(m||'');const parts=m.match(/\d+(?:[.,]\d+)?\s*(?:Т�
   return parts.length?toG(parts[0]):0}
 function buildProducts(){
   const m=new Map();
-  DATA.products.forEach(r=>{const model=(r['Модель']||'').trim();if(!model)return;
-    if(!m.has(model))m.set(model,{id:m.size+1,n:model,cat:(r['Категория']||'Другое').trim(),grp:(r['Группа']||r['Категория']||'').trim(),badge:'',feat:false,cols:[],mem:[],opt:[],v:{}});
+  DATA.products.concat(DATA.acc||[]).forEach(r=>{const model=(r['Модель']||'').trim();if(!model)return;
+    if(!m.has(model))m.set(model,{id:m.size+1,n:model,cat:(r['Категория']||'Другое').trim(),grp:(r['Группа']||r['Категория']||'').trim(),badge:'',feat:false,cols:[],mem:[],opt:[],fits:[],v:{}});
     const p=m.get(model),col=(r['Цвет']||'').trim(),mem=(r['Память']||'').trim(),opt=(r['Опция']||r['SIM']||'').trim();
     let c=p.cols.find(x=>x.name===col);if(!c){c={name:col,hex:r['Код цвета']||'#C9CBC3',photo:r['Фото']||'',video:r['Видео']||''};p.cols.push(c)}else{if(!c.photo&&r['Фото'])c.photo=r['Фото'];if(!c.video&&r['Видео'])c.video=r['Видео']}
     if(!p.mem.includes(mem))p.mem.push(mem);if(!p.opt.includes(opt))p.opt.push(opt);
     const k=mem+'|'+opt+'|'+col,v={price:num(r['Цена']),old:num(r['Старая цена']),card:num(r['Цена по карте']),stock:low(r['Наличие'])||'да'};
     if(v.price&&(!p.v[k]||p.v[k].price>v.price))p.v[k]=v;
-    if(r['Бейдж']&&!p.badge)p.badge=r['Бейдж'];if(low(r['Главная'])==='да')p.feat=true});
+    String(r['Подходит к']||'').split(/[;\n]/).map(x=>x.trim()).filter(Boolean).forEach(t=>{if(!p.fits.includes(t))p.fits.push(t)});if(r['Тип']&&p.cat===ACC)p.grp=r['Тип'];if(r['Бейдж']&&!p.badge)p.badge=r['Бейдж'];if(low(r['Главная'])==='да')p.feat=true});
   P=[...m.values()].filter(p=>Object.values(p.v).some(x=>x.stock!=='нет'&&x.price));
   P.forEach(p=>{p.cols.forEach(c=>c.photo=fixPhoto(c.photo,p.n,c.name));p.f=catKey(p.cat);p.art=/duo/i.test(p.n)?'duo':/^iphone/i.test(p.n)?'ip':/apple watch/i.test(p.n)?'watch':/airpods/i.test(p.n)?'pods':'none';
     p.mem.sort((a,b)=>memVal(a)-memVal(b));p.opt.sort((a,b)=>a.length-b.length);p.min=minPrice(p);
     p.disc=Object.values(p.v).some(x=>x.old>x.price);
     const ci=p.cols.findIndex(c=>photoOf(c));if(ci>0)p.cols.unshift(p.cols.splice(ci,1)[0])});
+  /* аксессуар без фото на сайт не выводим (нарисованных заглушек нет): появится, когда в таблице будет фото */
+  P=P.filter(p=>p.cat!==ACC||photoAny(p,p.cols[0]));
 }
+/* ===== Аксессуары: столбец «Подходит к» — модели через «;».
+   «iPhone 18*» — все модели, название которых так начинается; «iPad» — весь раздел; «Все» — к любой технике. */
+const ACC='Аксессуары';
+const ACC_TYPES=['Чехлы','Защитные стёкла','Стёкла на камеру','Пауэрбанки','Беспроводные зарядки','Зарядки','Кабели','Автодержатели','Кардхолдеры','Стилусы','Ремешки','Чехлы для AirPods','Метки и обложки','Накопители'];
+function fitsTo(a,m){return (a.fits||[]).some(t=>{const l=low(t);if(l==='все')return true;if(l.endsWith('*'))return low(m.n).startsWith(l.slice(0,-1).trim());return l===low(m.n)||l===low(m.cat)})}
+/* у iPad первым — стилус, у остальных — чехлы и стёкла */
+const ACC_FIRST={'iPad':['Стилусы']};
+const accOrd=(g,cat)=>{const f=(ACC_FIRST[cat]||[]).indexOf(g);if(f>=0)return f-50;const i=ACC_TYPES.indexOf(g);return i<0?99:i};
+/* к модели: по одному товару каждого типа по кругу (чехол, стекло, зарядка…), внутри типа — сначала дешевле */
+function accFor(m,type){const all=P.filter(a=>a.cat===ACC&&a!==m&&fitsTo(a,m)&&(!type||a.grp===type));
+  const exact=a=>a.fits.some(t=>low(t)===low(m.n))?0:1,hasPh=a=>photoAny(a,a.cols[0])?0:1;
+  const by={};all.sort((a,b)=>exact(a)-exact(b)||hasPh(a)-hasPh(b)||a.min-b.min).forEach(a=>(by[a.grp]=by[a.grp]||[]).push(a));
+  const ks=Object.keys(by).sort((a,b)=>accOrd(a,m.cat)-accOrd(b,m.cat)),out=[];
+  for(let i=0;out.length<all.length;i++)ks.forEach(k=>{if(by[k][i])out.push(by[k][i])});return out}
+function fitsTxt(p){const f=p.fits.filter(t=>low(t)!=='все').map(t=>t.replace(/\*$/,'').trim());if(!f.length)return p.fits.length?'Подходит к любой технике':'';
+  return 'Для '+f.slice(0,2).join(', ')+(f.length>2?' и ещё '+(f.length-2):'')}
 function photoOf(c){const u=c.photo||'';return /^(https?:|data:)/.test(u)?u:(IMG[u]||'')}
 function variant(p,mem,opt,col){
   const ex=p.v[mem+'|'+opt+'|'+col];if(ex)return Object.assign({exact:true},ex);
@@ -372,7 +393,8 @@ function cardHTML(p){const opts=p.opt.filter(Boolean);
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
    <div class="pic">${art(p,p.cols[0])}<button type="button" class="vbtn" hidden aria-label="Смотреть видео">▶ Видео</button></div>
    ${p.cols.length>1||p.cols[0].name?`<div class="dots" role="group" aria-label="Цвет">${p.cols.map((c,i)=>`<button type="button" style="--c:${htm(c.hex)}" data-i="${i}" aria-label="${htm(c.name)}" title="${htm(c.name)}" aria-pressed="${i===0}"></button>`).join('')}<span class="cname">${htm(p.cols[0].name)}</span></div>`:''}
-   <h3>${`<a href="${typeof modelUrl==='function'&&modelUrl(p.n)||'/model#'+p.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')}">${htm(p.n)}</a>`}</h3>
+   ${p.cat===ACC&&p.fits.length?`<div class="opt1 fits">${htm(fitsTxt(p))}</div>`:''}
+   <h3>${p.cat===ACC?htm(p.n):`<a href="${typeof modelUrl==='function'&&modelUrl(p.n)||'/model#'+p.n.toLowerCase().replace(/[^a-z0-9а-я]+/g,'-')}">${htm(p.n)}</a>`}</h3>
    ${p.mem.filter(Boolean).length?`<div class="mem" role="group" aria-label="Память">${p.mem.map((m,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(m)}</button>`).join('')}</div>`:''}
    ${opts.length>1?`<div class="mem opt" role="group" aria-label="Вариант">${p.opt.map((o,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${htm(o||'Стандарт')}</button>`).join('')}</div>`:opts.length?`<div class="opt1">${htm(opts[0])}</div>`:''}
    <div class="foot"><div class="price"></div>
@@ -671,7 +693,7 @@ const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',asy
 
 function applySettings(){(DATA.settings||[]).forEach(r=>{const k=low(r['Параметр']),v=num(r['Значение']);if(k.startsWith('trade-in')&&v>=-20&&v<=30)TI_UP=1+v/100;if(k.startsWith('рассрочка')&&v>=3&&v<=60){MONTHS_DEF=v;if(window.yzSetTerm)window.yzSetTerm(v)}})}
 /* ================= МЕНЮ «КАТАЛОГ» (по кнопке, на всех страницах) ================= */
-const CAT_PAGE={'iPhone':'/iphone','Samsung':'/samsung','Mac':'/macbook','Apple Watch':'/apple-watch','AirPods':'/airpods','Dyson':'/dyson','iPad':'/ipad','Фото и видео':'/foto-i-video','Консоли':'/igrovye-pristavki','Android':'/smartfony-android','Аудио':'/naushniki','Умные часы':'/umnye-chasy','Умные очки':'/ray-ban-meta'};
+const CAT_PAGE={'iPhone':'/iphone','Samsung':'/samsung','Mac':'/macbook','Apple Watch':'/apple-watch','AirPods':'/airpods','Dyson':'/dyson','iPad':'/ipad','Фото и видео':'/foto-i-video','Консоли':'/igrovye-pristavki','Android':'/smartfony-android','Аудио':'/naushniki','Умные часы':'/umnye-chasy','Умные очки':'/ray-ban-meta','Аксессуары':'/catalog#accessories'};
 const CAT_SLUG={'iPhone':'iphone','Mac':'mac','iPad':'ipad','Apple Watch':'watch','AirPods':'airpods','Samsung':'samsung','Android':'android','Dyson':'dyson','Аудио':'audio','Умные часы':'smartwatch','Умные очки':'glasses','Фото и видео':'camera','Консоли':'games','Аксессуары':'accessories','LEGO':'lego'};
 const CAT_ICON={'iPhone':'<rect x="7" y="2" width="10" height="20" rx="3"/>','Mac':'<rect x="3" y="5" width="18" height="11" rx="1.5"/><path d="M1 19h22"/>','iPad':'<rect x="4" y="2" width="16" height="20" rx="2.5"/>','Apple Watch':'<rect x="6" y="6" width="12" height="12" rx="3.5"/><path d="M9 6l1-4h4l1 4M9 18l1 4h4l1-4"/>','AirPods':'<path d="M6 15v-4a6 6 0 0 1 12 0v4"/><rect x="4" y="14" width="4" height="7" rx="1.5"/><rect x="16" y="14" width="4" height="7" rx="1.5"/>','Samsung':'<rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="6" r="1"/>','Android':'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M10 19h4"/>','Dyson':'<path d="M10 3h4v8l3 2v8H7v-8l3-2z"/>','Аудио':'<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/>','Умные часы':'<circle cx="12" cy="12" r="6"/><path d="M9 6l1-4h4l1 4M9 18l1 4h4l1-4"/>','Умные очки':'<circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M11 13h2M3 13 2 8M21 13l1-5"/>','Фото и видео':'<rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 7l2-3h4l2 3"/>','Консоли':'<path d="M6 9h12a4 4 0 0 1 4 4v1a3 3 0 0 1-5 2l-2-2H9l-2 2a3 3 0 0 1-5-2v-1a4 4 0 0 1 4-4z"/>','Аксессуары':'<path d="M9 2v6M15 2v6M7 8h10v4a5 5 0 0 1-10 0zM12 17v5"/>','LEGO':'<rect x="3" y="9" width="18" height="11" rx="1.5"/><rect x="6" y="5" width="4" height="4" rx="1"/><rect x="14" y="5" width="4" height="4" rx="1"/>'};
 const cats=()=>CAT_ORDER.filter(c=>P.some(p=>p.cat===c)).concat([...new Set(P.map(p=>p.cat))].filter(c=>!CAT_ORDER.includes(c)));
@@ -679,7 +701,7 @@ const ico=c=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 const mega=document.getElementById('mega'),cmap=document.getElementById('cmap');
 function renderMega(){if(!cmap)return;
   cmap.innerHTML=cats().map(c=>{const ps=P.filter(p=>p.cat===c);const groups=[...new Set(ps.map(p=>p.grp))];
-    const lim={'iPhone':14,'Samsung':12,'Android':12,'LEGO':0,'Консоли':8,'Фото и видео':8,'Аксессуары':8}[c]??10;
+    const lim={'iPhone':14,'Samsung':12,'Android':12,'LEGO':0,'Консоли':8,'Фото и видео':8,'Аксессуары':0}[c]??10;
     return `<div class="cm-group${['iPhone','Samsung','Android'].includes(c)?' wide':''}"><button type="button" class="cm-head" data-cat="${htm(c)}">${ico(c)}<b>${htm(c)}</b><small>${ps.length}</small><span class="cm-arr">→</span></button>
     ${lim?`<div class="cm-chips">${ps.slice(0,lim).map(p=>`<button type="button" class="chip" data-model="${htm(p.n)}">${p.disc?'<i class="dot"></i>':''}${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}<small>от ${rub(p.min).replace(' ₽','')}</small></button>`).join('')}${ps.length>lim?`<button type="button" class="chip more" data-cat="${htm(c)}">ещё ${ps.length-lim} →</button>`:''}</div>`:''}
     ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')}
@@ -703,22 +725,24 @@ document.querySelectorAll('.sell-nav a[data-cat]').forEach(a=>a.addEventListener
 /* ================= СТРАНИЦА КАТАЛОГА (если на странице есть #yzCat) ================= */
 const CAT=document.getElementById('yzCat');
 const PRICE_BANDS=[['до 30 000',0,30000],['30–70 тыс.',30000,70000],['70–120 тыс.',70000,120000],['от 120 тыс.',120000,1e9]];
-const CS={cat:'',grp:'',model:'',mem:[],opt:[],band:-1,disc:false,sort:'pop',q:'',shown:24};
+const CS={cat:'',grp:'',model:'',fit:'',mem:[],opt:[],band:-1,disc:false,sort:'pop',q:'',shown:24};
 if(CAT){
   const cgrid=document.getElementById('cgrid'),ctabs=document.getElementById('ctabs'),cside=document.getElementById('cside'),ccount=document.getElementById('ccount'),ctitle=document.getElementById('ctitle'),cmore=document.getElementById('cmore'),csort=document.getElementById('csort'),cchips=document.getElementById('cchips');
   bindGrid(cgrid);
   function renderTabs(){ctabs.innerHTML=`<button type="button" class="tab" data-tab="" aria-selected="${!CS.cat}">Все</button>`+cats().map(c=>`<button type="button" class="tab" data-tab="${htm(c)}" aria-selected="${CS.cat===c}">${htm(c)}</button>`).join('')}
-  function pool(){return P.filter(p=>(!CS.cat||p.cat===CS.cat)&&(!CS.grp||p.grp===CS.grp)&&(!CS.model||p.n===CS.model)&&(!CS.q||(p.n+' '+p.grp+' '+p.cat).toLowerCase().includes(CS.q)))}
+  function pool(){return P.filter(p=>(!CS.cat||p.cat===CS.cat)&&(!CS.grp||p.grp===CS.grp)&&(!CS.model||p.n===CS.model)&&(!CS.fit||fitsTo(p,P.find(x=>x.n===CS.fit)||{n:CS.fit,cat:''}))&&(!CS.q||(p.n+' '+p.grp+' '+p.cat).toLowerCase().includes(CS.q)))}
   function okVariant(p){return Object.entries(p.v).some(([k,v])=>{const [m,o]=k.split('|');const b=PRICE_BANDS[CS.band];
     return (!CS.mem.length||CS.mem.includes(m))&&(!CS.opt.length||CS.opt.includes(o))&&(!b||v.price>=b[1]&&v.price<b[2])&&(!CS.disc||v.old>v.price)})}
   function renderSide(){const base=pool();
     const mems=CS.cat?[...new Set(base.flatMap(p=>p.mem).filter(Boolean))].sort((a,b)=>memVal(a)-memVal(b)).slice(0,14):[];
     const opts=CS.cat?[...new Set(base.flatMap(p=>p.opt).filter(Boolean))].slice(0,10):[];
     const grps=CS.cat?[...new Set(P.filter(p=>p.cat===CS.cat).map(p=>p.grp))]:[];
-    const mods=CS.cat&&!CS.model?P.filter(p=>p.cat===CS.cat&&(!CS.grp||p.grp===CS.grp)).slice(0,16):[];
+    const fitList=CS.cat===ACC?[...new Set(P.filter(p=>p.cat===ACC).flatMap(p=>p.fits))].filter(t=>low(t)!=='все'&&!/\*$/.test(t)&&P.some(x=>x.n===t&&x.cat!==ACC)):[];
+    const mods=CS.cat===ACC?[]:CS.cat&&!CS.model?P.filter(p=>p.cat===CS.cat&&(!CS.grp||p.grp===CS.grp)).slice(0,16):[];
     const sec=(t,html)=>html?`<div class="cs-sec"><h4>${t}</h4><div class="cs-chips">${html}</div></div>`:'';
     cside.innerHTML=
-      sec('Серия / бренд',grps.length>1?grps.map(g=>`<button type="button" data-f="grp" data-v="${htm(g)}" aria-pressed="${CS.grp===g}">${htm(g)}</button>`).join(''):'')+
+      sec('Для устройства',fitList.map(t=>`<button type="button" data-f="fit" data-v="${htm(t)}" aria-pressed="${CS.fit===t}">${htm(t)}</button>`).join(''))+
+      sec(CS.cat===ACC?'Тип':'Серия / бренд',grps.length>1?grps.map(g=>`<button type="button" data-f="grp" data-v="${htm(g)}" aria-pressed="${CS.grp===g}">${htm(g)}</button>`).join(''):'')+
       sec('Модель',mods.length>1?mods.map(p=>`<button type="button" data-f="model" data-v="${htm(p.n)}">${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}</button>`).join(''):'')+
       sec('Память',mems.map(m=>`<button type="button" data-f="mem" data-v="${htm(m)}" aria-pressed="${CS.mem.includes(m)}">${htm(m)}</button>`).join(''))+
       sec(CS.cat==='iPhone'?'SIM':'Вариант',opts.map(o=>`<button type="button" data-f="opt" data-v="${htm(o)}" aria-pressed="${CS.opt.includes(o)}">${htm(o)}</button>`).join(''))+
@@ -729,9 +753,9 @@ if(CAT){
   function renderList(){
     let items=pool().filter(okVariant).slice();const s=CS.sort;
     if(s==='asc')items.sort((a,b)=>a.min-b.min);else if(s==='desc')items.sort((a,b)=>b.min-a.min);else if(s==='disc')items.sort((a,b)=>(b.disc-a.disc)||(a.min-b.min));
-    ccount.textContent=items.length+' '+plural(items.length,['модель','модели','моделей']);
+    ccount.textContent=items.length+' '+plural(items.length,CS.cat===ACC?['товар','товара','товаров']:['модель','модели','моделей']);
     ctitle.textContent=CS.model||CS.grp||CS.cat||(CS.q?'Поиск: '+CS.q:'Все товары');
-    const chips=[];if(CS.grp)chips.push(['grp',CS.grp]);if(CS.model)chips.push(['model',CS.model]);CS.mem.forEach(m=>chips.push(['mem',m]));CS.opt.forEach(o=>chips.push(['opt',o]));if(CS.band>=0)chips.push(['band',PRICE_BANDS[CS.band][0]]);if(CS.disc)chips.push(['disc','Со скидкой']);if(CS.q)chips.push(['q','«'+CS.q+'»']);
+    const chips=[];if(CS.fit)chips.push(['fit','Для '+CS.fit]);if(CS.grp)chips.push(['grp',CS.grp]);if(CS.model)chips.push(['model',CS.model]);CS.mem.forEach(m=>chips.push(['mem',m]));CS.opt.forEach(o=>chips.push(['opt',o]));if(CS.band>=0)chips.push(['band',PRICE_BANDS[CS.band][0]]);if(CS.disc)chips.push(['disc','Со скидкой']);if(CS.q)chips.push(['q','«'+CS.q+'»']);
     cchips.innerHTML=chips.map(c=>`<button type="button" data-x="${c[0]}" data-v="${htm(c[1])}">${htm(c[1])} ×</button>`).join('');
     fillGrid(cgrid,items.slice(0,CS.shown),'По этим фильтрам ничего нет. Сбросьте фильтры или позвоните: привезём под заказ.');
     if(CS.mem.length||CS.opt.length)cgrid.querySelectorAll('.prod').forEach(card=>{const p=P.find(x=>x.id==card.dataset.id);
@@ -747,14 +771,14 @@ if(CAT){
   window.catGo=u=>{const m=u.model?P.find(p=>p.n===u.model):null;go({cat:u.cat||(m?m.cat:''),grp:u.grp||'',model:u.model||'',mem:[],opt:[],band:-1,disc:false,q:''},true)};
   window.catSearch=v=>go({q:v,model:'',cat:v?'':CS.cat},false);
   CAT.addEventListener('click',e=>{
-    const t=e.target.closest('[data-tab]');if(t){go({cat:t.dataset.tab,grp:'',model:'',mem:[],opt:[],q:''});return}
+    const t=e.target.closest('[data-tab]');if(t){go({cat:t.dataset.tab,fit:'',grp:'',model:'',mem:[],opt:[],q:''});return}
     const f=e.target.closest('#cside [data-f]');
     if(f){const k=f.dataset.f,v=f.dataset.v;
-      if(k==='grp')go({grp:CS.grp===v?'':v,model:''});
+      if(k==='fit')go({fit:CS.fit===v?'':v});else if(k==='grp')go({grp:CS.grp===v?'':v,model:''});
       else if(k==='model')go({model:v},true);
       else if(k==='mem'||k==='opt'){const a=CS[k].slice();const i=a.indexOf(v);i>=0?a.splice(i,1):a.push(v);go({[k]:a})}
       else if(k==='band')go({band:CS.band===+v?-1:+v});else if(k==='disc')go({disc:!CS.disc});return}
-    if(e.target.closest('#creset')){go({grp:'',model:'',mem:[],opt:[],band:-1,disc:false,q:''});return}
+    if(e.target.closest('#creset')){go({fit:'',grp:'',model:'',mem:[],opt:[],band:-1,disc:false,q:''});return}
     const x=e.target.closest('#cchips [data-x]');
     if(x){const k=x.dataset.x;if(k==='mem'||k==='opt')go({[k]:CS[k].filter(v=>v!==x.dataset.v)});else go({[k]:k==='band'?-1:k==='disc'?false:''});if(k==='q')q.value='';return}
     if(e.target.closest('#cmore')){CS.shown+=24;renderList();return}
@@ -763,7 +787,7 @@ if(CAT){
   csort.addEventListener('change',()=>go({sort:csort.value}));
   let firstRender=true;
   window.renderCatalog=()=>{renderTabs();
-    if(firstRender){firstRender=false;try{const bq=new URLSearchParams(location.search).get('band');if(bq!=null&&PRICE_BANDS[+bq])CS.band=+bq}catch(e){}const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
+    if(firstRender){firstRender=false;try{const sp=new URLSearchParams(location.search),bq=sp.get('band');if(bq!=null&&PRICE_BANDS[+bq])CS.band=+bq;const fq=sp.get('for');if(fq)CS.fit=fq}catch(e){}const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
       /* страницы категорий (/iphone, /airpods …): раздел задан в data-cat */const yc=CAT.closest('#yzCat')||document.getElementById('yzCat'),dc=yc?.dataset.cat;if(!c&&dc){CS.cat=dc;if(yc.dataset.grp)CS.grp=yc.dataset.grp}
       try{const g=JSON.parse(sessionStorage.getItem('yz_go')||'null');sessionStorage.removeItem('yz_go');if(g){const m=g.model?P.find(p=>p.n===g.model):null;Object.assign(CS,{cat:g.cat||(m?m.cat:CS.cat),grp:g.grp||'',model:g.model||''})}}catch(e){}}
     renderSide();renderList()};
@@ -859,6 +883,7 @@ if(YM){
   </div>
  </div>
 </div></section>
+${p.cat!==ACC&&accFor(p).length?accBlock(p):''}
 ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характеристики ${htm(name)}</h2><div class="md-specs">${M.specs.map(s=>`<div><span>${htm(s[0])}</span><b>${htm(s[1])}</b></div>`).join('')}</div>${(M.about||[]).map(t=>`<p class="md-p">${htm(t)}</p>`).join('')}</div></section>`:''}
 <section class="md-sec"><div class="wrap md-faq"><h2>Вопросы о ${htm(name)}</h2><div class="qa">
  <details open><summary>Это оригинальный ${htm(name)}?<i></i></summary><p>Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас.</p></details>
@@ -869,9 +894,19 @@ ${M.specs?`<section class="md-sec"><div class="wrap"><h2>Характерист�
 </div></div></section>
 <section class="seo-text"><div class="wrap"><h2>${htm(name)} — цены в Ханты-Мансийске</h2><p>В магазине ЮZ на Комсомольской, 49 можно купить ${htm(name)} во всех цветах и объёмах памяти: ${htm(p.cols.map(x=>x.name).join(', '))}. Цена ${htm(name)} по акции — от ${rub(p.min)}, условия акции уточняйте у менеджера. Цены зависят от курса валют и поставок и могут меняться ежедневно, поэтому актуальную стоимость и наличие уточняйте у менеджера перед покупкой. Доступны рассрочка до ${MONTHS_DEF} месяцев, trade-in старого смартфона и доставка по Ханты-Мансийску в день заказа.</p></div></section>`;
     document.title=`Купить ${name} в Ханты-Мансийске — цена от ${rub(p.min)} | ЮZ Store`;
+    const ag=document.getElementById('mdAccGrid');if(ag){bindGrid(ag);fillAcc(p,'')}
     if(/^iphone duo$/i.test(name)){const hero=YM.querySelector('.md-hero');if(hero){if(keepDuo)hero.after(keepDuo);else{hero.insertAdjacentHTML('afterend',DUO_FOLD);initDuoFold()}}}
   }
-  YM.addEventListener('click',e=>{const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
+  function accBlock(p){const ts=[...new Set(accFor(p).map(a=>a.grp))];
+    return `<section class="md-sec md-acc" aria-label="Аксессуары к ${htm(p.n)}"><div class="wrap">
+ <div class="acc-head"><h2>Подойдёт к ${htm(p.n)}</h2><a class="link-u" href="/catalog?for=${encodeURIComponent(p.n)}#accessories">Все аксессуары</a></div>
+ ${ts.length>1?`<div class="acc-tabs" role="group" aria-label="Тип аксессуара"><button type="button" data-acc="" aria-pressed="true">Всё</button>${ts.map(t=>`<button type="button" data-acc="${htm(t)}" aria-pressed="false">${htm(t)}</button>`).join('')}</div>`:''}
+ <div class="grid acc-grid" id="mdAccGrid"></div>
+</div></section>`}
+  function fillAcc(p,t){const g=document.getElementById('mdAccGrid');if(g)fillGrid(g,accFor(p,t).slice(0,12))}
+  YM.addEventListener('click',e=>{const at=e.target.closest('[data-acc]');if(at){at.parentNode.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===at));fillAcc(P.find(x=>x.n===name),at.dataset.acc);return}
+    if(e.target.closest('#mdAccGrid'))return;
+    const b=e.target.closest('[data-ci],[data-mi],[data-oi]');
     if(b){if(b.dataset.ci)st.ci=+b.dataset.ci;if(b.dataset.mi)st.mi=+b.dataset.mi;if(b.dataset.oi)st.oi=+b.dataset.oi;draw();return}
     const p=P.find(x=>x.n===name);if(!p)return;const c=p.cols[st.ci]||p.cols[0],mem=p.mem[st.mi]||p.mem[0],opt=p.opt[st.oi]||p.opt[0]||'';const v=variant(p,mem,opt,c.name);
     if(e.target.closest('#mdVid')){openVideo(c.video,name+', '+c.name);return}
