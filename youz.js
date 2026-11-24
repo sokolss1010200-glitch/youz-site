@@ -598,13 +598,16 @@ function drawSum(){const L=sumLines();let html=L.map(l=>`<div><span>${htm(l[0])}
   if(leadCtx.cart){const t=cart.reduce((a,b)=>a+b.price,0);html+=`<div style="background:var(--ink);color:#fff"><span>Итого</span><b>${rub(t)}</b></div>`}
   document.getElementById('leadSum').innerHTML=html}
 document.getElementById('leadSum').addEventListener('click',e=>{const b=e.target.closest('[data-rm]');if(!b)return;cart.splice(+b.dataset.rm,1);updBadge();if(!cart.length){closeLead();return}drawSum()});
-function openLead(ctx){leadCtx=ctx;yzGoal('lead_open',{source:ctx.source||''});lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
+let leadOpener=null;
+function openLead(ctx){leadCtx=ctx;if(lead.hidden)leadOpener=document.activeElement;yzGoal('lead_open',{source:ctx.source||''});lead.classList.remove('closing');document.getElementById('leadE').textContent=ctx.eyebrow||'Заявка';document.getElementById('leadT').textContent=ctx.title||'Оставьте заявку';
   document.getElementById('leadBtn').textContent=ctx.btn||'Отправить заявку';document.getElementById('leadErr').hidden=true;
   drawSum();leadForm.hidden=false;leadOk.hidden=true;lead.hidden=false;document.body.style.overflow='hidden';setTimeout(()=>document.getElementById('leadName').focus(),50)}
-function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');if(leadOk.hidden)yzGoal('lead_close',{source:leadCtx.source||'',phone:leadCtx._ph?'да':'нет'});lead.hidden=true;document.body.style.overflow=''}
+function closeLead(now){if(lead.hidden)return;if(!now&&!reduce){if(lead.classList.contains('closing'))return;lead.classList.add('closing');setTimeout(()=>{if(lead.classList.contains('closing'))closeLead(true)},190);return}lead.classList.remove('closing');if(leadOk.hidden)yzGoal('lead_close',{source:leadCtx.source||'',phone:leadCtx._ph?'да':'нет'});lead.hidden=true;document.body.style.overflow='';if(leadOpener&&leadOpener.isConnected&&leadOpener.focus)leadOpener.focus({preventScroll:true});leadOpener=null}
 document.getElementById('leadX').onclick=closeLead;document.getElementById('leadDone').onclick=closeLead;
 lead.addEventListener('click',e=>{if(e.target===lead)closeLead()});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!lead.hidden)closeLead()});
+/* аудит 24.11: фокус не уходит из окна заявки по Tab */
+lead.addEventListener('keydown',e=>{if(e.key!=='Tab'||lead.hidden)return;const f=[...lead.querySelectorAll('a[href],button,input,select,textarea,[tabindex]:not([tabindex="-1"])')].filter(x=>!x.disabled&&x.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}});
 function heroCtx(){const sw=document.querySelector('.sw[aria-pressed="true"]');const p=P.find(x=>/^iphone 18 pro$/i.test(x.n));return {eyebrow:'Бронь',title:'Забронировать iPhone 18 Pro',lines:[['iPhone 18 Pro, '+(sw?sw.dataset.n:''),document.getElementById('heroP').textContent]],source:'Бронь iPhone 18 Pro'}}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-lead]');if(!t)return;e.preventDefault();const k=t.dataset.lead;
   if(k==='hero')openLead(heroCtx());

@@ -1058,3 +1058,26 @@ h1,h2,h3{letter-spacing:-.015em;line-height:1.15}
 @media (prefers-reduced-motion:reduce){.hslider>.hero{transition:none}}
 /* ремонт теперь идёт после тёмного блока Duo: нужен отступ сверху (в разметке стоит padding-top:0) */
 #repair{padding-top:clamp(36px,6vw,72px)!important}
+
+/* ===== Аудит 24.11.2026, раздел A: стабильность вёрстки, доступность, мобильные мелочи ===== */
+/* A4: запасной шрифт с метриками Onest — кнопки и заголовки не прыгают, пока грузится Onest */
+@font-face{font-family:"Onest Fallback";src:local("Arial"),local("ArialMT"),local("Helvetica"),local("Roboto");size-adjust:104%;ascent-override:93%;descent-override:29%;line-gap-override:0%}
+:root{--f-body:"Onest","Onest Fallback","Segoe UI",system-ui,-apple-system,sans-serif;--f-display:"Onest","Onest Fallback",system-ui,-apple-system,"Segoe UI",sans-serif}
+/* A1: место под фиксированную шапку (полоса trade-in + шапка) до запуска скрипта; скрипт потом уточняет высоту */
+#hdrSpace{height:111px}
+@media (min-width:961px){#hdrSpace{height:157px}}
+/* A2: пока товары не загружены, список держит место — текст ниже не прыгает на первый экран */
+.cgrid:empty{min-height:calc(100vh - 160px)}
+#ctabs:empty{min-height:42px}
+/* A3: карточка модели держит высоту экрана, «Популярные запросы» не появляются на первом экране */
+#yzModel{min-height:calc(100vh - 111px)}
+/* A6: уведомление «… в корзине» по ширине текста, а не в половину экрана */
+.toast{width:max-content}
+.toast button{white-space:nowrap}
+/* A7: на сенсорных экранах эффекты наведения не залипают после касания */
+@media (hover:none){
+.prod:hover .pimg,.prod:hover .duo-mini,.prod:hover .pic .iphone,.cat:hover svg,.logo:hover svg,.blog-card:hover .blog-img img,.cm-head:hover .cm-arr,
+.sw:hover:not(:active),.add:hover:not(:active),.cart-btn:hover:not(:active),.pg-card:hover,.blog-card:hover,.rate:hover{transform:none!important}
+.prod:hover,.pg-card:hover,.blog-card:hover,.rate:hover{box-shadow:none}
+.add:hover:not(:active){background:var(--lime)}
+}
