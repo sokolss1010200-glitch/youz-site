@@ -1,9 +1,9 @@
-<!-- ЮZ: страница «glavnaya» с готовым текстом для поисковиков (снимок коммита 9befda9). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
+<!-- ЮZ: страница «glavnaya» с готовым текстом для поисковиков (снимок коммита db707b1). Код сайта: github.com/sokolss1010200-glitch/youz-site -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Onest:wght@400;500;600;700&display=swap">
-<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@9befda95428bf701ca8d10bcbfd5d5260635c6bf/youz.css?v=9befda9">
+<link id="yz-css0" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@db707b1165883d8980615d78a49fb55ea01ea2a3/youz.css?v=db707b1">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ElectronicsStore", "@id": "https://youz.store/#store", "name": "ЮZ Store", "url": "https://youz.store", "telephone": "+7 (3467) 36-24-04", "image": "https://static.tildacdn.com/tila3739-3731-4033-a132-373738613036/iphone-18-pro-burgun.webp", "address": {"@type": "PostalAddress", "streetAddress": "ул. Комсомольская, 49", "addressLocality": "Ханты-Мансийск", "addressRegion": "Ханты-Мансийский автономный округ — Югра", "addressCountry": "RU"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "10:00", "closes": "20:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday", "Sunday"], "opens": "10:00", "closes": "18:00"}], "sameAs": ["https://yandex.ru/maps/org/yuz/103143665209/", "https://2gis.ru/kh_mansiysk/firm/70000001042751106", "https://vk.com/youz.ru_hm", "https://t.me/uzstorehm"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "iPhone 18 Pro и iPhone Duo есть в наличии?", "acceptedAnswer": {"@type": "Answer", "text": "Да, iPhone 18 Pro, 18 Pro Max и iPhone Duo уже в продаже. Если нужного цвета или объёма памяти нет на витрине, привезём под заказ."}}, {"@type": "Question", "name": "Техника оригинальная?", "acceptedAnswer": {"@type": "Answer", "text": "Да. При покупке проверяем серийный номер на сайте Apple вместе с вами, телефон активируется при вас."}}, {"@type": "Question", "name": "Какая гарантия?", "acceptedAnswer": {"@type": "Answer", "text": "12 месяцев гарантии магазина на всю технику. Если что-то случится, обращайтесь в магазин на Комсомольской, 49."}}, {"@type": "Question", "name": "Как оформить рассрочку?", "acceptedAnswer": {"@type": "Answer", "text": "Рассрочка по «Халве» Совкомбанка и ОТП Банку без переплаты при выполнении условий банка, до 36 месяцев. Ещё можно оформить кредит в одном из 17+ банков. Нужен паспорт, условия подскажет менеджер."}}, {"@type": "Question", "name": "Можно сдать в trade-in телефон с трещиной?", "acceptedAnswer": {"@type": "Answer", "text": "Да, принимаем и битые устройства. Сумма будет ниже, но её всё равно можно зачесть в покупку нового iPhone."}}, {"@type": "Question", "name": "Есть доставка?", "acceptedAnswer": {"@type": "Answer", "text": "По Ханты-Мансийску доставим в день заказа. В другие города отправим транспортной компанией."}}]}</script>
 <div id="yz-root">
@@ -61,7 +61,7 @@
       <div class="tilt" id="tilt">
         <img class="hero-img" src="https://static.tildacdn.com/tila3739-3731-4033-a132-373738613036/iphone-18-pro-burgun.webp" alt="iPhone 18 Pro Burgundy в магазине ЮZ, Ханты-Мансийск" fetchpriority="high">
         <div class="float" hidden></div>
-        <div class="chip-float cf2"><span>Trade-in</span><b>до −99 000 ₽</b></div>
+        <div class="chip-float cf2"><span>Скидка по trade-in</span><b>до 99 000 ₽</b></div>
       </div>
     </div>
   </div>
@@ -123,6 +123,21 @@
   </div>
 </section>
 
+<!-- GIFTS (аудит 24.11, C8: подарки рядом с акциями, одной строкой вместо отдельного блока) -->
+<section id="gifts" class="gifts-line">
+  <div class="wrap">
+    <h2>С каждой покупкой</h2>
+    <ul>
+      <li><b>Подарок</b> к каждому устройству, какой — подскажет менеджер</li>
+      <li><b>Перенос данных</b>: фото, контакты, WhatsApp</li>
+      <li><b>Банковские приложения</b>: Сбербанк, ВТБ, Альфа и другие</li>
+      <li><a href="/rassrochka"><b>Рассрочка 0%</b> до 36 месяцев</a></li>
+      <li><a href="/garantiya"><b>Гарантия</b> 12 месяцев</a></li>
+      <li><a href="/dostavka"><b>Доставка</b> в день заказа</a></li>
+    </ul>
+  </div>
+</section>
+
 <!-- HITS -->
 <section id="hits">
   <div class="wrap">
@@ -148,7 +163,7 @@
       <a href="/iphone?band=1"><small>до</small><b>70 000 ₽</b><span data-band="1">iPhone 17e, 16, 15, 14</span></a>
       <a href="/iphone?band=2"><small>от 70 000 до</small><b>120 000 ₽</b><span data-band="2">iPhone 18 Pro, 17 Pro Max, 17 Pro, 17</span></a>
       <a href="/iphone?band=3"><small>от</small><b>120 000 ₽</b><span data-band="3">iPhone Duo, 18 Pro Max</span></a>
-      <a href="#tradein" class="tin"><small>Сдайте старый</small><b>до −99 000 ₽</b><span>Посчитать доплату →</span></a>
+      <a href="#tradein" class="tin"><small>Сдайте старый, скидка</small><b>до 99 000 ₽</b><span>Посчитать доплату →</span></a>
     </div>
   </div>
 </section>
@@ -198,21 +213,6 @@
       <button class="btn btn-ink" type="submit">Зафиксировать оценку</button>
       <p class="fine" id="calcMsg">Расчёт предварительный. Точную сумму назовём после проверки устройства в магазине.</p>
     </form>
-  </div>
-</section>
-
-<!-- GIFTS -->
-<section id="gifts" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv-in"><h2>С каждой покупкой</h2><p>Не нужно ничего докупать: техника уходит из магазина настроенной и готовой к работе.</p></div>
-    <div class="gifts">
-      <div class="gift main rv-in"><div style="display:grid;gap:14px"><h3>Подарки к каждому устройству</h3></div><p>К любой покупке в ЮZ даём подарок. Какой именно, подскажет менеджер.</p><a class="btn btn-lime" href="#hits">Выбрать технику <span class="arr">→</span></a></div>
-      <div class="gift rv-in" style="--d:.15s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="8" width="13" height="24" rx="3"/><rect x="24" y="8" width="13" height="24" rx="3"/><path d="M17 20h6m-2-3 3 3-3 3"/></svg><h3>Перенос данных</h3><p>Фото, контакты, WhatsApp, банки.</p></div>
-      <div class="gift rv-in" style="--d:.1s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="6" y="6" width="12" height="12" rx="3"/><rect x="22" y="6" width="12" height="12" rx="3"/><rect x="6" y="22" width="12" height="12" rx="3"/><path d="M28 23v10M23 28h10"/></svg><h3>Установка санкционных приложений</h3><p>Сбербанк, ВТБ, Альфа и другие банки, которых нет в App Store.</p></div>
-      <div class="gift rv-in" style="--d:.05s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 12h28v20H6z"/><path d="M6 18h28M12 26h6"/></svg><h3>Рассрочка 0%</h3><p>До 36 месяцев, без первого взноса. Решение за 5 минут.</p><a class="gift-more" href="/rassrochka">Подробнее →</a></div>
-      <div class="gift rv-in" style="--d:.1s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 4 6 9v10c0 9 6 14 14 17 8-3 14-8 14-17V9z"/><path d="m14 20 4 4 8-8"/></svg><h3>Гарантия 12 месяцев</h3><p>Гарантия магазина на всю технику.</p><a class="gift-more" href="/garantiya">Подробнее →</a></div>
-      <div class="gift gift-wide rv-in" style="--d:.15s"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 26h20V10H4zM24 16h7l5 5v5H24"/><circle cx="11" cy="29" r="3"/><circle cx="30" cy="29" r="3"/></svg><h3>Доставка по городу</h3><p>Привезём в день заказа.</p><a class="gift-more" href="/dostavka">Подробнее →</a></div>
-    </div>
   </div>
 </section>
 
@@ -294,7 +294,7 @@
 </section>
 </main>
 
-<!--popq--><section class="popq" aria-label="Популярные запросы"><div class="wrap"><h2>Популярные запросы</h2><div class="popq-l"><a href="/iphone">iPhone в Ханты-Мансийске</a><a href="/airpods">AirPods в Ханты-Мансийске</a><a href="/apple-watch">Apple Watch в Ханты-Мансийске</a><a href="/macbook">MacBook в Ханты-Мансийске</a><a href="/ipad">iPad в Ханты-Мансийске</a><a href="/samsung">Samsung Galaxy в Ханты-Мансийске</a><a href="/dyson">Dyson в Ханты-Мансийске</a><a href="/smartfony-android">Android-смартфон в Ханты-Мансийске</a><a href="/igrovye-pristavki">игровую приставку в Ханты-Мансийске</a><a href="/foto-i-video">DJI и экшн-камеры в Ханты-Мансийске</a><a href="/iphone-18-pro">Купить iPhone 18 Pro</a><a href="/iphone-18-pro-max">Купить iPhone 18 Pro Max</a><a href="/iphone-duo">Купить iPhone Duo</a><a href="/iphone-17">Купить iPhone 17</a><a href="/iphone-17-pro">Купить iPhone 17 Pro</a><a href="/iphone-17-pro-max">Купить iPhone 17 Pro Max</a><a href="/iphone-air">Купить iPhone Air</a><a href="/iphone-16">Купить iPhone 16</a><a href="/iphone-16-pro">Купить iPhone 16 Pro</a><a href="/iphone-16-pro-max">Купить iPhone 16 Pro Max</a><a href="/iphone-15">Купить iPhone 15</a><a href="/airpods-pro-3">Купить AirPods Pro 3</a><a href="/airpods-4">Купить AirPods 4</a><a href="/apple-watch-series-11">Купить Apple Watch Series 11</a><a href="/apple-watch-ultra-3">Купить Apple Watch Ultra 3</a><a href="/macbook-air-13-m5">Купить MacBook Air 13 M5</a><a href="/ipad-air-11-m4">Купить iPad Air 11 M4</a><a href="/samsung-galaxy-s26-ultra">Купить Samsung Galaxy S26 Ultra</a><a href="/samsung-galaxy-z-fold-8">Купить Samsung Galaxy Z Fold 8</a><a href="/dyson-airwrap-hs09">Купить Стайлер Dyson Airwrap HS09</a><a href="/trade-in">Trade-in iPhone</a><a href="/rassrochka">iPhone в рассрочку</a><a href="/dostavka-hmao">Доставка техники по ХМАО</a><a href="/remont">Ремонт iPhone</a><a href="/zamena-ekrana-iphone">Замена экрана iPhone</a></div></div></section><!--/popq-->
+<!--popq--><section class="popq" aria-label="Популярные запросы"><div class="wrap"><h2>Популярные запросы</h2><div class="popq-l"><a href="/iphone">iPhone в Ханты-Мансийске</a><a href="/airpods">AirPods в Ханты-Мансийске</a><a href="/apple-watch">Apple Watch в Ханты-Мансийске</a><a href="/macbook">MacBook в Ханты-Мансийске</a><a href="/ipad">iPad в Ханты-Мансийске</a><a href="/samsung">Samsung Galaxy в Ханты-Мансийске</a><a href="/dyson">Dyson в Ханты-Мансийске</a><a href="/smartfony-android">Android-смартфон в Ханты-Мансийске</a><a href="/igrovye-pristavki">игровую приставку в Ханты-Мансийске</a><a href="/foto-i-video">DJI и экшн-камеры в Ханты-Мансийске</a><a href="/naushniki">наушники и колонки в Ханты-Мансийске</a><a href="/umnye-chasy">умные часы в Ханты-Мансийске</a><a href="/iphone-18-pro">Купить iPhone 18 Pro</a><a href="/iphone-18-pro-max">Купить iPhone 18 Pro Max</a><a href="/iphone-duo">Купить iPhone Duo</a><a href="/iphone-17">Купить iPhone 17</a><a href="/iphone-17-pro">Купить iPhone 17 Pro</a><a href="/iphone-17-pro-max">Купить iPhone 17 Pro Max</a><a href="/iphone-air">Купить iPhone Air</a><a href="/iphone-16">Купить iPhone 16</a><a href="/iphone-16-pro">Купить iPhone 16 Pro</a><a href="/iphone-16-pro-max">Купить iPhone 16 Pro Max</a><a href="/iphone-15">Купить iPhone 15</a><a href="/airpods-pro-3">Купить AirPods Pro 3</a><a href="/airpods-4">Купить AirPods 4</a><a href="/apple-watch-series-11">Купить Apple Watch Series 11</a><a href="/apple-watch-ultra-3">Купить Apple Watch Ultra 3</a><a href="/macbook-air-13-m5">Купить MacBook Air 13 M5</a><a href="/ipad-air-11-m4">Купить iPad Air 11 M4</a><a href="/samsung-galaxy-s26-ultra">Купить Samsung Galaxy S26 Ultra</a><a href="/samsung-galaxy-z-fold-8">Купить Samsung Galaxy Z Fold 8</a><a href="/dyson-airwrap-hs09">Купить Стайлер Dyson Airwrap HS09</a><a href="/xiaomi">Xiaomi в Ханты-Мансийске</a><a href="/honor">Honor в Ханты-Мансийске</a><a href="/huawei">Huawei в Ханты-Мансийске</a><a href="/skolko-stoit-iphone">Сколько стоит iPhone</a><a href="/trade-in">Trade-in iPhone</a><a href="/rassrochka">iPhone в рассрочку</a><a href="/dostavka-hmao">Доставка техники по ХМАО</a><a href="/remont">Ремонт iPhone</a><a href="/zamena-ekrana-iphone">Замена экрана iPhone</a></div></div></section><!--/popq-->
 <footer><div class="wrap">
   <div class="fgrid">
     <div class="fbrand" style="display:grid;gap:14px;align-content:start">
@@ -330,7 +330,7 @@
 <div class="toast" id="toast" role="status"><i>✓</i><span id="toastT">Добавлено в корзину</span><button type="button" id="toastGo">Оформить</button></div>
 </div>
 <script>
-(function(){var R='sokolss1010200-glitch/youz-site',P='main.html',K='yz-ref',S='9befda95428bf701ca8d10bcbfd5d5260635c6bf',H=2155978097;
+(function(){var R='sokolss1010200-glitch/youz-site',P='main.html',K='yz-ref',S='db707b1165883d8980615d78a49fb55ea01ea2a3',H=3191665628;
 function hs(t){var h=0;for(var i=0;i<t.length;i++)h=(Math.imul(h,31)+t.charCodeAt(i))>>>0;return h}
 function js(B,q){window.YZ_BASE=B;var s=document.createElement('script');s.src=B+'youz.js'+q;document.body.appendChild(s)}
 function go(ref){var B='https://cdn.jsdelivr.net/gh/'+R+'@'+ref+'/',q='?v='+ref.slice(0,7);
