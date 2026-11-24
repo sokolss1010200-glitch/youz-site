@@ -334,7 +334,7 @@ function buildProducts(){
   DATA.products.concat(DATA.acc||[]).forEach(r=>{const model=(r['Модель']||'').trim();if(!model)return;
     if(!m.has(model))m.set(model,{id:m.size+1,n:model,cat:(r['Категория']||'Другое').trim(),grp:(r['Группа']||r['Категория']||'').trim(),badge:'',feat:false,cols:[],mem:[],opt:[],fits:[],v:{}});
     const p=m.get(model),col=(r['Цвет']||'').trim(),mem=(r['Память']||'').trim(),opt=(r['Опция']||r['SIM']||'').trim();
-    let c=p.cols.find(x=>x.name===col);if(!c){c={name:col,hex:r['Код цвета']||nameHex(col)||'#C9CBC3',photo:r['Фото']||'',video:r['Видео']||''};p.cols.push(c)}else{if(!c.photo&&r['Фото'])c.photo=r['Фото'];if(!c.video&&r['Видео'])c.video=r['Видео']}
+    let c=p.cols.find(x=>x.name===col);if(!c){c={name:col,hex:((r['Код цвета']||'').toUpperCase()==='#C9CBC3'?'':r['Код цвета'])||nameHex(col)||'#C9CBC3',photo:r['Фото']||'',video:r['Видео']||''};p.cols.push(c)}else{if(!c.photo&&r['Фото'])c.photo=r['Фото'];if(!c.video&&r['Видео'])c.video=r['Видео']}
     if(!p.mem.includes(mem))p.mem.push(mem);if(!p.opt.includes(opt))p.opt.push(opt);
     const k=mem+'|'+opt+'|'+col,v={price:num(r['Цена']),old:num(r['Старая цена']),card:num(r['Цена по карте']),stock:low(r['Наличие'])||'да'};
     if(v.price&&(!p.v[k]||p.v[k].price>v.price))p.v[k]=v;
