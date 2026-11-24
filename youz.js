@@ -389,7 +389,7 @@ const strikeOf=v=>Math.max(v.old||0,cardOf(v));
 function priceHTML(v){const s=strikeOf(v),c=cardOf(v);
   return `${s>v.price?`<span class="oldp">${rub(s)}</span><span class="promo-l">Цена по акции</span>`:''}<span class="pv">${rub(v.price)}</span><small class="pm">Рассрочка от <b>${rub(c/MONTHS_DEF)}/мес</b></small>`}
 function cardHTML(p){const opts=p.opt.filter(Boolean);
-  return `<article class="prod" data-id="${p.id}">
+  return `<article class="prod${p.cat===ACC?' acc':''}" data-id="${p.id}"${p.cat===ACC?` aria-label="${htm(p.n)}: подробнее"`:''}>
    <div class="tags">${p.badge?`<span class="t ${badgeCls(p.badge)}">${htm(p.badge)}</span>`:''}<span class="t d" hidden></span></div>
    <div class="pic">${art(p,p.cols[0])}<button type="button" class="vbtn" hidden aria-label="Смотреть видео">▶ Видео</button></div>
    ${p.cols.length>1||p.cols[0].name?`<div class="dots" role="group" aria-label="Цвет">${p.cols.map((c,i)=>`<button type="button" style="--c:${htm(c.hex)}" data-i="${i}" aria-label="${htm(c.name)}" title="${htm(c.name)}" aria-pressed="${i===0}"></button>`).join('')}<span class="cname">${htm(p.cols[0].name)}</span></div>`:''}
@@ -419,11 +419,35 @@ function bindGrid(g){g.addEventListener('click',e=>{
   const a=e.target.closest('.add');
   if(a){const {p,c,mem,opt}=cardState(card);const v=variant(p,mem,opt,c.name);addCart({n:p.n,mem:[mem,opt].filter(Boolean).join(', '),col:c.name,price:v.price,stock:'да'});a.classList.add('done');a.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m5 12 5 5 9-10"/></svg>'}
   if(e.target.closest('button,input,select,textarea,label,a'))return;
+  const ap=P.find(x=>x.id==card.dataset.id);if(ap&&ap.cat===ACC){openAcc(ap,cardState(card).c);return}
   const link=card.querySelector('h3 a');if(!link)return;
   if(e.metaKey||e.ctrlKey||e.shiftKey)window.open(link.href,'_blank');else location.href=link.href;
 });
   g.addEventListener('auxclick',e=>{if(e.button!==1)return;const card=e.target.closest('.prod');if(!card||e.target.closest('button,input,select,textarea,label,a'))return;const link=card.querySelector('h3 a');if(link)window.open(link.href,'_blank')
 })}
+/* окно аксессуара: большое фото целиком, цвет, совместимость, цена, корзина и 1 клик (своих страниц у аксессуаров нет) */
+let accDlg=null,accOpener=null;
+function openAcc(p,c){
+  if(!accDlg){accDlg=document.createElement('div');accDlg.className='yzacc';accDlg.hidden=true;accDlg.setAttribute('role','dialog');accDlg.setAttribute('aria-modal','true');document.body.appendChild(accDlg);
+    accDlg.addEventListener('click',e=>{if(e.target===accDlg||e.target.closest('.lead-x')){closeAcc();return}
+      const st=accDlg._st;const d=e.target.closest('[data-ac]');if(d){st.c=st.p.cols[+d.dataset.ac];drawAcc();return}
+      const v=variant(st.p,st.p.mem[0]||'',st.p.opt[0]||'',st.c.name);
+      if(e.target.closest('.yzacc-cart')){addCart({n:st.p.n,mem:'',col:st.c.name,price:v.price,stock:'да'});closeAcc();return}
+      if(e.target.closest('.yzacc-one')){closeAcc();openLead({eyebrow:'Покупка в 1 клик',title:st.p.n,lines:[[st.p.n+(st.c.name?', '+st.c.name:''),rub(v.price)]],source:'1 клик: '+st.p.n})}});
+    addEventListener('keydown',e=>{if(accDlg.hidden)return;if(e.key==='Escape')closeAcc();
+      if(e.key==='Tab'){const f=[...accDlg.querySelectorAll('button')];if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}})}
+  accOpener=document.activeElement;accDlg._st={p,c:c||p.cols[0]};drawAcc();accDlg.hidden=false;document.body.style.overflow='hidden';accDlg.querySelector('.lead-x').focus();yzGoal('acc_open',{item:p.n})}
+function closeAcc(){accDlg.hidden=true;document.body.style.overflow='';if(accOpener&&accOpener.focus)accOpener.focus()}
+function drawAcc(){const {p,c}=accDlg._st;const v=variant(p,p.mem[0]||'',p.opt[0]||'',c.name);const ph=photoAny(p,c),s=strikeOf(v);
+  const fits=p.fits.filter(t=>low(t)!=='все').map(t=>t.replace(/\*$/,'').trim());
+  accDlg.setAttribute('aria-label',p.n);
+  accDlg.innerHTML=`<div class="yzacc-c"><button type="button" class="lead-x" aria-label="Закрыть">×</button>
+ <div class="yzacc-pic">${ph?`<img src="${htm(ph)}" alt="${htm(p.n)}${c.name?', '+htm(c.name):''}">`:''}</div>
+ <div class="yzacc-i"><span class="yzacc-t">${htm(p.grp)}</span><h3>${htm(p.n)}</h3>
+  ${p.cols.length>1?`<p class="yzacc-l">Цвет: <b>${htm(c.name)}</b></p><div class="yzacc-cols" role="group" aria-label="Цвет">${p.cols.map((x,i)=>`<button type="button" data-ac="${i}" aria-pressed="${x===c}">${htm(x.name)}</button>`).join('')}</div>`:c.name?`<p class="yzacc-l">Цвет: <b>${htm(c.name)}</b></p>`:''}
+  <p class="yzacc-l">${fits.length?'Подходит к: <b>'+htm(fits.join(', '))+'</b>':'Подходит к любой технике'}</p>
+  <div class="yzacc-price">${s>v.price?`<s>${rub(s)}</s>`:''}<b>${rub(v.price)}</b><small>Рассрочка от ${rub(cardOf(v)/MONTHS_DEF)}/мес</small></div>
+  <div class="yzacc-btns"><button class="btn btn-lime yzacc-cart" type="button">В корзину</button><button class="btn btn-ink yzacc-one" type="button">Купить в 1 клик</button></div></div></div>`}
 function fillGrid(g,items,emptyText){g.innerHTML=items.length?items.map(cardHTML).join(''):`<div class="empty">${emptyText||'Ничего не нашлось. Позвоните, привезём под заказ.'}</div>`;g.querySelectorAll('.prod').forEach(refreshCard)}
 
 /* витрина на главной */

@@ -1162,3 +1162,27 @@ header.top .cat-btn i b{background:var(--lime)}
 .prod .fits{margin:-2px 0 4px;line-height:1.35}
 @media (max-width:1080px){.acc-grid{grid-auto-columns:calc((100% - 32px)/3)}}
 @media (max-width:860px){.acc-grid{grid-auto-columns:44%;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}}
+
+/* аксессуары: фото целиком (у чехлов фото вытянутые по высоте) и окно товара */
+.prod.acc{cursor:pointer}
+.prod.acc .pic{height:240px}
+@media (max-width:560px){.prod.acc .pic{height:200px}}
+.prod.acc .pic .pimg{position:absolute;top:5%;left:4%;width:92%;height:90%;max-width:none;max-height:none;object-fit:contain}
+.yzacc{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:16px;background:rgba(11,11,13,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.yzacc[hidden]{display:none}
+.yzacc-c{position:relative;width:min(100%,880px);max-height:calc(100vh - 32px);overflow:auto;background:var(--card);color:var(--ink);border-radius:24px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.yzacc-pic{display:grid;place-items:center}
+.yzacc-pic img{display:block;width:100%;height:min(62vh,480px);object-fit:contain}
+.yzacc-t{font-size:13px;font-weight:600;color:var(--muted)}
+.yzacc-i h3{font-size:22px;line-height:1.25;font-weight:700;margin:6px 0 14px}
+.yzacc-l{font-size:14px;color:var(--muted);margin:0 0 10px}
+.yzacc-l b{color:var(--ink);font-weight:600}
+.yzacc-cols{display:flex;flex-wrap:wrap;gap:6px;margin:-2px 0 14px}
+.yzacc-cols button{min-height:34px;padding:0 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-family:inherit;font-weight:600;font-size:13px;cursor:pointer}
+.yzacc-cols button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.yzacc-price{display:grid;gap:2px;margin:6px 0 18px}
+.yzacc-price s{font-size:14px;color:var(--muted)}
+.yzacc-price b{font-size:30px;line-height:1.1;font-weight:700}
+.yzacc-price small{font-size:13px;color:var(--muted)}
+.yzacc-btns{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:700px){.yzacc{place-items:end stretch;padding:0}.yzacc-c{grid-template-columns:1fr;gap:12px;border-radius:24px 24px 0 0;max-height:92vh;padding:20px 16px calc(20px + env(safe-area-inset-bottom))}.yzacc-pic img{height:min(40vh,340px)}.yzacc-i h3{font-size:19px}.yzacc-btns .btn{flex:1 1 auto}}
