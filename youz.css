@@ -1163,6 +1163,42 @@ header.top .cat-btn i b{background:var(--lime)}
 @media (max-width:1080px){.acc-grid{grid-auto-columns:calc((100% - 32px)/3)}}
 @media (max-width:860px){.acc-grid{grid-auto-columns:44%;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px}}
 
+/* ===== Чат-квиз «Менеджер ЮZ» (24.11.2026) ===== */
+.yzc{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:85;display:flex;flex-direction:column-reverse;align-items:flex-end;gap:12px;pointer-events:none}
+.yzc>*{pointer-events:auto}
+.yzc-fab{position:relative;width:56px;height:56px;border-radius:50%;border:0;background:var(--ink);color:var(--lime);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px -10px rgba(15,16,13,.5);transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+.yzc-fab svg{width:24px;height:24px}
+.yzc-fab:active{transform:scale(.94)}
+.yzc-dot{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;border-radius:999px;background:var(--lime);color:var(--ink);font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid var(--paper)}
+.yzc-panel{padding:0!important;margin:0;width:min(360px,calc(100vw - 32px));max-height:min(560px,calc(100dvh - 140px));display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 30px 60px -24px rgba(15,16,13,.35);transform-origin:bottom right;animation:yzcIn .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes yzcIn{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.yzc-hd{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;border-bottom:1px solid var(--line)}
+.yzc-av{flex:none;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-family:"Unbounded","Arial Black",sans-serif;font-weight:800;font-size:12px}
+.yzc-who{flex:1;display:grid;line-height:1.3}.yzc-who b{font-size:15px}.yzc-who small{font-size:12px;color:var(--muted)}
+.yzc-on{display:inline-block;width:7px;height:7px;border-radius:50%;background:#2DB55D;margin-right:6px;vertical-align:1px}
+.yzc-x{width:36px;height:36px;border-radius:50%;border:0;background:var(--paper);font-size:22px;line-height:1;cursor:pointer;color:var(--ink)}
+.yzc-bd{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:14px 12px;display:flex;flex-direction:column;gap:8px;background:var(--paper)}
+.yzc-m{max-width:86%;padding:9px 12px;border-radius:16px 16px 16px 5px;background:var(--card);border:1px solid var(--line);font-size:15px;line-height:1.45;animation:yzcM .25s ease-out}
+@keyframes yzcM{from{opacity:0;transform:translateY(4px)}}
+.yzc-u{align-self:flex-end;background:var(--ink);color:#fff;border-color:var(--ink);border-radius:16px 16px 5px 16px}
+.yzc-chips{max-width:100%;background:none;border:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.yzc-chips button{min-height:38px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .2s}
+.yzc-chips button:hover{border-color:var(--ink)}
+.yzc-form{max-width:100%;width:100%;border-radius:16px}
+.yzc-f{display:grid;gap:8px}
+.yzc-f input[type=text],.yzc-f input[type=tel]{height:46px;border-radius:12px;border:1.5px solid var(--line);background:var(--paper);padding:0 12px;font-size:16px;width:100%;outline:none}
+.yzc-f input:focus{border-color:var(--ink)}
+.yzc-f .agree{margin:2px 0;font-size:12px}
+.yzc-f .btn{justify-content:center;width:100%}
+.yzc-err{margin:0;font-size:13px;color:var(--danger)}
+.yzc-ty{display:inline-flex;gap:4px;padding:13px 14px}
+.yzc-ty i{width:6px;height:6px;border-radius:50%;background:#A3A49E;animation:yzcT 1s infinite}.yzc-ty i:nth-child(2){animation-delay:.15s}.yzc-ty i:nth-child(3){animation-delay:.3s}
+@keyframes yzcT{50%{transform:translateY(-3px);opacity:.5}}
+@media (max-width:860px){.yzc{bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:560px){.yzc{right:12px;left:12px}.yzc-panel{padding:0!important;margin:0;width:100%;max-height:calc(100dvh - 260px)}.yzc-fab{width:52px;height:52px}}
+body:has(.lm:not([hidden])) .yzc,body:has(.mega:not([hidden])) .yzc{visibility:hidden}
+@media (prefers-reduced-motion:reduce){.yzc-panel,.yzc-m,.yzc-ty i{animation:none}}
+
 /* аксессуары: фото целиком (у чехлов фото вытянутые по высоте) и окно товара */
 .prod.acc{cursor:pointer}
 .prod.acc .pic{height:240px}

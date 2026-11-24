@@ -706,7 +706,7 @@ leadForm.addEventListener('submit',async e=>{e.preventDefault();const name=docum
    и больше не показываем тем, кто уже оставил заявку */
 (function(){const K='yz-promo-pop';let st={};try{st=JSON.parse(localStorage.getItem(K))||{}}catch(e){}
   if(st.done||(st.t&&Date.now()-st.t<3*864e5))return;
-  setTimeout(function show(){if(document.visibilityState!=='visible'||!lead.hidden){setTimeout(show,10000);return}
+  setTimeout(function show(){if(document.visibilityState!=='visible'||!lead.hidden||(window.yzChatBusy&&window.yzChatBusy())){setTimeout(show,10000);return}
     try{localStorage.setItem(K,JSON.stringify({t:Date.now()}))}catch(e){}yzGoal('promo_popup');
     openLead({eyebrow:'Подарок',title:'Получите скидку на первую покупку',lines:[['Оставьте имя и телефон — менеджер перезвонит и назовёт вашу скидку','']],btn:'Получить скидку',source:'Баннер: скидка на первую покупку'})},40000)})();
 const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',async e=>{e.preventDefault();const v=document.getElementById('cbPhone').value.trim();const m=document.getElementById('cbMsg');m.hidden=false;
@@ -714,6 +714,53 @@ const cbF=document.getElementById('cb');if(cbF)cbF.addEventListener('submit',asy
   const ca=document.getElementById('cbAgree');if(ca&&!ca.checked){m.textContent='Отметьте согласие на обработку персональных данных.';ca.focus();return}
   m.textContent='Отправляем…';const r=await sendLead({name:'Обратный звонок',phone:v,comment:'[Обратный звонок] с сайта'});if(r!=='err')yzGoal('lead',{source:'Обратный звонок'});
   m.textContent=r==='err'?'Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.':r==='demo'?'Тестовый режим: форма Тильды не найдена.':'Спасибо! Перезвоним в течение 15 минут.'});
+
+/* ================= ЧАТ-КВИЗ «Менеджер ЮZ» (24.11.2026) =================
+   Кнопка справа внизу на всех страницах. Окно само открывается через 25 с (не чаще раза в 3 дня, не тем, кто уже оставил заявку).
+   Два шага: «Какую технику рассматриваете?» → телефон. Заявка уходит той же формой Тильды (sendLead) в Telegram и MAX.
+   Цели Метрики: chat_open, chat_pick, lead (source «Чат-квиз»). */
+(function(){if(document.getElementById('yzChat'))return;
+  const K='yz-chat',KP='yz-promo-pop';let st={},pp={};try{st=JSON.parse(localStorage.getItem(K))||{}}catch(e){}try{pp=JSON.parse(localStorage.getItem(KP))||{}}catch(e){}
+  const OPTS=['iPhone','Samsung и Android','MacBook и iPad','AirPods и часы','Dyson','Аксессуары','Другое'];
+  const now=new Date(),d=now.getDay(),h=now.getHours()+now.getMinutes()/60,open=(d>=1&&d<=5)?(h>=10&&h<20):(h>=10&&h<18);
+  const w=document.createElement('div');w.id='yzChat';w.className='yzc';
+  w.innerHTML=`<button class="yzc-fab" type="button" aria-expanded="false" aria-controls="yzcPanel" aria-label="Чат с менеджером"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><b class="yzc-dot" aria-hidden="true">1</b></button>
+  <section class="yzc-panel" id="yzcPanel" role="dialog" aria-label="Чат с менеджером ЮZ" hidden>
+    <header class="yzc-hd"><span class="yzc-av" aria-hidden="true">ЮZ</span><span class="yzc-who"><b>Менеджер ЮZ</b><small>${open?'<i class="yzc-on"></i>Онлайн · ответим за 15 минут':'Ответим утром, с 10:00'}</small></span><button class="yzc-x" type="button" aria-label="Свернуть чат">×</button></header>
+    <div class="yzc-bd" aria-live="polite"></div>
+  </section>`;
+  document.body.appendChild(w);
+  const fab=w.querySelector('.yzc-fab'),pan=w.querySelector('.yzc-panel'),bd=w.querySelector('.yzc-bd');let started=false,closedAt=0,pick='';
+  window.yzChatBusy=()=>!pan.hidden||(closedAt&&Date.now()-closedAt<60000);
+  const say=(html,cls)=>{const m=document.createElement('div');m.className='yzc-m'+(cls?' '+cls:'');m.innerHTML=html;bd.appendChild(m);bd.scrollTop=bd.scrollHeight;return m};
+  const typing=(cb)=>{if(reduce){cb();return}const t=say('<i></i><i></i><i></i>','yzc-ty');setTimeout(()=>{t.remove();cb()},800)};
+  function start(){started=true;say('Здравствуйте! Для вас специальные условия от магазина!');
+    typing(()=>{say('Какую технику рассматриваете?');const c=say(OPTS.map(o=>`<button type="button">${o}</button>`).join(''),'yzc-chips');
+      c.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{pick=b.textContent;c.remove();say(htm(pick),'yzc-u');yzGoal('chat_pick',{pick});typing(askPhone)}));
+      const f=c.querySelector('button');if(f&&!pan.hidden)f.focus({preventScroll:true})})}
+  function askPhone(){say('Подскажите ваши контакты, пришлём спец условия на ваш номер');
+    const f=say(`<form class="yzc-f" novalidate><input type="text" name="n" autocomplete="name" placeholder="Имя (необязательно)" aria-label="Имя"><input type="tel" name="p" autocomplete="tel" inputmode="tel" placeholder="+7 900 123-45-67" aria-label="Телефон" required>
+      <label class="agree"><input type="checkbox" name="a"> <span>Даю <a href="/soglasie" target="_blank">согласие на обработку персональных данных</a> и принимаю <a href="/politika" target="_blank">политику конфиденциальности</a></span></label>
+      <p class="yzc-err" hidden></p><button class="btn btn-lime" type="submit">Получить условия</button></form>`,'yzc-form');
+    const fm=f.querySelector('form'),er=fm.querySelector('.yzc-err'),ph=fm.p;ph.focus({preventScroll:true});ph.addEventListener('input',()=>er.hidden=true);
+    fm.addEventListener('submit',async e=>{e.preventDefault();const phone=ph.value.trim(),name=fm.n.value.trim();
+      if(phone.replace(/\D/g,'').length<10){er.hidden=false;er.textContent='Введите телефон полностью, например +7 900 123-45-67.';ph.focus();return}
+      if(!fm.a.checked){er.hidden=false;er.textContent='Отметьте согласие на обработку персональных данных.';return}
+      const bt=fm.querySelector('[type=submit]');bt.disabled=true;bt.textContent='Отправляем…';
+      const r=await sendLead({name:name||'Чат-квиз',phone,comment:'[Чат-квиз: спец условия] Техника: '+pick+'; страница: '+location.pathname});
+      if(r==='err'){bt.disabled=false;bt.textContent='Отправить ещё раз';er.hidden=false;er.textContent='Не получилось отправить. Позвоните нам: +7 (3467) 36-24-04.';return}
+      f.remove();say(htm((name?name+', ':'')+phone),'yzc-u');yzGoal('lead',{source:'Чат-квиз'});
+      try{st.done=1;localStorage.setItem(K,JSON.stringify(st));pp.done=1;localStorage.setItem(KP,JSON.stringify(pp))}catch(e){}
+      typing(()=>say(r==='demo'?'Тестовый режим: форма Тильды на странице не найдена, заявка никуда не ушла.':'Спасибо! Менеджер напишет вам в течение 15 минут в рабочее время (будни 10–20, выходные 10–18).'))})}
+  function show(){if(!pan.hidden)return;pan.hidden=false;w.classList.add('open');fab.setAttribute('aria-expanded','true');w.querySelector('.yzc-dot').hidden=true;
+    yzGoal('chat_open');if(!started)start();else{const b=bd.querySelector('button,input');if(b)b.focus({preventScroll:true})}}
+  function hide(){if(pan.hidden)return;pan.hidden=true;w.classList.remove('open');fab.setAttribute('aria-expanded','false');closedAt=Date.now();fab.focus({preventScroll:true})}
+  fab.addEventListener('click',()=>pan.hidden?show():hide());w.querySelector('.yzc-x').addEventListener('click',hide);
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&!pan.hidden&&lead.hidden)hide()});
+  if(!st.done&&!pp.done&&!(st.t&&Date.now()-st.t<3*864e5))setTimeout(function auto(){
+    if(document.visibilityState!=='visible'||!lead.hidden||document.querySelector('.mega:not([hidden])')){setTimeout(auto,10000);return}
+    try{st.t=Date.now();localStorage.setItem(K,JSON.stringify(st))}catch(e){}show()},25000);
+})();
 
 function applySettings(){(DATA.settings||[]).forEach(r=>{const k=low(r['Параметр']),v=num(r['Значение']);if(k.startsWith('trade-in')&&v>=-20&&v<=30)TI_UP=1+v/100;if(k.startsWith('рассрочка')&&v>=3&&v<=60){MONTHS_DEF=v;if(window.yzSetTerm)window.yzSetTerm(v)}})}
 /* ================= МЕНЮ «КАТАЛОГ» (по кнопке, на всех страницах) ================= */
