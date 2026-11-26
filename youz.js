@@ -291,9 +291,18 @@ const DATA={acc:cacheGet('acc')||[],products:cacheGet('products')||DEF.products,
 const SNAP_ACC='https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/accessories.csv?t='+Math.floor(Date.now()/600000);
 const SNAP={products:'https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/products.csv?t='+Math.floor(Date.now()/600000)};
 async function getCSV(u,live){const r=await fetch(u+(live?(u.includes('?')?'&':'?')+'_='+Math.floor(Date.now()/120000):''),{cache:live?'no-store':'default'});if(!r.ok)throw r.status;const rows=parseCSV(await r.text());if(!rows.length)throw 0;return rows}
+const SNAP_DATE='https://raw.githubusercontent.com/sokolss1010200-glitch/youz-site/main/data/products-date.txt?t='+Math.floor(Date.now()/300000);
+async function snapStale(){const m=new Date(Date.now()+3*3600e3);if(m.getUTCHours()*60+m.getUTCMinutes()<13*60+5)return false;
+  try{const r=await fetch(SNAP_DATE);if(!r.ok)return false;return (await r.text()).trim()!==m.toISOString().slice(0,10)}catch(e){return false}}
+function cleanLive(rows){const by={},n=r=>num(r['Цена']);rows.forEach(r=>{if(n(r))(by[r['Модель']]=by[r['Модель']]||[]).push(n(r))});
+  const med=a=>{a=[...a].sort((x,y)=>x-y);const h=a.length>>1;return a.length%2?a[h]:(a[h-1]+a[h])/2};
+  return rows.filter(r=>{const a=by[r['Модель']];return !(n(r)&&a&&a.length>=3&&n(r)<0.4*med(a))})}
 async function loadSheets(){
   await Promise.all(Object.keys(SHEETS).map(async k=>{const u=SHEETS[k];if(!u)return;
     let rows=null;if(SNAP[k]){try{rows=await getCSV(SNAP[k],false)}catch(e){}}
+    /* GitHub запускает снимок с опозданием (~на час). После 13:05 МСК, пока сегодняшнего снимка нет, берём таблицу напрямую:
+       она обновляется сама около 13:00. Те же защиты, что в prajs.yml: не меньше 60% строк, без цен-опечаток. */
+    if(k==='products'&&rows&&await snapStale()){try{const l=cleanLive(await getCSV(u,true));if(l.length>=rows.length*0.6)rows=l}catch(e){}}
     if(!rows){try{rows=await getCSV(u,true)}catch(e){}}
     if(rows){DATA[k]=rows;cacheSet(k,rows)}}));
   /* аксессуары: data/accessories.csv собирается из выгрузки склада (скрипт aksessuary-2026-11/acc_csv.py); фото — img/ в репозитории */

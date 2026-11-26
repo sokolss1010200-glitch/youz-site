@@ -1222,3 +1222,6 @@ body:has(.lm:not([hidden])) .yzc,body:has(.mega:not([hidden])) .yzc{visibility:h
 .yzacc-price small{font-size:13px;color:var(--muted)}
 .yzacc-btns{display:flex;flex-wrap:wrap;gap:10px}
 @media (max-width:700px){.yzacc{place-items:end stretch;padding:0}.yzacc-c{grid-template-columns:1fr;gap:12px;border-radius:24px 24px 0 0;max-height:92vh;padding:20px 16px calc(20px + env(safe-area-inset-bottom))}.yzacc-pic img{height:min(40vh,340px)}.yzacc-i h3{font-size:19px}.yzacc-btns .btn{flex:1 1 auto}}
+
+/* лейбл «Made on Tilda» скрыт на всех страницах (просьба владельца 26.11) */
+#tildacopy,.t-tildalabel{display:none!important}
