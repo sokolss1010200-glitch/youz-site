@@ -1,4 +1,4 @@
-# Товарный фид для Яндекса (YML) из снимка прайса data/products.csv -> data/feed.yml.
+# Товарный фид для Яндекса (YML) из снимка прайса data/products.csv и аксессуаров data/accessories.csv -> data/feed.yml.
 # Запускается GitHub Actions вместе со снимком в 13:00 МСК (.github/workflows/fid.yml).
 # Фото берутся так же, как на сайте: столбец «Фото», замены PHOTO_FIX и запасные PHOTO_EXTRA из youz.js.
 # Ссылка товара ведёт на карточку с уже выбранной памятью/опцией/цветом (цена на странице = цена в фиде).
@@ -48,6 +48,17 @@ def vendor(model, cat):
     return model.split()[0]
 
 rows = list(csv.DictReader(open('data/products.csv', encoding='utf-8-sig')))
+# аксессуары (uBear, Magssory, Airity, Remax): data/accessories.csv, фото — относительные img/… в репозитории
+try:
+    acc = list(csv.DictReader(open('data/accessories.csv', encoding='utf-8-sig')))
+except FileNotFoundError:
+    acc = []
+for r in acc:
+    r['_acc'] = '1'
+    if r.get('Фото') and not r['Фото'].startswith('http'):
+        r['Фото'] = IMGBASE + r['Фото']
+rows += acc
+ACC_BRANDS = ['uBear', 'Magssory', 'Airity', 'Remax', 'Apple']
 cats, offers, seen = {}, [], set()
 for r in rows:
     model = (r.get('Модель') or '').strip()
@@ -74,7 +85,8 @@ for r in rows:
     name = ' '.join(x for x in (model, mem, opt, col) if x)
     old = num(r.get('Старая цена'))
     offers.append(dict(id=hashlib.md5(key.encode()).hexdigest()[:12], cat=cats[cat], url=url, price=price,
-                       old=old if old > price else 0, pic=pic, name=name, vendor=vendor(model, cat), model=model))
+                       old=old if old > price else 0, pic=pic, name=name, model=model, acc=bool(r.get('_acc')),
+                       vendor=next((b for b in ACC_BRANDS if b.lower() in model.lower()), '') if r.get('_acc') else vendor(model, cat)))
 
 e = lambda s: html.escape(str(s), quote=True)
 now = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).strftime('%Y-%m-%dT%H:%M:%S+03:00')
@@ -90,9 +102,13 @@ for o in offers:
         out.append('<oldprice>%d</oldprice>' % o['old'])
     out.append('<currencyId>RUR</currencyId><categoryId>%d</categoryId><picture>%s</picture>' % (o['cat'], e(o['pic'])))
     out.append('<store>true</store><pickup>true</pickup><delivery>true</delivery>')
-    out.append('<name>%s</name><vendor>%s</vendor>' % (e(o['name']), e(o['vendor'])))
-    out.append('<description>%s — новый, оригинал, гарантия 12 месяцев. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. '
-               'Рассрочка, trade-in.</description>' % e(o['name']))
+    out.append('<name>%s</name>' % e(o['name']) + ('<vendor>%s</vendor>' % e(o['vendor']) if o['vendor'] else ''))
+    if o['acc']:
+        out.append('<description>%s — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. '
+                   'Самовывоз и доставка по ХМАО.</description>' % e(o['name']))
+    else:
+        out.append('<description>%s — новый, оригинал, гарантия 12 месяцев. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. '
+                   'Рассрочка, trade-in.</description>' % e(o['name']))
     out.append('</offer>')
 out += ['</offers>', '</shop>', '</yml_catalog>']
 open('data/feed.yml', 'w', encoding='utf-8').write('\n'.join(out) + '\n')
