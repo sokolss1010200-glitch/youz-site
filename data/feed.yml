@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-26T16:48:19+03:00">
+<yml_catalog date="2026-11-26T16:49:55+03:00">
 <shop>
 <name>ЮZ Store</name>
 <company>ЮZ Store</company>
@@ -6055,6 +6055,769 @@
 <store>true</store><pickup>true</pickup><delivery>true</delivery>
 <name>Apple Pencil USB-C</name><vendor>Apple</vendor>
 <description>Apple Pencil USB-C — новый, оригинал, гарантия 12 месяцев. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. Рассрочка, trade-in.</description>
+</offer>
+<offer id="bd8523195f50" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-qi2-2-3-%D0%B2-1-ubear-balance-slim&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%B8%D1%81%D1%82%D1%8B%D0%B9</url><price>15990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl24sl31bs-aw.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Balance Slim серебристый</name><vendor>uBear</vendor>
+<description>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Balance Slim серебристый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="a15cf06b3785" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-balance-3in1-magnetic-wireless-charger&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%BE</url><price>12400</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl09sl31-adm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Balance 3in1 Magnetic wireless charger серебро</name>
+<description>Беспроводное зарядное устройство Balance 3in1 Magnetic wireless charger серебро — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="3ef702ae2be0" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-stage-2in1-magnetic-wireless-charger&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%BE</url><price>7670</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl06sl21-ad.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Stage 2in1 Magnetic wireless charger серебро</name>
+<description>Беспроводное зарядное устройство Stage 2in1 Magnetic wireless charger серебро — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="5cbbc0753ee9" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-stage-2in1-magnetic-wireless-charger&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>7670</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl06sg21-ad.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Stage 2in1 Magnetic wireless charger серый</name>
+<description>Беспроводное зарядное устройство Stage 2in1 Magnetic wireless charger серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="5b74be589b8e" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-qi2-2-ubear-strike-magnetic-power-bank-5000-mah-pd30w-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>8490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb29db5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор Qi2.2 uBear Strike Magnetic power bank 5000 mAh. PD30W. синий</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор Qi2.2 uBear Strike Magnetic power bank 5000 mAh. PD30W. синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ffe84664ce03" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-qi2-2-ubear-strike-magnetic-power-bank-5000-mah-pd30w&amp;c=%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9</url><price>8490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb28wh5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор Qi2.2 uBear Strike Magnetic power bank 5000 mAh, PD30W белый</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор Qi2.2 uBear Strike Magnetic power bank 5000 mAh, PD30W белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ca439255cf7e" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-ubear-accent-magnetic-power-bank-5000mah-pd20w&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>9490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb26bl5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор uBear Accent Magnetic Power bank 5000mAh, PD20W черный</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор uBear Accent Magnetic Power bank 5000mAh, PD20W черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="69e884371f9b" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-ubear-slide-magnetic-power-bank-5000mah-pd20w-%D1%86%D0%B2%D0%B5%D1%82-%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9</url><price>8490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb19wh5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор uBear Slide Magnetic Power bank 5000mAh, PD20W. цвет: белый</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор uBear Slide Magnetic Power bank 5000mAh, PD20W. цвет: белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="5029c6fe3a8c" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-ubear-slide-magnetic-power-bank-5000mah-pd20w&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>8490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb18bl5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор uBear Slide Magnetic Power bank: 5000mAh, PD20W черный</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор uBear Slide Magnetic Power bank: 5000mAh, PD20W черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="4e2b64e94dfa" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-max-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl263blamlf69p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное черный</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="2d62f1752f5f" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-max-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D0%BE%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl261lbamlf69p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное голубой</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное голубой — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cca469477a66" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-nano-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-max-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl259blanlf69p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Nano Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное черный</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Nano Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="258982257cbf" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-max-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D1%8F%D0%BD%D1%8B%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl260slamlf69p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное серебряный</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro Max, алюмосиликатное серебряный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ab93e0161626" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl258blamlf63p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное черный</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cfcbe72fbcea" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D0%B3%D0%BE%D0%BB%D1%83%D0%B1%D0%BE%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl256lbamlf63p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное голубой</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное голубой — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="570ec4f27c74" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-full-shield-%D0%B4%D0%BB%D1%8F-iphone-18-pro-%D0%B0%D0%BB%D1%8E%D0%BC%D0%BE%D1%81%D0%B8%D0%BB%D0%B8%D0%BA%D0%B0%D1%82%D0%BD%D0%BE%D0%B5&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D1%8F%D0%BD%D1%8B%D0%B9</url><price>1795</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl255slamlf63p-i26.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное серебряный</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Full Shield для iPhone 18 Pro, алюмосиликатное серебряный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c8169e2fa443" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-qi2-2-3-%D0%B2-1-ubear-stage-ultra-apple-watch-35w&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>10990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl27sg31su-aw.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Stage Ultra Apple Watch, 35W серый</name><vendor>uBear</vendor>
+<description>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Stage Ultra Apple Watch, 35W серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ef9d95096b73" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-remax-gl-27-%D0%B0%D0%BD%D1%82%D0%B8%D1%88%D0%BF%D0%B8%D0%BE%D0%BD-iphone-18-pro-max</url><price>890</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-82083aff-b1b0-4b30-88a5-28ea25446311.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло Remax GL-27 (Антишпион) iPhone 18 Pro Max</name><vendor>Remax</vendor>
+<description>Защитное стекло Remax GL-27 (Антишпион) iPhone 18 Pro Max — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="60827f347b1d" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-remax-gl-27-%D0%B0%D0%BD%D1%82%D0%B8%D1%88%D0%BF%D0%B8%D0%BE%D0%BD-iphone-18-pro</url><price>890</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-82083aff-b1b0-4b30-88a5-28ea25446311.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло Remax GL-27 (Антишпион) iPhone 18 Pro</name><vendor>Remax</vendor>
+<description>Защитное стекло Remax GL-27 (Антишпион) iPhone 18 Pro — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="7c1a4c44836e" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-bamboo-shadow-orient-iphone-17-pro-max-18-pro-max&amp;c=Fog+Black</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-6ba34a47-5bd3-4fbc-b046-a429940099d4.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Fog Black</name><vendor>Airity</vendor>
+<description>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Fog Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cede8c5fb20e" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-ink-shade-orient-iphone-17-pro-max-18-pro-max&amp;c=Stellar+Black</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-fa069e3b-ea47-420c-87fc-484e08689974.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Ink Shade Orient iPhone 17 Pro Max / 18 Pro Max Stellar Black</name><vendor>Airity</vendor>
+<description>Чехол Airity Ink Shade Orient iPhone 17 Pro Max / 18 Pro Max Stellar Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="03a4b63a4912" available="true">
+<url>https://youz.store/model?m=%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-airity-magsafe-5000mah-qi2-15w-%D1%81%D1%81%D1%81-&amp;c=Black</url><price>9990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-84ed3423-8f1c-4284-8a2f-adaf6891e171.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Портативный аккумулятор Airity MagSafe 5000mAh Qi2 (15W) (ССС) Black</name><vendor>Airity</vendor>
+<description>Портативный аккумулятор Airity MagSafe 5000mAh Qi2 (15W) (ССС) Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="fec551cf2ba4" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-bamboo-shadow-orient-iphone-17-pro-max-18-pro-max&amp;c=Blue</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-5c6c626c-72ee-4928-857b-77df9a10d7da.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Blue</name><vendor>Airity</vendor>
+<description>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Blue — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="f70903e27dac" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-bamboo-shadow-orient-iphone-17-pro-max-18-pro-max&amp;c=Purple</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-7a46260d-a0b3-4c85-a1b7-5fae07fd4c02.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Purple</name><vendor>Airity</vendor>
+<description>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max / 18 Pro Max Purple — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="25c6c1ad017a" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-600d-iphone-17-pro-max-18-pro-max&amp;c=Space+Blue</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-ecca066b-e8eb-43f1-b1bf-a0967cd44e13.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity 600D iPhone 17 Pro Max / 18 Pro Max Space Blue</name><vendor>Airity</vendor>
+<description>Чехол Airity 600D iPhone 17 Pro Max / 18 Pro Max Space Blue — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="db60029a50ba" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-abbey-road-1969-iphone-17-pro-max-18-pro-max&amp;c=Silver</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-8a310098-5a20-474d-8434-51e34e9717c3.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Abbey Road 1969 iPhone 17 Pro Max / 18 Pro Max Silver</name><vendor>Airity</vendor>
+<description>Чехол Airity Abbey Road 1969 iPhone 17 Pro Max / 18 Pro Max Silver — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="0249808f9757" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-600d-iphone-17-pro-18-pro&amp;c=Space+Black</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-4d1043ce-0eac-4528-94f3-ded56e3a7988.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity 600D iPhone 17 Pro / 18 Pro Space Black</name><vendor>Airity</vendor>
+<description>Чехол Airity 600D iPhone 17 Pro / 18 Pro Space Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="4fcf274eced0" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-600d-iphone-17-pro-max-18-pro-max&amp;c=Space+Black</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-bd1da543-6d92-4dc1-b53b-0e5caf28263a.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity 600D iPhone 17 Pro Max / 18 Pro Max Space Black</name><vendor>Airity</vendor>
+<description>Чехол Airity 600D iPhone 17 Pro Max / 18 Pro Max Space Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c70ae3cac9a7" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%85%D0%BE%D0%BB%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F+%D0%BC%D1%8F%D1%82%D0%B0</url><price>3200</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs560cm63pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe холодная мята</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe холодная мята — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="33e838484951" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-vision-mag-case-%D0%B4%D0%BB%D1%8F-iphone-air&amp;c=%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B9</url><price>3040</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs536tt66avs-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Vision Mag Case для iPhone Air прозрачный</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Vision Mag Case для iPhone Air прозрачный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c0dbdcc01d4c" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs591bl63psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe черный</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="2ae1ce488dca" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-nano-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-air</url><price>1210</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl212blanl66a-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Nano Lens Shield для iPhone Air</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Nano Lens Shield для iPhone Air — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="b23efb9fce4f" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-qi2-2-3-%D0%B2-1-ubear-stage-ultra-apple-watch-35w&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%B8%D1%81%D1%82%D1%8B%D0%B9</url><price>14990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl27sl31su-aw.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Stage Ultra Apple Watch, 35W серебристый</name><vendor>uBear</vendor>
+<description>Беспроводное зарядное устройство Qi2.2 3 в 1 uBear Stage Ultra Apple Watch, 35W серебристый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="160a3139d21d" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-aramid-fiber-a-mirror-to-the-soul-iphone-17-pro&amp;c=Pine+Green</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-f5ad3b94-648c-4f08-8ea7-71797ac78f2e.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Aramid Fiber A mirror to the soul iPhone 17 Pro Pine Green</name><vendor>Airity</vendor>
+<description>Чехол Airity Aramid Fiber A mirror to the soul iPhone 17 Pro Pine Green — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="d53be618efd4" available="true">
+<url>https://youz.store/model?m=%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%82-magssory-prime-geo-%D0%B4%D0%BB%D1%8F-apple-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-find-my-%D0%B8-magsafe&amp;c=%D0%BC%D0%B8%D0%B4%D0%BD%D0%B0%D0%B9%D1%82</url><price>9990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-prime-geo-silver.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Автомобильный комплект Magssory Prime Geo для Apple, с магнитами, совместимый с Find My и MagSafe миднайт</name><vendor>Magssory</vendor>
+<description>Автомобильный комплект Magssory Prime Geo для Apple, с магнитами, совместимый с Find My и MagSafe миднайт — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="de6b2ef6fdb0" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-core-10k-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D0%BC%D0%B8%D0%B4%D0%BD%D0%B0%D0%B9%D1%82</url><price>5990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-core-10000-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Core 10K, с магнитами, совместимый с MagSafe миднайт</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Core 10K, с магнитами, совместимый с MagSafe миднайт — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="9413f68dd384" available="true">
+<url>https://youz.store/model?m=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B1%D0%B7%D1%83-3-%D0%B2-1-magssory-fold-pro-%D0%B4%D0%BB%D1%8F-apple-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-qi2&amp;c=midnight</url><price>10990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-fold-pro-3-1-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Складное БЗУ 3 в 1 Magssory Fold Pro для Apple, с магнитами, с поддержкой Qi2 midnight</name><vendor>Magssory</vendor>
+<description>Складное БЗУ 3 в 1 Magssory Fold Pro для Apple, с магнитами, с поддержкой Qi2 midnight — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="f45650da9326" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-airity-bamboo-shadow-orient-iphone-17-pro-max&amp;c=China+Green</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-237979e4-f535-4792-973a-b972985ec70e.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max China Green</name><vendor>Airity</vendor>
+<description>Чехол Airity Bamboo Shadow Orient iPhone 17 Pro Max China Green — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c9588ca11a53" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs579bl69pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe черный</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="5f4d6c1ab129" available="true">
+<url>https://youz.store/model?m=bluetooth-%D0%BC%D0%B5%D1%82%D0%BA%D0%B0-magssory-ultima-geo-mini-tag-%D1%81-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-find-my&amp;c=%D0%BF%D0%B0%D1%82%D1%82%D0%B5</url><price>3990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-ultima-geo-mini-tag-latte.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Bluetooth метка Magssory Ultima Geo Mini Tag. с поддержкой Find [My патте</name><vendor>Magssory</vendor>
+<description>Bluetooth метка Magssory Ultima Geo Mini Tag. с поддержкой Find [My патте — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="abab70f7ae7b" available="true">
+<url>https://youz.store/model?m=%D0%BA%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C-magssory-line-c-60w-usb-c-1-5-%D0%BC&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>1990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-line-c-60w-usb-c-1-5-black.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Кабель Magssory Line C 60W USB-C. 1,5 м черный</name><vendor>Magssory</vendor>
+<description>Кабель Magssory Line C 60W USB-C. 1,5 м черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="8b6864da74a3" available="true">
+<url>https://youz.store/model?m=wall-chargerbridge-65w-2-ports-2-ports-usb-c-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE&amp;c=%D0%91%D0%B5%D0%BB%D1%8B%D0%B9</url><price>4720</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wc28whpd65-2c.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Wall chargerBridge 65W, 2 ports (2 Ports USB-C)Сетевое зарядное устройство Белый</name>
+<description>Wall chargerBridge 65W, 2 ports (2 Ports USB-C)Сетевое зарядное устройство Белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="4ec9c0842da7" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-nano-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-17</url><price>1210</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl211blanl63-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Nano Lens Shield для iPhone 17</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Nano Lens Shield для iPhone 17 — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c575ffdb367f" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-geo-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>4980</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs617or05spfm-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитныйкардхолдер uBear Split Geo, эко-кожа оранжевый</name><vendor>uBear</vendor>
+<description>Магнитныйкардхолдер uBear Split Geo, эко-кожа оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="d5d4ad203542" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-geo-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>4980</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs616db05spfm-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split Geo, эко- кожа синий</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split Geo, эко- кожа синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="16904e3e5f00" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-geo-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>4980</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs615bl05spfm-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split Geo, эко- кожа черный</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split Geo, эко- кожа черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="8f9054883517" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>2640</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs608or03sp-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split, эко-кожа оранжевый</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split, эко-кожа оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="043f8c133dc9" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>2640</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs607gr03sp-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split, эко-кожа серый</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split, эко-кожа серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="76469912937b" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>2640</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs606db03sp-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split, эко-кожа синий</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split, эко-кожа синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="817a869b4a0c" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>2640</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs605bl03sp-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split, эко-кожа черный</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split, эко-кожа черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cb3e55d8ec6d" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-magsafe&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3350</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs572gr63mt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17, MagSafe серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17, MagSafe серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ff027e80dfe1" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs581db69pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="14034d1f8445" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs577db63pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="0d560411fea2" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3350</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs576gr63pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="1cfc3667aced" available="true">
+<url>https://youz.store/model?m=%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%B0-magssory-ultima-geo-passport-cover-c-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-find-my&amp;c=%D0%BC%D0%B8%D0%B4%D0%BD%D0%B0%D0%B9%D1%82</url><price>8990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-ultima-geo-passport-cover-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Обложка для паспорта Magssory - Ultima Geo Passport Cover, c поддержкой Find My миднайт</name><vendor>Magssory</vendor>
+<description>Обложка для паспорта Magssory - Ultima Geo Passport Cover, c поддержкой Find My миднайт — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="8208c99c519e" available="true">
+<url>https://youz.store/model?m=%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%B0-magssory-ultima-geo-passport-cover-c-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-find-my-%D0%BB%D0%B0%D1%82%D1%82%D0%B5-2-%D0%BE%D0%B1%D0%BB%D0%BE%D0%B6%D0%BA%D0%B0-%D0%B4%D0%BB%D1%8F-%D0%BF%D0%B0%D1%81%D0%BF%D0%BE%D1%80%D1%82%D0%B0-magssory</url><price>8990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-ultima-geo-passport-cover-latte.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Обложка для паспорта Magssory — Ultima Geo Passport Cover, c поддержкой Find My (латте) 2 Обложка для паспорта Magssory</name><vendor>Magssory</vendor>
+<description>Обложка для паспорта Magssory — Ultima Geo Passport Cover, c поддержкой Find My (латте) 2 Обложка для паспорта Magssory — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cd2ac554cfea" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-ubear-split-geo-%D1%8D%D0%BA%D0%BE-%D0%BA%D0%BE%D0%B6%D0%B0&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>4990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs618gr05spfm-cm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кардхолдер uBear Split Geo, эко-кожа серый</name><vendor>uBear</vendor>
+<description>Магнитный кардхолдер uBear Split Geo, эко-кожа серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="6f48534c2688" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-core-5k-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D1%82%D0%B8%D1%82%D0%B0%D0%BD</url><price>4990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-core-5000-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Core 5K, с магнитами, совместимый с MagSafe титан</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Core 5K, с магнитами, совместимый с MagSafe титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="a73ac35efc9c" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-core-5k-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D0%BC%D0%B8%D0%B4%D0%BD%D0%B0%D0%B9%D1%82</url><price>4990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-core-5000-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Core 5K, с магнитами, совместимый с MagSafe миднайт</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Core 5K, с магнитами, совместимый с MagSafe миднайт — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="bc38dc5fe06f" available="true">
+<url>https://youz.store/model?m=%D0%BA%D0%BE%D0%BC%D0%BF%D0%B0%D0%BA%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-magssory-nano-30w-gan-%D1%81-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B5%D0%B9-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%BE%D0%B9-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BA%D0%B8&amp;c=%D1%87%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>1990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-30w-black.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Компактное сетевое зарядное устройство Magssory Nano 30W GaN, с функцией быстрой зарядки черный</name><vendor>Magssory</vendor>
+<description>Компактное сетевое зарядное устройство Magssory Nano 30W GaN, с функцией быстрой зарядки черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cec1352344e8" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-pride-5k-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D1%82%D0%B8%D1%82%D0%B0%D0%BD</url><price>7990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-pride-5000-magnetic-power-bank.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Pride 5K, с магнитами, совместимый с MagSafe титан</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Pride 5K, с магнитами, совместимый с MagSafe титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="9e60cc351a9e" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-iphone-17-air-6-5-remax-japan-3d-gl-27-privat-black</url><price>890</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-cd4985cd-6e42-4414-85bd-e9c7e7102af0.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло iPhone 17 Air 6.5&quot; Remax Japan 3D GL-27 Privat Black</name><vendor>Remax</vendor>
+<description>Защитное стекло iPhone 17 Air 6.5&quot; Remax Japan 3D GL-27 Privat Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="de505afca85e" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-17-pro-pro-max&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>1490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl214oraml6369p-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max оранжевый</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="c04e880e3401" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-nano-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-17-pro-pro-max</url><price>1590</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl213blanl6369p-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Nano Lens Shield для iPhone 17 Pro/Pro Max</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Nano Lens Shield для iPhone 17 Pro/Pro Max — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="5c207df1010c" available="true">
+<url>https://youz.store/model?m=go-power-%D0%B1%D0%B7%D1%83-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D0%BE%D0%B5-%D1%81-magsafe-c-%D0%BA%D1%80%D0%B5%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC-%D0%BD%D0%B0-%D0%B0%D0%B2%D1%82%D0%BE%D0%BC%D0%BE%D0%B1%D0%B8%D0%BB%D1%8C%D0%BD%D1%83%D1%8E-%D1%80%D0%B5%D1%88%D0%B5%D1%82%D0%BA%D1%83</url><price>4210</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl08gr10-ad.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Go-Power, БЗУ, совместимое с MagSafe, c креплением на автомобильную решетку</name>
+<description>Go-Power, БЗУ, совместимое с MagSafe, c креплением на автомобильную решетку — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="cb77f2449998" available="true">
+<url>https://youz.store/model?m=wall-charger-bridge-45w-2-ports-2-ports-usb-c-%D1%81%D0%B5%D1%82%D0%B5%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE&amp;c=%D0%91%D0%B5%D0%BB%D1%8B%D0%B9</url><price>4160</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wc27whpd45-2c.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Wall charger Bridge 45W, 2 ports (2 Ports USB-C) Сетевое зарядное устройство Белый</name>
+<description>Wall charger Bridge 45W, 2 ports (2 Ports USB-C) Сетевое зарядное устройство Белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="a7ba146810d4" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs580gr69pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="a74d830ed028" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D0%B6%D0%B5%D0%BB%D1%82%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs570ly69pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe желтый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe желтый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="814606825ef1" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs569or69pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="8b0fd19d0660" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs561or63pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="44481d02f9a4" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%81%D0%B2%D0%B5%D1%82%D0%BB%D0%BE-%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs557lg63pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe светло-серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe светло-серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="7e30bbbb86a8" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-magsafe&amp;c=%D0%BB%D0%B0%D1%82%D1%82%D0%B5</url><price>3200</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs543lt63th-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17, MagSafe латте</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17, MagSafe латте — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="759e206c1165" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-magsafe&amp;c=%D1%82%D0%B5%D0%BC%D0%BD%D0%BE-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs540db63th-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17, MagSafe темно-синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17, MagSafe темно-синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="43c11997a550" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-vision-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max&amp;c=%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs538tt69pvs-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Vision Mag Case для iPhone 17 Pro Max прозрачный</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Vision Mag Case для iPhone 17 Pro Max прозрачный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="b136490f3f7a" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-iphone-17-pro-max-6-9-remax-japan-3d-gl-27-black-</url><price>790</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-9e91dece-c2e3-405d-a9ec-3dc5d49c731a.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло iPhone 17 Pro Max 6.9&quot; Remax Japan 3D GL-27 Black.</name><vendor>Remax</vendor>
+<description>Защитное стекло iPhone 17 Pro Max 6.9&quot; Remax Japan 3D GL-27 Black. — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="3138364b0317" available="true">
+<url>https://youz.store/model?m=%D0%BA%D0%BE%D1%88%D0%B5%D0%BB%D0%B5%D0%BA-%D0%BA%D0%B0%D1%80%D0%B4%D1%85%D0%BE%D0%BB%D0%B4%D0%B5%D1%80-magssory-duo-c-%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D0%B9-%D0%B8-14-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D0%90%D0%B9%D0%B2%D0%BE%D1%80%D0%B8</url><price>2490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-duo-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Кошелек-кардхолдер Magssory Duo c подставкой и 14 магнитами, совместимый с MagSafe Айвори</name><vendor>Magssory</vendor>
+<description>Кошелек-кардхолдер Magssory Duo c подставкой и 14 магнитами, совместимый с MagSafe Айвори — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="d6688ae647de" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C-magssory-link-c-240w-usb-c-12-2-4%D0%BC&amp;c=%D0%91%D0%B5%D0%BB%D1%8B%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-link-2-4-c-240w-white.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кабель Magssory Link C 240W USB-C, 12 2,4м Белый</name><vendor>Magssory</vendor>
+<description>Магнитный кабель Magssory Link C 240W USB-C, 12 2,4м Белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ab91128a4f5d" available="true">
+<url>https://youz.store/model?m=%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-%D0%BA%D0%B0%D0%B1%D0%B5%D0%BB%D1%8C-magssory-60w-usb-c-1-2%D0%BC-10&amp;c=%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>2190</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-1-2-60w-black.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Магнитный кабель Magssory 60W USB-C, 1,2м 10 Черный</name><vendor>Magssory</vendor>
+<description>Магнитный кабель Magssory 60W USB-C, 1,2м 10 Черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="4fda734be383" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-pride-pro-5k-magnetic-power-bank-%D1%81-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-qi2&amp;c=%D0%A2%D0%B8%D1%82%D0%B0%D0%BD</url><price>8990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-pride-5000-qi2-black.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Pride Pro 5K Magnetic Power Bank, с поддержкой Qi2 Титан</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Pride Pro 5K Magnetic Power Bank, с поддержкой Qi2 Титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="12bdae27f9be" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B9-%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-magssory-pride-5-10k-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D1%8B%D0%B9-%D1%81-magsafe&amp;c=%D0%A2%D0%B8%D1%82%D0%B0%D0%BD</url><price>9990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-pride-10000-magnetic-power-bank.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводной внешний аккумулятор Magssory Pride 5 10K, с магнитами, совместимый с MagSafe Титан</name><vendor>Magssory</vendor>
+<description>Беспроводной внешний аккумулятор Magssory Pride 5 10K, с магнитами, совместимый с MagSafe Титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="fbed51184fe2" available="true">
+<url>https://youz.store/model?m=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B1%D0%B7%D1%83-3-%D0%B2-1-magssory-disc-pro-signature-edition-%D0%B4%D0%BB%D1%8F-apple-%D1%81-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81-%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%BE%D0%B9-qi2&amp;c=%D0%9C%D0%B8%D0%B4%D0%BD%D0%B0%D0%B9%D1%82</url><price>21990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-signature-disc-pro-apple-qi2-midnight.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Складное БЗУ 3 в 1 Magssory Disc Pro Signature Edition для Apple, с магнитами, с поддержкой Qi2 Миднайт</name><vendor>Magssory</vendor>
+<description>Складное БЗУ 3 в 1 Magssory Disc Pro Signature Edition для Apple, с магнитами, с поддержкой Qi2 Миднайт — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="1a358312c1f0" available="true">
+<url>https://youz.store/model?m=%D1%81%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B1%D0%B7%D1%83-3-%D0%B2-1-magssory-flex-%D0%B4%D0%BB%D1%8F-apple-%D1%81-2-%D0%BC%D0%B0%D0%B3%D0%BD%D0%B8%D1%82%D0%B0%D0%BC%D0%B8-%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%B8%D0%BC%D0%BE%D0%B5-%D1%81-magsafe&amp;c=%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9</url><price>6990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-mg-flex-3-1-black.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Складное БЗУ 3 в 1 Magssory Flex для Apple, с 2 магнитами, совместимое с MagSafe Черный</name><vendor>Magssory</vendor>
+<description>Складное БЗУ 3 в 1 Magssory Flex для Apple, с 2 магнитами, совместимое с MagSafe Черный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="02a2873b73f2" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-balance-3in1-magnetic-wireless-charger&amp;c=%D1%82%D0%B8%D1%82%D0%B0%D0%BD</url><price>12190</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl09tn31-adm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Balance 3in1 Magnetic wireless charger титан</name>
+<description>Беспроводное зарядное устройство Balance 3in1 Magnetic wireless charger титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="169e6db76271" available="true">
+<url>https://youz.store/model?m=%D0%B1%D0%B5%D1%81%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B7%D0%B0%D1%80%D1%8F%D0%B4%D0%BD%D0%BE%D0%B5-%D1%83%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%81%D1%82%D0%B2%D0%BE-stage-3in1-magnetic-wireless-charger&amp;c=%D1%82%D0%B8%D1%82%D0%B0%D0%BD</url><price>10990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-wl07tn31-ad.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Беспроводное зарядное устройство Stage 3in1 Magnetic wireless charger титан</name>
+<description>Беспроводное зарядное устройство Stage 3in1 Magnetic wireless charger титан — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="eb2e8938d7ff" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-ubear-slide-magnetic-power-bank-10000mah-pd20w&amp;c=%D0%B1%D0%B5%D0%BB%D1%8B%D0%B9</url><price>9490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb21wh10000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор uBear Slide Magnetic Power bank 10000mAh, PD20W белый</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор uBear Slide Magnetic Power bank 10000mAh, PD20W белый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ecc3176ee6a4" available="true">
+<url>https://youz.store/model?m=%D0%B2%D0%BD%D0%B5%D1%88%D0%BD%D0%B8%D0%B9-%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80-ubear-icon-magnetic-power-bank-5000mah-pd20w&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>7990</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-pb14sg5000-pdm.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Внешний аккумулятор uBear Icon Magnetic Power bank 5000mAh, PD20W серый</name><vendor>uBear</vendor>
+<description>Внешний аккумулятор uBear Icon Magnetic Power bank 5000mAh, PD20W серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="fcf5bd673f7d" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-17-pro-pro-max&amp;c=%D1%81%D0%B5%D1%80%D0%B5%D0%B1%D1%80%D0%BE</url><price>1490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl217slaml6369p-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max серебро</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max серебро — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="ada7f2f39a79" available="true">
+<url>https://youz.store/model?m=%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-ubear-extreme-metal-lens-shield-%D0%B4%D0%BB%D1%8F-iphone-17-pro-pro-max&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>1490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-gl216dbaml6369p-i25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max синий</name><vendor>uBear</vendor>
+<description>Стекло защитное uBear Extreme Metal Lens Shield для iPhone 17 Pro/Pro Max синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="3ede5b59a0bd" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs598or69psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="3b81e192c88f" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs597db69psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="7eaa8762bfc5" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs596gr69psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro Max, MagSafe серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="1908d8c1a6c9" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs594or63psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="f96b7f4c9cdd" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs593db63psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="eb7d81041336" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-shade-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3550</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs592gr63psh-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Shade Case для iPhone 17 Pro, MagSafe серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="b763a1ca48ea" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3350</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs582or69pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro Max, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="79e003213a5f" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-cloud-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D0%BE%D1%80%D0%B0%D0%BD%D0%B6%D0%B5%D0%B2%D1%8B%D0%B9</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs578or63pmt-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe оранжевый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Cloud Mag Case для iPhone 17 Pro, MagSafe оранжевый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="944eb6ce8830" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max&amp;c=%D1%81%D0%B5%D1%80%D1%8B%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs565lg69pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max серый</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max серый — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="da22da4ae62d" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-max-magsafe&amp;c=%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3490</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs564db69pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro Max, MagSafe синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="e57ba81939b7" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D0%BB%D0%B0%D1%82%D1%82%D0%B5</url><price>3290</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs559lt63pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe латте</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe латте — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="21cd4cba671b" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-touch-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro-magsafe&amp;c=%D1%82%D0%B5%D0%BC%D0%BD%D0%BE-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9</url><price>3200</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs556db63pth-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe темно-синий</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Touch Mag Case для iPhone 17 Pro, MagSafe темно-синий — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="85864a07894c" available="true">
+<url>https://youz.store/model?m=%D1%87%D0%B5%D1%85%D0%BE%D0%BB-%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D1%8B%D0%B9-ubear-vision-mag-case-%D0%B4%D0%BB%D1%8F-iphone-17-pro&amp;c=%D0%BF%D1%80%D0%BE%D0%B7%D1%80%D0%B0%D1%87%D0%BD%D1%8B%D0%B9</url><price>3040</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ub-cs537tt63pvs-i25m.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Чехол защитный uBear Vision Mag Case для iPhone 17 Pro прозрачный</name><vendor>uBear</vendor>
+<description>Чехол защитный uBear Vision Mag Case для iPhone 17 Pro прозрачный — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="f015b6036973" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-iphone-12-pro-max-6-7-remax-japan-3d-gl-27-black</url><price>590</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-4739b926-e396-45eb-a273-74d2dffe6a69.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло iPhone 12 Pro Max 6.7&quot; Remax Japan 3D GL-27 Black</name><vendor>Remax</vendor>
+<description>Защитное стекло iPhone 12 Pro Max 6.7&quot; Remax Japan 3D GL-27 Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="a4ee03fff93d" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-17-16-pro-6-3-remax-gl-27-3d-%D0%B0%D0%BD%D1%82%D0%B8%D1%88%D0%BF%D0%B8%D0%BE%D0%BD-%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B5</url><price>890</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-1dd7a9ae-e645-4215-8698-80c10da7fedd.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 17 / 16 Pro 6.3&quot; Remax GL-27 3D Антишпион черное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 17 / 16 Pro 6.3&quot; Remax GL-27 3D Антишпион черное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="02c8ffa551c1" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-iphone-15-16-6-1-remax-japan-3d-gl-27-black</url><price>690</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-51df8cd6-f95e-4455-a1e2-004fc3fe3bc6.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло iPhone 15 / 16 6.1&quot; Remax Japan 3D GL-27 Black</name><vendor>Remax</vendor>
+<description>Защитное стекло iPhone 15 / 16 6.1&quot; Remax Japan 3D GL-27 Black — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="2dccf4f39cfb" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-15-pro-max-6-1-remax-gl-27-3d-%D0%B0%D0%BD%D1%82%D0%B8%D1%88%D0%BF%D0%B8%D0%BE%D0%BD-%D1%87-%D1%80%D0%BD%D0%BE%D0%B5</url><price>690</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-681a94ef-6a0d-4555-8eb6-eddc09e093f8.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 15 Pro Max 6.1&quot; Remax GL-27 3D Антишпион чёрное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 15 Pro Max 6.1&quot; Remax GL-27 3D Антишпион чёрное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="bd8c3b0d1cc5" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-13-13-pro-14-16e-6-1-remax-gl-27-3d-%D1%87-%D1%80%D0%BD%D0%BE%D0%B5</url><price>590</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-51df8cd6-f95e-4455-a1e2-004fc3fe3bc6.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 13/13 Pro/14/16e 6.1&quot;/ Remax GL-27 3D чёрное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 13/13 Pro/14/16e 6.1&quot;/ Remax GL-27 3D чёрное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="932185ee01bc" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-16-pro-6-3-remax-gl-27-3d-%D1%87%D0%B5%D1%80%D0%BD%D0%BE%D0%B5</url><price>690</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-942c2f35-71e9-4149-b3dd-6c3bcb37d9eb.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 16 Pro 6.3&quot; Remax GL-27 3D черное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 16 Pro 6.3&quot; Remax GL-27 3D черное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="625bbf208319" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-15-pro-6-1-remax-gl-27-3d-%D1%87-%D1%80%D0%BD%D0%BE%D0%B5</url><price>690</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-a91ce8ec-a5ed-42dd-aa14-5f0815c92a25.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 15 Pro 6.1&quot; Remax GL-27 3D чёрное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 15 Pro 6.1&quot; Remax GL-27 3D чёрное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
+</offer>
+<offer id="34cad157f851" available="true">
+<url>https://youz.store/model?m=%D0%B7%D0%B0%D1%89%D0%B8%D1%82%D0%BD%D0%BE%D0%B5-%D1%81%D1%82%D0%B5%D0%BA%D0%BB%D0%BE-%D0%B4%D0%BB%D1%8F-iphone-11-pro-x-xs-5-8-remax-gl-27-3d-%D1%87-%D1%80%D0%BD%D0%BE%D0%B5</url><price>590</price>
+<currencyId>RUR</currencyId><categoryId>14</categoryId><picture>https://cdn.jsdelivr.net/gh/sokolss1010200-glitch/youz-site@main/img/yz-acc-ms-3f06315f-0ec7-4f04-bd05-3774ed1853b2.webp</picture>
+<store>true</store><pickup>true</pickup><delivery>true</delivery>
+<name>Защитное стекло для iPhone 11 Pro/X/XS 5.8&quot; Remax GL-27 3D чёрное</name><vendor>Remax</vendor>
+<description>Защитное стекло для iPhone 11 Pro/X/XS 5.8&quot; Remax GL-27 3D чёрное — в наличии в магазине ЮZ, Ханты-Мансийск, Комсомольская, 49. Самовывоз и доставка по ХМАО.</description>
 </offer>
 </offers>
 </shop>
