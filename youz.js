@@ -696,7 +696,9 @@ document.querySelectorAll('[data-inst]').forEach(w=>{const r=w.querySelector('[d
 function composeComment(){const L=sumLines().map(l=>l[0]+(l[1]?': '+l[1]:''));if(leadCtx.cart)L.push('Итого: '+rub(cart.reduce((a,b)=>a+b.price,0)));return '['+(leadCtx.source||'Сайт')+'] '+L.join('; ')}
 function setVal(f,re,val){const el=[...f.querySelectorAll('input,textarea')].find(i=>re.test(i.name||''));if(!el)return false;el.value=val;el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));return true}
 function sendLead(d){return new Promise(res=>{const f=tildaForm();
-  if(!f){console.warn('ЮZ: на странице нет формы Тильды — заявка не отправлена',d);res('demo');return}
+  if(!f){/* свой хостинг: заявка уходит в /lead.php (журнал + Telegram + MAX) */
+    fetch('/lead.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:d.name||'',phone:d.phone,comment:d.comment||'',page:location.href})})
+      .then(r=>res(r.ok?'ok':'err')).catch(()=>res('err'));return}
   setVal(f,/^name$|имя/i,d.name||'Без имени');setVal(f,/phone|телефон/i,d.phone);
   if(!setVal(f,/comment|textarea|комментар|message/i,d.comment))setVal(f,/^name$|имя/i,(d.name||'')+' | '+d.comment);
   const ok=f.querySelector('.js-successbox,.t-form__successbox');const er=f.querySelector('.js-errorbox-all,.t-form__errorbox-wrapper');
