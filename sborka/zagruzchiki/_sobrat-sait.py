@@ -50,6 +50,10 @@ HEAD_RE = re.compile(r'(<meta name="viewport"[^>]*>\n)(.*?)(\n<meta name="format
 BODY_RE = re.compile(r'(<body>\n)(.*?)(\n<!-- Yandex\.Metrika)', re.S)
 
 changed, new, skipped = [], [], []
+# Раз в неделю (понедельник) и при ручном запуске (YZ_FULL=1) перезаписываем все страницы, чтобы в них обновился
+# снимок кода (коммит S в загрузчике): он нужен, если у посетителя не отвечает GitHub API.
+import os
+FULL = os.environ.get('YZ_FULL') == '1' or datetime.datetime.utcnow().weekday() == 0
 for f in sorted((HERE / 'seo').glob('*.txt')):
     slug = 'index' if f.stem == 'glavnaya' else f.stem
     if slug in SKIP:
@@ -69,7 +73,7 @@ for f in sorted((HERE / 'seo').glob('*.txt')):
         page2 = HEAD_RE.sub(lambda m: m.group(1) + meta_block(slug, SEO[slug]['title'], SEO[slug]['descr'],
                                                               og.group(1) if og else None) + m.group(3), page2, count=1)
     norm = lambda t: re.sub(r'[0-9a-f]{7,40}', '', re.sub(r'\s+', ' ', t))  # без хешей коммитов и переносов
-    if slug in new or norm(page2) != norm(page):
+    if slug in new or FULL or norm(page2) != norm(page):
         out.write_text(page2, encoding='utf-8')
         changed.append(slug)
 
