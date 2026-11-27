@@ -1,6 +1,6 @@
 # Заливка сайта на хостинг reg.ru (Хост-0, server19.hosting.reg.ru) по FTPS.
 # Берёт папку site/ и кладёт в www/youz.store/ на хостинге. Заливает только изменённые файлы.
-# Запуск: сам при изменении site/ в main, или вручную: Actions → «Заливка на хостинг» → Run workflow.
+# Запуск: сам при изменении site/ в main и после «Сборки сайта», или вручную: Actions → «Заливка на хостинг» → Run workflow.
 # Доступ задаётся в Settings → Secrets and variables → Actions: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
 # Заявки: секрет TG_TOKEN (бот @youz_store_zayavki_bot), по желанию MAX_TOKEN и MAX_CHAT.
 # Из них собирается www/lead-config.php (вне папки сайта, в git его нет). Заявки идут в группу
@@ -10,15 +10,21 @@ on:
   push:
     branches: [main]
     paths: ['site/**']
+  workflow_run:            # коммиты робота (GITHUB_TOKEN) не запускают push, поэтому ждём «Сборку сайта»
+    workflows: ['Сборка сайта']
+    types: [completed]
   workflow_dispatch:
 concurrency:
   group: zalivka
   cancel-in-progress: false
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Проверка доступа
         id: chk
         env:

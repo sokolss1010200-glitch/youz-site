@@ -1,0 +1,43 @@
+# Сборка сайта youz.store для хостинга reg.ru (папка site/) из свежего прайса.
+# Запускается сама после «Прайс для сайта» (каждый день ~13:20–15:00 МСК) и вручную: Actions → «Сборка сайта» → Run workflow.
+# Что делает: генераторы из sborka/ пересобирают страницы разделов, моделей и городов (pages/) и блоки с текстом
+# для поисковиков (sborka/zagruzchiki/seo/, в git не хранятся), затем sborka/zagruzchiki/_sobrat-sait.py обновляет
+# site/: тело страниц, title/description с ценой «от …», новые страницы моделей, sitemap.xml.
+# Если что-то поменялось — коммит в main, после чего «Заливка на хостинг» выкладывает изменения на reg.ru.
+# Раньше то же самое раз в неделю вставлялось в Тильду (задача youz-obnovit-ceny) — после переезда это не нужно.
+name: Сборка сайта
+on:
+  workflow_run:
+    workflows: ['Прайс для сайта (13:20 и 14:00 МСК)']
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: sborka
+  cancel-in-progress: false
+jobs:
+  build:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Генераторы страниц и блоков
+        run: |
+          python3 sborka/zagruzchiki/_sobrat-zagruzchiki-seo.py . > /dev/null
+          python3 sborka/stranicy/_sobrat-seo-kategorii-modeli.py . > /dev/null
+          python3 sborka/stranicy/_sobrat-goroda.py . > /dev/null
+      - name: Обновить site/
+        run: python3 sborka/zagruzchiki/_sobrat-sait.py .
+      - name: Коммит
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site pages sborka/stranicy/seo-stranicy.json
+          if git diff --cached --quiet; then echo 'Изменений нет'; exit 0; fi
+          git commit -q -m "Сборка сайта $(TZ=Europe/Moscow date '+%d.%m.%Y %H:%M') МСК"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 10; done
+          exit 1
