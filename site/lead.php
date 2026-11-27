@@ -1,7 +1,8 @@
 <?php
 // Приём заявок с сайта ЮZ: пишет в журнал и отправляет в Telegram и MAX.
 // Токены лежат в ../lead-config.php (вне папки сайта, в git их нет):
-//   <?php return ['tg_token'=>'...', 'tg_chat'=>'...', 'max_token'=>'...', 'max_chat'=>'...'];
+//   <?php return ['tg_token'=>'...', 'tg_chat'=>'-100...', 'tg_thread'=>7932, 'max_token'=>'...', 'max_chat'=>'...'];
+// Файл создаёт GitHub Actions («Заливка на хостинг») из секретов TG_TOKEN / MAX_TOKEN / MAX_CHAT.
 header('Content-Type: application/json; charset=utf-8');
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') { http_response_code(405); echo '{"ok":false}'; exit; }
 
@@ -58,7 +59,9 @@ function post_json($url, $body, $headers = []) {
 
 if (!empty($cfg['tg_token']) && !empty($cfg['tg_chat'])) {
     foreach ((array)$cfg['tg_chat'] as $chat) {
-        if (post_json('https://api.telegram.org/bot' . $cfg['tg_token'] . '/sendMessage', ['chat_id' => $chat, 'text' => $text])) $sent++;
+        $msg = ['chat_id' => $chat, 'text' => $text];
+        if (!empty($cfg['tg_thread'])) $msg['message_thread_id'] = (int)$cfg['tg_thread'];   // тема «Заявки с сайта»
+        if (post_json('https://api.telegram.org/bot' . $cfg['tg_token'] . '/sendMessage', $msg)) $sent++;
     }
 }
 if (!empty($cfg['max_token']) && !empty($cfg['max_chat'])) {
