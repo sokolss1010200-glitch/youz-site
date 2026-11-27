@@ -15,7 +15,7 @@ HERE = pathlib.Path(__file__).parent
 REPO = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.').resolve()
 SITE = REPO / 'site'
 SEO = {p['slug']: p for p in json.load(open(HERE.parent / 'stranicy' / 'seo-stranicy.json'))}
-SKIP = {'404', 'yandex_1435fb25a1123af9'}
+SKIP = {'404', 'yandex_1435fb25a1123af9', 'otzyv'}  # otzyv — служебная страница для клиентов, не в карту сайта
 TCDN = re.compile(r'https://(?:static|thb)\.tildacdn\.(?:com|net)/[^"\'\s)<>]+')
 assets = json.load(open(SITE / 't' / 'assets.json'))
 
