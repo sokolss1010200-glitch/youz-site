@@ -219,6 +219,38 @@ for name, m in M.items():
     MP.append({'name': name, 'slug': re.sub(r'[^a-z0-9а-я]+', '-', name.lower()), 'url': url, 'cat': m['cat'], 'grp': m.get('grp', ''), 'min': mn, 'max': mx, 'mems': mems,
                'cols': cols, 'opts': opts, 'v': v, 'photo': m['photo']})
 
+# --- страницы «модель + память» и «модель + цвет» для смартфонов: свои цены и варианты на каждой ---
+VAR_CATS = ('iPhone', 'Samsung')
+def var_slug(t):
+    t = t.lower().replace(' гб', 'gb').replace(' тб', 'tb').replace('гб', 'gb').replace('тб', 'tb').replace('+', ' plus')
+    t = re.sub(r'[^a-z0-9]+', '-', t).strip('-')
+    return t
+_taken = {p['url'] for p in MP}
+KIDS = []
+for p in list(MP):
+    if p['cat'] not in VAR_CATS:
+        continue
+    kids = []
+    for key, vals in (('mem', p['mems']), ('col', p['cols'])):
+        vals = [x for x in vals if x]
+        if len(vals) < 2:
+            continue
+        for val in vals:
+            sl = var_slug(val)
+            if not sl:
+                continue
+            url = p['url'] + '-' + sl
+            if url in _taken:
+                continue
+            v = [x for x in p['v'] if x[key] == val]
+            k = dict(p, name='%s %s' % (p['name'], val), url=url, v=v, parent=p, kids=[],
+                     min=min(x['price'] for x in v), max=max(x['price'] for x in v),
+                     mems=uniq(x['mem'] for x in v), cols=uniq(x['col'] for x in v), opts=uniq(x['opt'] for x in v))
+            _taken.add(url); kids.append(k)
+    p['kids'] = kids
+    KIDS += kids
+MP += KIDS
+
 def ayfon(name):
     mm = re.match(r'iPhone\s+(.*)', name)
     return ('айфон ' + mm.group(1)) if mm else ''
@@ -301,9 +333,22 @@ def cat_crumb(p):  # для Android — страница бренда
         u, n = BRAND_OF[p['grp']]; return (n, u)
     return (CAT_NAME.get(p['cat'], p['cat']), CAT_PATH.get(p['cat'], '/catalog'))
 
+def model_crumbs(p):
+    cr = [('Главная', '/'), cat_crumb(p)]
+    if p.get('parent'):
+        cr.append((p['parent']['name'], '/' + p['parent']['url']))
+    return cr + [(p['name'], '')]
+
+def kids_html(p):  # ссылки на страницы памяти и цвета этой модели
+    ks = p.get('kids') or []
+    if not ks:
+        return ''
+    return '<h2>%s по памяти и цвету</h2><ul class="seo-list">%s</ul>' % (esc(p['name']), ''.join(
+        '<li><a href="/%s">%s</a> — от %s</li>' % (k['url'], esc(k['name']), rub(k['min'])) for k in ks))
+
 def model_pre(p):
     cat = p['cat']
-    cr = [('Главная', '/'), cat_crumb(p), (p['name'], '')]
+    cr = model_crumbs(p)
     a = ayfon(p['name'])
     lead = ('%s в наличии в магазине ЮZ в Ханты-Мансийске%s%s. Цена %s от %s. '
             'Можно посмотреть вживую на Комсомольской, 49, купить в рассрочку до 36 месяцев%s.') % (
@@ -315,14 +360,14 @@ def model_pre(p):
     extra = ('<p>Ищете, где купить %s в Ханты-Мансийске? В ЮZ продаём только оригинальные новые устройства: серийный номер проверяем при вас, '
              'настраиваем телефон, переносим данные и устанавливаем банковские приложения. К каждому iPhone идёт подарок.</p>' % a) if a else ''
     return ('<div id="yzModel"><section class="wrap seo-pre" style="padding:32px 0">%s<h1>Купить %s в Ханты-Мансийске</h1>'
-            '%s<p>%s</p>%s<h2>Цены на %s</h2>%s<h2>Вопросы и ответы</h2>%s</section></div>') % (
+            '%s<p>%s</p>%s<h2>Цены на %s</h2>%s%s<h2>Вопросы и ответы</h2>%s</section></div>') % (
         crumbs(cr), esc(p['name']),
         ('<img src="%s" alt="%s" width="560" height="560" loading="lazy">' % (esc(p['photo']), esc(p['name']))) if p['photo'] else '',
-        esc(lead), extra, esc(p['name']), variants_table(p), faq_html(model_faq(p)))
+        esc(lead), extra, esc(p['name']), variants_table(p), kids_html(p), faq_html(model_faq(p)))
 
 def model_ld(p):
     cat = p['cat']
-    cr = [('Главная', '/'), cat_crumb(p), (p['name'], '')]
+    cr = model_crumbs(p)
     brand = 'Apple' if cat in ('iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods') else ('Samsung' if cat == 'Samsung' else 'Dyson' if cat == 'Dyson' else '')
     prod = {"@context": "https://schema.org", "@type": "Product", "name": p['name'],
             "description": model_descr(p), "url": "https://youz.store/" + p['url'],
@@ -354,7 +399,7 @@ catalog = (REPO / 'catalog.html').read_text(encoding='utf-8')
 CP = []
 for c_ in CATS + BRANDS + SERIES:
     slug, cat, h1, plural, intro, faq = c_[:6]; grp = c_[6] if len(c_) > 6 else None; pre = c_[7] if len(c_) > 7 else None
-    ms = sorted([p for p in MP if p['cat'] == cat and (not grp or p['grp'] == grp) and (not pre or p['name'].startswith(pre + ' '))] if cat in MODEL_CATS else
+    ms = sorted([p for p in MP if not p.get('parent') and p['cat'] == cat and (not grp or p['grp'] == grp) and (not pre or p['name'].startswith(pre + ' '))] if cat in MODEL_CATS else
                 [{'name': n, 'min': min(x['price'] for x in m['v']), 'url': ''} for n, m in M.items()
                  if m['cat'] == cat and (not grp or m.get('grp') == grp) and not re.search(r'Charging Station|Vertical Stand|дисковод', n)],
                 key=lambda p: -p['min'])
