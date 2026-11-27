@@ -1,0 +1,41 @@
+AddDefaultCharset utf-8
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# https и без www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://youz.store%{REQUEST_URI} [R=301,L]
+
+# служебные адреса Тильды и старые страницы
+RewriteRule ^(catalog/)?tproduct/ /catalog [R=301,L]
+RewriteRule ^(old-catalog|forma-zayavok)/?$ / [R=301,L]
+RewriteRule ^page[0-9]+\.html$ / [R=301,L]
+RewriteRule ^glavnaya/?$ / [R=301,L]
+RewriteRule ^tilda/ - [G,L]
+
+# /index.html → /
+RewriteRule ^index\.html$ / [R=301,L]
+# /slug.html и /slug/ → /slug
+RewriteCond %{THE_REQUEST} \s/([a-z0-9-]+)\.html[\s?]
+RewriteRule ^ /%1 [R=301,L]
+RewriteRule ^([a-z0-9-]+)/$ /$1 [R=301,L]
+# /slug → файл slug.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^([a-z0-9-]+)$ /$1.html [L]
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(webp|png|jpg|jpeg|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml text/xml text/plain
+</IfModule>
