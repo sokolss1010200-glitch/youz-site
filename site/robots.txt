@@ -3,4 +3,8 @@ Disallow: /lead.php
 Disallow: /t/assets.json
 Disallow: /model$
 
+# Параметры выбора памяти/цвета/SIM и метки рекламы не меняют страницу (есть canonical) — не считать дублями
+Clean-param: mem&c&opt&band /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid /
+
 Sitemap: https://youz.store/sitemap.xml
