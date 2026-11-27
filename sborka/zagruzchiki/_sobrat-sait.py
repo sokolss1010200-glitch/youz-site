@@ -98,10 +98,38 @@ if FEED.exists():
                 url = 'https://youz.store/%s%s' % (page, ('?' + rest) if rest else '')
         return '<url>%s</url>' % html.escape(url, quote=False)
     feed = re.sub(r'<url>([^<]*)</url>', fix, FEED.read_text(encoding='utf-8'))
+    # картинки с Тильды — на свои копии в site/t/ (после отключения Тильды её CDN может пропасть)
+    feed = re.sub(r'<picture>([^<]+)</picture>',
+                  lambda m: '<picture>%s</picture>' % (('https://youz.store' + local(html.unescape(m.group(1))))
+                                                       if TCDN.fullmatch(html.unescape(m.group(1))) else m.group(1)), feed)
+    json.dump(assets, open(SITE / 't' / 'assets.json', 'w'), indent=1)
     old_feed = (SITE / 'feed.xml').read_text(encoding='utf-8') if (SITE / 'feed.xml').exists() else ''
     if feed != old_feed:
         (SITE / 'feed.xml').write_text(feed, encoding='utf-8')
     print('фид: предложений', feed.count('<offer '), '| ссылок на /model осталось', feed.count('youz.store/model?'))
+
+    # тот же каталог для Google Merchant Center (формат RSS 2.0 + g:) — https://youz.store/google-feed.xml
+    gx = lambda s: html.escape(html.unescape(s or ''), quote=False)
+    items = []
+    for o in re.finditer(r'<offer id="([^"]+)" available="([^"]+)">(.*?)</offer>', feed, re.S):
+        oid, av, body = o.groups()
+        g = lambda tag: (re.search(r'<%s>(.*?)</%s>' % (tag, tag), body, re.S) or [None, ''])[1]
+        if not g('price') or not g('picture'):
+            continue
+        items.append('<item>\n<g:id>%s</g:id>\n<g:title>%s</g:title>\n<g:description>%s</g:description>\n'
+                     '<g:link>%s</g:link>\n<g:image_link>%s</g:image_link>\n<g:price>%s RUB</g:price>\n'
+                     '<g:availability>%s</g:availability>\n<g:condition>new</g:condition>\n<g:brand>%s</g:brand>\n'
+                     '<g:identifier_exists>no</g:identifier_exists>\n<g:product_type>%s</g:product_type>\n</item>' % (
+                         oid, gx(g('name'))[:150], gx(g('description'))[:5000], gx(g('url')), gx(g('picture')), g('price'),
+                         'in_stock' if av == 'true' else 'out_of_stock', gx(g('vendor')) or 'ЮZ Store',
+                         gx(dict(re.findall(r'<category id="(\d+)">([^<]+)</category>', feed)).get(g('categoryId'), ''))))
+    gfeed = ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">\n<channel>\n'
+             '<title>ЮZ Store</title>\n<link>https://youz.store</link>\n<description>Магазин техники ЮZ, Ханты-Мансийск</description>\n'
+             + '\n'.join(items) + '\n</channel>\n</rss>\n')
+    gp = SITE / 'google-feed.xml'
+    if not gp.exists() or gp.read_text(encoding='utf-8') != gfeed:
+        gp.write_text(gfeed, encoding='utf-8')
+    print('фид Google: товаров', len(items))
 
 # sitemap: все страницы, lastmod — из старой карты, у изменённых сегодня
 old = dict(re.findall(r'<loc>https://youz\.store/?([^<]*)</loc>\s*<lastmod>([^<]+)</lastmod>', (SITE / 'sitemap.xml').read_text()))
