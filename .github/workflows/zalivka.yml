@@ -1,0 +1,42 @@
+# Заливка сайта на хостинг reg.ru (Хост-0, server19.hosting.reg.ru) по FTPS.
+# Берёт папку site/ и кладёт в www/youz.store/ на хостинге. Заливает только изменённые файлы.
+# Запуск: сам при изменении site/ в main, или вручную: Actions → «Заливка на хостинг» → Run workflow.
+# Доступ задаётся в Settings → Secrets and variables → Actions: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+name: Заливка на хостинг
+on:
+  push:
+    branches: [main]
+    paths: ['site/**']
+  workflow_dispatch:
+concurrency:
+  group: zalivka
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверка доступа
+        id: chk
+        env:
+          S: ${{ secrets.FTP_SERVER }}
+        run: |
+          if [ -z "$S" ]; then echo "Нет секрета FTP_SERVER — заливка пропущена"; echo "ok=no" >> $GITHUB_OUTPUT; else echo "ok=yes" >> $GITHUB_OUTPUT; fi
+      - name: htaccess.txt → .htaccess (GitHub не принимает скрытые файлы через загрузку)
+        if: steps.chk.outputs.ok == 'yes'
+        run: cp site/htaccess.txt site/.htaccess
+      - name: Залить site/ на хостинг
+        if: steps.chk.outputs.ok == 'yes'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: loose
+          local-dir: ./site/
+          server-dir: www/youz.store/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            htaccess.txt
