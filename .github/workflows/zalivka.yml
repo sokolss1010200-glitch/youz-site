@@ -2,6 +2,9 @@
 # Берёт папку site/ и кладёт в www/youz.store/ на хостинге. Заливает только изменённые файлы.
 # Запуск: сам при изменении site/ в main, или вручную: Actions → «Заливка на хостинг» → Run workflow.
 # Доступ задаётся в Settings → Secrets and variables → Actions: FTP_SERVER, FTP_USERNAME, FTP_PASSWORD.
+# Заявки: секрет TG_TOKEN (бот @youz_store_zayavki_bot), по желанию MAX_TOKEN и MAX_CHAT.
+# Из них собирается www/lead-config.php (вне папки сайта, в git его нет). Заявки идут в группу
+# «Менеджеры ЮZ», тема «Заявки с сайта».
 name: Заливка на хостинг
 on:
   push:
@@ -25,6 +28,33 @@ jobs:
       - name: htaccess.txt → .htaccess (GitHub не принимает скрытые файлы через загрузку)
         if: steps.chk.outputs.ok == 'yes'
         run: cp site/htaccess.txt site/.htaccess
+      - name: Настройки заявок (lead-config.php) из секретов
+        if: steps.chk.outputs.ok == 'yes'
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          MAX_TOKEN: ${{ secrets.MAX_TOKEN }}
+          MAX_CHAT: ${{ secrets.MAX_CHAT }}
+        run: |
+          mkdir -p conf
+          python3 - <<'PY'
+          import os, json
+          q = lambda v: json.dumps(v or '')
+          open('conf/lead-config.php', 'w').write(
+              "<?php return ['tg_token'=>%s, 'tg_chat'=>'-1004342114537', 'tg_thread'=>7932, 'max_token'=>%s, 'max_chat'=>%s];\n"
+              % (q(os.environ.get('TG_TOKEN')), q(os.environ.get('MAX_TOKEN')), q(os.environ.get('MAX_CHAT'))))
+          PY
+      - name: Залить lead-config.php в www/ (рядом с папкой сайта)
+        if: steps.chk.outputs.ok == 'yes'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: loose
+          local-dir: ./conf/
+          server-dir: www/
+          state-name: .ftp-deploy-conf.json
       - name: Залить site/ на хостинг
         if: steps.chk.outputs.ok == 'yes'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
