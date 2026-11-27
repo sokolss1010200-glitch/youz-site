@@ -219,6 +219,17 @@ def town_main(t, others):
             '<div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Доставка %s" data-title="Заказ с доставкой %s" data-source="Город: %s">'
             'Заказать с доставкой <span class="arr">→</span></a><a class="btn btn-ghost" href="/catalog">Выбрать в каталоге</a></div></div>%s</div></section>') % (
         esc(nom), esc(kuda), esc(gde), esc(lead), esc(kuda), esc(kuda), esc(nom), side)
+    if nom == 'Сургут':  # в Сургут возим курьером: посылка приезжает в город, курьер привозит до двери
+        lead = ('Магазин ЮZ в Ханты-Мансийске доставляет оригинальные iPhone, Samsung, AirPods, Apple Watch, MacBook и другую технику в Сургут курьером до двери. '
+                'Оформите заказ на сайте или по телефону, менеджер перезвонит за 15 минут и согласует время доставки.')
+        side = ('<aside class="pg-side"><div><span>Доставка в Сургут</span><b>курьером до двери</b></div><div><span>Бесплатно</span><b>от 50 000 ₽</b></div>'
+                '<div><span>Гарантия</span><b>12 месяцев</b></div><div><span>Рассрочка</span><b>до 36 месяцев</b></div></aside>')
+        hero = ('<section class="pg-hero"><div class="wrap pg-hero-in has-side"><div class="pg-hero-copy">'
+                '<div class="crumbs"><a href="/">Главная</a><span>/</span><a href="/dostavka-hmao">Доставка по ХМАО</a><span>/</span>%s</div>'
+                '<span class="eyebrow">Доставка %s курьером</span><h1>Купить iPhone и технику %s</h1><p class="pg-lead">%s</p>'
+                '<div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Доставка %s" data-title="Заказ с доставкой %s" data-source="Город: %s">'
+                'Заказать с доставкой <span class="arr">→</span></a><a class="btn btn-ghost" href="/catalog">Выбрать в каталоге</a></div></div>%s</div></section>') % (
+            esc(nom), esc(kuda), esc(gde), esc(lead), esc(kuda), esc(kuda), esc(nom), side)
     d = dist_km(nom); pp = people(nom)
     if d is None:
         about = ''
@@ -228,6 +239,9 @@ def town_main(t, others):
     elif d <= 200:
         about = ('От Ханты-Мансийска до %s около %d км по прямой%s. Если планируете поездку в окружную столицу, оставьте заявку заранее: '
                  'отложим нужную модель к вашему приезду. Или отправим заказ СДЭК с трек-номером.') % (otkuda[3:], d, ('; %s — %s' % (nom, pp)) if pp else '')
+    elif nom == 'Сургут':
+        about = ('Сургут примерно в %d км от Ханты-Мансийска по прямой%s, но ехать в магазин не нужно: заказ отправляем в Сургут, '
+                 'а курьер привозит его вам домой или в офис. Рассрочку тоже можно оформить по телефону.') % (d, (' (' + pp + ')') if pp else '')
     else:
         about = ('%s находится примерно в %d км от Ханты-Мансийска по прямой%s, поэтому заказ удобнее оформить дистанционно: '
                  'выберите технику на сайте, менеджер всё уточнит по телефону, а заказ отправим СДЭК с трек-номером. '
@@ -247,7 +261,13 @@ def town_main(t, others):
     steps = ('<section class="pg-sec"><div class="wrap"><h2 class="pg-h2">Как заказать %s</h2><ol class="pg-steps">'
              '<li><b>Выберите технику</b><span>Добавьте товар в корзину на сайте или оставьте заявку.</span></li>'
              '<li><b>Подтвердим заказ</b><span>Менеджер перезвонит в течение 15 минут, уточнит модель, цвет, адрес, срок и стоимость доставки %s.</span></li>'
-             '<li><b>Отправим</b><span>Упакуем и отправим транспортной компанией с трек-номером.</span></li></ol></div></section>') % (esc(otkuda), esc(kuda))
+             '<li><b>Отправим</b><span>%s</span></li></ol></div></section>') % (esc(otkuda), esc(kuda),
+             'Упакуем и отправим в Сургут, курьер привезёт заказ к вам домой или в офис.' if nom == 'Сургут' else 'Упакуем и отправим транспортной компанией с трек-номером.')
+    if nom == 'Сургут':  # страницы «Купить … в Сургуте»
+        sl = [(e['slug'], e['title'].split(' — ')[0].replace(' в Сургуте', '')) for e in SEO if e['slug'].endswith('-surgut')]
+        if sl:
+            steps += ('<section class="pg-sec"><div class="wrap"><h2 class="pg-h2">Популярное с доставкой в Сургут</h2><p class="pg-sub">%s</p></div></section>') % ', '.join(
+                '<a href="/%s">%s</a>' % (u, esc(t)) for u, t in sl)
     why = ('<section class="pg-sec"><div class="wrap"><h2 class="pg-h2">Почему заказывают в ЮZ</h2><div class="pg-cards">'
            '<div class="pg-card"><b>Только оригинал</b><p>Новая техника, серийный номер можно проверить на сайте Apple.</p></div>'
            '<div class="pg-card"><b>Гарантия 12 месяцев</b><p>Та же гарантия магазина, что и при покупке в Ханты-Мансийске. <a href="/garantiya">Подробнее</a></p></div>'
@@ -264,6 +284,8 @@ def town_main(t, others):
            ('Как оплатить заказ %s?' % otkuda, 'Способ оплаты при доставке согласуем с менеджером. В магазине можно оплатить наличными или картой.'),
            ('Есть ли гарантия на технику с доставкой?', 'Да, гарантия магазина 12 месяцев, как и при покупке в магазине. <a href="/garantiya">Условия гарантии</a>.'),
            ('Можно забрать заказ самому?', 'Да, в магазине ЮZ в Ханты-Мансийске на Комсомольской, 49. Проверим технику при вас и настроим.')]
+    if nom == 'Сургут':
+        faq[0] = ('Доставляете ли вы технику в Сургут?', 'Да, курьером до двери: заказ приезжает в Сургут, и курьер привозит его вам домой или в офис. Время доставки менеджер согласует при подтверждении заказа.')
     if d is not None:
         if d <= 60:
             faq.insert(1, ('Можно забрать технику в день заказа, если я %s?' % gde.replace('в ', 'живу в ', 1),

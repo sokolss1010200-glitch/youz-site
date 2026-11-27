@@ -52,6 +52,31 @@ for r in rows:
         if mm:
             m['photo'] = 'https://cdn.jsdelivr.net/gh/%s@main/img/yz-h%s.webp' % (REPO_NAME, mm.group(1))
 
+# --- аксессуары: свой прайс data/accessories.csv (собирается из склада, aksessuary-2026-11/acc_csv.py) ---
+# Цены Apple-аксессуаров — в products.csv, а тип и совместимость («Подходит к») — в accessories.csv.
+ACC = 'Аксессуары'
+ACC_TYPE, ACC_FITS = {}, collections.defaultdict(list)
+for r in csv.DictReader(open(REPO / 'data/accessories.csv', encoding='utf-8')):
+    n = r['Модель'].strip()
+    if not n:
+        continue
+    if r.get('Тип'):
+        ACC_TYPE[n] = r['Тип'].strip()
+    for t in re.split(r'[;\n]', r.get('Подходит к') or ''):
+        if t.strip() and t.strip() not in ACC_FITS[n]:
+            ACC_FITS[n].append(t.strip())
+    pr = num(r['Цена'])
+    if not pr or (r['Наличие'] or '').strip().lower() == 'нет':
+        continue
+    m = M.setdefault(n, {'cat': ACC, 'grp': '', 'v': [], 'photo': ''})
+    m['v'].append({'mem': '', 'opt': '', 'col': (r['Цвет'] or '').strip(), 'price': pr, 'card': 0})
+    if not m['photo'] and r['Фото']:
+        m['photo'] = r['Фото'] if r['Фото'].startswith('http') else 'https://cdn.jsdelivr.net/gh/%s@main/%s' % (REPO_NAME, r['Фото'])
+for n, m in M.items():
+    if m['cat'] == ACC:
+        m['grp'] = ACC_TYPE.get(n) or ('Стилусы' if 'Pencil' in n else 'Зарядки' if 'Power Adapter' in n else m['grp'])
+        m['fits'] = ACC_FITS.get(n, [])
+
 # --- категории ---
 CATS = [  # адрес, категория в прайсе, H1, название во мн. ч., вводный текст (2 абзаца), FAQ
     ('iphone', 'iPhone', 'Купить iPhone в Ханты-Мансийске', 'iPhone',
@@ -179,6 +204,53 @@ CATS += [
       ('Часы оригинальные?', 'Да, только новая оригинальная техника. Гарантия магазина 12 месяцев.'),
       ('Есть доставка?', 'По Ханты-Мансийску привезём в день заказа, в другие города ХМАО отправим транспортной компанией.')]),
 ]
+ACC_FAQ = [('Аксессуары оригинальные?', 'Да. Продаём только оригинальные аксессуары брендов uBear, Magssory, Airity, Remax и Apple, без копий.'),
+           ('Поможете подобрать чехол и стекло к телефону?', 'Да. Скажите модель телефона — подберём по размеру, а стекло наклеим прямо в магазине.'),
+           ('Есть доставка?', 'По Ханты-Мансийску привезём в день заказа, в другие города отправим СДЭК. Можно забрать самому на Комсомольской, 49.')]
+CATS += [
+    ('aksessuary', ACC, 'Купить аксессуары для iPhone в Ханты-Мансийске', 'аксессуары',
+     ['Чехлы, защитные стёкла, стёкла на камеру, беспроводные зарядки, пауэрбанки, кабели, кардхолдеры и Apple Pencil в магазине ЮZ на Комсомольской, 49. Только оригинальные аксессуары uBear, Magssory, Airity, Remax и Apple.',
+      'Подберём чехол и стекло под вашу модель iPhone и наклеим стекло при вас. По Ханты-Мансийску привезём в день заказа, в другие города отправим СДЭК.'],
+     ACC_FAQ),
+]
+# Подразделы аксессуаров (тип в accessories.csv = группа на сайте) и страницы брендов аксессуаров (поиск по названию).
+ACC_SUBS = [
+    ('chehly-dlya-iphone', ACC, 'Купить чехол для iPhone в Ханты-Мансийске', 'чехлы для iPhone',
+     ['Чехлы uBear, Magssory и Airity для iPhone 18 Pro, 17 Pro, 17 Pro Max, 17 и Air: силиконовые, кожаные, из арамида и поликарбоната, многие с магнитами MagSafe.',
+      'Подберём чехол точно под вашу модель и покажем вживую на Комсомольской, 49.'], ACC_FAQ, 'Чехлы'),
+    ('zashchitnye-stekla', ACC, 'Купить защитное стекло на iPhone в Ханты-Мансийске', 'защитные стёкла',
+     ['Защитные стёкла Remax и uBear для iPhone от 11 до 18 Pro Max: прозрачные 3D и «антишпион», которые скрывают экран от соседей.',
+      'Наклеим стекло в магазине ровно и без пузырей, пока вы ждёте.'], ACC_FAQ, 'Защитные стёкла'),
+    ('stekla-na-kameru', ACC, 'Купить защитное стекло на камеру iPhone в Ханты-Мансийске', 'стёкла на камеру',
+     ['Стёкла uBear Lens Shield на блок камер iPhone 18 Pro, 17 Pro, 17 Pro Max, 17 и Air: металлическая рамка или нано-покрытие, камера снимает без бликов.',
+      'Поставим стекло на камеру при вас.'], ACC_FAQ, 'Стёкла на камеру'),
+    ('besprovodnye-zaryadki', ACC, 'Купить беспроводную зарядку для iPhone в Ханты-Мансийске', 'беспроводные зарядки',
+     ['Беспроводные зарядки uBear и Magssory с MagSafe и Qi2: станции 3 в 1 для iPhone, Apple Watch и AirPods, складные дорожные модели.',
+      'Покажем, какая станция подойдёт к вашим устройствам.'], ACC_FAQ, 'Беспроводные зарядки'),
+    ('pauerbanki', ACC, 'Купить пауэрбанк (внешний аккумулятор) в Ханты-Мансийске', 'пауэрбанки',
+     ['Магнитные пауэрбанки uBear, Magssory и Airity с MagSafe и Qi2 на 5 000 и 10 000 мАч: крепятся к iPhone и заряжают без провода.',
+      'Подберём ёмкость под ваш телефон.'], ACC_FAQ, 'Пауэрбанки'),
+    ('zaryadnye-ustroystva', ACC, 'Купить зарядное устройство для iPhone и MacBook в Ханты-Мансийске', 'зарядные устройства',
+     ['Оригинальные адаптеры Apple USB-C от 20 до 140 Вт для iPhone, iPad и MacBook, компактные GaN-зарядки Magssory и сетевые зарядки на два порта.',
+      'Подскажем, какой мощности нужен адаптер для вашего устройства.'], ACC_FAQ, 'Зарядки'),
+    ('kabeli', ACC, 'Купить кабель USB-C в Ханты-Мансийске', 'кабели',
+     ['Кабели USB-C Apple и Magssory до 240 Вт, в том числе магнитные, для iPhone, iPad и MacBook.', 'Подберём длину и мощность.'], ACC_FAQ, 'Кабели'),
+    ('kardkholdery-magsafe', ACC, 'Купить кардхолдер MagSafe в Ханты-Мансийске', 'кардхолдеры',
+     ['Магнитные кардхолдеры uBear Split и Magssory из эко-кожи: крепятся к iPhone на MagSafe, держат карты и снимаются одним движением.', 'Покажем цвета вживую.'], ACC_FAQ, 'Кардхолдеры'),
+    ('apple-pencil', ACC, 'Купить Apple Pencil в Ханты-Мансийске', 'Apple Pencil',
+     ['Apple Pencil Pro, Apple Pencil USB-C и Apple Pencil 2 для iPad — оригинальные стилусы Apple.', 'Подскажем, какой Pencil подходит к вашему iPad.'],
+     [('Какой Apple Pencil подойдёт к моему iPad?', 'Apple Pencil Pro — к iPad Air и iPad Pro на чипах M4 и M5. Apple Pencil USB-C — к большинству iPad с разъёмом USB-C. Назовите модель iPad — подскажем точно.')] + ACC_FAQ[2:], 'Стилусы'),
+]
+ACC_BRAND_PAGES = [
+    ('ubear', ACC, 'Купить аксессуары uBear в Ханты-Мансийске', 'аксессуары uBear',
+     ['Чехлы, стёкла на камеру, беспроводные зарядки, пауэрбанки и кардхолдеры uBear в магазине ЮZ.', 'Только оригинальная продукция uBear.'], ACC_FAQ, None, 'uBear', True),
+    ('magssory', ACC, 'Купить аксессуары Magssory в Ханты-Мансийске', 'аксессуары Magssory',
+     ['Магнитные зарядки, пауэрбанки, кабели, кардхолдеры, чехлы и метки Magssory с поддержкой MagSafe и Find My.', 'Только оригинальная продукция Magssory.'], ACC_FAQ, None, 'Magssory', True),
+    ('airity', ACC, 'Купить чехлы Airity в Ханты-Мансийске', 'чехлы Airity',
+     ['Чехлы Airity для iPhone 17 Pro, 17 Pro Max и 18 Pro Max: арамид, 600D и дизайнерские серии.', 'Только оригинальная продукция Airity.'], ACC_FAQ, None, 'Airity', True),
+    ('remax', ACC, 'Купить защитные стёкла Remax в Ханты-Мансийске', 'стёкла Remax',
+     ['Защитные стёкла Remax 3D и «антишпион» для iPhone от 11 до 18 Pro Max.', 'Наклеим стекло при вас.'], ACC_FAQ, None, 'Remax', True),
+]
 # Страницы серий (часть раздела по началу названия модели): адрес, категория, H1, название, вводный текст, FAQ, группа, префикс модели.
 # На странице каталог сразу отфильтрован по префиксу (data-q у #yzCat). Запрос «айфон 18» — серия, обычного iPhone 18 в прайсе нет.
 SERIES = [
@@ -193,7 +265,26 @@ SERIES = [
      None, 'iPhone 18'),
 ]
 CAT_OF = {c[1]: c for c in CATS}
-MODEL_CATS = ['iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods', 'Samsung', 'Dyson', 'Android']
+MODEL_CATS = ['iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods', 'Samsung', 'Dyson', 'Android', ACC]
+TR = dict(zip('абвгдеёжзийклмнопрстуфхцчшщъыьэюя', ['a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r',
+              's', 't', 'u', 'f', 'kh', 'ts', 'ch', 'sh', 'shch', '', 'y', '', 'e', 'yu', 'ya']))
+def acc_url(n):
+    t = ''.join(TR.get(ch, ch) for ch in n.lower().replace('+', ' plus').replace('ё', 'е'))
+    t = re.sub(r'[^a-z0-9]+', '-', t).strip('-')
+    if len(t) > 80:
+        t = t[:80].rsplit('-', 1)[0]
+    return t
+def low1(n):  # «Купить чехол …», а не «Купить Чехол …»
+    return n[0].lower() + n[1:] if re.match('[А-ЯЁ][а-яё]', n) else n
+ACC_BRAND_NAMES = ['uBear', 'Magssory', 'Airity', 'Remax', 'Apple']
+def acc_brand(n):
+    return next((b for b in ACC_BRAND_NAMES if b.lower() in n.lower()), '')
+def fits_to(p, dev, dev_cat):
+    for t in p.get('fits') or []:
+        l = t.lower()
+        if l == 'все' or l == dev.lower() or l == dev_cat.lower() or (l.endswith('*') and dev.lower().startswith(l[:-1].strip())):
+            return True
+    return False
 
 def ru_list(xs):
     xs = [x for x in xs if x]
@@ -216,8 +307,12 @@ for name, m in M.items():
     mems = uniq(x['mem'] for x in v); cols = uniq(x['col'] for x in v); opts = uniq(x['opt'] for x in v)
     url = re.sub(r'^(стайлер|фен|выпрямитель)-', '', slugify(name.replace('+', ' plus')))  # адрес страницы — только латиница
     url = re.sub(r'[^a-z0-9-]+', '', url).strip('-')
+    if m['cat'] == ACC:
+        url = acc_url(name)
+        while url in {x['url'] for x in MP}:
+            url += '-2'
     MP.append({'name': name, 'slug': re.sub(r'[^a-z0-9а-я]+', '-', name.lower()), 'url': url, 'cat': m['cat'], 'grp': m.get('grp', ''), 'min': mn, 'max': mx, 'mems': mems,
-               'cols': cols, 'opts': opts, 'v': v, 'photo': m['photo']})
+               'cols': cols, 'opts': opts, 'v': v, 'photo': m['photo'], 'fits': m.get('fits', [])})
 
 # --- страницы «модель + память» и «модель + цвет» для смартфонов: свои цены и варианты на каждой ---
 VAR_CATS = ('iPhone', 'Samsung')
@@ -257,7 +352,7 @@ def ayfon(name):
 
 def model_title(p):
     a = ayfon(p['name'])
-    nm_ = ('%s (%s)' % (p['name'], a)) if a else p['name']
+    nm_ = ('%s (%s)' % (p['name'], a)) if a else low1(p['name']) if p['cat'] == ACC else p['name']
     return 'Купить %s в Ханты-Мансийске — цена от %s | ЮZ Store' % (nm_, rub(p['min']))
 
 def cap(t, n=200):
@@ -272,7 +367,15 @@ def cap(t, n=200):
         t = head + '.'
     return t
 
+def fits_txt(p):
+    f = [x for x in (p.get('fits') or []) if x.lower() != 'все']
+    return ru_list(f[:6]) if f else ''
+
 def model_descr(p):
+    if p['cat'] == ACC:
+        cols = ', '.join(p['cols'][:3])
+        return cap('%s в Ханты-Мансийске — цена от %s.%s%s Оригинал, в наличии в магазине ЮZ, Комсомольская, 49.' % (
+            p['name'], rub(p['min']), (' Подходит к: %s.' % fits_txt(p)) if fits_txt(p) else '', (' Цвета: %s.' % cols) if cols else ''))
     mem = ''
     ms = [m for m in p['mems'] if m]
     if ms:
@@ -297,6 +400,14 @@ def variants_table(p):
 
 def model_faq(p):
     n = p['name']
+    if p['cat'] == ACC:
+        q = [('Сколько стоит %s?' % low1(n), 'От %s. Актуальная цена — в карточке на этой странице.' % rub(p['min']))]
+        if fits_txt(p):
+            q.append(('К каким устройствам подходит?', 'Подходит к: %s. Если сомневаетесь, напишите модель телефона — менеджер подскажет.' % fits_txt(p)))
+        q += [('Это оригинал?', 'Да. Продаём только оригинальные аксессуары uBear, Magssory, Airity, Remax и Apple, без копий.'),
+              ('Можно купить вместе с телефоном?', 'Да. При покупке смартфона в ЮZ подберём чехол и стекло и наклеим стекло сразу в магазине.'),
+              ('Есть доставка?', 'По Ханты-Мансийску привезём в день заказа, в другие города отправим СДЭК. Можно забрать самому на Комсомольской, 49.')]
+        return q
     q = [('Сколько стоит %s в Ханты-Мансийске?' % n,
           'От %s%s. Цена зависит от %s; актуальные цены смотрите в карточке на этой странице.' % (rub(p['min']), (' за ' + p['mems'][0]) if p['mems'] and p['mems'][0] else '',
                                                                                       ru_list([x for x, ok in [('объёма памяти', len(p['mems']) > 1), ('цвета', len(p['cols']) > 1), ('варианта', len(p['opts']) > 1)] if ok]) or 'комплектации')),
@@ -328,16 +439,67 @@ def ld_tags(objs):
 CAT_PATH = {c[1]: '/' + c[0] for c in CATS}
 CAT_NAME = {c[1]: c[3] for c in CATS}
 BRAND_OF = {b[6]: ('/' + b[0], b[3]) for b in BRANDS if b[1] == 'Android'}
+ACC_SUB_OF = {c[6]: ('/' + c[0], c[3][:1].upper() + c[3][1:]) for c in ACC_SUBS}
 def cat_crumb(p):  # для Android — страница бренда
+    if p['cat'] == ACC and p.get('grp') in ACC_SUB_OF:
+        u, n = ACC_SUB_OF[p['grp']]; return (n, u)
     if p['cat'] == 'Android' and p.get('grp') in BRAND_OF:
         u, n = BRAND_OF[p['grp']]; return (n, u)
     return (CAT_NAME.get(p['cat'], p['cat']), CAT_PATH.get(p['cat'], '/catalog'))
 
 def model_crumbs(p):
     cr = [('Главная', '/'), cat_crumb(p)]
+    if p['cat'] == ACC and cr[1][1] != '/aksessuary':
+        cr.insert(1, ('Аксессуары', '/aksessuary'))
     if p.get('parent'):
         cr.append((p['parent']['name'], '/' + p['parent']['url']))
     return cr + [(p['name'], '')]
+
+# --- «Аксессуары для iPhone 17 Pro» и т. п.: модели iPhone, к которым подходят хотя бы 3 аксессуара именно под эту модель ---
+ACC_P = [x for x in MP if x['cat'] == ACC]
+ACC_DEV = {}  # имя iPhone → адрес страницы «Аксессуары для …»
+ACC_DEV_PAGES = []
+for d in [x for x in MP if x['cat'] == 'iPhone' and not x.get('parent')]:
+    exact = [a for a in ACC_P if any(t.lower() == d['name'].lower() for t in a['fits'])]
+    if len(exact) < 3:
+        continue
+    u = 'aksessuary-dlya-' + d['url']
+    ACC_DEV[d['name']] = u
+    ACC_DEV_PAGES.append((u, ACC, 'Аксессуары для %s в Ханты-Мансийске' % d['name'], 'аксессуары для %s' % d['name'],
+        ['Чехлы, защитные стёкла, стёкла на камеру, беспроводные зарядки и пауэрбанки, которые подходят к %s. Только оригинальные аксессуары uBear, Magssory, Airity, Remax и Apple.' % d['name'],
+         'Купили %s в ЮZ — подберём чехол и наклеим стекло сразу в магазине. По Ханты-Мансийску доставим в день заказа.' % d['name']],
+        ACC_FAQ, None, None, False, d['name']))
+
+# --- Сургут: доставляем туда курьером, поэтому отдельные страницы «Купить … в Сургуте» по разделам и популярным моделям ---
+SUR_FAQ = lambda what: [
+    ('Как доставляете %s в Сургут?' % what, 'Курьером до двери: посылка из нашего магазина в Ханты-Мансийске приезжает в Сургут, курьер привозит её вам. Срок и время доставки менеджер согласует при подтверждении заказа.'),
+    ('Сколько стоит доставка в Сургут?', 'Бесплатно при заказе от 50 000 ₽. Стоимость доставки меньших заказов назовёт менеджер.'),
+    ('Можно проверить заказ при получении?', 'Да. Техника новая и в заводской упаковке, серийный номер можно проверить на сайте Apple или производителя.'),
+    ('Можно купить в рассрочку из Сургута?', 'Да, рассрочка до 36 месяцев без первого взноса оформляется дистанционно, нужен только паспорт.'),
+    ('Какая гарантия?', 'Гарантия магазина 12 месяцев, как при покупке в магазине на Комсомольской, 49 в Ханты-Мансийске.')]
+def sur_intro(what):
+    return ['Купить %s в Сургуте можно в магазине ЮZ: выберите модель на сайте или оставьте заявку, менеджер перезвонит за 15 минут, а заказ привезёт курьер прямо к вам домой или в офис в Сургуте.' % what,
+            'Только новая оригинальная техника, цены те же, что в нашем магазине в Ханты-Мансийске. Доставка в Сургут бесплатно от 50 000 ₽, рассрочка до 36 месяцев без первого взноса, гарантия магазина 12 месяцев.']
+SUR_PAGES = []
+_cat_by_slug = {c[0]: c for c in CATS + SERIES}
+for sl, what in [('iphone', 'iPhone'), ('iphone-18', 'iPhone 18'), ('samsung', 'Samsung Galaxy'), ('macbook', 'MacBook'), ('ipad', 'iPad'),
+                 ('apple-watch', 'Apple Watch'), ('airpods', 'AirPods'), ('dyson', 'Dyson'), ('smartfony-android', 'смартфон на Android'),
+                 ('naushniki', 'наушники'), ('igrovye-pristavki', 'игровую приставку'), ('aksessuary', 'аксессуары для iPhone')]:
+    c = _cat_by_slug.get(sl)
+    if not c:
+        continue
+    g = c[6] if len(c) > 6 else None; pr = c[7] if len(c) > 7 else None
+    SUR_PAGES.append((sl + '-surgut', c[1], 'Купить %s в Сургуте' % what, what, sur_intro(what), SUR_FAQ(what), g, pr, False, None, 'Сургут', None))
+for n in ['iPhone 18 Pro', 'iPhone 18 Pro Max', 'iPhone 17 Pro', 'iPhone 17 Pro Max', 'iPhone 17', 'iPhone Air', 'iPhone 17e', 'iPhone 16', 'iPhone 16 Pro',
+          'iPhone 15', 'iPhone Duo', 'Samsung Galaxy S26 Ultra', 'Samsung Galaxy S26', 'Samsung Galaxy Z Fold 8', 'Samsung Galaxy Z Flip 8',
+          'MacBook Air 13 M5', 'MacBook Air 15 M5', 'MacBook Pro 14 M5', 'MacBook Neo 13 A18', 'iPad 11', 'iPad Air 11 M4', 'iPad Pro 11 M5',
+          'AirPods Pro 3', 'AirPods 4', 'AirPods Max 2', 'Apple Watch Series 12', 'Apple Watch Ultra 4', 'Apple Watch SE 3', 'Стайлер Dyson Airwrap HS09']:
+    mp = next((x for x in MP if x['name'] == n and not x.get('parent')), None)
+    if not mp:
+        continue
+    what = n.replace('Стайлер ', 'стайлер ')
+    SUR_PAGES.append((mp['url'] + '-surgut', mp['cat'], 'Купить %s в Сургуте' % what, what, sur_intro(what), SUR_FAQ(what), None, None, False, None, 'Сургут', n))
+SUR_LINKS = [(x[0], x[3]) for x in SUR_PAGES]
 
 def kids_html(p):  # ссылки на страницы памяти и цвета этой модели
     ks = p.get('kids') or []
@@ -346,8 +508,24 @@ def kids_html(p):  # ссылки на страницы памяти и цвет
     return '<h2>%s по памяти и цвету</h2><ul class="seo-list">%s</ul>' % (esc(p['name']), ''.join(
         '<li><a href="/%s">%s</a> — от %s</li>' % (k['url'], esc(k['name']), rub(k['min'])) for k in ks))
 
+def acc_link(p):
+    base = (p.get('parent') or p)['name']
+    u = ACC_DEV.get(base)
+    return ('<h2>Аксессуары для %s</h2><p><a href="/%s">Чехлы, защитные стёкла и зарядки для %s</a> — в наличии в магазине ЮZ.</p>' % (
+        esc(base), u, esc(base))) if u else ''
+
 def model_pre(p):
     cat = p['cat']
+    if cat == ACC:
+        lead = ('%s в наличии в магазине ЮZ в Ханты-Мансийске%s. Цена от %s.%s Посмотреть и проверить можно на Комсомольской, 49; '
+                'по городу привезём в день заказа, в другие города отправим СДЭК.') % (
+            p['name'], (': ' + ru_list(p['cols'])) if p['cols'] and p['cols'][0] else '', rub(p['min']),
+            (' Подходит к: %s.' % fits_txt(p)) if fits_txt(p) else '')
+        return ('<div id="yzModel"><section class="wrap seo-pre" style="padding:32px 0">%s<h1>Купить %s в Ханты-Мансийске</h1>'
+                '%s<p>%s</p><h2>Цены</h2>%s<h2>Вопросы и ответы</h2>%s</section></div>') % (
+            crumbs(model_crumbs(p)), esc(low1(p['name'])),
+            ('<img src="%s" alt="%s" width="560" height="560" loading="lazy">' % (esc(p['photo']), esc(p['name']))) if p['photo'] else '',
+            esc(lead), variants_table(p), faq_html(model_faq(p)))
     cr = model_crumbs(p)
     a = ayfon(p['name'])
     lead = ('%s в наличии в магазине ЮZ в Ханты-Мансийске%s%s. Цена %s от %s. '
@@ -363,12 +541,12 @@ def model_pre(p):
             '%s<p>%s</p>%s<h2>Цены на %s</h2>%s%s<h2>Вопросы и ответы</h2>%s</section></div>') % (
         crumbs(cr), esc(p['name']),
         ('<img src="%s" alt="%s" width="560" height="560" loading="lazy">' % (esc(p['photo']), esc(p['name']))) if p['photo'] else '',
-        esc(lead), extra, esc(p['name']), variants_table(p), kids_html(p), faq_html(model_faq(p)))
+        esc(lead), extra, esc(p['name']), variants_table(p), kids_html(p) + acc_link(p), faq_html(model_faq(p)))
 
 def model_ld(p):
     cat = p['cat']
     cr = model_crumbs(p)
-    brand = 'Apple' if cat in ('iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods') else ('Samsung' if cat == 'Samsung' else 'Dyson' if cat == 'Dyson' else '')
+    brand = acc_brand(p['name']) if cat == ACC else 'Apple' if cat in ('iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods') else ('Samsung' if cat == 'Samsung' else 'Dyson' if cat == 'Dyson' else '')
     prod = {"@context": "https://schema.org", "@type": "Product", "name": p['name'],
             "description": model_descr(p), "url": "https://youz.store/" + p['url'],
             **({"image": p['photo']} if p['photo'] else {}),
@@ -398,18 +576,28 @@ def add_popq(html):
 # --- страницы категорий ---
 catalog = (REPO / 'catalog.html').read_text(encoding='utf-8')
 CP = []
-for c_ in CATS + BRANDS + SERIES:
+for c_ in CATS + BRANDS + SERIES + ACC_SUBS + ACC_BRAND_PAGES + ACC_DEV_PAGES + SUR_PAGES:
     slug, cat, h1, plural, intro, faq = c_[:6]; grp = c_[6] if len(c_) > 6 else None; pre = c_[7] if len(c_) > 7 else None
-    ms = sorted([p for p in MP if not p.get('parent') and p['cat'] == cat and (not grp or p['grp'] == grp) and (not pre or p['name'].startswith(pre + ' '))] if cat in MODEL_CATS else
+    inname = c_[8] if len(c_) > 8 else False; fit = c_[9] if len(c_) > 9 else None
+    city = c_[10] if len(c_) > 10 else None; exact = c_[11] if len(c_) > 11 else None
+    ms = sorted([p for p in MP if not p.get('parent') and p['cat'] == cat and (not grp or p['grp'] == grp)
+                 and (not pre or (pre.lower() in p['name'].lower() if inname else p['name'].startswith(pre + ' ')))
+                 and (not fit or fits_to(p, fit, 'iPhone')) and (not exact or p['name'] == exact)] if cat in MODEL_CATS else
                 [{'name': n, 'min': min(x['price'] for x in m['v']), 'url': ''} for n, m in M.items()
                  if m['cat'] == cat and (not grp or m.get('grp') == grp) and not re.search(r'Charging Station|Vertical Stand|дисковод', n)],
                 key=lambda p: -p['min'])
     if not ms:
         continue
     mn = min(p['min'] for p in ms)
-    cr = [('Главная', '/'), ('Каталог', '/catalog')] + ([(CAT_NAME[cat], CAT_PATH[cat])] if pre else []) + [(plural, '')]
-    page = catalog.replace('<div id="yzCat">', '<div id="yzCat" data-cat="%s"%s%s>' % (esc(cat), (' data-grp="%s"' % esc(grp)) if grp else '',
-                                                                                    (' data-q="%s"' % esc(pre)) if pre else ''), 1)
+    if city:
+        cr = [('Главная', '/'), ('Доставка по ХМАО', '/dostavka-hmao'), (city, '/surgut'), (plural[:1].upper() + plural[1:], '')]
+    elif cat == ACC and slug != 'aksessuary':
+        cr = [('Главная', '/'), ('Каталог', '/catalog'), ('Аксессуары', '/aksessuary'), (plural[:1].upper() + plural[1:], '')]
+    else:
+        cr = [('Главная', '/'), ('Каталог', '/catalog')] + ([(CAT_NAME[cat], CAT_PATH[cat])] if pre else []) + [(plural, '')]
+    page = catalog.replace('<div id="yzCat">', '<div id="yzCat" data-cat="%s"%s%s%s>' % (esc(cat), (' data-grp="%s"' % esc(grp)) if grp else '',
+                                                                                    (' data-q="%s"' % esc(pre or exact or '')) if (pre or exact) else '',
+                                                                                    (' data-fit="%s"' % esc(fit)) if fit else ''), 1)
     page = re.sub(r'<nav class="crumbs"[^>]*>.*?</nav>', crumbs(cr), page, count=1, flags=re.S)
     assert '<h1>Каталог техники в Ханты-Мансийске</h1>' in page, 'H1 каталога в catalog.html изменился: поправь строку ниже'
     page = page.replace('<h1>Каталог техники в Ханты-Мансийске</h1>',
@@ -417,8 +605,13 @@ for c_ in CATS + BRANDS + SERIES:
     lst = ''.join(('<li><a href="/%s">%s</a> — от %s</li>' % (p['url'], esc(p['name']), rub(p['min']))) if p.get('url') else
                   '<li>%s — от %s</li>' % (esc(p['name']), rub(p['min'])) for p in ms[:40])
     seo = ('<section class="seo-cat"><div class="wrap art-body"><h2>%s в магазине ЮZ</h2><p>%s</p><p>%s</p>'
-           '<h2>Цены на %s в Ханты-Мансийске</h2><ul class="seo-list">%s</ul><h2>Вопросы и ответы</h2>%s</div></section>') % (
-        esc(plural), esc(intro[0]), esc(intro[1]), esc(plural), lst, faq_html(faq))
+           '<h2>Цены на %s %s</h2><ul class="seo-list">%s</ul><h2>Вопросы и ответы</h2>%s</div></section>') % (
+        esc(plural), esc(intro[0]), esc(intro[1]), esc(plural), 'с доставкой в Сургут' if city else 'в Ханты-Мансийске', lst, faq_html(faq))
+    if city:
+        seo = seo.replace('<h2>%s в магазине ЮZ</h2>' % esc(plural), '<h2>%s с доставкой в Сургут</h2>' % esc(h1), 1)
+    if city:  # ссылки на соседние страницы Сургута
+        seo = seo.replace('<h2>Вопросы и ответы</h2>', '<h2>Ещё с доставкой в Сургут</h2><p>%s</p><h2>Вопросы и ответы</h2>' % ', '.join(
+            '<a href="/%s">%s</a>' % (u, esc(t)) for u, t in SUR_LINKS if u != slug), 1)
     i = page.index('<section class="cat-list"'); j = page.index('</section>', page.index('</section>', i) + 1)
     # вставляем после всего блока каталога (до подвала)
     k = page.rfind('</main>')
@@ -428,9 +621,15 @@ for c_ in CATS + BRANDS + SERIES:
     title = '%s — цены от %s | ЮZ Store' % (h1, rub(mn))
     if cat == 'iPhone' and not pre:
         title = 'Купить iPhone (айфон) в Ханты-Мансийске — цены от %s | ЮZ Store' % rub(mn)
+    if city:
+        title = '%s — цены от %s, доставка курьером | ЮZ Store' % (h1, rub(mn))
     if slug == 'iphone-18':
         title = 'Купить iPhone 18 (айфон 18) в Ханты-Мансийске — цены от %s | ЮZ Store' % rub(mn)
-    descr = cap('%s в Ханты-Мансийске от %s: %s и другие. Оригинал, гарантия 12 мес, рассрочка до 36 мес, доставка в день заказа. Комсомольская, 49.' % (
+    descr = cap('%s с доставкой курьером — цены от %s. Оригинал, гарантия 12 мес, рассрочка до 36 мес, доставка бесплатно от 50 000 ₽.' % (
+        h1, rub(mn))) if city else \
+        cap('%s в Ханты-Мансийске: %d товаров в наличии, цены от %s. Только оригинал uBear, Magssory, Airity, Remax и Apple. Доставка в день заказа, СДЭК по России.' % (
+        (plural[0].upper() + plural[1:]), len(ms), rub(mn))) if cat == ACC else \
+        cap('%s в Ханты-Мансийске от %s: %s и другие. Оригинал, гарантия 12 мес, рассрочка до 36 мес, доставка в день заказа. Комсомольская, 49.' % (
         (plural if plural[:1] == 'i' else plural[0].upper() + plural[1:]), rub(mn), ', '.join(p['name'] for p in ms[:3])))
     itemlist = {"@context": "https://schema.org", "@type": "ItemList", "name": h1, "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": p['name'], **({"url": "https://youz.store/" + p['url']} if p.get('url') else {})} for i, p in enumerate(ms[:40])]}
