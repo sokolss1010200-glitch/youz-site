@@ -1,248 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://youz.store/o-magazine</loc>
-		<lastmod>2026-11-24T13:12:31+00:00</lastmod>
+		<loc>https://youz.store/agan</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/garantiya</loc>
-		<lastmod>2026-11-24T13:12:32+00:00</lastmod>
+		<loc>https://youz.store/agirish</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/rassrochka</loc>
-		<lastmod>2026-11-24T13:12:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/trade-in</loc>
-		<lastmod>2026-11-24T13:12:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/remont</loc>
-		<lastmod>2026-11-24T13:12:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dostavka</loc>
-		<lastmod>2026-11-24T13:12:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/otzyvy</loc>
-		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kontakty</loc>
-		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog</loc>
-		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-kak-proverit-iphone</loc>
-		<lastmod>2026-11-24T13:12:36+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-trade-in-ili-avito</loc>
-		<lastmod>2026-11-24T13:12:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-perenos-dannyh</loc>
-		<lastmod>2026-11-24T13:12:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/politika</loc>
-		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/soglasie</loc>
-		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-iphone-18-pro-obzor</loc>
-		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-iphone-18-pro-ili-17-pro</loc>
-		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-iphone-duo-obzor</loc>
-		<lastmod>2026-11-24T13:12:39+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-iphone-18-pro-ili-pro-max</loc>
-		<lastmod>2026-11-24T13:12:39+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/</loc>
-		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/catalog</loc>
-		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-18-pro</loc>
-		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-18-pro-max</loc>
-		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-duo</loc>
-		<lastmod>2026-11-24T13:12:41+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-17</loc>
-		<lastmod>2026-11-24T13:12:41+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-17-pro</loc>
-		<lastmod>2026-11-24T13:12:41+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-17-pro-max</loc>
-		<lastmod>2026-11-24T13:12:41+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-air</loc>
-		<lastmod>2026-11-24T13:12:42+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/model</loc>
-		<lastmod>2026-11-24T13:12:42+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-kak-vybrat-airpods</loc>
-		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-apple-watch-kak-vybrat</loc>
-		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-dyson-kak-vybrat</loc>
-		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-skolko-pamyati-iphone</loc>
-		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-esim-ili-sim</loc>
-		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/blog-akkumulyator-iphone</loc>
-		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/zamena-ekrana-iphone</loc>
-		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/zamena-akkumulyatora-iphone</loc>
-		<lastmod>2026-11-24T13:12:45+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/remont-iphone-posle-vody</loc>
-		<lastmod>2026-11-24T13:12:45+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-16</loc>
-		<lastmod>2026-11-24T13:12:46+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-17e</loc>
-		<lastmod>2026-11-24T13:12:46+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-16-pro</loc>
-		<lastmod>2026-11-24T13:12:46+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-16-pro-max</loc>
-		<lastmod>2026-11-24T13:12:46+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-15</loc>
-		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-15-pro-max</loc>
-		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone-14</loc>
-		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-air-15-m4</loc>
-		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-air-15-m5</loc>
-		<lastmod>2026-11-24T13:12:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-air-13-m5</loc>
-		<lastmod>2026-11-24T13:12:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-neo-13-a18</loc>
-		<lastmod>2026-11-24T13:12:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-pro-14-m5</loc>
-		<lastmod>2026-11-24T13:12:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-11</loc>
-		<lastmod>2026-11-24T13:12:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-air-13-m4</loc>
-		<lastmod>2026-11-24T13:12:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-air-11-m4</loc>
-		<lastmod>2026-11-24T13:12:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-pro-13-m4</loc>
-		<lastmod>2026-11-24T13:12:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-pro-13-m5</loc>
-		<lastmod>2026-11-24T13:12:50+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-pro-11-m4</loc>
-		<lastmod>2026-11-24T13:12:50+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/apple-watch-se-3</loc>
-		<lastmod>2026-11-24T13:12:51+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/apple-watch-series-12</loc>
-		<lastmod>2026-11-24T13:12:51+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/apple-watch-series-11</loc>
-		<lastmod>2026-11-24T13:12:51+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/apple-watch-ultra-4</loc>
-		<lastmod>2026-11-24T13:12:52+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/apple-watch-ultra-3</loc>
-		<lastmod>2026-11-24T13:12:52+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/airpods-5</loc>
-		<lastmod>2026-11-24T13:12:52+00:00</lastmod>
+		<loc>https://youz.store/airpods</loc>
+		<lastmod>2026-11-24T13:13:04+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/airpods-4</loc>
@@ -253,588 +21,120 @@
 		<lastmod>2026-11-24T13:12:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/airpods-pro-3</loc>
-		<lastmod>2026-11-24T13:12:53+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/airpods-max-2</loc>
-		<lastmod>2026-11-24T13:12:53+00:00</lastmod>
+		<loc>https://youz.store/airpods-5</loc>
+		<lastmod>2026-11-24T13:12:52+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/airpods-max</loc>
 		<lastmod>2026-11-24T13:12:54+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/samsung-galaxy-a57</loc>
-		<lastmod>2026-11-24T13:12:54+00:00</lastmod>
+		<loc>https://youz.store/airpods-max-2</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/samsung-galaxy-a56</loc>
-		<lastmod>2026-11-24T13:12:54+00:00</lastmod>
+		<loc>https://youz.store/airpods-pro-3</loc>
+		<lastmod>2026-11-24T13:12:53+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/samsung-galaxy-a37</loc>
-		<lastmod>2026-11-24T13:12:55+00:00</lastmod>
+		<loc>https://youz.store/alyabevskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/samsung-galaxy-a36</loc>
-		<lastmod>2026-11-24T13:12:55+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a27</loc>
-		<lastmod>2026-11-24T13:12:55+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a18</loc>
-		<lastmod>2026-11-24T13:12:56+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a17</loc>
-		<lastmod>2026-11-24T13:12:56+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a08</loc>
-		<lastmod>2026-11-24T13:12:56+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a07</loc>
-		<lastmod>2026-11-24T13:12:57+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-a07s</loc>
-		<lastmod>2026-11-24T13:12:58+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s26</loc>
-		<lastmod>2026-11-24T13:12:58+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s26-fe</loc>
-		<lastmod>2026-11-24T13:12:58+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s26-ultra</loc>
-		<lastmod>2026-11-24T13:12:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s26-plus</loc>
-		<lastmod>2026-11-24T13:12:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s25</loc>
-		<lastmod>2026-11-24T13:12:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s25-fe</loc>
-		<lastmod>2026-11-24T13:13:00+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-s25-ultra</loc>
-		<lastmod>2026-11-24T13:13:00+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-z-flip-8</loc>
-		<lastmod>2026-11-24T13:13:00+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-z-fold-8</loc>
-		<lastmod>2026-11-24T13:13:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-z-fold-8-ultra</loc>
-		<lastmod>2026-11-24T13:13:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-z-fold-7</loc>
-		<lastmod>2026-11-24T13:13:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-airstrait-ht01</loc>
-		<lastmod>2026-11-24T13:13:02+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-airwrap-hs09</loc>
-		<lastmod>2026-11-24T13:13:02+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-airwrap-hs08</loc>
-		<lastmod>2026-11-24T13:13:03+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-supersonic-hd16</loc>
-		<lastmod>2026-11-24T13:13:03+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/iphone</loc>
-		<lastmod>2026-11-24T13:13:04+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/airpods</loc>
-		<lastmod>2026-11-24T13:13:04+00:00</lastmod>
+		<loc>https://youz.store/andra</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/apple-watch</loc>
-		<lastmod>2026-11-24T13:13:04+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/macbook</loc>
-		<lastmod>2026-11-24T13:13:05+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad</loc>
-		<lastmod>2026-11-24T13:13:06+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung</loc>
-		<lastmod>2026-11-24T13:13:06+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson</loc>
-		<lastmod>2026-11-24T13:13:07+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/smartfony-android</loc>
-		<lastmod>2026-11-24T13:13:07+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/igrovye-pristavki</loc>
-		<lastmod>2026-11-24T13:13:08+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/foto-i-video</loc>
-		<lastmod>2026-11-24T13:13:09+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ipad-pro-11-m5</loc>
-		<lastmod>2026-11-24T13:13:09+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-hushjet</loc>
-		<lastmod>2026-11-24T13:13:10+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-pro-14-m1-pro</loc>
-		<lastmod>2026-11-24T13:13:11+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-airwrap-hs05</loc>
-		<lastmod>2026-11-24T13:13:12+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-ph05</loc>
-		<lastmod>2026-11-24T13:13:13+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dyson-airwrap-hs05-long</loc>
-		<lastmod>2026-11-24T13:13:13+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/macbook-pro-14-m1-max</loc>
-		<lastmod>2026-11-24T13:13:14+00:00</lastmod>
+		<loc>https://youz.store/apple-watch-se-3</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/apple-watch-series-10</loc>
 		<lastmod>2026-11-24T13:13:15+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/dyson-supersonic-hd19</loc>
-		<lastmod>2026-11-24T13:13:15+00:00</lastmod>
+		<loc>https://youz.store/apple-watch-series-11</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/macbook-pro-16-m4-pro</loc>
-		<lastmod>2026-11-24T13:13:16+00:00</lastmod>
+		<loc>https://youz.store/apple-watch-series-12</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/samsung-galaxy-s25-plus</loc>
-		<lastmod>2026-11-24T13:13:17+00:00</lastmod>
+		<loc>https://youz.store/apple-watch-ultra-3</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/dyson-tp10</loc>
-		<lastmod>2026-11-24T13:13:18+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/agan</loc>
-		<lastmod>2026-11-24T13:13:19+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/agirish</loc>
-		<lastmod>2026-11-24T13:13:20+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/alyabevskiy</loc>
-		<lastmod>2026-11-24T13:13:22+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/andra</loc>
-		<lastmod>2026-11-24T13:13:23+00:00</lastmod>
+		<loc>https://youz.store/apple-watch-ultra-4</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/barsovo</loc>
-		<lastmod>2026-11-24T13:13:25+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/beloyarskiy</loc>
-		<lastmod>2026-11-24T13:13:26+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/belyy-yar</loc>
-		<lastmod>2026-11-24T13:13:27+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/berezovo</loc>
-		<lastmod>2026-11-24T13:13:28+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/bobrovskiy</loc>
-		<lastmod>2026-11-24T13:13:28+00:00</lastmod>
+		<loc>https://youz.store/blog</loc>
+		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/bolchary</loc>
-		<lastmod>2026-11-24T13:13:29+00:00</lastmod>
+		<loc>https://youz.store/blog-akkumulyator-iphone</loc>
+		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/cheuskino</loc>
-		<lastmod>2026-11-24T13:13:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/dostavka-hmao</loc>
-		<lastmod>2026-11-24T13:13:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/fedorovskiy</loc>
-		<lastmod>2026-11-24T13:13:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/gornopravdinsk</loc>
-		<lastmod>2026-11-24T13:13:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/igrim</loc>
-		<lastmod>2026-11-24T13:13:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/izluchinsk</loc>
-		<lastmod>2026-11-24T13:13:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/karkateevy</loc>
-		<lastmod>2026-11-24T13:13:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/karymkary</loc>
-		<lastmod>2026-11-24T13:13:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kazym</loc>
-		<lastmod>2026-11-24T13:13:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kedrovyy</loc>
-		<lastmod>2026-11-24T13:13:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/khulimsunt</loc>
-		<lastmod>2026-11-24T13:13:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kogalym</loc>
-		<lastmod>2026-11-24T13:13:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kommunisticheskiy</loc>
-		<lastmod>2026-11-24T13:13:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kondinskoe</loc>
-		<lastmod>2026-11-24T13:13:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/korliki</loc>
-		<lastmod>2026-11-24T13:13:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/krasnoleninskiy</loc>
-		<lastmod>2026-11-24T13:13:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kuminskiy</loc>
-		<lastmod>2026-11-24T13:13:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kut-yakh</loc>
-		<lastmod>2026-11-24T13:13:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/kyshik</loc>
-		<lastmod>2026-11-24T13:13:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/langepas</loc>
-		<lastmod>2026-11-24T13:13:35+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/laryak</loc>
-		<lastmod>2026-11-24T13:13:36+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lempino</loc>
-		<lastmod>2026-11-24T13:13:36+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/leushi</loc>
-		<lastmod>2026-11-24T13:13:36+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lokosovo</loc>
-		<lastmod>2026-11-24T13:13:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lugovoy</loc>
-		<lastmod>2026-11-24T13:13:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lugovskoy</loc>
-		<lastmod>2026-11-24T13:13:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lyantor</loc>
-		<lastmod>2026-11-24T13:13:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/lykhma</loc>
-		<lastmod>2026-11-24T13:13:38+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/malinovskiy</loc>
-		<lastmod>2026-11-24T13:13:39+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/megion</loc>
-		<lastmod>2026-11-24T13:13:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/mezhdurechenskiy</loc>
-		<lastmod>2026-11-24T13:13:40+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/mortka</loc>
-		<lastmod>2026-11-24T13:13:41+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/mulymya</loc>
-		<lastmod>2026-11-24T13:13:42+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nefteyugansk</loc>
-		<lastmod>2026-11-24T13:13:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nizhnesortymskiy</loc>
-		<lastmod>2026-11-24T13:13:43+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nizhnevartovsk</loc>
-		<lastmod>2026-11-24T13:13:44+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/novoagansk</loc>
-		<lastmod>2026-11-24T13:13:45+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nyagan</loc>
-		<lastmod>2026-11-24T13:13:46+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nyalinskoe</loc>
-		<lastmod>2026-11-24T13:13:47+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/okhteure</loc>
-		<lastmod>2026-11-24T13:13:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/oktyabrskoe</loc>
-		<lastmod>2026-11-24T13:13:49+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/peregrebnoe</loc>
-		<lastmod>2026-11-24T13:13:50+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/pionerskiy</loc>
-		<lastmod>2026-11-24T13:13:51+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/pokachi</loc>
-		<lastmod>2026-11-24T13:13:52+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/pokur</loc>
-		<lastmod>2026-11-24T13:13:53+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/polnovat</loc>
-		<lastmod>2026-11-24T13:13:54+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/polovinka</loc>
-		<lastmod>2026-11-24T13:13:54+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/poykovskiy</loc>
-		<lastmod>2026-11-24T13:13:56+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/priobe</loc>
-		<lastmod>2026-11-24T13:13:57+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/pripolyarnyy</loc>
-		<lastmod>2026-11-24T13:13:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/pyt-yakh</loc>
-		<lastmod>2026-11-24T13:13:59+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/raduzhnyy</loc>
-		<lastmod>2026-11-24T13:14:00+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/russkinskaya</loc>
-		<lastmod>2026-11-24T13:14:01+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/salym</loc>
-		<lastmod>2026-11-24T13:14:02+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/saranpaul</loc>
-		<lastmod>2026-11-24T13:14:03+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/seliyarovo</loc>
-		<lastmod>2026-11-24T13:14:04+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sentyabrskiy</loc>
-		<lastmod>2026-11-24T13:14:05+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sergino</loc>
-		<lastmod>2026-11-24T13:14:07+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/shapsha</loc>
-		<lastmod>2026-11-24T13:14:08+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sherkaly</loc>
-		<lastmod>2026-11-24T13:14:09+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/shugur</loc>
-		<lastmod>2026-11-24T13:14:11+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sibirskiy</loc>
-		<lastmod>2026-11-24T13:14:12+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/singapay</loc>
-		<lastmod>2026-11-24T13:14:13+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sogom</loc>
-		<lastmod>2026-11-24T13:14:16+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/solnechnyy</loc>
-		<lastmod>2026-11-24T13:14:17+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sosnovka</loc>
-		<lastmod>2026-11-24T13:14:19+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sosva</loc>
-		<lastmod>2026-11-24T13:14:20+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sovetskiy</loc>
-		<lastmod>2026-11-24T13:14:20+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/surgut</loc>
-		<lastmod>2026-11-24T13:14:21+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/svetlyy</loc>
-		<lastmod>2026-11-24T13:14:21+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/sytomino</loc>
-		<lastmod>2026-11-24T13:14:21+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/taezhnyy</loc>
-		<lastmod>2026-11-24T13:14:21+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/talinka</loc>
-		<lastmod>2026-11-24T13:14:22+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/tsingaly</loc>
-		<lastmod>2026-11-24T13:14:22+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ugut</loc>
-		<lastmod>2026-11-24T13:14:22+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ult-yagun</loc>
-		<lastmod>2026-11-24T13:14:23+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/unyugan</loc>
-		<lastmod>2026-11-24T13:14:23+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/uray</loc>
-		<lastmod>2026-11-24T13:14:23+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ust-yugan</loc>
-		<lastmod>2026-11-24T13:14:23+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/vakhovsk</loc>
-		<lastmod>2026-11-24T13:14:24+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/varegan</loc>
-		<lastmod>2026-11-24T13:14:24+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/vata</loc>
-		<lastmod>2026-11-24T13:14:24+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/verkhnekazymskiy</loc>
-		<lastmod>2026-11-24T13:14:24+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/vykatnoy</loc>
-		<lastmod>2026-11-24T13:14:25+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/vysokiy</loc>
-		<lastmod>2026-11-24T13:14:26+00:00</lastmod>
+		<loc>https://youz.store/blog-apple-watch-kak-vybrat</loc>
+		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/blog-dostavka-iphone-hmao</loc>
 		<lastmod>2026-11-24T13:14:26+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-dyson-kak-vybrat</loc>
+		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-esim-ili-sim</loc>
+		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-iphone-18-pro-ili-17-pro</loc>
+		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-iphone-18-pro-ili-pro-max</loc>
+		<lastmod>2026-11-24T13:12:39+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-iphone-18-pro-obzor</loc>
+		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-iphone-duo-obzor</loc>
+		<lastmod>2026-11-24T13:12:39+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-kak-proverit-iphone</loc>
+		<lastmod>2026-11-24T13:12:36+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-kak-vybrat-airpods</loc>
+		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/blog-kakoy-iphone-vybrat</loc>
@@ -845,8 +145,100 @@
 		<lastmod>2026-11-24T13:14:27+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/blog-perenos-dannyh</loc>
+		<lastmod>2026-11-24T13:12:37+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-skolko-pamyati-iphone</loc>
+		<lastmod>2026-11-24T13:12:43+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/blog-trade-in-ili-avito</loc>
+		<lastmod>2026-11-24T13:12:37+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/blog-xiaomi-redmi-poco</loc>
 		<lastmod>2026-11-24T13:14:27+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/bobrovskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/bolchary</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/catalog</loc>
+		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/cheuskino</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dostavka</loc>
+		<lastmod>2026-11-24T13:12:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dostavka-hmao</loc>
+		<lastmod>2026-11-24T13:13:29+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-airstrait-ht01</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-airwrap-hs05</loc>
+		<lastmod>2026-11-24T13:13:12+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-airwrap-hs05-long</loc>
+		<lastmod>2026-11-24T13:13:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-airwrap-hs08</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-airwrap-hs09</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-hushjet</loc>
+		<lastmod>2026-11-24T13:13:10+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-ph05</loc>
+		<lastmod>2026-11-24T13:13:13+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-supersonic-hd16</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-supersonic-hd19</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/dyson-tp10</loc>
+		<lastmod>2026-11-24T13:13:18+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/fedorovskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/foto-i-video</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/garantiya</loc>
+		<lastmod>2026-11-24T13:12:32+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/garmin</loc>
@@ -854,107 +246,67 @@
 	</url>
 	<url>
 		<loc>https://youz.store/google-pixel</loc>
-		<lastmod>2026-11-24T13:14:27+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/honor</loc>
-		<lastmod>2026-11-24T13:14:28+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/huawei</loc>
-		<lastmod>2026-11-24T13:14:28+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/marshall</loc>
-		<lastmod>2026-11-24T13:14:28+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/naushniki</loc>
-		<lastmod>2026-11-24T13:14:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/nintendo-switch</loc>
-		<lastmod>2026-11-24T13:14:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/oneplus</loc>
-		<lastmod>2026-11-24T13:14:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/playstation-5</loc>
-		<lastmod>2026-11-24T13:14:29+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/ray-ban-meta</loc>
-		<lastmod>2026-11-24T13:14:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/realme</loc>
-		<lastmod>2026-11-24T13:14:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/samsung-galaxy-watch</loc>
-		<lastmod>2026-11-24T13:14:30+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/skolko-stoit-iphone</loc>
-		<lastmod>2026-11-24T13:14:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/umnye-chasy</loc>
-		<lastmod>2026-11-24T13:14:31+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/xiaomi</loc>
-		<lastmod>2026-11-24T13:14:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/yagodnyy</loc>
-		<lastmod>2026-11-24T13:14:32+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/yandeks-stantsiya</loc>
-		<lastmod>2026-11-24T13:14:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/yuganskaya-ob</loc>
-		<lastmod>2026-11-24T13:14:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/yugorsk</loc>
-		<lastmod>2026-11-24T13:14:33+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/zaytseva-rechka</loc>
-		<lastmod>2026-11-24T13:14:34+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/zelenoborsk</loc>
-		<lastmod>2026-11-24T13:14:34+00:00</lastmod>
+		<loc>https://youz.store/google-pixel-10</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/google-pixel-10-pro</loc>
-		<lastmod>2026-11-24T13:14:34+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/google-pixel-10a</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/google-pixel-11</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/google-pixel-11-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/google-pixel-11-pro-fold</loc>
-		<lastmod>2026-11-24T13:14:34+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/google-pixel-11-pro-xl</loc>
 		<lastmod>2026-11-24T13:14:35+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/google-pixel-11-pro</loc>
-		<lastmod>2026-11-24T13:14:35+00:00</lastmod>
+		<loc>https://youz.store/google-pixel-7</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/google-pixel-11</loc>
-		<lastmod>2026-11-24T13:14:35+00:00</lastmod>
+		<loc>https://youz.store/google-pixel-7-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/google-pixel-8</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/google-pixel-9</loc>
 		<lastmod>2026-11-24T13:14:36+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/gornopravdinsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/honor</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/honor-400</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/honor-600</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-600-lite</loc>
@@ -962,19 +314,19 @@
 	</url>
 	<url>
 		<loc>https://youz.store/honor-600-pro</loc>
-		<lastmod>2026-11-24T13:14:37+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/honor-600</loc>
-		<lastmod>2026-11-24T13:14:37+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-magic-8-pro</loc>
-		<lastmod>2026-11-24T13:14:37+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-turbo</loc>
 		<lastmod>2026-11-24T13:14:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/honor-x6e</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-x7d</loc>
@@ -982,30 +334,34 @@
 	</url>
 	<url>
 		<loc>https://youz.store/honor-x8d</loc>
-		<lastmod>2026-11-24T13:14:38+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-x9d</loc>
-		<lastmod>2026-11-24T13:14:41+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/honor-x9e-pro</loc>
-		<lastmod>2026-11-24T13:14:41+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/huawei</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/huawei-mate-80-pro</loc>
-		<lastmod>2026-11-24T13:14:42+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/huawei-nova-15-max</loc>
-		<lastmod>2026-11-24T13:14:42+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/huawei-nova-15-pro</loc>
-		<lastmod>2026-11-24T13:14:43+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/huawei-nova-15</loc>
+		<lastmod>2026-11-24T13:14:43+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/huawei-nova-15-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/huawei-nova-15-pro</loc>
 		<lastmod>2026-11-24T13:14:43+00:00</lastmod>
 	</url>
 	<url>
@@ -1021,28 +377,348 @@
 		<lastmod>2026-11-24T13:14:46+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/huawei-pura-80</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/huawei-pura-80-ultra</loc>
 		<lastmod>2026-11-24T13:14:47+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/huawei-pura-80</loc>
-		<lastmod>2026-11-24T13:14:47+00:00</lastmod>
+		<loc>https://youz.store/huawei-pura-90s-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/huawei-pura-90s-pro-max</loc>
-		<lastmod>2026-11-24T13:14:48+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/huawei-pura-90s-pro</loc>
-		<lastmod>2026-11-24T13:14:49+00:00</lastmod>
+		<loc>https://youz.store/igrim</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/igrovye-pristavki</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/</loc>
+		<lastmod>2026-11-24T13:12:40+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-11</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-air-11-m4</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-air-13-m3</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-air-13-m4</loc>
+		<lastmod>2026-11-24T13:12:49+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-pro-11-m4</loc>
+		<lastmod>2026-11-24T13:12:50+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-pro-11-m5</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-pro-13-m4</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ipad-pro-13-m5</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-14</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-15</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-15-pro-max</loc>
+		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-16</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-16-pro</loc>
+		<lastmod>2026-11-24T13:12:46+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-16-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-17</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-17-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-17-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-17e</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-18-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-18-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-air</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/iphone-duo</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/izluchinsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/karkateevy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/karymkary</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kazym</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kedrovyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/khulimsunt</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kogalym</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kommunisticheskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kondinskoe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kontakty</loc>
+		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/korliki</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/krasnoleninskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kuminskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kut-yakh</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/kyshik</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/langepas</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/laryak</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lempino</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/leushi</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lokosovo</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lugovoy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lugovskoy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lyantor</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/lykhma</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-air-13-m5</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-air-15-m4</loc>
+		<lastmod>2026-11-24T13:12:47+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-air-15-m5</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-neo-13-a18</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-pro-14-m1-max</loc>
+		<lastmod>2026-11-24T13:13:14+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-pro-14-m1-pro</loc>
+		<lastmod>2026-11-24T13:13:11+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-pro-14-m5</loc>
+		<lastmod>2026-11-24T13:12:48+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/macbook-pro-14-m5-pro</loc>
-		<lastmod>2026-11-24T13:14:50+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/macbook-pro-16-m4-pro</loc>
+		<lastmod>2026-11-24T13:13:16+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/malinovskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/marshall</loc>
+		<lastmod>2026-11-24T13:14:28+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/megion</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/mezhdurechenskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/model</loc>
+		<lastmod>2026-11-24T13:12:42+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/mortka</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/mulymya</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/naushniki</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nefteyugansk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nintendo-switch</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nizhnesortymskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nizhnevartovsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/novoagansk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nyagan</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/nyalinskoe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/o-magazine</loc>
+		<lastmod>2026-11-24T13:12:31+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/okhteure</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/oktyabrskoe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/oneplus</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/oneplus-13s</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/oneplus-15</loc>
-		<lastmod>2026-11-24T13:14:51+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/oneplus-15r</loc>
@@ -1065,12 +741,36 @@
 		<lastmod>2026-11-24T13:14:58+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/otzyvy</loc>
+		<lastmod>2026-11-24T13:12:35+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/peregrebnoe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/pionerskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/playstation-5</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poco-c71</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poco-c81-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/poco-c85</loc>
-		<lastmod>2026-11-24T13:15:00+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/poco-c95-pro</loc>
-		<lastmod>2026-11-24T13:15:01+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/poco-f8-pro</loc>
@@ -1089,60 +789,124 @@
 		<lastmod>2026-11-24T13:15:07+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/poco-m7</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poco-m8</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/poco-m8-pro</loc>
 		<lastmod>2026-11-24T13:15:09+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/poco-m8</loc>
-		<lastmod>2026-11-24T13:15:11+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/poco-x7-pro</loc>
-		<lastmod>2026-11-24T13:15:11+00:00</lastmod>
+		<loc>https://youz.store/poco-x6</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/poco-x7</loc>
 		<lastmod>2026-11-24T13:15:11+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/poco-x8-pro-max</loc>
-		<lastmod>2026-11-24T13:15:11+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/poco-x8-pro</loc>
-		<lastmod>2026-11-24T13:15:12+00:00</lastmod>
+		<loc>https://youz.store/poco-x7-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/poco-x8</loc>
-		<lastmod>2026-11-24T13:15:12+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poco-x8-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poco-x8-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/poco-x8s</loc>
 		<lastmod>2026-11-24T13:15:12+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/realme-16-pro-plus</loc>
-		<lastmod>2026-11-24T13:15:13+00:00</lastmod>
+		<loc>https://youz.store/pokachi</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/pokur</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/politika</loc>
+		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/polnovat</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/polovinka</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/poykovskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/priobe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/pripolyarnyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/pyt-yakh</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/raduzhnyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/rassrochka</loc>
+		<lastmod>2026-11-24T13:12:33+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ray-ban-meta</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/realme</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/realme-14t</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/realme-16-pro</loc>
 		<lastmod>2026-11-24T13:15:14+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/realme-16-pro-plus</loc>
+		<lastmod>2026-11-24T13:15:13+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/realme-c100i</loc>
-		<lastmod>2026-11-24T13:15:14+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/realme-c100x</loc>
-		<lastmod>2026-11-24T13:15:14+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/realme-c85-pro</loc>
-		<lastmod>2026-11-24T13:15:15+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/realme-c85</loc>
 		<lastmod>2026-11-24T13:15:15+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/realme-c85-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/realme-p4x</loc>
@@ -1154,62 +918,354 @@
 	</url>
 	<url>
 		<loc>https://youz.store/redmi-a7-pro</loc>
-		<lastmod>2026-11-24T13:15:16+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/redmi-note-15-pro-plus</loc>
-		<lastmod>2026-11-24T13:15:16+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/redmi-note-15-pro</loc>
-		<lastmod>2026-11-24T13:15:17+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/redmi-note-15</loc>
 		<lastmod>2026-11-24T13:15:17+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/redmi-note-17-pro-max</loc>
+		<loc>https://youz.store/redmi-note-15-pro</loc>
 		<lastmod>2026-11-24T13:15:17+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/redmi-note-17-pro</loc>
-		<lastmod>2026-11-24T13:15:18+00:00</lastmod>
+		<loc>https://youz.store/redmi-note-15-pro-plus</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/redmi-note-17</loc>
-		<lastmod>2026-11-24T13:15:18+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/redmi-note-17-pro</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/redmi-note-17-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/remont</loc>
+		<lastmod>2026-11-24T13:12:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/remont-iphone-posle-vody</loc>
+		<lastmod>2026-11-24T13:12:45+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/russkinskaya</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/salym</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a07</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a07s</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a08</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a17</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a18</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a27</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a36</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a37</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a56</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-a57</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s25</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s25-fe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s25-plus</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s25-ultra</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s26</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s26-fe</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s26-plus</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-s26-ultra</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-watch</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-z-flip-8</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-z-fold-7</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-z-fold-8</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/samsung-galaxy-z-fold-8-ultra</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/saranpaul</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/seliyarovo</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sentyabrskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sergino</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/shapsha</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sherkaly</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/shugur</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sibirskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/singapay</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/skolko-stoit-iphone</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/smartfony-android</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/soglasie</loc>
+		<lastmod>2026-11-24T13:12:38+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sogom</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/solnechnyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sosnovka</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sosva</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sovetskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/surgut</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/svetlyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/sytomino</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/taezhnyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/talinka</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/trade-in</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/tsingaly</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ugut</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ult-yagun</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/umnye-chasy</loc>
+		<lastmod>2026-11-24T13:14:31+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/unyugan</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/uray</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/ust-yugan</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/vakhovsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/varegan</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/vata</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/verkhnekazymskiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/vykatnoy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/vysokiy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/xiaomi</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/xiaomi-15</loc>
 		<lastmod>2026-11-24T13:15:18+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/xiaomi-17</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/xiaomi-17-ultra</loc>
 		<lastmod>2026-11-24T13:15:19+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://youz.store/xiaomi-17</loc>
-		<lastmod>2026-11-24T13:15:19+00:00</lastmod>
+		<loc>https://youz.store/xiaomi-17t</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/xiaomi-17t-pro</loc>
-		<lastmod>2026-11-24T13:15:20+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/xiaomi-17t</loc>
-		<lastmod>2026-11-24T13:15:20+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://youz.store/xiaomi-18-pro-max</loc>
-		<lastmod>2026-11-24T13:15:20+00:00</lastmod>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://youz.store/xiaomi-18-pro</loc>
 		<lastmod>2026-11-24T13:15:21+00:00</lastmod>
 	</url>
 	<url>
+		<loc>https://youz.store/xiaomi-18-pro-max</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
 		<loc>https://youz.store/xiaomi-mix-flip</loc>
 		<lastmod>2026-11-24T13:15:22+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/yagodnyy</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/yandeks-stantsiya</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/yuganskaya-ob</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/yugorsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/zamena-akkumulyatora-iphone</loc>
+		<lastmod>2026-11-24T13:12:45+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/zamena-ekrana-iphone</loc>
+		<lastmod>2026-11-24T13:12:44+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/zaytseva-rechka</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://youz.store/zelenoborsk</loc>
+		<lastmod>2026-11-27T10:23:23+00:00</lastmod>
 	</url>
 </urlset>
