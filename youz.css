@@ -1225,3 +1225,8 @@ body:has(.lm:not([hidden])) .yzc,body:has(.mega:not([hidden])) .yzc{visibility:h
 
 /* лейбл «Made on Tilda» скрыт на всех страницах (просьба владельца 26.11) */
 #tildacopy,.t-tildalabel{display:none!important}
+/* бейдж отзыва: всегда плашка по размеру текста, карточка не растягивает его по высоте */
+.rq{align-content:start;grid-template-rows:auto 1fr auto}
+.rq-tag{display:inline-block;align-self:start;width:max-content;max-width:100%;height:auto;line-height:1.3;white-space:nowrap}
+.rq figcaption{align-self:end}
+.popq{display:none!important}
