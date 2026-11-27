@@ -3442,6 +3442,24 @@
   "descr": "Цены на все iPhone в Ханты-Мансийске (ноябрь 2026): от 56 990 ₽ до 327 990 ₽. Таблица по моделям и памяти, оригинал, гарантия 12 мес, рассрочка 0%. Магазин ЮZ, Комсомольская, 49."
  },
  {
+  "slug": "blog-samsung-ili-iphone",
+  "kind": "blog",
+  "title": "Samsung или iPhone: что выбрать в 2026 году | ЮZ Store",
+  "descr": "Samsung Galaxy или iPhone — честное сравнение: экосистема, камеры, зарядка, обновления, перепродажа и цена. Помогаем выбрать смартфон под себя."
+ },
+ {
+  "slug": "blog-kak-vybrat-macbook",
+  "kind": "blog",
+  "title": "Как выбрать MacBook в 2026: Neo, Air или Pro | ЮZ Store",
+  "descr": "Какой MacBook купить: MacBook Neo, Air 13 и 15 или Pro 14 и 16. Сколько нужно памяти и диска, чем отличаются чипы и кому что подойдёт."
+ },
+ {
+  "slug": "blog-kak-vybrat-ipad",
+  "kind": "blog",
+  "title": "Какой iPad выбрать: iPad, mini, Air или Pro | ЮZ Store",
+  "descr": "Как выбрать iPad: базовый iPad, iPad mini, Air или Pro. Размер экрана, память, Wi-Fi или Cellular, Apple Pencil и клавиатура — разбираем по шагам."
+ },
+ {
   "slug": "blog-rassrochka-iphone",
   "kind": "blog",
   "title": "iPhone в рассрочку в Ханты-Мансийске: как оформить и сколько платить | ЮZ Store",
