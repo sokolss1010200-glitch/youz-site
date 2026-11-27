@@ -5,8 +5,9 @@ ErrorDocument 404 /404.html
 
 RewriteEngine On
 
-# https и без www
-RewriteCond %{HTTPS} off [OR]
+# https и без www. На reg.ru запросы приходят через nginx, поэтому схему берём из X-Forwarded-Proto
+# (без заголовка не перенаправляем, чтобы не было бесконечной переадресации)
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
 RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^ https://youz.store%{REQUEST_URI} [R=301,L]
 
