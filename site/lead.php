@@ -44,13 +44,23 @@ $sent = 0;
 
 $diag = ['cfg' => is_file($cfgFile), 'tg' => null, 'max' => null];
 function post_json($url, $body, $headers = [], &$info = null) {
+    // связь хостинга с Telegram иногда подвисает — до 3 попыток
+    for ($try = 1; $try <= 3; $try++) {
+        if (post_once($url, $body, $headers, $info)) return true;
+        if ($info['code'] >= 400 && $info['code'] < 500) return false;   // ошибка в запросе — повтор не поможет
+        usleep(500000);
+    }
+    return false;
+}
+function post_once($url, $body, $headers, &$info) {
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => json_encode($body, JSON_UNESCAPED_UNICODE),
         CURLOPT_HTTPHEADER => array_merge(['Content-Type: application/json'], $headers),
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_TIMEOUT => 8,
+        CURLOPT_TIMEOUT => 10,
+        CURLOPT_CONNECTTIMEOUT => 6,
     ]);
     $r = curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
