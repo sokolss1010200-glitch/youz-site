@@ -873,7 +873,7 @@ if(CAT){
   let firstRender=true;
   window.renderCatalog=()=>{renderTabs();
     if(firstRender){firstRender=false;try{const sp=new URLSearchParams(location.search),bq=sp.get('band');if(bq!=null&&PRICE_BANDS[+bq])CS.band=+bq;const fq=sp.get('for');if(fq)CS.fit=fq}catch(e){}const slug=location.hash.slice(1);const c=Object.keys(CAT_SLUG).find(k=>CAT_SLUG[k]===slug);if(c)CS.cat=c;
-      /* страницы категорий (/iphone, /airpods …): раздел задан в data-cat */const yc=CAT.closest('#yzCat')||document.getElementById('yzCat'),dc=yc?.dataset.cat;if(!c&&dc){CS.cat=dc;if(yc.dataset.grp)CS.grp=yc.dataset.grp}
+      /* страницы категорий (/iphone, /airpods …): раздел задан в data-cat */const yc=CAT.closest('#yzCat')||document.getElementById('yzCat'),dc=yc?.dataset.cat;if(!c&&dc){CS.cat=dc;if(yc.dataset.grp)CS.grp=yc.dataset.grp;if(yc.dataset.q)CS.q=yc.dataset.q}
       try{const g=JSON.parse(sessionStorage.getItem('yz_go')||'null');sessionStorage.removeItem('yz_go');if(g){const m=g.model?P.find(p=>p.n===g.model):null;Object.assign(CS,{cat:g.cat||(m?m.cat:CS.cat),grp:g.grp||'',model:g.model||''})}}catch(e){}}
     renderSide();renderList()};
 }
