@@ -784,12 +784,23 @@ const CAT_ICON={'iPhone':'<rect x="7" y="2" width="10" height="20" rx="3"/>','Ma
 const cats=()=>CAT_ORDER.filter(c=>P.some(p=>p.cat===c)).concat([...new Set(P.map(p=>p.cat))].filter(c=>!CAT_ORDER.includes(c)));
 const ico=c=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${CAT_ICON[c]||CAT_ICON['Аксессуары']}</svg>`;
 const mega=document.getElementById('mega'),cmap=document.getElementById('cmap');
+/* 27.11.2026: на компьютере меню в две колонки — слева разделы, справа модели раздела под курсором; на телефоне прежний список разделов */
+function renderMega2(){const cs=cats();
+  const left=cs.map((c,i)=>`<button type="button" class="cm2-c${i?'':' on'}" data-i="${i}" data-cat="${htm(c)}">${ico(c)}<span>${htm(c)}</span><small>${P.filter(p=>p.cat===c).length}</small></button>`).join('');
+  const right=cs.map((c,i)=>{const ps=P.filter(p=>p.cat===c),groups=[...new Set(ps.map(p=>p.grp))].filter(Boolean),acc=c==='Аксессуары'||c==='LEGO',lim=12;
+    const tiles=acc?groups.map(g=>`<button type="button" class="cm2-m" data-cat="${htm(c)}" data-grp="${htm(g)}"><b>${htm(g)}</b><small>${ps.filter(p=>p.grp===g).length} шт.</small></button>`).join('')
+      :ps.slice(0,lim).map(p=>`<button type="button" class="cm2-m" data-model="${htm(p.n)}"><b>${p.disc?'<i class="dot"></i>':''}${htm(shortName(p))}</b><small>от ${rub(p.min)}</small></button>`).join('');
+    return `<div class="cm2-p${i?'':' on'}" data-i="${i}"><div class="cm2-h"><b>${htm(c)}</b><button type="button" class="cm2-all" data-cat="${htm(c)}">Все ${htm(c)} (${ps.length}) →</button></div>
+      <div class="cm2-g">${tiles}</div>${!acc&&groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('');
+  return `<div class="cm2"><nav class="cm2-l" aria-label="Разделы">${left}</nav><div class="cm2-r">${right}</div></div>`}
+function cm2Act(i){if(!cmap)return;cmap.querySelectorAll('.cm2-c,.cm2-p').forEach(x=>x.classList.toggle('on',x.dataset.i===String(i)))}
 function renderMega(){if(!cmap)return;
-  cmap.innerHTML=cats().map(c=>{const ps=P.filter(p=>p.cat===c);const groups=[...new Set(ps.map(p=>p.grp))];
+  cmap.innerHTML=renderMega2()+'<div class="cm-list">'+cats().map(c=>{const ps=P.filter(p=>p.cat===c);const groups=[...new Set(ps.map(p=>p.grp))];
     const lim={'iPhone':14,'Samsung':12,'Android':12,'LEGO':0,'Консоли':8,'Фото и видео':8,'Аксессуары':0}[c]??10;
     return `<div class="cm-group${['iPhone','Samsung','Android'].includes(c)?' wide':''}"><button type="button" class="cm-head" data-cat="${htm(c)}">${ico(c)}<b>${htm(c)}</b><small>${ps.length}</small><span class="cm-arr">→</span></button>
     ${lim?`<div class="cm-chips">${ps.slice(0,lim).map(p=>`<button type="button" class="chip" data-model="${htm(p.n)}">${p.disc?'<i class="dot"></i>':''}${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}<small>от ${rub(p.min).replace(' ₽','')}</small></button>`).join('')}${ps.length>lim?`<button type="button" class="chip more" data-cat="${htm(c)}">ещё ${ps.length-lim} →</button>`:''}</div>`:''}
-    ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')}
+    ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')+'</div>';
+  cmap.querySelectorAll('.cm2-c').forEach(b=>{b.addEventListener('mouseenter',()=>cm2Act(b.dataset.i));b.addEventListener('focus',()=>cm2Act(b.dataset.i))})}
 function openMega(){if(!mega)return;mega.classList.remove('closing');mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
 function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.classList.contains('closing'))return;mega.classList.add('closing');setTimeout(()=>{if(mega.classList.contains('closing')){mega.classList.remove('closing');closeMega(true)}},190);return}mega.classList.remove('closing');mega.hidden=true;document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
 function goCatalog(u){closeMega(true);if(window.catGo){window.catGo(u);return}
@@ -799,6 +810,7 @@ document.querySelectorAll('.cat-btn, [data-mega]').forEach(b=>b.addEventListener
 if(mega){
   mega.addEventListener('click',e=>{
     if(e.target===mega||e.target.closest('#megaX')){closeMega();return}
+    const cc=e.target.closest('.cm2-c');if(cc&&!cc.classList.contains('on')){cm2Act(cc.dataset.i);return}
     const ch=e.target.closest('[data-model]');if(ch){goCatalog({model:ch.dataset.model});return}
     const h=e.target.closest('[data-cat]');if(h){goCatalog({cat:h.dataset.cat,grp:h.dataset.grp||''});return}
     if(e.target.closest('.mega-all')){e.preventDefault();goCatalog({})}});
