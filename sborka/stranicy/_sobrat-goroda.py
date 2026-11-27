@@ -139,6 +139,26 @@ CENTER = {'Советский': 'Советский', 'Белоярский': '�
 # Подсказка рядом: ближайший крупный город округа (для текста про район)
 CITY_OF = {'Сургутский': 'Сургут', 'Нефтеюганский': 'Нефтеюганск', 'Нижневартовский': 'Нижневартовск'}
 
+# Координаты, тип и численность — из OpenStreetMap (goroda-geo.json, собрано один раз, в сборке сеть не нужна).
+import math
+GEO = json.loads((HERE / 'goroda-geo.json').read_text(encoding='utf-8'))
+def dist_km(n):
+    a, b = GEO.get('Ханты-Мансийск'), GEO.get(n)
+    if not a or not b:
+        return None
+    p1, p2 = math.radians(a['lat']), math.radians(b['lat']); dl = math.radians(b['lon'] - a['lon'])
+    return round(2 * 6371 * math.asin(math.sqrt(math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2)))
+def people(n):
+    try:
+        v = int(re.sub(r'\D', '', str((GEO.get(n) or {}).get('population') or '')))
+    except ValueError:
+        return ''
+    if v >= 10000:
+        return 'около %d тыс. жителей' % round(v / 1000)
+    if v >= 1000:
+        return 'около %s тыс. жителей' % (('%.1f' % (v / 1000)).replace('.', ',').replace(',0', ''))
+    return 'около %d жителей' % (round(v / 50) * 50) if v else ''
+
 TR = dict(zip('абвгдеёжзийклмнопрстуфхцчшщъыьэюя', ['a', 'b', 'v', 'g', 'd', 'e', 'e', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f',
                                                      'kh', 'ts', 'ch', 'sh', 'sch', '', 'y', '', 'e', 'yu', 'ya']))
 def translit(s):
@@ -199,6 +219,26 @@ def town_main(t, others):
             '<div class="cta-row"><a class="btn btn-lime" href="#" data-lead="call" data-eyebrow="Доставка %s" data-title="Заказ с доставкой %s" data-source="Город: %s">'
             'Заказать с доставкой <span class="arr">→</span></a><a class="btn btn-ghost" href="/catalog">Выбрать в каталоге</a></div></div>%s</div></section>') % (
         esc(nom), esc(kuda), esc(gde), esc(lead), esc(kuda), esc(kuda), esc(nom), side)
+    d = dist_km(nom); pp = people(nom)
+    if d is None:
+        about = ''
+    elif d <= 60:
+        about = ('%s — совсем рядом с Ханты-Мансийском: около %d км по прямой%s. Технику удобно забрать самому в магазине на Комсомольской, 49 '
+                 'в день заказа — проверим её при вас и настроим, — или заказать доставку.') % (nom, d, (', ' + pp) if pp else '')
+    elif d <= 200:
+        about = ('От Ханты-Мансийска до %s около %d км по прямой%s. Если планируете поездку в окружную столицу, оставьте заявку заранее: '
+                 'отложим нужную модель к вашему приезду. Или отправим заказ СДЭК с трек-номером.') % (otkuda[3:], d, ('; %s — %s' % (nom, pp)) if pp else '')
+    else:
+        about = ('%s находится примерно в %d км от Ханты-Мансийска по прямой%s, поэтому заказ удобнее оформить дистанционно: '
+                 'выберите технику на сайте, менеджер всё уточнит по телефону, а заказ отправим СДЭК с трек-номером. '
+                 'Рассрочку тоже можно обсудить по телефону.') % (nom, d, (' (' + pp + ')') if pp else '')
+    if rayon and CENTER.get(rayon) and CENTER[rayon] != nom:
+        about += ' %s входит в %s район, районный центр — %s.' % (nom, rayon[:-2] + 'ий', CENTER[rayon])
+    elif rayon and CENTER.get(rayon) == nom:
+        about += ' %s — районный центр %s района.' % (nom, rayon[:-2] + 'ого')
+    elif not rayon:
+        about += ' %s — город окружного значения Югры.' % nom
+    about_html = ('<section class="pg-sec"><div class="wrap"><h2 class="pg-h2">Доставка %s: что важно знать</h2><p class="pg-sub">%s</p></div></section>') % (esc(kuda), esc(about)) if about else ''
     trs = ''.join('<tr><td>%s</td><td>от %s</td></tr>' % (('<a href="/%s">%s</a>' % (MURL[n], esc(n))) if n in MURL else esc(n), rub(MIN[n])) for n in PRICE_ROWS)
     trs += ''.join('<tr><td><a href="%s">%s</a></td><td>от %s</td></tr>' % (u, esc(t_), rub(CATMIN[c])) for t_, c, u in CAT_ROWS if c in CATMIN)
     prices = ('<section class="pg-sec"><div class="wrap"><h2 class="pg-h2">Цены на технику с доставкой %s</h2>'
@@ -224,8 +264,15 @@ def town_main(t, others):
            ('Как оплатить заказ %s?' % otkuda, 'Способ оплаты при доставке согласуем с менеджером. В магазине можно оплатить наличными или картой.'),
            ('Есть ли гарантия на технику с доставкой?', 'Да, гарантия магазина 12 месяцев, как и при покупке в магазине. <a href="/garantiya">Условия гарантии</a>.'),
            ('Можно забрать заказ самому?', 'Да, в магазине ЮZ в Ханты-Мансийске на Комсомольской, 49. Проверим технику при вас и настроим.')]
+    if d is not None:
+        if d <= 60:
+            faq.insert(1, ('Можно забрать технику в день заказа, если я %s?' % gde.replace('в ', 'живу в ', 1),
+                           'Да. До магазина на Комсомольской, 49 около %d км. Оставьте заявку — отложим модель, и заберёте её в тот же день.' % d))
+        else:
+            faq.insert(1, ('Как далеко %s до магазина ЮZ?' % otkuda.replace('из ', 'от ', 1),
+                           'Около %d км по прямой до Ханты-Мансийска. Приезжать не обязательно: оформим заказ по телефону и отправим СДЭК с трек-номером.' % d))
     qa = '<section class="pg-sec"><div class="wrap faq"><div style="display:grid;gap:16px;align-content:start"><h2>Вопросы о доставке %s</h2><p style="color:var(--muted)">Не нашли ответ? Позвоните: <a href="tel:+73467362404">+7 (3467) 36-24-04</a></p></div>%s</div></section>' % (esc(kuda), faq_html(faq))
-    return '<main id="top" class="pg">' + hero + prices + steps + why + near + qa + '</main>', faq
+    return '<main id="top" class="pg">' + hero + about_html + prices + steps + why + near + qa + '</main>', faq
 
 def ld_tags(objs):
     return ''.join('<script type="application/ld+json">%s</script>\n' % json.dumps(o, ensure_ascii=False).replace('</', '<\\/') for o in objs)
@@ -254,7 +301,9 @@ for t in T:
     others = [o for o in T if o[4] == rayon and o is not t] if rayon else [o for o in T if o[4] is None and o is not t]
     main, faq = town_main(t, others)
     title = 'Купить iPhone %s — цены от %s, доставка | ЮZ Store' % (t[1], rub(IPH_MIN))
-    descr = 'iPhone, Samsung, AirPods и другая техника с доставкой %s. Оригинал, гарантия 12 мес, рассрочка 0%% до 36 мес, бесплатная доставка от 50 000 ₽.' % t[3]
+    dk = dist_km(t[0])
+    descr = 'iPhone, Samsung, AirPods и другая техника с доставкой %s%s. Оригинал, гарантия 12 мес, рассрочка 0%% до 36 мес, бесплатная доставка от 50 000 ₽.' % (
+        t[3], (' (%d км от Ханты-Мансийска)' % dk) if dk else '')
     emit(translit(t[0]), page_shell(main, title), title, descr, [('Главная', '/'), ('Доставка по ХМАО', '/dostavka-hmao'), (t[0], '')], faq)
 
 # --- общая страница: все города и посёлки ---
