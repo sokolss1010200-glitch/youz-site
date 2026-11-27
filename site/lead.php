@@ -42,7 +42,8 @@ $cfgFile = dirname(__DIR__) . '/lead-config.php';
 $cfg = is_file($cfgFile) ? include $cfgFile : [];
 $sent = 0;
 
-function post_json($url, $body, $headers = []) {
+$diag = ['cfg' => is_file($cfgFile), 'tg' => null, 'max' => null];
+function post_json($url, $body, $headers = [], &$info = null) {
     $ch = curl_init($url);
     curl_setopt_array($ch, [
         CURLOPT_POST => true,
@@ -53,7 +54,10 @@ function post_json($url, $body, $headers = []) {
     ]);
     $r = curl_exec($ch);
     $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $err = curl_error($ch);
     curl_close($ch);
+    $j = json_decode((string)$r, true);
+    $info = ['code' => $code, 'err' => $err, 'desc' => is_array($j) ? ($j['description'] ?? '') : ''];
     return $code >= 200 && $code < 300;
 }
 
@@ -61,16 +65,20 @@ if (!empty($cfg['tg_token']) && !empty($cfg['tg_chat'])) {
     foreach ((array)$cfg['tg_chat'] as $chat) {
         $msg = ['chat_id' => $chat, 'text' => $text];
         if (!empty($cfg['tg_thread'])) $msg['message_thread_id'] = (int)$cfg['tg_thread'];   // тема «Заявки с сайта»
-        if (post_json('https://api.telegram.org/bot' . $cfg['tg_token'] . '/sendMessage', $msg)) $sent++;
+        if (post_json('https://api.telegram.org/bot' . $cfg['tg_token'] . '/sendMessage', $msg, [], $i)) $sent++;
+        $diag['tg'] = $i;
     }
 }
 if (!empty($cfg['max_token']) && !empty($cfg['max_chat'])) {
     foreach ((array)$cfg['max_chat'] as $chat) {
-        if (post_json('https://platform-api.max.ru/messages?chat_id=' . urlencode($chat), ['text' => $text], ['Authorization: ' . $cfg['max_token']])) $sent++;
+        if (post_json('https://platform-api.max.ru/messages?chat_id=' . urlencode($chat), ['text' => $text], ['Authorization: ' . $cfg['max_token']], $i)) $sent++;
+        $diag['max'] = $i;
     }
 }
 if (!empty($cfg['email'])) {
     $subj = '=?UTF-8?B?' . base64_encode('Заявка с сайта youz.store') . '?=';
     if (@mail($cfg['email'], $subj, $text, "Content-Type: text/plain; charset=utf-8\r\nFrom: site@youz.store")) $sent++;
 }
-echo json_encode(['ok' => true, 'sent' => $sent]);
+// ошибки отправки — в журнал (без токенов)
+if (!$sent) file_put_contents($dir . '/errors.log', date('d.m.Y H:i') . ' ' . json_encode($diag, JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND);
+echo json_encode(['ok' => true, 'sent' => $sent] + (!empty($d['diag']) ? ['diag' => $diag] : []), JSON_UNESCAPED_UNICODE);
