@@ -5,6 +5,7 @@
 # Заявки: секрет TG_TOKEN (бот @youz_store_zayavki_bot), по желанию MAX_TOKEN и MAX_CHAT.
 # Из них собирается www/lead-config.php (вне папки сайта, в git его нет). Заявки идут в группу
 # «Менеджеры ЮZ», тема «Заявки с сайта».
+# После заливки изменённые страницы (lastmod в sitemap за 2 суток) отправляются в Яндекс по IndexNow (ключ — site/<ключ>.txt).
 name: Заливка на хостинг
 on:
   push:
@@ -76,3 +77,23 @@ jobs:
             **/.git*
             **/.git*/**
             htaccess.txt
+      - name: Сообщить Яндексу об изменённых страницах (IndexNow)
+        if: steps.chk.outputs.ok == 'yes'
+        continue-on-error: true
+        run: |
+          python3 - <<'PY'
+          # страницы, у которых в sitemap.xml lastmod за последние 2 суток (их меняет «Сборка сайта»)
+          import re, json, datetime, urllib.request
+          KEY = '3180f8756702ba8914e53b15d23b8317'
+          sm = open('site/sitemap.xml', encoding='utf-8').read()
+          since = (datetime.datetime.utcnow() - datetime.timedelta(days=2)).strftime('%Y-%m-%dT%H:%M:%S')
+          urls = [u for u, lm in re.findall(r'<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>', sm) if lm[:19] >= since][:10000]
+          print('изменённых страниц:', len(urls))
+          if urls:
+              body = json.dumps({'host': 'youz.store', 'key': KEY, 'keyLocation': 'https://youz.store/%s.txt' % KEY, 'urlList': urls}).encode()
+              req = urllib.request.Request('https://yandex.com/indexnow', data=body, headers={'Content-Type': 'application/json; charset=utf-8'})
+              try:
+                  r = urllib.request.urlopen(req, timeout=60); print('Яндекс ответил', r.status)
+              except urllib.error.HTTPError as e:
+                  print('Яндекс ответил', e.code, e.read()[:300])
+          PY
