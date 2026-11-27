@@ -34,6 +34,8 @@ jobs:
         env:
           YZ_FULL: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python3 sborka/zagruzchiki/_sobrat-sait.py .
+      - name: Товары для ВКонтакте (site/vk-feed.xml, линейка iPhone 17 и 18)
+        run: python3 sborka/vk/_sobrat-vk.py .
       - name: Коммит
         run: |
           git config user.name 'github-actions[bot]'
