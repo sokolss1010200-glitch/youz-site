@@ -501,11 +501,12 @@ function homeExtras(){
 (function(){const box=document.getElementById('hslider');if(!box)return;
   const S=[...box.querySelectorAll(':scope>.hero')],T=[...box.querySelectorAll('.hs-tabs button')],D=7000;if(S.length<2)return;
   let i=0,timer=0,hold=false,holdT=0;const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function restart(){clearTimeout(timer);T.forEach(t=>t.classList.remove('run'));if(hold||still||document.hidden)return;void T[i].offsetWidth;T[i].classList.add('run');timer=setTimeout(()=>go(i+1),D)}
+  function restart(){clearTimeout(timer);T.forEach(t=>t.classList.remove('run'));if(hold||still||document.hidden||document.body.classList.contains('mega-open'))return;void T[i].offsetWidth;T[i].classList.add('run');timer=setTimeout(()=>go(i+1),D)}
   function go(n,user){S[i].classList.remove('on');T[i].setAttribute('aria-selected','false');
     i=(n+S.length)%S.length;S[i].classList.add('on');T[i].setAttribute('aria-selected','true');
     S[i].querySelectorAll('.h1 .ln span').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});
     if(user)yzGoal('hero_slide',{slide:T[i].textContent});restart()}
+  addEventListener('yz-mega',()=>restart());
   function pause(ms){hold=true;restart();clearTimeout(holdT);if(ms)holdT=setTimeout(()=>{hold=false;restart()},ms)}
   T.forEach((t,k)=>t.addEventListener('click',()=>{go(k,true);pause(15000)}));
   let x0=null;box.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
@@ -801,8 +802,9 @@ function renderMega(){if(!cmap)return;
     ${lim?`<div class="cm-chips">${ps.slice(0,lim).map(p=>`<button type="button" class="chip" data-model="${htm(p.n)}">${p.disc?'<i class="dot"></i>':''}${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}<small>от ${rub(p.min).replace(' ₽','')}</small></button>`).join('')}${ps.length>lim?`<button type="button" class="chip more" data-cat="${htm(c)}">ещё ${ps.length-lim} →</button>`:''}</div>`:''}
     ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')+'</div>';
   const L=cmap.querySelector('.cm2-l');if(L){L.addEventListener('pointerover',e=>{const b=e.target.closest('.cm2-c');if(b&&!b.classList.contains('on'))cm2Act(b.dataset.i)});L.addEventListener('focusin',e=>{const b=e.target.closest('.cm2-c');if(b)cm2Act(b.dataset.i)})}}
-function openMega(){if(!mega)return;mega.classList.remove('closing');mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
-function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.classList.contains('closing'))return;mega.classList.add('closing');setTimeout(()=>{if(mega.classList.contains('closing')){mega.classList.remove('closing');closeMega(true)}},190);return}mega.classList.remove('closing');mega.hidden=true;document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
+function megaFreeze(on){document.body.classList.toggle('mega-open',on);document.querySelectorAll('main video').forEach(v=>{if(on){if(!v.paused){v.dataset.yzp='1';v.pause()}}else if(v.dataset.yzp){delete v.dataset.yzp;v.play().catch(()=>{})}});dispatchEvent(new Event('yz-mega'))}
+function openMega(){if(!mega)return;megaFreeze(true);mega.classList.remove('closing');mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
+function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.classList.contains('closing'))return;mega.classList.add('closing');setTimeout(()=>{if(mega.classList.contains('closing')){mega.classList.remove('closing');closeMega(true)}},190);return}mega.classList.remove('closing');mega.hidden=true;megaFreeze(false);document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
 function goCatalog(u){closeMega(true);if(window.catGo){window.catGo(u);return}
   try{sessionStorage.setItem('yz_go',JSON.stringify(u))}catch(e){}
   const slug=CAT_SLUG[u.cat||''];location.href='/catalog'+(slug?'#'+slug:'')}
