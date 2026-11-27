@@ -36,8 +36,8 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add site pages sborka/stranicy/seo-stranicy.json
+          git add site pages main.html catalog.html model.html sborka/stranicy/seo-stranicy.json
           if git diff --cached --quiet; then echo 'Изменений нет'; exit 0; fi
           git commit -q -m "Сборка сайта $(TZ=Europe/Moscow date '+%d.%m.%Y %H:%M') МСК"
-          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin HEAD:main && exit 0; sleep 10; done
+          for i in 1 2 3; do git pull -q --rebase --autostash origin main && git push -q origin HEAD:main && exit 0; sleep 10; done
           exit 1
