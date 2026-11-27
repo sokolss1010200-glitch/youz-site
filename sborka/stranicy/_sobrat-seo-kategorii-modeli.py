@@ -179,6 +179,19 @@ CATS += [
       ('Часы оригинальные?', 'Да, только новая оригинальная техника. Гарантия магазина 12 месяцев.'),
       ('Есть доставка?', 'По Ханты-Мансийску привезём в день заказа, в другие города ХМАО отправим транспортной компанией.')]),
 ]
+# Страницы серий (часть раздела по началу названия модели): адрес, категория, H1, название, вводный текст, FAQ, группа, префикс модели.
+# На странице каталог сразу отфильтрован по префиксу (data-q у #yzCat). Запрос «айфон 18» — серия, обычного iPhone 18 в прайсе нет.
+SERIES = [
+    ('iphone-18', 'iPhone', 'Купить iPhone 18 в Ханты-Мансийске', 'iPhone 18',
+     ['Вся линейка iPhone 18 в магазине ЮZ на Комсомольской, 49: iPhone 18 Pro и iPhone 18 Pro Max во всех цветах и объёмах памяти. Только новые оригинальные айфоны, серийный номер проверяем при вас.',
+      'Купить айфон 18 можно в рассрочку до 36 месяцев без первого взноса, старый телефон зачтём в trade-in. По Ханты-Мансийску привезём в день заказа, в другие города ХМАО отправим транспортной компанией.'],
+     [('Какие iPhone 18 есть в наличии?', 'iPhone 18 Pro и iPhone 18 Pro Max в разных цветах и объёмах памяти. Актуальные цены и наличие — в списке на этой странице. Если нужного варианта нет на витрине, привезём под заказ.'),
+      ('Что выбрать: iPhone 18 Pro или 18 Pro Max?', 'Главное отличие — размер: у Pro Max больше экран и аккумулятор, Pro удобнее держать одной рукой. Подробное сравнение — в нашем блоге, а вживую обе модели можно сравнить в магазине.'),
+      ('Можно купить iPhone 18 в рассрочку?', 'Да, до 36 месяцев без первого взноса. Нужен только паспорт, решение банка приходит за 5–10 минут.'),
+      ('Сколько дадут за старый iPhone в trade-in?', 'До 99 000 ₽, зависит от модели, памяти и состояния. Оценим при вас за 15 минут и зачтём в стоимость iPhone 18.'),
+      ('iPhone 18 оригинальные? Какая гарантия?', 'Да, только новые оригинальные iPhone. Серийный номер проверяем на сайте Apple вместе с вами. Гарантия магазина 12 месяцев.')],
+     None, 'iPhone 18'),
+]
 CAT_OF = {c[1]: c for c in CATS}
 MODEL_CATS = ['iPhone', 'Mac', 'iPad', 'Apple Watch', 'AirPods', 'Samsung', 'Dyson', 'Android']
 
@@ -325,7 +338,7 @@ TOP = ['iPhone 18 Pro', 'iPhone 18 Pro Max', 'iPhone Duo', 'iPhone 17', 'iPhone 
        'iPhone 16 Pro', 'iPhone 16 Pro Max', 'iPhone 15', 'AirPods Pro 3', 'AirPods 4', 'Apple Watch Series 11', 'Apple Watch Ultra 3',
        'MacBook Air 13 M5', 'iPad Air 11 M4', 'Samsung Galaxy S26 Ultra', 'Samsung Galaxy Z Fold 8', 'Стайлер Dyson Airwrap HS09']
 slugs_all = {p['name']: p['url'] for p in MP}
-popq_links = [('/' + c[0], c[2].replace('Купить ', '')) for c in CATS] + \
+popq_links = [('/' + c[0], c[2].replace('Купить ', '')) for c in CATS] + [('/iphone-18', 'iPhone 18 в Ханты-Мансийске')] + \
              [('/' + slugs_all[n], 'Купить ' + n) for n in TOP if n in slugs_all] + \
              [('/xiaomi', 'Xiaomi в Ханты-Мансийске'), ('/honor', 'Honor в Ханты-Мансийске'), ('/huawei', 'Huawei в Ханты-Мансийске'), ('/skolko-stoit-iphone', 'Сколько стоит iPhone'), ('/trade-in', 'Trade-in iPhone'), ('/rassrochka', 'iPhone в рассрочку'), ('/dostavka-hmao', 'Доставка техники по ХМАО'), ('/remont', 'Ремонт iPhone'), ('/zamena-ekrana-iphone', 'Замена экрана iPhone')]
 POPQ = ('<!--popq--><section class="popq" aria-label="Популярные запросы"><div class="wrap"><h2>Популярные запросы</h2><div class="popq-l">%s</div></div></section><!--/popq-->'
@@ -339,17 +352,18 @@ def add_popq(html):
 # --- страницы категорий ---
 catalog = (REPO / 'catalog.html').read_text(encoding='utf-8')
 CP = []
-for c_ in CATS + BRANDS:
-    slug, cat, h1, plural, intro, faq = c_[:6]; grp = c_[6] if len(c_) > 6 else None
-    ms = sorted([p for p in MP if p['cat'] == cat and (not grp or p['grp'] == grp)] if cat in MODEL_CATS else
+for c_ in CATS + BRANDS + SERIES:
+    slug, cat, h1, plural, intro, faq = c_[:6]; grp = c_[6] if len(c_) > 6 else None; pre = c_[7] if len(c_) > 7 else None
+    ms = sorted([p for p in MP if p['cat'] == cat and (not grp or p['grp'] == grp) and (not pre or p['name'].startswith(pre + ' '))] if cat in MODEL_CATS else
                 [{'name': n, 'min': min(x['price'] for x in m['v']), 'url': ''} for n, m in M.items()
                  if m['cat'] == cat and (not grp or m.get('grp') == grp) and not re.search(r'Charging Station|Vertical Stand|дисковод', n)],
                 key=lambda p: -p['min'])
     if not ms:
         continue
     mn = min(p['min'] for p in ms)
-    cr = [('Главная', '/'), ('Каталог', '/catalog'), (plural, '')]
-    page = catalog.replace('<div id="yzCat">', '<div id="yzCat" data-cat="%s"%s>' % (esc(cat), (' data-grp="%s"' % esc(grp)) if grp else ''), 1)
+    cr = [('Главная', '/'), ('Каталог', '/catalog')] + ([(CAT_NAME[cat], CAT_PATH[cat])] if pre else []) + [(plural, '')]
+    page = catalog.replace('<div id="yzCat">', '<div id="yzCat" data-cat="%s"%s%s>' % (esc(cat), (' data-grp="%s"' % esc(grp)) if grp else '',
+                                                                                    (' data-q="%s"' % esc(pre)) if pre else ''), 1)
     page = re.sub(r'<nav class="crumbs"[^>]*>.*?</nav>', crumbs(cr), page, count=1, flags=re.S)
     assert '<h1>Каталог техники в Ханты-Мансийске</h1>' in page, 'H1 каталога в catalog.html изменился: поправь строку ниже'
     page = page.replace('<h1>Каталог техники в Ханты-Мансийске</h1>',
@@ -366,8 +380,10 @@ for c_ in CATS + BRANDS:
     page = add_popq(page)
     (REPO / 'pages' / (slug + '.html')).write_text(page, encoding='utf-8')
     title = '%s — цены от %s | ЮZ Store' % (h1, rub(mn))
-    if cat == 'iPhone':
+    if cat == 'iPhone' and not pre:
         title = 'Купить iPhone (айфон) в Ханты-Мансийске — цены от %s | ЮZ Store' % rub(mn)
+    if slug == 'iphone-18':
+        title = 'Купить iPhone 18 (айфон 18) в Ханты-Мансийске — цены от %s | ЮZ Store' % rub(mn)
     descr = cap('%s в Ханты-Мансийске от %s: %s и другие. Оригинал, гарантия 12 мес, рассрочка до 36 мес, доставка в день заказа. Комсомольская, 49.' % (
         (plural if plural[:1] == 'i' else plural[0].upper() + plural[1:]), rub(mn), ', '.join(p['name'] for p in ms[:3])))
     itemlist = {"@context": "https://schema.org", "@type": "ItemList", "name": h1, "itemListElement": [
