@@ -806,7 +806,15 @@ function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.c
 function goCatalog(u){closeMega(true);if(window.catGo){window.catGo(u);return}
   try{sessionStorage.setItem('yz_go',JSON.stringify(u))}catch(e){}
   const slug=CAT_SLUG[u.cat||''];location.href='/catalog'+(slug?'#'+slug:'')}
-document.querySelectorAll('.cat-btn, [data-mega]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();mega&&!mega.hidden?closeMega():openMega()}));
+const MEGA_HOVER=matchMedia('(hover:hover) and (pointer:fine)').matches;
+document.querySelectorAll('.cat-btn, [data-mega]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();mega&&!mega.hidden?(MEGA_HOVER&&b.classList.contains('cat-btn')?0:closeMega()):openMega()}));
+/* 27.11.2026: на компьютере каталог открывается наведением на «Каталог» и закрывается, когда мышь уходит с меню */
+if(mega&&MEGA_HOVER){let tOpen=0,tClose=0;const stay=()=>{clearTimeout(tClose)};
+  const leave=()=>{clearTimeout(tOpen);clearTimeout(tClose);tClose=setTimeout(()=>closeMega(),350)};
+  document.querySelectorAll('.cat-btn').forEach(b=>{b.addEventListener('mouseenter',()=>{stay();if(mega.hidden)tOpen=setTimeout(openMega,110)});b.addEventListener('mouseleave',leave)});
+  const panel=mega.querySelector('.mega-panel');if(panel){panel.addEventListener('mouseenter',stay);panel.addEventListener('mouseleave',leave)}
+  mega.addEventListener('mouseover',e=>{if(e.target===mega)leave()})
+}
 if(mega){
   mega.addEventListener('click',e=>{
     if(e.target===mega||e.target.closest('#megaX')){closeMega();return}
