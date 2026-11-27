@@ -800,7 +800,7 @@ function renderMega(){if(!cmap)return;
     return `<div class="cm-group${['iPhone','Samsung','Android'].includes(c)?' wide':''}"><button type="button" class="cm-head" data-cat="${htm(c)}">${ico(c)}<b>${htm(c)}</b><small>${ps.length}</small><span class="cm-arr">→</span></button>
     ${lim?`<div class="cm-chips">${ps.slice(0,lim).map(p=>`<button type="button" class="chip" data-model="${htm(p.n)}">${p.disc?'<i class="dot"></i>':''}${htm(shortName(p).replace(/^(iPhone|MacBook|iPad|AirPods)\s+/,''))}<small>от ${rub(p.min).replace(' ₽','')}</small></button>`).join('')}${ps.length>lim?`<button type="button" class="chip more" data-cat="${htm(c)}">ещё ${ps.length-lim} →</button>`:''}</div>`:''}
     ${groups.length>1&&c!=='iPhone'?`<div class="cm-sub">${groups.map(g=>`<button type="button" data-cat="${htm(c)}" data-grp="${htm(g)}">${htm(g)}</button>`).join('')}</div>`:''}</div>`}).join('')+'</div>';
-  cmap.querySelectorAll('.cm2-c').forEach(b=>{b.addEventListener('mouseenter',()=>cm2Act(b.dataset.i));b.addEventListener('focus',()=>cm2Act(b.dataset.i))})}
+  const L=cmap.querySelector('.cm2-l');if(L){L.addEventListener('pointerover',e=>{const b=e.target.closest('.cm2-c');if(b&&!b.classList.contains('on'))cm2Act(b.dataset.i)});L.addEventListener('focusin',e=>{const b=e.target.closest('.cm2-c');if(b)cm2Act(b.dataset.i)})}}
 function openMega(){if(!mega)return;mega.classList.remove('closing');mega.style.setProperty('--hh',hdr.getBoundingClientRect().bottom+'px');mega.hidden=false;document.body.style.overflow='hidden';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.add('on'))}
 function closeMega(now){if(!mega||mega.hidden)return;if(!now&&!reduce){if(mega.classList.contains('closing'))return;mega.classList.add('closing');setTimeout(()=>{if(mega.classList.contains('closing')){mega.classList.remove('closing');closeMega(true)}},190);return}mega.classList.remove('closing');mega.hidden=true;document.body.style.overflow='';document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('on'))}
 function goCatalog(u){closeMega(true);if(window.catGo){window.catGo(u);return}
@@ -810,8 +810,8 @@ const MEGA_HOVER=matchMedia('(hover:hover) and (pointer:fine)').matches;
 document.querySelectorAll('.cat-btn, [data-mega]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();mega&&!mega.hidden?(MEGA_HOVER&&b.classList.contains('cat-btn')?0:closeMega()):openMega()}));
 /* 27.11.2026: на компьютере каталог открывается наведением на «Каталог» и закрывается, когда мышь уходит с меню */
 if(mega&&MEGA_HOVER){let tOpen=0,tClose=0;const stay=()=>{clearTimeout(tClose)};
-  const leave=()=>{clearTimeout(tOpen);clearTimeout(tClose);tClose=setTimeout(()=>closeMega(),350)};
-  document.querySelectorAll('.cat-btn').forEach(b=>{b.addEventListener('mouseenter',()=>{stay();if(mega.hidden)tOpen=setTimeout(openMega,110)});b.addEventListener('mouseleave',leave)});
+  const leave=()=>{clearTimeout(tOpen);clearTimeout(tClose);tClose=setTimeout(()=>closeMega(true),250)};
+  document.querySelectorAll('.cat-btn').forEach(b=>{b.addEventListener('mouseenter',()=>{stay();if(mega.hidden){mega.classList.add('instant');openMega()}});b.addEventListener('mouseleave',leave)});
   const panel=mega.querySelector('.mega-panel');if(panel){panel.addEventListener('mouseenter',stay);panel.addEventListener('mouseleave',leave)}
   mega.addEventListener('mouseover',e=>{if(e.target===mega)leave()})
 }
