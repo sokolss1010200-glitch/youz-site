@@ -14,6 +14,10 @@ RewriteRule ^ https://youz.store%{REQUEST_URI} [R=301,L]
 # служебные адреса Тильды и старые страницы
 RewriteRule ^(catalog/)?tproduct/ /catalog [R=301,L]
 RewriteRule ^(old-catalog|forma-zayavok)/?$ / [R=301,L]
+# старые карточки Тильды /old-catalog/<номер>-<модель> → страница модели, если она есть, иначе каталог
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^old-catalog/[0-9]+-([a-z0-9-]+)/?$ /$1 [R=301,L]
+RewriteRule ^old-catalog/ /catalog [R=301,L]
 RewriteRule ^page[0-9]+\.html$ / [R=301,L]
 RewriteRule ^glavnaya/?$ / [R=301,L]
 RewriteRule ^tilda/ - [G,L]

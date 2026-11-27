@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /lead.php
 Disallow: /t/assets.json
+Disallow: /model$
 
 Sitemap: https://youz.store/sitemap.xml
