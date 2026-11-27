@@ -79,6 +79,30 @@ for f in sorted((HERE / 'seo').glob('*.txt')):
 
 json.dump(assets, open(SITE / 't' / 'assets.json', 'w'), indent=1)
 
+# товарный фид для Яндекс Товаров на нашем домене (raw.githubusercontent отдаёт text/plain — Товары его не принимают).
+# Ссылки /model?m=<модель>&mem=… меняем на постоянные страницы моделей: /<страница>?mem=…
+FEED = REPO / 'data' / 'feed.yml'
+if FEED.exists():
+    murl = {}
+    for e in SEO.values():
+        if e.get('kind') == 'model' and e.get('model') and e['model'] not in murl:
+            murl[e['model']] = e['slug']
+    def fix(m):
+        url = html.unescape(m.group(1))
+        mm = re.match(r'https://youz\.store/model\?m=([^&]+)(.*)$', url)
+        if mm:
+            from urllib.parse import unquote
+            page = murl.get(unquote(mm.group(1)))
+            if page and (SITE / (page + '.html')).exists():
+                rest = mm.group(2).lstrip('&')
+                url = 'https://youz.store/%s%s' % (page, ('?' + rest) if rest else '')
+        return '<url>%s</url>' % html.escape(url, quote=False)
+    feed = re.sub(r'<url>([^<]*)</url>', fix, FEED.read_text(encoding='utf-8'))
+    old_feed = (SITE / 'feed.xml').read_text(encoding='utf-8') if (SITE / 'feed.xml').exists() else ''
+    if feed != old_feed:
+        (SITE / 'feed.xml').write_text(feed, encoding='utf-8')
+    print('фид: предложений', feed.count('<offer '), '| ссылок на /model осталось', feed.count('youz.store/model?'))
+
 # sitemap: все страницы, lastmod — из старой карты, у изменённых сегодня
 old = dict(re.findall(r'<loc>https://youz\.store/?([^<]*)</loc>\s*<lastmod>([^<]+)</lastmod>', (SITE / 'sitemap.xml').read_text()))
 now = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S+00:00')
