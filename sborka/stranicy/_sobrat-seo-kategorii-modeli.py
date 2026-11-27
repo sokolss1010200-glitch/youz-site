@@ -391,6 +391,7 @@ POPQ = ('<!--popq--><section class="popq" aria-label="Популярные за�
 
 def add_popq(html):
     html = re.sub(r'<!--popq-->.*?<!--/popq-->\n?', '', html, flags=re.S)
+    return html  # 27.11.2026: блок «Популярные запросы» убран по решению владельца — функция теперь только вычищает его
     i = html.rfind('<footer')
     return html[:i] + POPQ + '\n' + html[i:] if i >= 0 else html
 
