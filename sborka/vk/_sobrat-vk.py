@@ -2,7 +2,8 @@
 # Запуск: python3 sborka/vk/_sobrat-vk.py <папка клона youz-site> [--img]
 #   --img   — перерисовать картинки site/vk/*.jpg (нужен Pillow; делается локально, когда меняется линейка или цвета).
 #   без --img — только фид (цены из data/products.csv; картинки берутся готовые, если нет — фото с сайта).
-# Карточка в стиле прежних товаров группы: светлый фон, название, память, цвета (выбранный обведён), фото телефона.
+# Карточка по правилам Маркета ВК: только фото телефона на белом фоне — без текста, плашек, цветов и адреса сайта
+# (иначе ВК отклоняет товар как «коллаж / картинка с контактами»).
 import csv, collections, hashlib, html, re, sys, pathlib, datetime, urllib.request, io
 
 REPO = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.')
@@ -48,7 +49,7 @@ for o in re.finditer(r'<offer .*?</offer>', feed, re.S):
                     URL.setdefault(m, html.unescape(re.search(r'<url>(.*?)</url>', b).group(1)).split('?')[0])
 
 def card_name(m, col):
-    return '%s-%s.jpg' % (slug(m), slug(col))
+    return '%s-%s-foto.jpg' % (slug(m), slug(col))
 
 if '--img' in sys.argv:
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -70,32 +71,12 @@ if '--img' in sys.argv:
             bb = ph.getbbox()
             if bb: ph = ph.crop(bb)
             im = Image.new('RGB', (W, H), '#FFFFFF')
-            g = ImageDraw.Draw(im)
-            for y in range(H):  # мягкий светло-серый градиент
-                c = int(255 - 17 * y / H); g.line([(0, y), (W, y)], fill=(c, c, min(255, c + 2)))
-            g.text((W / 2, 92), m, font=font(78, 'Medium'), fill='#1D1D1F', anchor='mm')
-            f = font(32, 'Medium'); pads = []
-            for t in mems:
-                tw = g.textlength(t, font=f); pads.append((t, tw + 44))
-            x = (W - sum(p for _, p in pads) - 14 * (len(pads) - 1)) / 2
-            for t, pw in pads:
-                g.rounded_rectangle([x, 160, x + pw, 214], radius=12, outline='#8E8E93', width=2, fill='#FFFFFF')
-                g.text((x + pw / 2, 187), t, font=f, fill='#1D1D1F', anchor='mm'); x += pw + 14
-            cs = list(d['cols'].items()); s = 58; gap = 18
-            x = (W - len(cs) * s - (len(cs) - 1) * gap) / 2
-            for cn, ch in cs:
-                if cn == col:
-                    g.rounded_rectangle([x - 7, 250 - 7, x + s + 7, 250 + s + 7], radius=16, outline='#1D1D1F', width=4)
-                g.rounded_rectangle([x, 250, x + s, 250 + s], radius=11, fill=ch, outline='#D1D1D6', width=1)
-                x += s + gap
-            g.text((W / 2, 352), col, font=font(30, 'Regular'), fill='#6E6E73', anchor='mm')
-            box_w, box_h, top = 980, 640, 395
-            k = min(box_w / ph.width, box_h / ph.height); ph = ph.resize((int(ph.width * k), int(ph.height * k)), Image.LANCZOS)
-            sh = Image.new('RGBA', ph.size, (0, 0, 0, 0)); sh.putalpha(ph.split()[3].point(lambda a: int(a * 0.18)))
-            sh = sh.filter(ImageFilter.GaussianBlur(18))
-            px = int((W - ph.width) / 2); py = int(top + (box_h - ph.height) / 2)
-            im.paste((0, 0, 0), (px + 6, py + 16), sh); im.paste(ph, (px, py), ph)
-            g.text((W - 40, H - 34), 'youz.store', font=font(26, 'Medium'), fill='#A1A1A6', anchor='rm')
+            box = 900
+            k = min(box / ph.width, box / ph.height); ph = ph.resize((int(ph.width * k), int(ph.height * k)), Image.LANCZOS)
+            sh = Image.new('RGBA', ph.size, (0, 0, 0, 0)); sh.putalpha(ph.split()[3].point(lambda a: int(a * 0.14)))
+            sh = sh.filter(ImageFilter.GaussianBlur(16))
+            px = int((W - ph.width) / 2); py = int((H - ph.height) / 2)
+            im.paste((0, 0, 0), (px + 4, py + 12), sh); im.paste(ph, (px, py), ph)
             im.save(OUT / card_name(m, col), 'JPEG', quality=88, optimize=True)
             print('картинка', card_name(m, col))
 
@@ -114,7 +95,7 @@ for gi, (m, d) in enumerate(M.items(), 1):
         sims = sorted({r['Опция'].strip() for r in rows if r['Модель'] == m and r['Память'].strip() == mem and r['Цвет'].strip() == col})
         descr = ('%s %s, цвет %s — новый, оригинал, гарантия магазина 12 месяцев. Варианты SIM: %s. '
                  'Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. Рассрочка до 36 месяцев, trade-in, доставка по городу в день заказа, '
-                 'в другие города — СДЭК. Подробнее и все цены: youz.store') % (m, mem, col, ', '.join(sims))
+                 'в другие города — СДЭК.') % (m, mem, col, ', '.join(sims))
         out.append('<offer id="%d" group_id="%d" available="true"><url>%s</url><price>%d</price><currencyId>RUR</currencyId>'
                    '<categoryId>1</categoryId><picture>%s</picture><name>%s</name><vendor>Apple</vendor>'
                    '<description>%s</description><param name="Цвет">%s</param><param name="Память">%s</param></offer>' % (
