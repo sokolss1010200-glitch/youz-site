@@ -48,8 +48,36 @@ for o in re.finditer(r'<offer .*?</offer>', feed, re.S):
                     PH.setdefault((m, col), re.search(r'<picture>(.*?)</picture>', b).group(1))
                     URL.setdefault(m, html.unescape(re.search(r'<url>(.*?)</url>', b).group(1)).split('?')[0])
 
+def one_phone(im, model):
+    """Из картинки «спина + экран» оставить один телефон."""
+    import numpy as np
+    from PIL import ImageDraw
+    a = np.array(im)[:, :, 3] > 40; h, w = a.shape
+    if 'Pro' in model or model == 'iPhone 17e':
+        g = np.array(im.convert('L'), dtype=float)
+        d = np.abs(np.diff(g[int(h * .15):int(h * .85)], axis=1)).sum(0)
+        lo, hi = ((.45, .75) if 'Pro' in model else (.2, .5))
+        x = int(w * lo) + int(np.argmax(d[int(w * lo):int(w * hi)])) + 1
+        top = np.array([np.argmax(a[:, i]) if a[:, i].any() else h for i in range(w)])
+        if 'Pro' in model:
+            r = int(np.argmax(top <= top.min() + 1)); one = im.crop((0, 0, x, h))
+        else:
+            r = int(np.argmax(top[::-1] <= top.min() + 1)); one = im.crop((x, 0, w, h))
+        mw, mh = one.size; mk = Image.new('L', (mw, mh), 0)
+        ImageDraw.Draw(mk).rounded_rectangle([0, 0, mw - 1, mh - 1], radius=max(r, 8), fill=255)
+        one.putalpha(Image.fromarray(np.minimum(np.array(one)[:, :, 3], np.array(mk))))
+    else:  # iPhone 17, Air: экран справа, сверху; граница — где у верхнего/нижнего края просвет между углами
+        top = np.array([np.argmax(a[:, i]) if a[:, i].any() else h for i in range(w)])
+        bot = np.array([h - 1 - np.argmax(a[::-1, i]) if a[:, i].any() else 0 for i in range(w)])
+        gp = top + (h - 1 - bot); lo, hi = ((.20, .55) if 'Air' in model else (.15, .55))
+        x = int(w * lo) + int(np.argmax(gp[int(w * lo):int(w * hi)])); one = im.crop((x, 0, w, h))
+    return one.crop(one.getbbox())
+
+NEW_ID = {l.strip() for l in (pathlib.Path(__file__).with_name('vk-novye-id.txt')).read_text(encoding='utf-8').splitlines()
+          if l.strip() and not l.startswith('#')}
+
 def card_name(m, col):
-    return '%s-%s-foto.jpg' % (slug(m), slug(col))
+    return '%s-%s-odin.jpg' % (slug(m), slug(col))
 
 if '--img' in sys.argv:
     from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -70,8 +98,9 @@ if '--img' in sys.argv:
                 print('нет фото', m, col); continue
             bb = ph.getbbox()
             if bb: ph = ph.crop(bb)
+            ph = one_phone(ph, m)
             im = Image.new('RGB', (W, H), '#FFFFFF')
-            box = 900
+            box = 940
             k = min(box / ph.width, box / ph.height); ph = ph.resize((int(ph.width * k), int(ph.height * k)), Image.LANCZOS)
             sh = Image.new('RGBA', ph.size, (0, 0, 0, 0)); sh.putalpha(ph.split()[3].point(lambda a: int(a * 0.14)))
             sh = sh.filter(ImageFilter.GaussianBlur(16))
@@ -89,7 +118,8 @@ out = ['<?xml version="1.0" encoding="UTF-8"?>',
 n = 0
 for gi, (m, d) in enumerate(M.items(), 1):
     for (mem, col), (p, opt) in sorted(d['v'].items(), key=lambda kv: (list(d['cols']).index(kv[0][1]), memkey(kv[0][0]))):
-        oid = int(hashlib.md5(('vk|%s|%s|%s' % (m, mem, col)).encode()).hexdigest()[:10], 16) % 10**9
+        salt = 'vk2|' if '%s %s %s' % (m, mem, col) in NEW_ID else 'vk|'
+        oid = int(hashlib.md5((salt + '%s|%s|%s' % (m, mem, col)).encode()).hexdigest()[:10], 16) % 10**9
         img = ('https://youz.store/vk/' + card_name(m, col)) if (OUT / card_name(m, col)).exists() else PH.get((m, col), '')
         url = URL.get(m, 'https://youz.store/catalog') + '?' + 'mem=%s&c=%s' % (mem.replace(' ', '+'), col.replace(' ', '+'))
         sims = sorted({r['Опция'].strip() for r in rows if r['Модель'] == m and r['Память'].strip() == mem and r['Цвет'].strip() == col})

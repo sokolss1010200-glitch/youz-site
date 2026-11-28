@@ -1,0 +1,44 @@
+# Товары, которые ВК отклонил 28.11.2026 (старые карточки с текстом). Им даётся новый id, чтобы ВК создал их заново.
+iPhone 17 Pro 1 ТБ Blue
+iPhone 17 Pro 256 ГБ Blue
+iPhone 17e 256 ГБ White
+iPhone 17e 256 ГБ Pink
+iPhone 17 512 ГБ Lavender
+iPhone 17 256 ГБ Lavender
+iPhone 17 512 ГБ Sage
+iPhone 17 256 ГБ Sage
+iPhone 17 512 ГБ Black
+iPhone 17 256 ГБ Black
+iPhone 17 256 ГБ White
+iPhone Air 256 ГБ Black
+iPhone Air 512 ГБ Gold
+iPhone Air 256 ГБ Gold
+iPhone Air 1 ТБ Blue
+iPhone Air 512 ГБ Blue
+iPhone Air 256 ГБ Blue
+iPhone 17 Pro 512 ГБ Silver
+iPhone 17 Pro 256 ГБ Silver
+iPhone 17 Pro 1 ТБ Orange
+iPhone 17 Pro 512 ГБ Orange
+iPhone 17 Pro 256 ГБ Orange
+iPhone 17 Pro Max 2 ТБ Silver
+iPhone 17 Pro Max 256 ГБ Silver
+iPhone 17 Pro Max 2 ТБ Blue
+iPhone 17 Pro Max 1 ТБ Blue
+iPhone 17 Pro Max 512 ГБ Blue
+iPhone 17 Pro Max 256 ГБ Blue
+iPhone 17 Pro Max 2 ТБ Orange
+iPhone 17 Pro Max 1 ТБ Orange
+iPhone 18 Pro 1 ТБ Silver
+iPhone 18 Pro 512 ГБ Silver
+iPhone 18 Pro 256 ГБ Silver
+iPhone 18 Pro 1 ТБ Burgundy
+iPhone 18 Pro 512 ГБ Burgundy
+iPhone 18 Pro 256 ГБ Burgundy
+iPhone 18 Pro 1 ТБ Black
+iPhone 18 Pro 512 ГБ Black
+iPhone 18 Pro 256 ГБ Black
+iPhone 18 Pro 1 ТБ Glacier
+iPhone 18 Pro 512 ГБ Glacier
+iPhone 18 Pro 256 ГБ Glacier
+iPhone 18 Pro Max 2 ТБ Burgundy
