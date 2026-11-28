@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<yml_catalog date="2026-11-28T11:10:50+00:00">
+<yml_catalog date="2026-11-28T11:42:13+00:00">
 <shop><name>ЮZ Store</name><company>ЮZ Store</company><url>https://youz.store</url>
 <currencies><currency id="RUR" rate="1"/></currencies><categories><category id="1">Смартфоны</category></categories><offers>
 <offer id="342618256" group_id="1" available="true"><url>https://youz.store/iphone-18-pro-max?mem=256+ГБ&amp;c=Silver</url><price>122990</price><currencyId>RUR</currencyId><categoryId>1</categoryId><picture>https://youz.store/vk/iphone-18-pro-max-silver.jpg</picture><name>iPhone 18 Pro Max 256 ГБ Silver</name><vendor>Apple</vendor><description>iPhone 18 Pro Max 256 ГБ, цвет Silver — новый, оригинал, гарантия магазина 12 месяцев. Варианты SIM: SIM + eSIM, eSIM. Магазин ЮZ, Ханты-Мансийск, Комсомольская, 49. Рассрочка до 36 месяцев, trade-in, доставка по городу в день заказа, в другие города — СДЭК. Подробнее и все цены: youz.store</description><param name="Цвет">Silver</param><param name="Память">256 ГБ</param></offer>
